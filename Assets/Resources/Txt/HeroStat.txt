@@ -1,0 +1,33 @@
+	Class	Name	Level	Step	ATK	HP	Mana	SoulMana
+1	Thief	Thief	1	N	800	400	140	12
+2	Warrior	Warrior	1	N	400	850	120	8
+3	Archer	Archer	1	N	700	700	200	12
+4	Magician	Magician	1	N	820	360	250	20
+5								
+6								
+7								
+8								
+9								
+10								
+11								
+12								
+13								
+14								
+15								
+16								
+17								
+18								
+19								
+20								
+21								
+22								
+23								
+24								
+25								
+26								
+27								
+28								
+29								
+30								
+31								
+32								

@@ -1,0 +1,92 @@
+{
+  "_heroes":[
+    {
+      "idx": 1,
+      "Class": "Thief",
+      "Name": "다크로드",
+      "Level": 1,
+      "Step": "N",
+      "ATK": 800,
+      "HP": 400,
+      "Mana": 140,
+      "SoulMana": 12
+    },
+    {
+      "idx": 2,
+      "Class": "Warrior",
+      "Name": "돼와춤",
+      "Level": 1,
+      "Step": "N",
+      "ATK": 400,
+      "HP": 850,
+      "Mana": 120,
+      "SoulMana": 8
+    },
+    {
+      "idx": 3,
+      "Class": "Archer",
+      "Name": "헬레나",
+      "Level": 1,
+      "Step": "N",
+      "ATK": 700,
+      "HP": 700,
+      "Mana": 200,
+      "SoulMana": 12
+    },
+    {
+      "idx": 4,
+      "Class": "Magician",
+      "Name": "하인즈",
+      "Level": 1,
+      "Step": "N",
+      "ATK": 820,
+      "HP": 360,
+      "Mana": 250,
+      "SoulMana": 20
+    },
+    {
+      "idx": 5,
+      "Class": "Thief",
+      "Name": "로그",
+      "Level": 1,
+      "Step": "N",
+      "ATK": 810,
+      "HP": 390,
+      "Mana": 140,
+      "SoulMana": 12
+    },
+    {
+      "idx": 6,
+      "Class": "Warrior",
+      "Name": "파이터",
+      "Level": 1,
+      "Step": "N",
+      "ATK": 420,
+      "HP": 830,
+      "Mana": 120,
+      "SoulMana": 8
+    },
+    {
+      "idx": 7,
+      "Class": "Archer",
+      "Name": "사수",
+      "Level": 1,
+      "Step": "N",
+      "ATK": 660,
+      "HP": 740,
+      "Mana": 200,
+      "SoulMana": 12
+    },
+    {
+      "idx": 8,
+      "Class": "Magician",
+      "Name": "위자드",
+      "Level": 1,
+      "Step": "N",
+      "ATK": 850,
+      "HP": 330,
+      "Mana": 250,
+      "SoulMana": 20
+    }
+  ]
+}
