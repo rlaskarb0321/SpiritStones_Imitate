@@ -6,7 +6,7 @@ public class BlockBreaker
 {
     bool _isSelectable = true;
 
-    public void PushBlockToList(List<BlockBase> list, BlockBase block)
+    public void PushBlockToList(List<BlockBase_2> list, BlockBase_2 block)
     {
         if (!_isSelectable)
             return;
@@ -53,24 +53,29 @@ public class BlockBreaker
         list.Add(block);
     }
 
-    public void BreakBlock(List<BlockBase> list)
+    public void BreakBlock(List<BlockBase_2> list)
     {
         _isSelectable = true;
 
         if (list.Count >= 3)
         {
-            while (list.Count > 0)
+            for (int i = list.Count - 1; i >= 0; i--)
             {
-                BlockBase block = list[list.Count - 1];
+                BlockBase_2 block = list[i];
+                if (block.tag == "ItemBlock")
+                {
+                    block.DoAction();
+                    continue;
+                }
                 list.RemoveAt(list.Count - 1);
-                block.SendMessage("DoAction");
+                block.DoAction();
             }
         }
         else
         {
             while (list.Count > 0)
             {
-                BlockBase block = list[list.Count - 1];
+                BlockBase_2 block = list[list.Count - 1];
                 list.RemoveAt(list.Count - 1);
             }
         }

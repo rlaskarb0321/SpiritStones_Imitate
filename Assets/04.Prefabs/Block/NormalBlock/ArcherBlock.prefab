@@ -13,9 +13,7 @@ GameObject:
   - component: {fileID: 1010617152862570293}
   - component: {fileID: -3736329747922732900}
   - component: {fileID: -1199438735328368929}
-  - component: {fileID: 7596968374403231256}
-  - component: {fileID: 2649077163900020774}
-  - component: {fileID: 7200043744469286591}
+  - component: {fileID: 3562424914435869758}
   m_Layer: 6
   m_Name: ArcherBlock
   m_TagString: NormalBlock
@@ -128,7 +126,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
---- !u!114 &7596968374403231256
+--- !u!114 &3562424914435869758
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,38 +135,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1010617152862570291}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbb04bd3ad7b40542a4a8145bfbec9f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 064b84d212ef47b489e61ab50ba53083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _blockBase: {fileID: 2649077163900020774}
-  _spiritPrefabs: {fileID: 8865526457991201743, guid: 8e4a5570062130046acc4fdfbcafb426, type: 3}
-  _normalBlockType: 1
---- !u!114 &2649077163900020774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010617152862570291}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ada8ece2f38507438688e11f65278eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _movSpeed: 1.3
   _normalType: 1
-  _specialType: 8
+  _movSpeed: 0.5
   _isDocked: 0
---- !u!114 &7200043744469286591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010617152862570291}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51125e38ecf311945b15b2a39bc37df1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _blockBase: {fileID: 2649077163900020774}
+  _spiritPrefabs: {fileID: 8865526457991201743, guid: 8e4a5570062130046acc4fdfbcafb426, type: 3}

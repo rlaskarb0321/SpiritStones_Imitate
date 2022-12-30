@@ -6,6 +6,11 @@ public class BlockCollider : MonoBehaviour
 {
     [SerializeField] private BlockBase _blockBase;
 
+    private void Start()
+    {
+        
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.transform != this.transform &&

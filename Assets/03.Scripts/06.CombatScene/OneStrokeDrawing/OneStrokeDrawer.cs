@@ -39,7 +39,7 @@ public class OneStrokeDrawer : MonoBehaviour
             if (block == null)
                 return;
 
-            BlockBase blockBase = block.GetComponent<BlockBase>();
+            BlockBase_2 blockBase = block.GetComponent<BlockBase_2>();
             if (blockBase == null)
                 return;
 
@@ -54,7 +54,7 @@ public class OneStrokeDrawer : MonoBehaviour
                     }
                     else
                     {
-                        if (!_normalList.Contains(blockBase._normalType.ToString()))
+                        if (!_normalList.Contains(blockBase.NormalType.ToString()))
                         {
                             _breakBlock.PushBlockToList(GameManager._instance._breakList, blockBase);  
                         }
@@ -69,7 +69,7 @@ public class OneStrokeDrawer : MonoBehaviour
                     }
                     else
                     {
-                        if (!_itemList.Contains(blockBase._specialType.ToString()))
+                        if (!_itemList.Contains(blockBase.SpecialType.ToString()))
                         {
                             _breakBlock.PushBlockToList(GameManager._instance._breakList, blockBase);
                         }
@@ -123,11 +123,11 @@ public class OneStrokeDrawer : MonoBehaviour
     /// </summary>
     /// <param name="block">NormalBlock의 enum종류를 추출하기 위한 변수</param>
     /// <param name="unreachableNormalBlock">추출한 enum을 리스트에서 제거함</param>
-    void RemoveNormalTypeAtList(BlockBase block, List<string> unreachableNormalBlock)
+    void RemoveNormalTypeAtList(BlockBase_2 block, List<string> unreachableNormalBlock)
     {
         _normalCount--;
 
-        string blockType = block._normalType.ToString();
+        string blockType = block.NormalType.ToString();
         if (unreachableNormalBlock.Contains(blockType))
         {
             unreachableNormalBlock.Remove(blockType);
@@ -140,11 +140,11 @@ public class OneStrokeDrawer : MonoBehaviour
     /// </summary>
     /// <param name="block">ItemBlock의 enum종류를 추출하기 위한 변수</param>
     /// <param name="unreachableItemBlock">추출한 enum을 리스트에서 제거함</param>
-    void RemoveItemTypeAtList(BlockBase block, List<string> unreachableItemBlock)
+    void RemoveItemTypeAtList(BlockBase_2 block, List<string> unreachableItemBlock)
     {
         _itemCount--;
 
-        string[] itemTag = block._specialType.ToString().Split('_');
+        string[] itemTag = block.SpecialType.ToString().Split('_');
         string itemType = itemTag[itemTag.Length - 1];
         for (int i = unreachableItemBlock.Count - 1; i >= 0; i--)
         {
@@ -163,13 +163,13 @@ public class OneStrokeDrawer : MonoBehaviour
             if (blockMember == null)
                 continue;
 
-            NormalBlock normalMember = blockMember.GetComponent<NormalBlock>();
-            if (normalMember == null)
+            BlockBase_2 member = blockMember.GetComponent<BlockBase_2>();
+            if (member == null)
                 continue;
 
-            if (_normalList.Contains(normalMember.NormalBlockType.ToString()))
+            if (_normalList.Contains(member.NormalType.ToString()))
             {
-                _ctrlBlockAlpha.DarkenBlockAlphaValue(normalMember, _lowAlpha);
+                _ctrlBlockAlpha.DarkenBlockAlphaValue(member, _lowAlpha);
             }
         }
     }
@@ -182,13 +182,16 @@ public class OneStrokeDrawer : MonoBehaviour
             if (blockMember == null)
                 continue;
 
-            ItemBlock itemMember = blockMember.GetComponent<ItemBlock>();
-            if (itemMember == null)
+            BlockBase_2 member = blockMember.GetComponent<BlockBase_2>();
+            if (member == null)
                 continue;
 
-            if (_itemList.Contains(itemMember.ItemBlockType.ToString()))
+            if (member.NormalType == eNormalBlockType.None)
+                continue;
+
+            if (_itemList.Contains(member.SpecialType.ToString()))
             {
-                _ctrlBlockAlpha.DarkenBlockAlphaValue(itemMember, _lowAlpha);
+                _ctrlBlockAlpha.DarkenBlockAlphaValue(member, _lowAlpha);
             }
         }
     }

@@ -2,15 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum eNormalBlockType
-{
-    Warrior,
-    Archer,
-    Thief,
-    Magician,
-    None,
-}
-
 public class NormalBlock : MonoBehaviour
 {
     [SerializeField] private BlockBase _blockBase;

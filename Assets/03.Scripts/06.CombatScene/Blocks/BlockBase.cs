@@ -2,14 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum eBlockType
-{
-    Normal,
-    Item,
-    Obstacle,
-    Count,
-}
-
 /*
  * 모든 블럭들이 기본적으로 가지고 있어야 하는 스크립트
  */

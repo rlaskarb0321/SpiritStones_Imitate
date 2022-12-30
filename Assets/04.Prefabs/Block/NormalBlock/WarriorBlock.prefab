@@ -13,9 +13,7 @@ GameObject:
   - component: {fileID: 1010617152862570293}
   - component: {fileID: -4608904765057348650}
   - component: {fileID: 2948214687256278002}
-  - component: {fileID: 7960842184679949110}
-  - component: {fileID: 813481976092787788}
-  - component: {fileID: -4239583229434696986}
+  - component: {fileID: 4272081555421608199}
   m_Layer: 6
   m_Name: WarriorBlock
   m_TagString: NormalBlock
@@ -128,7 +126,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
---- !u!114 &7960842184679949110
+--- !u!114 &4272081555421608199
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,38 +135,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1010617152862570291}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbb04bd3ad7b40542a4a8145bfbec9f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 064b84d212ef47b489e61ab50ba53083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _blockBase: {fileID: 813481976092787788}
-  _spiritPrefabs: {fileID: 8865526457991201743, guid: fcf19b1256bfde94a981d79c8ad35dbe, type: 3}
-  _normalBlockType: 0
---- !u!114 &813481976092787788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010617152862570291}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ada8ece2f38507438688e11f65278eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _movSpeed: 1.3
   _normalType: 0
-  _specialType: 8
+  _movSpeed: 0.5
   _isDocked: 0
---- !u!114 &-4239583229434696986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010617152862570291}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51125e38ecf311945b15b2a39bc37df1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _blockBase: {fileID: 813481976092787788}
+  _spiritPrefabs: {fileID: 8865526457991201743, guid: fcf19b1256bfde94a981d79c8ad35dbe, type: 3}
