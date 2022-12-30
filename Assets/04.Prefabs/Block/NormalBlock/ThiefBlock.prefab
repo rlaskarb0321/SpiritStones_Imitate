@@ -139,6 +139,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _normalType: 2
-  _movSpeed: 0.5
+  _movSpeed: 0.8
   _isDocked: 0
   _spiritPrefabs: {fileID: 8865526457991201743, guid: 54b90bde09e858544b523a9c539e48ce, type: 3}

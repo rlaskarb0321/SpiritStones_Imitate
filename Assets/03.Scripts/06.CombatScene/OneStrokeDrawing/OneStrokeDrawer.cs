@@ -163,7 +163,7 @@ public class OneStrokeDrawer : MonoBehaviour
             if (blockMember == null)
                 continue;
 
-            BlockBase_2 member = blockMember.GetComponent<BlockBase_2>();
+            NormalBlock_2 member = blockMember.GetComponent<NormalBlock_2>();
             if (member == null)
                 continue;
 
@@ -182,11 +182,8 @@ public class OneStrokeDrawer : MonoBehaviour
             if (blockMember == null)
                 continue;
 
-            BlockBase_2 member = blockMember.GetComponent<BlockBase_2>();
+            ItemBlock_2 member = blockMember.GetComponent<ItemBlock_2>();
             if (member == null)
-                continue;
-
-            if (member.NormalType == eNormalBlockType.None)
                 continue;
 
             if (_itemList.Contains(member.SpecialType.ToString()))

@@ -5,7 +5,6 @@ using UnityEngine;
 public class NormalBlock_2 : BlockBase_2
 {
     [SerializeField] private eNormalBlockType _normalType;
-    private eSpecialBlockType _specialType = eSpecialBlockType.None;
     [SerializeField] private float _movSpeed;
     [SerializeField] private bool _isDocked;
     public GameObject _spiritPrefabs;
@@ -26,7 +25,7 @@ public class NormalBlock_2 : BlockBase_2
     void Start()
     {
         base.AddToMemoryList();
-        base.MoveBlock(this.gameObject);
+        MoveBlock(this.gameObject);
     }
 
     void GenerateSpirit(GameObject spirit)

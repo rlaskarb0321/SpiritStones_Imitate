@@ -4,12 +4,12 @@ using UnityEngine;
 
 public abstract class BlockBase_2 : MonoBehaviour
 {
-    public abstract float MovSpeed { get; set; }
+    public virtual float MovSpeed { get; set; }
     public virtual eNormalBlockType NormalType { get; set; }
     public virtual eSpecialBlockType SpecialType { get; set; }
-    public abstract bool IsDocked { get; set; }
+    public virtual bool IsDocked { get; set; }
 
-    public abstract void DoAction();
+    public virtual void DoAction() { }
     public virtual void MoveBlock(GameObject block)
     {
         StartCoroutine(MovePosition(block));
@@ -35,7 +35,7 @@ public abstract class BlockBase_2 : MonoBehaviour
         StartCoroutine(MovePosition(block));
     }
 
-    private void OnCollisionStay2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("BlockBorder"))
         {

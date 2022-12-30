@@ -13,9 +13,6 @@ GameObject:
   - component: {fileID: 1010617152862570293}
   - component: {fileID: -8410158325702625720}
   - component: {fileID: 3518218885019079755}
-  - component: {fileID: 2490520121686363522}
-  - component: {fileID: -3060842312681156913}
-  - component: {fileID: 2332624740374076455}
   m_Layer: 6
   m_Name: ElixirItem
   m_TagString: ItemBlock
@@ -129,49 +126,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
---- !u!114 &2490520121686363522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010617152862570291}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ada8ece2f38507438688e11f65278eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _movSpeed: 1.3
-  _normalType: 4
-  _specialType: 6
-  _isDocked: 0
---- !u!114 &-3060842312681156913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010617152862570291}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d86680aa61c4ba940aaff24f5e86ce9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _blockBase: {fileID: 2490520121686363522}
-  _itemType: 6
---- !u!114 &2332624740374076455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010617152862570291}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51125e38ecf311945b15b2a39bc37df1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _blockBase: {fileID: 2490520121686363522}
 --- !u!1 &1937064374024236381
 GameObject:
   m_ObjectHideFlags: 0
