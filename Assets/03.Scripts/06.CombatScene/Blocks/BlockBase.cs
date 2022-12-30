@@ -4,17 +4,14 @@ using UnityEngine;
 
 public abstract class BlockBase : MonoBehaviour
 {
+    [SerializeField] protected float _movSpeed;
+    [SerializeField] protected bool _isDocked;
     public virtual float MovSpeed { get; set; }
     public virtual eNormalBlockType NormalType { get; set; }
     public virtual eSpecialBlockType SpecialType { get; set; }
     public virtual bool IsDocked { get; set; }
 
     public virtual void DoAction() { }
-    public virtual void MoveBlock(GameObject block)
-    {
-        StartCoroutine(MovePosition(block));
-    }
-
     public virtual void AddToMemoryList()
     {
         GameManager._instance._blockMgrList.Add(this.gameObject);
@@ -23,6 +20,11 @@ public abstract class BlockBase : MonoBehaviour
     public virtual void RemoveFromMemoryList()
     {
         GameManager._instance._blockMgrList.Remove(this.gameObject);
+    }
+
+    public virtual void MoveBlock(GameObject block)
+    {
+        StartCoroutine(MovePosition(block));
     }
 
     IEnumerator MovePosition(GameObject block)

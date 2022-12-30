@@ -63,7 +63,7 @@ public class BlockBreaker
             {
                 BlockBase block = list[i];
                 block.DoAction();
-                list.RemoveAt(list.Count - 1);
+                list.RemoveAt(i);
             }
         }
         else

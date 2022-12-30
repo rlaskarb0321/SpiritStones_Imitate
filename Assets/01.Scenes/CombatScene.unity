@@ -1802,7 +1802,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _blockGenerator: {fileID: 1315157075}
-  _spiritGenerator: {fileID: 298311310}
   _spawnPos: {fileID: 254471726}
 --- !u!1 &290067048
 GameObject:
@@ -2301,6 +2300,8 @@ MonoBehaviour:
   _dockedCount: 0
   _blockMgrList: []
   _breakList: []
+  _canGenerateBlock: 0
+  _spiritGenerator: {fileID: 298311310}
 --- !u!1001 &406045154
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4788,7 +4789,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _blockGenerator: {fileID: 1315157075}
-  _spiritGenerator: {fileID: 298311310}
   _spawnPos: {fileID: 680193238}
 --- !u!1001 &789228963
 PrefabInstance:
@@ -5394,7 +5394,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _blockGenerator: {fileID: 1315157075}
-  _spiritGenerator: {fileID: 298311310}
   _spawnPos: {fileID: 53928336}
 --- !u!1001 &990469667
 PrefabInstance:
@@ -6639,7 +6638,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -13.609009, y: 298}
+  m_AnchoredPosition: {x: 836, y: 298}
   m_SizeDelta: {x: 852.95, y: 1037.83}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1215415319
@@ -7388,7 +7387,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _blockGenerator: {fileID: 1315157075}
-  _spiritGenerator: {fileID: 298311310}
   _spawnPos: {fileID: 1066680748}
 --- !u!1 &1365496363
 GameObject:
@@ -7854,7 +7852,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _blockGenerator: {fileID: 1315157075}
-  _spiritGenerator: {fileID: 298311310}
   _spawnPos: {fileID: 702213687}
 --- !u!1 &1476333989
 GameObject:
@@ -8421,7 +8418,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _blockGenerator: {fileID: 1315157075}
-  _spiritGenerator: {fileID: 298311310}
   _spawnPos: {fileID: 1476333989}
 --- !u!1001 &1552296667
 PrefabInstance:
@@ -8647,7 +8643,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _blockGenerator: {fileID: 1315157075}
-  _spiritGenerator: {fileID: 298311310}
   _spawnPos: {fileID: 532299282}
 --- !u!1001 &1620725329
 PrefabInstance:

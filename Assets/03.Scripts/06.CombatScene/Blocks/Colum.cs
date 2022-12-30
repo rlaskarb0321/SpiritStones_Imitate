@@ -5,7 +5,6 @@ using UnityEngine;
 public class Colum : MonoBehaviour
 {
     [SerializeField] private BlockGenerator _blockGenerator;
-    [SerializeField] private GameObject _spiritGenerator;
     [SerializeField] private GameObject _spawnPos;
 
     void Start()
@@ -15,11 +14,10 @@ public class Colum : MonoBehaviour
 
     IEnumerator GenerateBlock()
     {
-        // Colum의 childCount < 5 이고, 영혼생성기에 영혼이 생성되면 밑에 구문을 실행
-        yield return new WaitUntil(() => (this.transform.childCount < 5) && (_spiritGenerator.transform.childCount >= 1));
+        yield return new WaitUntil(() => this.transform.childCount < 5 &&
+        GameManager._instance._dockedCount != 63);
 
-        // 그 후, 영혼의 흡수가 모두 끝나면 밑에 구문을 실행
-        yield return new WaitUntil(() => _spiritGenerator.transform.childCount == 0);
+        yield return new WaitUntil(() => GameManager._instance._canGenerateBlock);
 
         int needBlockCount = 5 - this.transform.childCount;
         for (int i = 0; i < needBlockCount; i++)
@@ -28,6 +26,10 @@ public class Colum : MonoBehaviour
             _blockGenerator.GenerateBlock(spawnPos, this.transform);
         }
 
+        if (GameManager._instance._canGenerateBlock != false)
+        {
+            GameManager._instance._canGenerateBlock = false; 
+        }
         StartCoroutine(GenerateBlock());
     }
 }

@@ -5,14 +5,8 @@ using UnityEngine.UI;
 
 public class ArrowItem : ItemBlock
 {
-    [SerializeField] private float _movSpeed;
-    [SerializeField] private bool _isDocked;
-    public Sprite _ignitedImg;
-    private Image _thisImg;
-    private bool _isIgnited;
     public GameObject _arrowPrefabs;
     [SerializeField] private int _arrowCount;
-
     public override eSpecialBlockType SpecialType
     {
         get { return _specialType; }
@@ -35,12 +29,7 @@ public class ArrowItem : ItemBlock
         {
             ChangeImage();
             _isIgnited = true;
-        }
-        else
-        {
-            ItemAction();
-            base.RemoveFromMemoryList();
-            Destroy(gameObject);
+            StartCoroutine(ItemAction());
         }
     }
 
@@ -49,8 +38,15 @@ public class ArrowItem : ItemBlock
         _thisImg.sprite = _ignitedImg;
     }
 
-    protected override void ItemAction()
+    protected override IEnumerator ItemAction()
     {
+        yield return new WaitUntil(() => GameManager._instance._dockedCount == 63);
+
         Debug.Log("Arrow Item Action");
+
+        yield return new WaitForSeconds(0.5f);
+
+        base.RemoveFromMemoryList();
+        Destroy(gameObject);
     }
 }

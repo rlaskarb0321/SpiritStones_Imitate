@@ -36,7 +36,7 @@ public class Spirit : MonoBehaviour
         _breakTime -= Time.deltaTime;
     }
 
-    void GoToHero() // 매개변수에 GameObject target을 추가하고 Hero스크립트에서 this를 넣을 예정
+    void GoToHero() 
     {
         _breakTime = 0.0f;
         // Debug.Log("알맞는 영웅에게 날라간 후 파괴됩니다");

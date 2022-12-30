@@ -5,11 +5,6 @@ using UnityEngine.UI;
 
 public class PotionItem : ItemBlock
 {
-    [SerializeField] private float _movSpeed;
-    [SerializeField] private bool _isDocked;
-    public Sprite _ignitedImg;
-    private Image _thisImg;
-    private bool _isIgnited;
     public override eSpecialBlockType SpecialType
     {
         get { return _specialType; }
@@ -32,12 +27,7 @@ public class PotionItem : ItemBlock
         {
             ChangeImage();
             _isIgnited = true;
-        }
-        else
-        {
-            ItemAction();
-            base.RemoveFromMemoryList();
-            Destroy(gameObject);
+            StartCoroutine(ItemAction());
         }
     }
 
@@ -46,8 +36,12 @@ public class PotionItem : ItemBlock
         _thisImg.sprite = _ignitedImg;
     }
 
-    protected override void ItemAction()
+    protected override IEnumerator ItemAction()
     {
+        yield return new WaitUntil(() => GameManager._instance._dockedCount == 63);
+
         Debug.Log("Potion Item Action");
+        base.RemoveFromMemoryList();
+        Destroy(gameObject);
     }
 }

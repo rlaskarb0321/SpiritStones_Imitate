@@ -5,13 +5,6 @@ using UnityEngine.UI;
 
 public class BombItem : ItemBlock
 {
-    [SerializeField] private float _movSpeed;
-    [SerializeField] private bool _isDocked;
-    public Sprite _ignitedImg;
-    private Image _thisImg;
-    private bool _isIgnited;
-    private WaitUntil _wu;
-
     public override eSpecialBlockType SpecialType { get { return _specialType; } set { _specialType = value; } }
     public override float MovSpeed { get { return _movSpeed; } set { _movSpeed = value; } }
     public override bool IsDocked { get { return _isDocked; } set { _isDocked = value; } }
@@ -30,12 +23,7 @@ public class BombItem : ItemBlock
         {
             ChangeImage();
             _isIgnited = true;
-        }
-        else
-        {
-            ItemAction();
-            base.RemoveFromMemoryList();
-            Destroy(gameObject);
+            StartCoroutine(ItemAction());
         }
     }
 
@@ -44,8 +32,12 @@ public class BombItem : ItemBlock
         _thisImg.sprite = _ignitedImg;
     }
 
-    protected override void ItemAction()
+    protected override IEnumerator ItemAction()
     {
+        yield return new WaitUntil(() => GameManager._instance._dockedCount == 63);
+
         Debug.Log("Bomb Item Action");
+        base.RemoveFromMemoryList();
+        Destroy(gameObject);
     }
 }
