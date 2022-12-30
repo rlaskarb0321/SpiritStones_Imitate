@@ -2,34 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NormalBlock : MonoBehaviour
+public class NormalBlock : BlockBase
 {
-    [SerializeField] private BlockBase _blockBase;
-    [SerializeField] private GameObject _spiritPrefabs;
-    [SerializeField] private eNormalBlockType _normalBlockType;
-    public eNormalBlockType NormalBlockType
-    {
-        get { return _normalBlockType; }
-        set { _normalBlockType = value; }
-    }
+    [SerializeField] private eNormalBlockType _normalType;
+    [SerializeField] private float _movSpeed;
+    [SerializeField] private bool _isDocked;
+    public GameObject _spiritPrefabs;
 
-    private void Start()
-    {
-        _normalBlockType = _blockBase._normalType;
-    }
+    public override eNormalBlockType NormalType { get { return _normalType; } }
+    public override float MovSpeed { get { return _movSpeed; } set { _movSpeed = value; } }
+    public override bool IsDocked { get { return _isDocked; } set { _isDocked = value; } }
 
-    public void DoAction()
+    public override void DoAction()
     {
-        _blockBase.DoNormalBlockAction();
+        Debug.Log("NormalBlock ÆÄ±«Sound, Animation Àç»ý");
         GenerateSpirit(_spiritPrefabs);
 
-        GameManager._instance._blockMgrList.Remove(this.gameObject);
-        Destroy(this.gameObject);
+        base.RemoveFromMemoryList();
+        Destroy(gameObject);
     }
 
-    public void MoveBlock()
+    void Start()
     {
-        _blockBase.MoveBlock(this.gameObject);
+        base.AddToMemoryList();
+        MoveBlock(this.gameObject);
     }
 
     void GenerateSpirit(GameObject spirit)

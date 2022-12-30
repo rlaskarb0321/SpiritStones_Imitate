@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     private int _currRound; // 현재 라운드를 확인
     public int _dockedCount;
     public List<GameObject> _blockMgrList; // 블럭들을 쉽게 관리하기 위한 메모리 리스트
-    public List<BlockBase_2> _breakList; // 블럭들 파괴 전용 리스트
+    public List<BlockBase> _breakList; // 블럭들 파괴 전용 리스트
 
     private void Awake()
     {
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         _isLastRound = false;
         _blockMgrList = new List<GameObject>();
         _blockMgrList.Capacity = 35;
-        _breakList = new List<BlockBase_2>();
+        _breakList = new List<BlockBase>();
         _breakList.Capacity = 35;
         _dockedCount = 0;
     }

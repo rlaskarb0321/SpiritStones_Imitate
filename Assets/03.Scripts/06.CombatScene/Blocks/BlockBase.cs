@@ -2,53 +2,54 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*
- * 모든 블럭들이 기본적으로 가지고 있어야 하는 스크립트
- */
-
-public class BlockBase : MonoBehaviour
+public abstract class BlockBase : MonoBehaviour
 {
-    public float _movSpeed;
-    public eNormalBlockType _normalType;
-    public eSpecialBlockType _specialType;
+    public virtual float MovSpeed { get; set; }
+    public virtual eNormalBlockType NormalType { get; set; }
+    public virtual eSpecialBlockType SpecialType { get; set; }
+    public virtual bool IsDocked { get; set; }
 
-    public bool _isDocked;
-    private WaitUntil _wu;
-
-    private void Start()
-    {
-        GameManager._instance._blockMgrList.Add(this.gameObject);
-        MoveBlock(this.gameObject);
-        _wu = new WaitUntil(() => !_isDocked);
-    }
-
-    public void DoNormalBlockAction()
-    {
-        Debug.Log("NormalBlock 파괴Sound, Animation 재생");
-    }
-
-    public void DoItemBlockAction(SpecialBlock specialBlock)
-    {
-        specialBlock.DoAction();
-    }
-
-    public void DoObstacleBlockAction()
-    {
-        Debug.Log("Do ObstacleBlock Action!!!");
-    }
-
-    public void MoveBlock(GameObject block)
+    public virtual void DoAction() { }
+    public virtual void MoveBlock(GameObject block)
     {
         StartCoroutine(MovePosition(block));
+    }
+
+    public virtual void AddToMemoryList()
+    {
+        GameManager._instance._blockMgrList.Add(this.gameObject);
+    }
+
+    public virtual void RemoveFromMemoryList()
+    {
+        GameManager._instance._blockMgrList.Remove(this.gameObject);
     }
 
     IEnumerator MovePosition(GameObject block)
     {
-        yield return _wu; // !_isDocked 이면 실행
+        yield return new WaitUntil(() => !IsDocked); // !_isDocked 이면 실행
 
         // 동작 구현
-        block.transform.Translate(Vector2.down * _movSpeed * Time.deltaTime);
+        block.transform.Translate(Vector2.down * MovSpeed * Time.deltaTime);
 
         StartCoroutine(MovePosition(block));
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("BlockBorder"))
+        {
+            IsDocked = true;
+            GameManager._instance._dockedCount++;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("BlockBorder"))
+        {
+            IsDocked = false;
+            GameManager._instance._dockedCount--;
+        }
     }
 }

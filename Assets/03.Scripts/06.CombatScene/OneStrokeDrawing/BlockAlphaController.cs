@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BlockAlphaController
 {
     // 블럭의 알파값을 어둡게 함
-    public void DarkenBlockAlphaValue(BlockBase_2 block, float lowAlpha)
+    public void DarkenBlockAlphaValue(BlockBase block, float lowAlpha)
     {
         Image image = block.GetComponent<Image>();
         Color color = image.color;

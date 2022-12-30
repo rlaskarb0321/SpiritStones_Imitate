@@ -11,7 +11,6 @@ public class OneStrokeDrawer : MonoBehaviour
     [SerializeField] private CanvasRayCaster _canvasRayCaster;
 
     // Field
-    public Stack<BlockBase> _breakStack; // Block들만 넣을 수 있는 스택
     [SerializeField] private float _lowAlpha;
     [SerializeField] private List<string> _normalList;
     [SerializeField] private List<string> _itemList;
@@ -22,7 +21,6 @@ public class OneStrokeDrawer : MonoBehaviour
     {
         _ctrlBlockAlpha = new BlockAlphaController();
         _breakBlock = new BlockBreaker();
-        _breakStack = new Stack<BlockBase>();
         _normalList = new List<string>();
         _itemList = new List<string>();
         _canvasRayCaster = GetComponent<CanvasRayCaster>();
@@ -39,7 +37,7 @@ public class OneStrokeDrawer : MonoBehaviour
             if (block == null)
                 return;
 
-            BlockBase_2 blockBase = block.GetComponent<BlockBase_2>();
+            BlockBase blockBase = block.GetComponent<BlockBase>();
             if (blockBase == null)
                 return;
 
@@ -56,7 +54,7 @@ public class OneStrokeDrawer : MonoBehaviour
                     {
                         if (!_normalList.Contains(blockBase.NormalType.ToString()))
                         {
-                            _breakBlock.PushBlockToList(GameManager._instance._breakList, blockBase);  
+                            _breakBlock.PushToDrawnBlockList(GameManager._instance._breakList, blockBase);  
                         }
                     }
                     break;
@@ -71,7 +69,7 @@ public class OneStrokeDrawer : MonoBehaviour
                     {
                         if (!_itemList.Contains(blockBase.SpecialType.ToString()))
                         {
-                            _breakBlock.PushBlockToList(GameManager._instance._breakList, blockBase);
+                            _breakBlock.PushToDrawnBlockList(GameManager._instance._breakList, blockBase);
                         }
                     }
                     break;
@@ -123,7 +121,7 @@ public class OneStrokeDrawer : MonoBehaviour
     /// </summary>
     /// <param name="block">NormalBlock의 enum종류를 추출하기 위한 변수</param>
     /// <param name="unreachableNormalBlock">추출한 enum을 리스트에서 제거함</param>
-    void RemoveNormalTypeAtList(BlockBase_2 block, List<string> unreachableNormalBlock)
+    void RemoveNormalTypeAtList(BlockBase block, List<string> unreachableNormalBlock)
     {
         _normalCount--;
 
@@ -140,7 +138,7 @@ public class OneStrokeDrawer : MonoBehaviour
     /// </summary>
     /// <param name="block">ItemBlock의 enum종류를 추출하기 위한 변수</param>
     /// <param name="unreachableItemBlock">추출한 enum을 리스트에서 제거함</param>
-    void RemoveItemTypeAtList(BlockBase_2 block, List<string> unreachableItemBlock)
+    void RemoveItemTypeAtList(BlockBase block, List<string> unreachableItemBlock)
     {
         _itemCount--;
 
@@ -163,7 +161,7 @@ public class OneStrokeDrawer : MonoBehaviour
             if (blockMember == null)
                 continue;
 
-            NormalBlock_2 member = blockMember.GetComponent<NormalBlock_2>();
+            NormalBlock member = blockMember.GetComponent<NormalBlock>();
             if (member == null)
                 continue;
 
@@ -182,7 +180,7 @@ public class OneStrokeDrawer : MonoBehaviour
             if (blockMember == null)
                 continue;
 
-            ItemBlock_2 member = blockMember.GetComponent<ItemBlock_2>();
+            ItemBlock member = blockMember.GetComponent<ItemBlock>();
             if (member == null)
                 continue;
 

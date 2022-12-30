@@ -2295,8 +2295,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d08af575ec52e248aaf94032b400851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemBlockPercentage: 0
-  _obstacleBlockPercentage: 0
+  _itemBlockPercentage: 20
+  _obstacleBlockPercentage: 10
   _isLastRound: 0
   _dockedCount: 0
   _blockMgrList: []
@@ -4068,7 +4068,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4768267269062869623, guid: c0596459db903c342923c4abd495b5ae, type: 3}
       propertyPath: _movSpeed
-      value: 0.5
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 5052943852710551433, guid: c0596459db903c342923c4abd495b5ae, type: 3}
       propertyPath: m_IsTrigger
@@ -6639,7 +6639,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 840, y: 289.57}
+  m_AnchoredPosition: {x: -13.609009, y: 298}
   m_SizeDelta: {x: 852.95, y: 1037.83}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1215415319
@@ -8746,7 +8746,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4768267269062869623, guid: c0596459db903c342923c4abd495b5ae, type: 3}
       propertyPath: _movSpeed
-      value: 0.5
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0596459db903c342923c4abd495b5ae, type: 3}
