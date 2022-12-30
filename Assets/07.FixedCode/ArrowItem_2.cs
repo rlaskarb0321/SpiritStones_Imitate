@@ -14,7 +14,6 @@ public class ArrowItem_2 : BlockBase_2
     private bool _isIgnited;
     public GameObject _arrowPrefabs;
     [SerializeField] private int _arrowCount;
-    private WaitUntil _wu;
 
     public override eSpecialBlockType SpecialType { get { return _specialType; } }
     public override float MovSpeed { get { return _movSpeed; } set { _movSpeed = value; } }
