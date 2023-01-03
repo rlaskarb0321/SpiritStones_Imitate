@@ -12,6 +12,7 @@ public class SwordItem : ItemBlock
     }
     public override float MovSpeed { get { return _movSpeed; } set { _movSpeed = value; } }
     public override bool IsDocked { get { return _isDocked; } set { _isDocked = value; } }
+    public bool _isIn_YequalX_Zone;
 
     private void Start()
     {

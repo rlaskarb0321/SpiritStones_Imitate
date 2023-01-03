@@ -27,8 +27,29 @@ public class Colum : MonoBehaviour
         StartCoroutine(GenerateBlock());
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.gameObject.tag == "ItemBlock")
+        {
+            ItemBlock itemBlock = collision.gameObject.GetComponent<ItemBlock>();
+            if (itemBlock._specialType == eSpecialBlockType.Sword_Warrior)
+            {
+                SwordItem swordItem = itemBlock.GetComponent<SwordItem>();
+                swordItem._isIn_YequalX_Zone = true;
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "ItemBlock")
+        {
+            ItemBlock itemBlock = collision.gameObject.GetComponent<ItemBlock>();
+            if (itemBlock._specialType == eSpecialBlockType.Sword_Warrior)
+            {
+                SwordItem swordItem = itemBlock.GetComponent<SwordItem>();
+                swordItem._isIn_YequalX_Zone = false;
+            }
+        }
     }
 }
