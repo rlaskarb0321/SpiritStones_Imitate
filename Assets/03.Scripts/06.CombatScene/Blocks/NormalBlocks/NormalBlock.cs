@@ -14,7 +14,6 @@ public class NormalBlock : BlockBase
     void Start()
     {
         base.AddToMemoryList();
-        MoveBlock(this.gameObject);
     }
 
     public override void DoAction()

@@ -14,13 +14,16 @@ public class ArrowItem : ItemBlock
     }
     public override float MovSpeed { get { return _movSpeed; } set { _movSpeed = value; } }
     public override bool IsDocked { get { return _isDocked; } set { _isDocked = value; } }
+    private WaitForSeconds _ws;
+    private BlockBreaker _blockBreaker;
 
     private void Start()
     {
         base.AddToMemoryList();
-        MoveBlock(this.gameObject);
         _thisImg = GetComponent<Image>();
         SpecialType = eSpecialBlockType.Arrow_Archer;
+        _blockBreaker = new BlockBreaker();
+        _ws = new WaitForSeconds(0.5f);
     }
 
     public override void DoAction()
@@ -40,12 +43,27 @@ public class ArrowItem : ItemBlock
 
     protected override IEnumerator ItemAction()
     {
+        yield return _ws;
         yield return new WaitUntil(() => GameManager._instance._dockedCount == 63);
+        yield return _ws;
 
-        Debug.Log("Arrow Item Action");
+        GameObject arrowProjectileGroup = GameObject.Find("ArrowProjectile_Group");
+        for (int i = 0; i < _arrowCount; i++)
+        {
+            GameObject arrow = 
+                Instantiate(_arrowPrefabs, transform.position, Quaternion.identity, arrowProjectileGroup.transform) 
+                as GameObject;
+            int randomVal = Random.Range(0, GameManager._instance._blockMgrList.Capacity);
 
-        yield return new WaitForSeconds(0.5f);
+            ArrowProjectile arrowProjectile = arrow.GetComponent<ArrowProjectile>();
+            BlockBase targetBlock = GameManager._instance._blockMgrList[randomVal].GetComponent<BlockBase>();
+            arrowProjectile.GetTarget(targetBlock);
+        }
 
+        yield return new WaitUntil(() => arrowProjectileGroup.transform.childCount == 0);
+        yield return _ws;
+
+        _blockBreaker.BreakBlock(GameManager._instance._breakList);
         base.RemoveFromMemoryList();
         Destroy(gameObject);
     }

@@ -16,7 +16,6 @@ public class PotionItem : ItemBlock
     private void Start()
     {
         base.AddToMemoryList();
-        MoveBlock(this.gameObject);
         _thisImg = GetComponent<Image>();
         SpecialType = eSpecialBlockType.Potion_Magician;
     }
@@ -39,8 +38,12 @@ public class PotionItem : ItemBlock
     protected override IEnumerator ItemAction()
     {
         yield return new WaitUntil(() => GameManager._instance._dockedCount == 63);
+        yield return new WaitForSeconds(0.5f);
 
         Debug.Log("Potion Item Action");
+
+        // 포션 아이템효과 구현
+
         base.RemoveFromMemoryList();
         Destroy(gameObject);
     }

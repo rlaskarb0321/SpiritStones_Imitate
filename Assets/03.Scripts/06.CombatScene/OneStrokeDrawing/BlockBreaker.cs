@@ -53,6 +53,14 @@ public class BlockBreaker
         list.Add(block);
     }
 
+    public void PushItemActionBlock(List<BlockBase> list, BlockBase block)
+    {
+        if (list.Contains(block))
+            return;
+
+        list.Add(block);
+    }
+
     public void BreakBlock(List<BlockBase> list)
     {
         _isSelectable = true;

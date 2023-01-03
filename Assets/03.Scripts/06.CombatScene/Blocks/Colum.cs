@@ -17,8 +17,6 @@ public class Colum : MonoBehaviour
         yield return new WaitUntil(() => this.transform.childCount < 5 &&
         GameManager._instance._dockedCount != 63);
 
-        yield return new WaitUntil(() => GameManager._instance._canGenerateBlock);
-
         int needBlockCount = 5 - this.transform.childCount;
         for (int i = 0; i < needBlockCount; i++)
         {
@@ -26,10 +24,11 @@ public class Colum : MonoBehaviour
             _blockGenerator.GenerateBlock(spawnPos, this.transform);
         }
 
-        if (GameManager._instance._canGenerateBlock != false)
-        {
-            GameManager._instance._canGenerateBlock = false; 
-        }
         StartCoroutine(GenerateBlock());
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
     }
 }

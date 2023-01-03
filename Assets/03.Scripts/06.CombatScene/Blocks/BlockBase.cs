@@ -24,17 +24,15 @@ public abstract class BlockBase : MonoBehaviour
 
     public virtual void MoveBlock(GameObject block)
     {
-        StartCoroutine(MovePosition(block));
+        if (IsDocked)
+            return;
+
+        block.transform.Translate(Vector2.down * MovSpeed * Time.deltaTime);
     }
 
-    IEnumerator MovePosition(GameObject block)
+    private void FixedUpdate()
     {
-        yield return new WaitUntil(() => !IsDocked); // !_isDocked 이면 실행
-
-        // 동작 구현
-        block.transform.Translate(Vector2.down * MovSpeed * Time.deltaTime);
-
-        StartCoroutine(MovePosition(block));
+        MoveBlock(this.gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
