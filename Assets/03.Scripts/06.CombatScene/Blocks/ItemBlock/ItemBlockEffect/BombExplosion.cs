@@ -11,10 +11,6 @@ public class BombExplosion : MonoBehaviour
     private void Start()
     {
         _blockBreaker = new BlockBreaker();
-    }
-
-    private void OnEnable()
-    {
         StartCoroutine(StartExplosionAnim());
     }
 

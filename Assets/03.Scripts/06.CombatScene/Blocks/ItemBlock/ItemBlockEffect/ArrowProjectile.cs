@@ -6,6 +6,7 @@ public class ArrowProjectile : MonoBehaviour
 {
     public bool _fire;
     public float _fireSpeed;
+    public float _lifeTime;
     private Vector3 _targetPos;
     private BlockBase _targetBlock;
     private BlockBreaker _blockBreaker = new BlockBreaker();
@@ -23,8 +24,10 @@ public class ArrowProjectile : MonoBehaviour
         {
             transform.position = Vector3.Lerp(transform.position, _targetPos, _fireSpeed * Time.deltaTime);
 
-            Quaternion targetRot = Quaternion.LookRotation(_targetPos);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, Time.deltaTime * 5);
+            float angle = 
+                Mathf.Atan2((_targetBlock.transform.position.y - this.transform.position.y),
+                           (_targetBlock.transform.position.x - this.transform.position.x)) * Mathf.Rad2Deg;
+            this.transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
         }
     }
 
@@ -35,7 +38,7 @@ public class ArrowProjectile : MonoBehaviour
             BlockBase blockBase = collision.GetComponent<BlockBase>();
             _blockBreaker.PushItemActionBlock(GameManager._instance._breakList, blockBase);
 
-            Destroy(gameObject, 0.1f);
+            Destroy(gameObject, _lifeTime);
         }
     }
 }

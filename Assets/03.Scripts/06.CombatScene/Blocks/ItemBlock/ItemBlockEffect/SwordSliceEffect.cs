@@ -10,13 +10,9 @@ public class SwordSliceEffect : MonoBehaviour
     private void Start()
     {
         _blockBreaker = new BlockBreaker();
-    }
-
-    private void OnEnable()
-    {
         StartCoroutine(StartSliceAnim());
     }
-
+    
     public void OnSliceAnimEnd()
     {
         _isSliceAnimEnd = true;

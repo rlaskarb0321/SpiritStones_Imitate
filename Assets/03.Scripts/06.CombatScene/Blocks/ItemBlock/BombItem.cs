@@ -42,8 +42,10 @@ public class BombItem : ItemBlock
         yield return new WaitUntil(() => GameManager._instance._dockedCount == 63);
         yield return _ws;
 
-        _explosionEffect.SetActive(true);
-        yield return new WaitUntil(() => _explosionEffect.activeSelf == false);
+        GameObject parent = GameObject.Find("Canvas");
+        GameObject explosionEffect = Instantiate(_explosionEffect, transform.position, Quaternion.identity, parent.transform);
+        yield return new WaitUntil(() => explosionEffect.activeSelf == false);
+        Destroy(explosionEffect);
         yield return _ws;
 
         _blockBreaker.BreakBlock(GameManager._instance._breakList);

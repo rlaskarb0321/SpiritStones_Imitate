@@ -14,6 +14,7 @@ public class SwordItem : ItemBlock
     public override bool IsDocked { get { return _isDocked; } set { _isDocked = value; } }
 
     [HideInInspector] public bool _isIn_YequalX_Zone;
+    public GameObject _sliceEffect;
     private WaitForSeconds _ws;
     private BlockBreaker _blockBreaker;
 
@@ -47,18 +48,21 @@ public class SwordItem : ItemBlock
         yield return new WaitUntil(() => GameManager._instance._dockedCount == 63);
         yield return _ws;
 
+        GameObject parent = GameObject.Find("Canvas");
         GameObject sliceEffect;
         if (_isIn_YequalX_Zone)
         {
-            sliceEffect = transform.GetChild(1).gameObject;
+            sliceEffect
+                = Instantiate(_sliceEffect, transform.position, Quaternion.Euler(0, 0, 27.425f), parent.transform);
         }
         else
         {
-            sliceEffect = transform.GetChild(0).gameObject;
+            sliceEffect
+                = Instantiate(_sliceEffect, transform.position, Quaternion.Euler(0, 0, -27.425f), parent.transform);
         }
 
-        sliceEffect.SetActive(true);
         yield return new WaitUntil(() => sliceEffect.activeSelf == false);
+        Destroy(sliceEffect);
         yield return _ws;
 
         _blockBreaker.BreakBlock(GameManager._instance._breakList);

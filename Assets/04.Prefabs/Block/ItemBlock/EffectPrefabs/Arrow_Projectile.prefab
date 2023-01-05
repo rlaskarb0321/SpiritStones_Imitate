@@ -38,8 +38,8 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 60, y: 90}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 45, y: 120}
+  m_Pivot: {x: 0, y: 0}
 --- !u!222 &8946933912833184680
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -118,4 +118,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fire: 0
   _fireSpeed: 4.5
-  _smoothTime: 1.5
+  _lifeTime: 0.5
