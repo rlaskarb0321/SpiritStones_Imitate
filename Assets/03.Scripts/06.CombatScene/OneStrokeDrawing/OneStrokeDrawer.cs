@@ -9,6 +9,7 @@ public class OneStrokeDrawer : MonoBehaviour
     private BlockAlphaController _ctrlBlockAlpha;
     private BlockBreaker _breakBlock;
     [SerializeField] private CanvasRayCaster _canvasRayCaster;
+    [SerializeField] private BlockChain _blockChain;
 
     // Field
     [SerializeField] private float _lowAlpha;
@@ -23,7 +24,9 @@ public class OneStrokeDrawer : MonoBehaviour
         _breakBlock = new BlockBreaker();
         _normalList = new List<string>();
         _itemList = new List<string>();
+
         _canvasRayCaster = GetComponent<CanvasRayCaster>();
+        _blockChain = GetComponent<BlockChain>();
 
         InitBlockList(_normalList, _itemList);
     }
@@ -54,7 +57,7 @@ public class OneStrokeDrawer : MonoBehaviour
                     {
                         if (!_normalList.Contains(blockBase.NormalType.ToString()))
                         {
-                            _breakBlock.PushToDrawnBlockList(GameManager._instance._breakList, blockBase);  
+                            _breakBlock.PushToDrawnBlockList(GameManager._instance._breakList, blockBase);
                         }
                     }
                     break;
@@ -84,6 +87,7 @@ public class OneStrokeDrawer : MonoBehaviour
         }
     }
 
+    #region Method
     void InitBlockList(List<string> normalList, List<string> itemList)
     {
         normalList.Capacity = Enum.GetValues(typeof(eNormalBlockType)).Length;
@@ -190,4 +194,5 @@ public class OneStrokeDrawer : MonoBehaviour
             }
         }
     }
+    #endregion Method
 }

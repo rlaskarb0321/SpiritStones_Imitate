@@ -16,6 +16,7 @@ public class Colum : MonoBehaviour
     {
         yield return new WaitUntil(() => this.transform.childCount < 5 &&
         GameManager._instance._dockedCount != 63);
+        yield return new WaitForSeconds(0.3f);
 
         int needBlockCount = 5 - this.transform.childCount;
         for (int i = 0; i < needBlockCount; i++)

@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 064b84d212ef47b489e61ab50ba53083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movSpeed: 1
+  _movSpeed: 1.1
   _isDocked: 0
   _normalType: 0
   _spiritPrefabs: {fileID: 8865526457991201743, guid: fcf19b1256bfde94a981d79c8ad35dbe, type: 3}

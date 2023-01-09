@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfacc15a3be38e54f90c0db5c8537a29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movSpeed: 1
+  _movSpeed: 1.1
   _isDocked: 0
   _specialType: 2
   _ignitedImg: {fileID: 21300000, guid: 4dac4fa80e7ae7e40b3ef049f9f417c0, type: 3}
