@@ -33,6 +33,9 @@ public class OneStrokeDrawer : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager._instance._isPlayerAttackTurn)
+            return;
+
         if (Input.GetMouseButton(0))
         {
             _canvasRayCaster.CanvasRaycast();

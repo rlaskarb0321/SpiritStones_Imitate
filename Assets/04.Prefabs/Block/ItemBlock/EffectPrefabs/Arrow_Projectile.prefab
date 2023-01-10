@@ -117,5 +117,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fire: 0
-  _fireSpeed: 4.5
+  _fireSpeed: 5.2
   _lifeTime: 0.5

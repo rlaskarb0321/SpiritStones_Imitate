@@ -67,11 +67,12 @@ public class BlockBreaker
 
         if (list.Count >= 3)
         {
+            GameManager._instance._isPlayerAttackTurn = true;
             for (int i = list.Count - 1; i >= 0; i--)
             {
                 BlockBase block = list[i];
                 block.DoAction();
-                list.RemoveAt(i);
+                list.RemoveAt(i); 
             }
         }
         else

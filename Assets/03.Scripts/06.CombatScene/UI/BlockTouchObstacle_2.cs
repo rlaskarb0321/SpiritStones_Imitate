@@ -1,16 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class BlockTouchObstacle_2 : IUserinterfaceObstacle
+public class BlockTouchObstacle_2 : MonoBehaviour
 {
-    public void SetObstacle(GameObject obj)
+    Image _img;
+
+    private void Start()
     {
-        obj.SetActive(true);
+        _img = GetComponent<Image>();
     }
 
-    public void SetOffObstacle(GameObject obj)
+    private void Update()
     {
-        obj.SetActive(false);
+        if (GameManager._instance._isPlayerAttackTurn)
+            _img.enabled = true;
+        else
+            _img.enabled = false;
     }
 }
