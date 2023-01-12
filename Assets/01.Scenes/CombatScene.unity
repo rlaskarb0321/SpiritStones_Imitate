@@ -781,6 +781,30 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3302835769090963956, guid: cb30ade4706e8fe439772fda688c0029, type: 3}
   m_PrefabInstance: {fileID: 168483306}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &168483308 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2896749919767022288, guid: cb30ade4706e8fe439772fda688c0029, type: 3}
+  m_PrefabInstance: {fileID: 168483306}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &168483309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168483308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62e07a306cb38584da5937d7e7bd8455, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rank: 
+  _atkPower: 0
+  _hp: 0
+  _maxMp: 0
+  _currMp: 0
+  _job: 0000000002000000
+  _loadedDamage: 0
 --- !u!1001 &187779940
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1601,12 +1625,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5ace3e318f87994a8aa0b9ea9a84092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _heroes:
+  _heroPos:
   - {fileID: 1821797903}
   - {fileID: 1507677693}
   - {fileID: 41505983}
   - {fileID: 724160833}
-  _heroesClassCount: 00000000000000000000000000000000
 --- !u!1 &280291695
 GameObject:
   m_ObjectHideFlags: 0
@@ -8614,7 +8637,7 @@ MonoBehaviour:
   _hp: 0
   _maxMp: 0
   _currMp: 0
-  _job: 
+  _job: 03000000
   _loadedDamage: 0
 --- !u!1001 &1487839740
 PrefabInstance:
@@ -9047,7 +9070,7 @@ MonoBehaviour:
   _hp: 0
   _maxMp: 0
   _currMp: 0
-  _job: 
+  _job: 02000000
   _loadedDamage: 0
 --- !u!1001 &1552296667
 PrefabInstance:
