@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class BlockGenerator : MonoBehaviour
 {
+    public GameObject _combatMgrObj;
+    private CombatSceneMgr _combatMgr;
+
     public GameObject[] _normalBlockPrefabsArr;
     public GameObject[] _normalItemBlockPrefabsArr;
     public GameObject[] _specialItemBlockPrefabsArr;
     public GameObject[] _obstacleBlockPrefabsArr;
+
+    private void Start()
+    {
+        _combatMgr = _combatMgrObj.GetComponent<CombatSceneMgr>();
+    }
 
     /*
      * 보스라운드라면 obstacleBlock도 생성된다.
@@ -18,13 +26,13 @@ public class BlockGenerator : MonoBehaviour
         int randomVal = Random.Range(0, 100);
 
         // 현재가 보스라운드인지 아닌지 확인
-        if (GameManager._instance._isLastRound)
+        if (_combatMgr._currLevel == _combatMgr._maxLevelValue)
         {
-            if (randomVal <= GameManager._instance._obstacleBlockPercentage)
+            if (randomVal <= _combatMgr._obstacleBlockPercentage)
             {
                 blockType = eBlockType.Obstacle;
             }
-            else if (randomVal <= GameManager._instance._itemBlockPercentage)
+            else if (randomVal <= _combatMgr._itemBlockPercentage)
             {
                 blockType = eBlockType.Item;
             }
@@ -36,7 +44,7 @@ public class BlockGenerator : MonoBehaviour
         else
         {
             if (randomVal <=
-                (GameManager._instance._itemBlockPercentage - GameManager._instance._obstacleBlockPercentage))
+                (_combatMgr._itemBlockPercentage - _combatMgr._obstacleBlockPercentage))
             {
                 blockType = eBlockType.Item;
             }
