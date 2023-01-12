@@ -7,13 +7,13 @@ public abstract class HeroBase : MonoBehaviour
     [Header("=== Stat ===")]
     [SerializeField] protected string _rank;
     [SerializeField] protected float _atkPower;
-    [SerializeField] protected float _hp;
+    [SerializeField] public float _hp;
     [SerializeField] protected float _maxMp;
     [HideInInspector] public float _currMp;
     [SerializeField] public eNormalBlockType[] _job;
 
     [Header("=== Combat ===")]
-    [HideInInspector] public float _loadedDamage;
+    public float _loadedDamage;
 
     #region CombatMethod
     public virtual void DevelopLoadedDamage()
@@ -23,7 +23,7 @@ public abstract class HeroBase : MonoBehaviour
 
     public virtual void Attack(GameObject enemyFormation)
     {
-        // 적에대한 정보가 필요함
+
     }
     #endregion CombatMethod
 }

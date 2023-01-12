@@ -93,8 +93,9 @@ MonoBehaviour:
   _atkPower: 0
   _hp: 0
   _currHp: 0
-  _maxAttackWaitTurn: 3
+  _maxAttackWaitTurn: 0
   _currAttackWaitTurn: 0
+  _state: 0
 --- !u!1 &4588754348769616253
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 게임의 흐름을 담당
+public enum eGameFlow
+{
+
+}
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager _instance = null;
@@ -12,6 +18,7 @@ public class GameManager : MonoBehaviour
     public List<BlockBase> _breakList; // 블럭들 파괴 전용 리스트
 
     [Header("=== Game ===")]
+    public Queue<eGameFlow> _gameFlowQueue;
     [SerializeField] private float _delayTime;
     public bool _isPlayerAttackTurn;
     public int _playerComboCount;
@@ -30,6 +37,7 @@ public class GameManager : MonoBehaviour
                 Destroy(this.gameObject);
         }
 
+        _gameFlowQueue = new Queue<eGameFlow>();
         _blockMgrList = new List<GameObject>();
         _blockMgrList.Capacity = 35;
         _breakList = new List<BlockBase>();

@@ -800,7 +800,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rank: 
   _atkPower: 0
-  _hp: 0
+  _hp: 120
   _maxMp: 0
   _currMp: 0
   _job: 0000000002000000
@@ -1630,6 +1630,8 @@ MonoBehaviour:
   - {fileID: 1507677693}
   - {fileID: 41505983}
   - {fileID: 724160833}
+  _totalHp: 0
+  _enemyGroup: {fileID: 924848123}
 --- !u!1 &280291695
 GameObject:
   m_ObjectHideFlags: 0
@@ -6368,7 +6370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rank: 
   _atkPower: 0
-  _hp: 0
+  _hp: 100
   _maxMp: 0
   _currMp: 0
   _job: 01000000
@@ -8634,7 +8636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rank: 
   _atkPower: 0
-  _hp: 0
+  _hp: 65
   _maxMp: 0
   _currMp: 0
   _job: 03000000
@@ -9067,7 +9069,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rank: 
   _atkPower: 0
-  _hp: 0
+  _hp: 80
   _maxMp: 0
   _currMp: 0
   _job: 02000000
@@ -11303,7 +11305,7 @@ PrefabInstance:
       objectReference: {fileID: 1215482462}
     - target: {fileID: 7987593931869138250, guid: b824a4ce5f59024419846e5ec7329e42, type: 3}
       propertyPath: m_Name
-      value: CombatSceneMgr
+      value: Combat Scene Mgr
       objectReference: {fileID: 0}
     - target: {fileID: 7987593931869138251, guid: b824a4ce5f59024419846e5ec7329e42, type: 3}
       propertyPath: m_RootOrder

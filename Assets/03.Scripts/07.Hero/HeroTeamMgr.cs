@@ -4,27 +4,43 @@ using UnityEngine;
 
 public class HeroTeamMgr : MonoBehaviour
 {
+    [Header("=== Hero ===")]
     public GameObject[] _heroPos;
-    [SerializeField] public List<HeroBase>[] _heroes = new List<HeroBase>[4];
+    [SerializeField] public List<HeroBase>[] _heroesTypeCountArr = new List<HeroBase>[4];
+    [HideInInspector] public float _totalHp;
+
+    [Header("=== Target ===")]
+    public GameObject _enemyGroup;
 
     private void Awake()
     {
-        CountHeroType();
+        InitHeroInformation();
     }
 
-    void CountHeroType()
+    private void Update()
+    {
+        
+    }
+
+    void InitHeroInformation()
     {
         for (int i = 0; i < this.transform.childCount; i++)
-            _heroes[i] = new List<HeroBase>();
+            _heroesTypeCountArr[i] = new List<HeroBase>();
 
         // 아군파티의 직업종류를 Count
         foreach (GameObject pos in _heroPos)
         {
             HeroBase heroType = pos.transform.GetChild(0).GetComponent<HeroBase>();
+            _totalHp += heroType._hp;
             for (int i = 0; i < heroType._job.Length; i++)
             {
-                _heroes[(int)heroType._job[i]].Add(heroType);
+                _heroesTypeCountArr[(int)heroType._job[i]].Add(heroType);
             }
         }
+    }
+
+    void Attack()
+    {
+
     }
 }

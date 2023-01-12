@@ -48,8 +48,11 @@ public class Spirit : MonoBehaviour
 
     public void GoToHero(HeroBase target)
     {
-        if (Vector2.Distance(this.transform.position, target.transform.position) <= 0.001f)
-            Destroy(gameObject, 0.2f);
+        if (Vector2.Distance(this.transform.position, target.transform.position) <= 0.1f)
+        {
+            target.DevelopLoadedDamage();
+            Destroy(gameObject);
+        }
 
         if (_absorptionMovSpeed <= _startMovSpeed)
             _absorptionMovSpeed += _deltaSpeedValue * Time.deltaTime;
