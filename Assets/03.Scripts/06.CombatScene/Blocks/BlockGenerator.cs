@@ -81,4 +81,10 @@ public class BlockGenerator : MonoBehaviour
                 break;
         }
     }
+
+    public GameObject GenerateSpecialItemBlock()
+    {
+        int randomValue = Random.Range(0, _specialItemBlockPrefabsArr.Length);
+        return null;
+    }
 }

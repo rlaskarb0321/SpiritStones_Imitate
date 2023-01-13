@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BlockTouchObstacle_2 : MonoBehaviour
+public class BlockTouchObstacle : MonoBehaviour
 {
     Image _img;
 
@@ -14,7 +14,8 @@ public class BlockTouchObstacle_2 : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager._instance._isPlayerAttackTurn)
+        // if (GameManager._instance._isPlayerAttackTurn)
+        if (GameManager._instance._gameFlowQueue.Peek() != eGameFlow.Idle)
             _img.enabled = true;
         else
             _img.enabled = false;

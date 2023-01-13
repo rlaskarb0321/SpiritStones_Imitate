@@ -19,7 +19,13 @@ public class HeroTeamMgr : MonoBehaviour
 
     private void Update()
     {
-        
+        if (GameManager._instance._gameFlowQueue.Peek() == eGameFlow.HeroAttack)
+        {
+            Attack();
+            Debug.Log("어택이 끝났습니다");
+
+            GameManager._instance._gameFlowQueue.Dequeue();
+        }
     }
 
     void InitHeroInformation()
@@ -41,6 +47,10 @@ public class HeroTeamMgr : MonoBehaviour
 
     void Attack()
     {
-
+        foreach (GameObject pos in _heroPos)
+        {
+            HeroBase hero = pos.transform.GetChild(0).GetComponent<HeroBase>();
+            hero.Attack(_enemyGroup);
+        }
     }
 }

@@ -5,7 +5,11 @@ using UnityEngine;
 // 게임의 흐름을 담당
 public enum eGameFlow
 {
-
+    Idle,
+    LoadDamage,
+    GenerateSpecialItemBlock,
+    HeroAttack,
+    EnemyTurn,
 }
 
 public class GameManager : MonoBehaviour
@@ -20,7 +24,7 @@ public class GameManager : MonoBehaviour
     [Header("=== Game ===")]
     public Queue<eGameFlow> _gameFlowQueue;
     [SerializeField] private float _delayTime;
-    public bool _isPlayerAttackTurn;
+    // public bool _isPlayerAttackTurn;
     public int _playerComboCount;
     private float _initDelayTimeValue;
 
@@ -38,26 +42,33 @@ public class GameManager : MonoBehaviour
         }
 
         _gameFlowQueue = new Queue<eGameFlow>();
-        _blockMgrList = new List<GameObject>();
-        _blockMgrList.Capacity = 35;
-        _breakList = new List<BlockBase>();
-        _breakList.Capacity = 35;
+        _gameFlowQueue.Enqueue(eGameFlow.Idle);
+
         _dockedCount = 0;
         _initDelayTimeValue = _delayTime;
         _playerComboCount = 0;
 
+        _blockMgrList = new List<GameObject>();
+        _blockMgrList.Capacity = 35;
+        
+        _breakList = new List<BlockBase>();
+        _breakList.Capacity = 35;
         StartCoroutine(ManagePlayerCombo());
     }
 
     IEnumerator ManagePlayerCombo()
     {
-        yield return new WaitUntil(() => _isPlayerAttackTurn && _dockedCount == 63);
+        yield return new WaitUntil(() => _gameFlowQueue.Peek() == eGameFlow.LoadDamage && _dockedCount == 63);
 
         _delayTime -= Time.deltaTime;
         if (_delayTime <= 0.0f)
         {
             _delayTime = _initDelayTimeValue;
-            _isPlayerAttackTurn = false;
+            if (_gameFlowQueue.Peek() == eGameFlow.LoadDamage)
+            {
+                _gameFlowQueue.Dequeue();
+                _gameFlowQueue.Enqueue(eGameFlow.HeroAttack);
+            }
             _playerComboCount = 0;
         }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class HeroBase : MonoBehaviour
 {
@@ -14,16 +15,25 @@ public abstract class HeroBase : MonoBehaviour
 
     [Header("=== Combat ===")]
     public float _loadedDamage;
+    public GameObject _txtObj;
+    private HeroDmgText _txt;
+
+    private void Start()
+    {
+        _txt = _txtObj.GetComponent<HeroDmgText>();
+    }
 
     #region CombatMethod
     public virtual void DevelopLoadedDamage()
     {
         _loadedDamage += _atkPower;
+        _txt.UpdateText(_loadedDamage);
     }
 
     public virtual void Attack(GameObject enemyFormation)
     {
-
+        Debug.Log("공격합니다");
+        _txt.UpdateText(0);
     }
     #endregion CombatMethod
 }

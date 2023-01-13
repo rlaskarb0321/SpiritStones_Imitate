@@ -33,7 +33,7 @@ public class OneStrokeDrawer : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager._instance._isPlayerAttackTurn)
+        if (GameManager._instance._gameFlowQueue.Peek() != eGameFlow.Idle)
             return;
 
         if (Input.GetMouseButton(0))
