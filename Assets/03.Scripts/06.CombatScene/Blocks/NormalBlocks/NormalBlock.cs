@@ -34,6 +34,7 @@ public class NormalBlock : BlockBase
         {
             GameObject spiritObj = Instantiate(spiritPrefabs, transform.position, Quaternion.identity, spiritGroup)
                 as GameObject;
+            spiritObj.transform.position = new Vector3(spiritObj.transform.position.x, spiritObj.transform.position.y, 0.0f);
             Spirit spirit = spiritObj.GetComponent<Spirit>();
             spirit.SetTarget(heroMgr._heroesTypeCountArr[(int)_normalType][i]);
         }

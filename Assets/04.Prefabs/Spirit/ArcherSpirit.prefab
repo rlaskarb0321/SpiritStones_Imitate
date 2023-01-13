@@ -198,5 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b60c3d66719d364195bf4aaf96feb48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _waitSeconds: 1.2
+  _isIdleState: 0
   _idleMovSpeed: 3.1
-  _deltaSpeedValue: 3.5
+  _deltaSpeedValue: 2.5

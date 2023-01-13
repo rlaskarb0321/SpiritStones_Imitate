@@ -5,11 +5,12 @@ using UnityEngine;
 public class Spirit : MonoBehaviour
 {
     private HeroBase _target;
+    public float _waitSeconds;
 
+    public bool _isIdleState;
     private float _startMovSpeed;
     public float _idleMovSpeed;
     public float _deltaSpeedValue;
-    [SerializeField] private float _absorptionMovSpeed;
 
     private float _xDir;
     private float _yDir;
@@ -21,18 +22,15 @@ public class Spirit : MonoBehaviour
         _xDir = Random.Range(-1.0f, 1.0f);
         _yDir = Random.Range(-1.0f, 0.0f);
         _dir = Vector2.right * _xDir + Vector2.up * _yDir;
+        _isIdleState = true;
+
+        StartCoroutine(GoToHero(_target));
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if (_idleMovSpeed > 0.0f)
-        {
+        if (_isIdleState)
             IdleRun();
-        }
-        else
-        {
-            GoToHero(_target);
-        }
     }
 
     public void SetTarget(HeroBase target)
@@ -46,18 +44,28 @@ public class Spirit : MonoBehaviour
         _idleMovSpeed -= _deltaSpeedValue * Time.deltaTime;
     }
 
-    public void GoToHero(HeroBase target)
+    IEnumerator GoToHero(HeroBase target)
     {
-        if (Vector2.Distance(this.transform.position, target.transform.position) <= 0.1f)
+        yield return new WaitForSeconds(_waitSeconds);
+
+        _isIdleState = false;
+        float absorptionMovSpeed = 0.0f;
+        while (true)
         {
-            target.DevelopLoadedDamage();
-            Destroy(gameObject);
+            if (absorptionMovSpeed <= _startMovSpeed)
+                absorptionMovSpeed += _deltaSpeedValue * Time.deltaTime;
+
+            if (Vector2.Distance(this.transform.position, target.transform.position) <= 0.1f)
+            {
+                target.DevelopLoadedDamage();
+                Destroy(gameObject);
+                break;
+            }
+            
+            transform.position =
+                Vector3.MoveTowards(this.transform.position, target.transform.position, absorptionMovSpeed * 0.8f);
+
+            yield return null;
         }
-
-        if (_absorptionMovSpeed <= _startMovSpeed)
-            _absorptionMovSpeed += _deltaSpeedValue * Time.deltaTime;
-
-        transform.position = 
-            Vector3.MoveTowards(this.transform.position, target.transform.position, _absorptionMovSpeed * 0.8f);
     }
 }
