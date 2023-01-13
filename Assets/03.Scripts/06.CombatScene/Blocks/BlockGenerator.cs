@@ -82,9 +82,21 @@ public class BlockGenerator : MonoBehaviour
         }
     }
 
-    public GameObject GenerateSpecialItemBlock()
+    public GameObject GenerateSpecialItemBlock(int combo)
     {
-        int randomValue = Random.Range(0, _specialItemBlockPrefabsArr.Length);
+        if (combo >= 3)
+        {
+            int randomValue = Random.Range(0, _specialItemBlockPrefabsArr.Length);
+            GameManager._instance._gameFlowQueue.Dequeue();
+            return _specialItemBlockPrefabsArr[randomValue]; 
+        }
+
+        //if (combo >= 5)
+        //{
+        //    // 좀 더 특수한 아이템을 생성할 예정
+        //}
+
+        GameManager._instance._gameFlowQueue.Dequeue();
         return null;
     }
 }

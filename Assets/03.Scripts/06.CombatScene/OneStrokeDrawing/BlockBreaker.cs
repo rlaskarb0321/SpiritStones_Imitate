@@ -69,10 +69,7 @@ public class BlockBreaker
         {
             // GameManager._instance._isPlayerAttackTurn = true;
             if (GameManager._instance._gameFlowQueue.Peek() == eGameFlow.Idle)
-            {
                 GameManager._instance._gameFlowQueue.Dequeue();
-                GameManager._instance._gameFlowQueue.Enqueue(eGameFlow.LoadDamage);
-            }
 
             for (int i = list.Count - 1; i >= 0; i--)
             {

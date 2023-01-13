@@ -22,7 +22,7 @@ public class HeroTeamMgr : MonoBehaviour
         if (GameManager._instance._gameFlowQueue.Peek() == eGameFlow.HeroAttack)
         {
             Attack();
-            Debug.Log("어택이 끝났습니다");
+            Debug.Log("공격이 끝났습니다");
 
             GameManager._instance._gameFlowQueue.Dequeue();
         }

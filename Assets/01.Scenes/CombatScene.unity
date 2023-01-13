@@ -2075,8 +2075,8 @@ MonoBehaviour:
   _blockMgrList: []
   _breakList: []
   _delayTime: 2.1
-  _isPlayerAttackTurn: 0
   _playerComboCount: 0
+  _blockGen: {fileID: 1315157073}
 --- !u!1001 &452280180
 PrefabInstance:
   m_ObjectHideFlags: 0

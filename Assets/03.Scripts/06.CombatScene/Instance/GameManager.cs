@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,9 +25,9 @@ public class GameManager : MonoBehaviour
     [Header("=== Game ===")]
     public Queue<eGameFlow> _gameFlowQueue;
     [SerializeField] private float _delayTime;
-    // public bool _isPlayerAttackTurn;
     public int _playerComboCount;
     private float _initDelayTimeValue;
+    public GameObject _blockGen;
 
     private void Awake()
     {
@@ -42,7 +43,7 @@ public class GameManager : MonoBehaviour
         }
 
         _gameFlowQueue = new Queue<eGameFlow>();
-        _gameFlowQueue.Enqueue(eGameFlow.Idle);
+        ReFillQueue();
 
         _dockedCount = 0;
         _initDelayTimeValue = _delayTime;
@@ -63,12 +64,13 @@ public class GameManager : MonoBehaviour
         _delayTime -= Time.deltaTime;
         if (_delayTime <= 0.0f)
         {
-            _delayTime = _initDelayTimeValue;
             if (_gameFlowQueue.Peek() == eGameFlow.LoadDamage)
-            {
                 _gameFlowQueue.Dequeue();
-                _gameFlowQueue.Enqueue(eGameFlow.HeroAttack);
-            }
+
+            BlockGenerator blockGen = _blockGen.GetComponent<BlockGenerator>();
+            blockGen.GenerateSpecialItemBlock(_playerComboCount);
+
+            _delayTime = _initDelayTimeValue;
             _playerComboCount = 0;
         }
 
@@ -80,5 +82,13 @@ public class GameManager : MonoBehaviour
             _playerComboCount++;
         }
         StartCoroutine(ManagePlayerCombo());
+    }
+
+    public void ReFillQueue()
+    {
+        foreach (eGameFlow state in Enum.GetValues(typeof(eGameFlow)))
+        {
+            _gameFlowQueue.Enqueue(state);
+        }
     }
 }
