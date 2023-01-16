@@ -14,7 +14,12 @@ public class BlockTouchObstacle : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager._instance._gameFlowQueue.Peek() != eGameFlow.Idle)
+        //if (GameManager._instance._gameFlowQueue.Peek() != eGameFlow.Idle)
+        //    _img.enabled = true;
+        //else
+        //    _img.enabled = false;
+
+        if (GameManager._instance._gameFlow != eGameFlow.Idle)
             _img.enabled = true;
         else
             _img.enabled = false;

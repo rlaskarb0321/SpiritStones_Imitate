@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeroTeamMgr : MonoBehaviour
+public class HeroTeamMgr : MonoBehaviour, IGameFlow
 {
     [Header("=== Hero ===")]
     public GameObject[] _heroPos;
@@ -17,16 +17,16 @@ public class HeroTeamMgr : MonoBehaviour
         InitHeroInformation();
     }
 
-    private void Update()
-    {
-        if (GameManager._instance._gameFlowQueue.Peek() == eGameFlow.HeroAttack)
-        {
-            Attack();
-            Debug.Log("공격이 끝났습니다");
+    //private void Update()
+    //{
+    //    if (GameManager._instance._gameFlowQueue.Peek() == eGameFlow.HeroAttack)
+    //    {
+    //        Attack();
+    //        Debug.Log("공격이 끝났습니다");
 
-            GameManager._instance._gameFlowQueue.Dequeue();
-        }
-    }
+    //        GameManager._instance._gameFlowQueue.Dequeue();
+    //    }
+    //}
 
     void InitHeroInformation()
     {
@@ -43,6 +43,7 @@ public class HeroTeamMgr : MonoBehaviour
                 _heroesTypeCountArr[(int)heroType._job[i]].Add(heroType);
             }
         }
+        Debug.Log("HeroAttack");
     }
 
     void Attack()
@@ -52,5 +53,14 @@ public class HeroTeamMgr : MonoBehaviour
             HeroBase hero = pos.transform.GetChild(0).GetComponent<HeroBase>();
             hero.Attack(_enemyGroup);
         }
+    }
+
+    public void DoGameFlowAction()
+    {
+        // eGameState.HeroAttack 일때
+        Attack();
+        Debug.Log("공격이 끝났습니다");
+
+        GameManager._instance._gameFlow++;
     }
 }

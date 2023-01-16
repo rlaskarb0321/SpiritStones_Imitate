@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlockGenerator : MonoBehaviour
+public class BlockGenerator : MonoBehaviour, IGameFlow
 {
     public GameObject _combatMgrObj;
     private CombatSceneMgr _combatMgr;
@@ -82,21 +82,48 @@ public class BlockGenerator : MonoBehaviour
         }
     }
 
-    public GameObject GenerateSpecialItemBlock(int combo)
+    //public GameObject GenerateSpecialItemBlock(int combo)
+    //{
+    //    if (combo >= 3)
+    //    {
+    //        int randomValue = Random.Range(0, _specialItemBlockPrefabsArr.Length);
+    //        GameManager._instance._gameFlowQueue.Dequeue();
+    //        return _specialItemBlockPrefabsArr[randomValue]; 
+    //    }
+
+    //    //if (combo >= 5)
+    //    //{
+    //    //    // 좀 더 특수한 아이템을 생성할 예정
+    //    //}
+
+    //    GameManager._instance._gameFlowQueue.Dequeue();
+    //    return null;
+    //}
+
+    public void DoGameFlowAction()
     {
-        if (combo >= 3)
+        Debug.Log("GenerateSpecialItemBlock");
+        // eGameState.GenerateSpecialItemBlock 일때
+        if (GameManager._instance._playerComboCount >= 3)
         {
+            // 스페셜아이템 프리팹중에서 랜덤선택
             int randomValue = Random.Range(0, _specialItemBlockPrefabsArr.Length);
-            GameManager._instance._gameFlowQueue.Dequeue();
-            return _specialItemBlockPrefabsArr[randomValue]; 
+            GameObject specialItemBlock = _specialItemBlockPrefabsArr[randomValue];
+
+            // 인게임 블럭들중에서 normalBlock 을 랜덤선택
+            randomValue = Random.Range(0, GameManager._instance._blockMgrList.Capacity);
+            while (GameManager._instance._blockMgrList[randomValue].tag == "ItemBlock")
+            {
+                randomValue = Random.Range(0, GameManager._instance._blockMgrList.Capacity);
+            }
+
+            // 선택된 normalBlock을 스페셜아이템으로 바꿔치기
+            GameObject normalBlock = GameManager._instance._blockMgrList[randomValue];
+            Instantiate(specialItemBlock, normalBlock.transform.position, Quaternion.identity);
+
+            GameManager._instance._playerComboCount = 0;
         }
-
-        //if (combo >= 5)
-        //{
-        //    // 좀 더 특수한 아이템을 생성할 예정
-        //}
-
-        GameManager._instance._gameFlowQueue.Dequeue();
-        return null;
+        
+        GameManager._instance._gameFlow++;
     }
 }

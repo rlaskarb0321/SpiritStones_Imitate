@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlockBreaker
+public class BlockBreaker : IGameFlow
 {
     bool _isSelectable = true;
 
@@ -67,9 +67,10 @@ public class BlockBreaker
 
         if (list.Count >= 3)
         {
-            // GameManager._instance._isPlayerAttackTurn = true;
-            if (GameManager._instance._gameFlowQueue.Peek() == eGameFlow.Idle)
-                GameManager._instance._gameFlowQueue.Dequeue();
+            //if (GameManager._instance._gameFlowQueue.Peek() == eGameFlow.Idle)
+            //    GameManager._instance._gameFlowQueue.Dequeue();
+
+            DoGameFlowAction();
 
             for (int i = list.Count - 1; i >= 0; i--)
             {
@@ -86,5 +87,12 @@ public class BlockBreaker
                 list.RemoveAt(list.Count - 1);
             }
         }
+    }
+
+    public void DoGameFlowAction()
+    {
+        // eGameState.Idle ¿œ∂ß
+        if (GameManager._instance._gameFlow == eGameFlow.Idle)
+            GameManager._instance._gameFlow++;
     }
 }

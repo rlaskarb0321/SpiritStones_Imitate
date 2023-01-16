@@ -33,9 +33,10 @@ public class OneStrokeDrawer : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(GameManager._instance._gameFlowQueue.Peek());
+        //if (GameManager._instance._gameFlowQueue.Peek() != eGameFlow.Idle)
+        //    return;
 
-        if (GameManager._instance._gameFlowQueue.Peek() != eGameFlow.Idle)
+        if (GameManager._instance._gameFlow != eGameFlow.Idle)
             return;
 
         if (Input.GetMouseButton(0))
@@ -199,5 +200,6 @@ public class OneStrokeDrawer : MonoBehaviour
             }
         }
     }
+
     #endregion Method
 }

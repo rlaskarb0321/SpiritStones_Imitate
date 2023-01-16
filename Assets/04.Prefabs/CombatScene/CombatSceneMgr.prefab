@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxLevelValue: 0
+  _currLevel: 0
   _obstacleBlockPercentage: 0
   _itemBlockPercentage: 0
   _stageBackGroundImage: {fileID: 0}
