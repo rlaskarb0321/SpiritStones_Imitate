@@ -42,7 +42,7 @@ public class BombItem : ItemBlock
         yield return new WaitUntil(() => GameManager._instance._dockedCount == 63);
         yield return _ws;
 
-        GameObject parent = GameObject.Find("Canvas");
+        GameObject parent = GameObject.Find("Effect Group");
         GameObject explosionEffect = Instantiate(_explosionEffect, transform.position, Quaternion.identity, parent.transform);
         yield return new WaitUntil(() => explosionEffect.activeSelf == false);
         Destroy(explosionEffect);

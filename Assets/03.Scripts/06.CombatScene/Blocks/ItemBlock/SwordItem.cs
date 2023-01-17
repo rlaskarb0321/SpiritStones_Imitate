@@ -48,17 +48,29 @@ public class SwordItem : ItemBlock
         yield return new WaitUntil(() => GameManager._instance._dockedCount == 63);
         yield return _ws;
 
-        GameObject parent = GameObject.Find("Canvas");
-        GameObject sliceEffect;
-        if (_isIn_YequalX_Zone)
+        GameObject parent = GameObject.Find("Effect Group");
+        GameObject sliceEffect = null;
+        if (gameObject.name.Contains("Dual"))
         {
-            sliceEffect
-                = Instantiate(_sliceEffect, transform.position, Quaternion.Euler(0, 0, 27.425f), parent.transform);
+            for (int i = 0; i < 2; i++)
+            {
+                sliceEffect = Instantiate(_sliceEffect, transform.position, 
+                    Quaternion.Euler(0, 0, (-1 + (2 * i)) * 27.425f), parent.transform);
+            }
         }
         else
         {
-            sliceEffect
-                = Instantiate(_sliceEffect, transform.position, Quaternion.Euler(0, 0, -27.425f), parent.transform);
+            if (_isIn_YequalX_Zone)
+            {
+                sliceEffect
+                    = Instantiate(_sliceEffect, transform.position, Quaternion.Euler(0, 0, 27.425f), parent.transform);
+            }
+            else
+            {
+                sliceEffect
+                    = Instantiate(_sliceEffect, transform.position, Quaternion.Euler(0, 0, -27.425f), parent.transform);
+            }
+
         }
 
         yield return new WaitUntil(() => sliceEffect.activeSelf == false);

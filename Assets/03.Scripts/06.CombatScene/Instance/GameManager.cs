@@ -17,6 +17,7 @@ public enum eGameFlow
     HeroAttack,
     EnemyTurn,
     BackToIdle,
+    InProgress, // 무한호출을 방지하기위해 선언한 변수
 }
 
 public class GameManager : MonoBehaviour, IGameFlow
@@ -32,9 +33,13 @@ public class GameManager : MonoBehaviour, IGameFlow
     [SerializeField] private float _delayTime;
     public int _playerComboCount;
     private float _initDelayTimeValue;
-    public GameObject _blockGen;
     public eGameFlow _gameFlow;
     private WaitForSeconds _ws;
+
+    [Header("=== Composition ===")]
+    public GameObject _blockGeneratorObj;
+    public GameObject _heroTeamMgrObj;
+    public GameObject _combatSceneMgrObj;
 
     private void Awake()
     {
@@ -48,8 +53,6 @@ public class GameManager : MonoBehaviour, IGameFlow
             if (_instance != this)
                 Destroy(this.gameObject);
         }
-
-        // ReFillQueue();
         _gameFlow = eGameFlow.Idle;
 
         _dockedCount = 0;
@@ -63,27 +66,61 @@ public class GameManager : MonoBehaviour, IGameFlow
         _breakList.Capacity = 35;
         _ws = new WaitForSeconds(1.3f);
 
-        StartCoroutine(Test());
+        StartCoroutine(InGameMainFlow());
+    }
+
+    IEnumerator InGameMainFlow()
+    {
+        IGameFlow gameFlowSub;
+
+        // 보스가 죽지 않아서 스테이지 진행중일때 까지 실행
+        while (true)
+        {
+            switch (_gameFlow)
+            {
+                case eGameFlow.LoadDamage:
+                    DoGameFlowAction();
+                    break;
+                case eGameFlow.GenerateSpecialItemBlock:
+                    gameFlowSub = _blockGeneratorObj.GetComponent<BlockGenerator>();
+                    gameFlowSub.DoGameFlowAction();
+                    break;
+                case eGameFlow.HeroAttack:
+                    gameFlowSub = _heroTeamMgrObj.GetComponent<HeroTeamMgr>();
+                    gameFlowSub.DoGameFlowAction();
+                    break;
+                case eGameFlow.EnemyTurn:
+                    gameFlowSub = _combatSceneMgrObj.GetComponent<CombatSceneMgr>();
+                    gameFlowSub.DoGameFlowAction();
+                    break;
+                case eGameFlow.BackToIdle:
+                    _gameFlow = eGameFlow.Idle;
+                    break;
+            }
+            yield return null;
+        }
+    }
+
+    public void DoGameFlowAction()
+    {
+        // eGameState.LoadDamage 일때
+        _gameFlow = eGameFlow.InProgress;
+        StartCoroutine(ManagePlayerCombo());
     }
 
     IEnumerator ManagePlayerCombo()
     {
-        // yield return new WaitUntil(() => _gameFlowQueue.Peek() == eGameFlow.LoadDamage && _dockedCount == 63);
-        yield return new WaitUntil(() => _dockedCount == 63);
-
-        while (_gameFlow == eGameFlow.LoadDamage)
+        while (_gameFlow == eGameFlow.InProgress)
         {
-            Debug.Log("LoadDamage");
+            yield return new WaitUntil(() => _dockedCount == 63);
+
             _delayTime -= Time.deltaTime;
+            yield return null;
+
             if (_delayTime <= 0.0f)
             {
-                //if (_gameFlowQueue.Peek() == eGameFlow.LoadDamage)
-                //    _gameFlowQueue.Dequeue();
-
-                //BlockGenerator blockGen = _blockGen.GetComponent<BlockGenerator>();
-                //blockGen.GenerateSpecialItemBlock(_playerComboCount);
-
                 _delayTime = _initDelayTimeValue;
+                _gameFlow = eGameFlow.LoadDamage;
                 _gameFlow++;
             }
 
@@ -95,53 +132,5 @@ public class GameManager : MonoBehaviour, IGameFlow
                 _playerComboCount++;
             } 
         }
-    }
-
-    public void ReFillQueue()
-    {
-        foreach (eGameFlow state in Enum.GetValues(typeof(eGameFlow)))
-        {
-            // _gameFlowQueue.Enqueue(state);
-        }
-    }
-
-    IEnumerator Test()
-    {
-        IGameFlow gameFlowSub;
-        while (true)
-        {
-            yield return _ws;
-
-            switch (_gameFlow)
-            {
-                case eGameFlow.Idle:
-                    Debug.Log("Idle");
-                    break;
-                case eGameFlow.LoadDamage:
-                    DoGameFlowAction();
-                    break;
-                case eGameFlow.GenerateSpecialItemBlock:
-                    gameFlowSub = new BlockGenerator();
-                    gameFlowSub.DoGameFlowAction();
-                    break;
-                case eGameFlow.HeroAttack:
-                    gameFlowSub = new HeroTeamMgr();
-                    gameFlowSub.DoGameFlowAction();
-                    break;
-                case eGameFlow.EnemyTurn:
-                    gameFlowSub = new CombatSceneMgr();
-                    gameFlowSub.DoGameFlowAction();
-                    break;
-                case eGameFlow.BackToIdle:
-                    _gameFlow = eGameFlow.Idle;
-                    break;
-            }
-        }
-    }
-
-    public void DoGameFlowAction()
-    {
-        // eGameState.LoadDamage 일때
-        StartCoroutine(ManagePlayerCombo());
     }
 }

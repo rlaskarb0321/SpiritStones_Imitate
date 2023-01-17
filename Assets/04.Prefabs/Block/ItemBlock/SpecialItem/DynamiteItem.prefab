@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 1010617152862570293}
   - component: {fileID: -9104933210349598347}
   - component: {fileID: -2964712176842347316}
+  - component: {fileID: -7710274394662867010}
   m_Layer: 6
   m_Name: DynamiteItem
   m_TagString: ItemBlock
@@ -206,3 +207,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
+--- !u!114 &-7710274394662867010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010617152862570291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3547f88e920769542b1cb923854c4339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movSpeed: 1.1
+  _isDocked: 0
+  _specialType: 1
+  _ignitedImg: {fileID: 21300000, guid: af5dee77bce369c46b9ddfc94d798278, type: 3}
+  _explosionEffect: {fileID: 0}

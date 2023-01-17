@@ -47,7 +47,7 @@ public class ArrowItem : ItemBlock
         yield return new WaitUntil(() => GameManager._instance._dockedCount == 63);
         yield return _ws;
 
-        GameObject arrowProjectileGroup = GameObject.Find("ArrowProjectile_Group");
+        GameObject arrowProjectileGroup = GameObject.Find("Effect Group");
         for (int i = 0; i < _arrowCount; i++)
         {
             GameObject arrow = 
