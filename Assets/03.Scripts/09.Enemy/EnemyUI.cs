@@ -17,10 +17,10 @@ public class EnemyUI : MonoBehaviour
     private void Start()
     {
         _enemyBase = this.GetComponent<EnemyBase>();
-        UpdateTxt(_enemyBase._currAttackWaitTurn, Color.black);
+        UpdateAttackWaitTxt(_enemyBase._currAttackWaitTurn, Color.black);
     }
 
-    public void UpdateTxt(int value, Color? color = null)
+    public void UpdateAttackWaitTxt(int value, Color? color = null)
     {
         Color useColor = color.HasValue ? color.Value : Color.black;
         _waitCountTxt.text = value.ToString();

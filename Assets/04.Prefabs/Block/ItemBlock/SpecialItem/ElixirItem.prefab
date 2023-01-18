@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1010617152862570293}
   - component: {fileID: -8410158325702625720}
   - component: {fileID: 3518218885019079755}
+  - component: {fileID: 3719381838727411004}
   m_Layer: 6
   m_Name: ElixirItem
   m_TagString: ItemBlock
@@ -126,6 +127,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
+--- !u!114 &3719381838727411004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010617152862570291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfacc15a3be38e54f90c0db5c8537a29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movSpeed: 1.1
+  _isDocked: 0
+  _specialType: 0
+  _ignitedImg: {fileID: 21300000, guid: 4dac4fa80e7ae7e40b3ef049f9f417c0, type: 3}
+  _heroTeamObj: {fileID: 0}
 --- !u!1 &1937064374024236381
 GameObject:
   m_ObjectHideFlags: 0

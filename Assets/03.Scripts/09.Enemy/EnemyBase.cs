@@ -7,8 +7,7 @@ public abstract class EnemyBase : MonoBehaviour
 {
     public enum eState
     {
-        Waiting,
-        Attack,
+        Alive,
         Die,
     }
 
@@ -24,8 +23,11 @@ public abstract class EnemyBase : MonoBehaviour
 
     private void Start()
     {
-        _state = eState.Waiting;
+        _state = eState.Alive;
+        _currHp = _maxHp;
+
         _ui = this.GetComponent<EnemyUI>();
+        _ui.UpdateHp(_currHp);
     }
 
     public virtual void DoMonsterAction(GameObject heroGroup)

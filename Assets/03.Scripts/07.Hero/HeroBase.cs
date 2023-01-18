@@ -32,17 +32,19 @@ public abstract class HeroBase : MonoBehaviour
         _txt.UpdateText(_loadedDamage);
     }
 
-    public virtual void Attack(GameObject enemyFormation)
+    public virtual void Attack(CombatSceneMgr enemyFormation, int RoundNumOfMonster)
     {
-        Debug.Log("공격합니다");
+        GameObject targetForm = enemyFormation._monsterFormationByStage[RoundNumOfMonster];
+        for (int i = 0; i < targetForm.transform.childCount; i++)
+        {
+            Transform pos = targetForm.transform.GetChild(i);
+            EnemyBase enemy = pos.transform.GetChild(0).GetComponent<EnemyBase>();
+
+            enemy.DecreaseMonsterHP(_loadedDamage);
+        }
 
         _txt.UpdateText(0);
     }
 
-    // 몬스터 쪽에서 호출하는 영웅에게 데미지 입히는 함수
-    public void DecreaseHeroHP(float amount)
-    {
-
-    }
     #endregion CombatMethod
 }

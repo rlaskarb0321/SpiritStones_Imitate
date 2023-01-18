@@ -93,7 +93,7 @@ public class BlockGenerator : MonoBehaviour, IGameFlow
             randomValue = Random.Range(0, _specialItemBlockPrefabsArr.Length);
             GameObject specialItemBlock = _specialItemBlockPrefabsArr[randomValue];
 
-            // 인게임 블럭들중에서 normalBlock 을 랜덤선택
+            // 인게임 블럭들중에서 normalBlock 을 랜덤선택, ItemBlock을 스페셜아이템으로 바꾸지는 않음
             randomValue = Random.Range(0, GameManager._instance._blockMgrList.Capacity);
             while (GameManager._instance._blockMgrList[randomValue].tag == "ItemBlock")
                 randomValue = Random.Range(0, GameManager._instance._blockMgrList.Capacity);
@@ -102,19 +102,14 @@ public class BlockGenerator : MonoBehaviour, IGameFlow
             GameObject normalBlock = GameManager._instance._blockMgrList[randomValue];
             Transform parentColum = normalBlock.transform.parent;
 
-            //foreach (GameObject block in parentColum)
-            //{
-            //    Rigidbody2D rbody2D = block.GetComponent<Rigidbody2D>();
-            //    BoxCollider2D coll2D = block.GetComponent<BoxCollider2D>();
-            //}
             normalBlock.SetActive(false);
             normalBlock.GetComponent<BlockBase>().RemoveFromMemoryList();
 
             Instantiate(specialItemBlock, normalBlock.transform.position, Quaternion.identity, parentColum);
             Destroy(normalBlock);
-            GameManager._instance._playerComboCount = 0;
         }
 
+        GameManager._instance._playerComboCount = 0;
         GameManager._instance._gameFlow++;
     }
 }

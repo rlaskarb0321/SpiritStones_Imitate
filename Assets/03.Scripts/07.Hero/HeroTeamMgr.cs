@@ -1,21 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HeroTeamMgr : MonoBehaviour, IGameFlow
 {
     [Header("=== Hero ===")]
     public GameObject[] _heroPos;
     [SerializeField] public List<HeroBase>[] _heroesTypeCountArr = new List<HeroBase>[4];
+
+    [Header("=== Hp ===")]
     public float _currHp;
     public float _totalHp;
+    public Image _hpBarFill;
+    public Text _hpTxt;
 
     [Header("=== Target ===")]
-    public GameObject _enemyGroup;
+    public GameObject _enemyGroupObj;
+    private CombatSceneMgr _enemyGroup;
 
     private void Awake()
     {
+        _enemyGroup = _enemyGroupObj.GetComponent<CombatSceneMgr>();
         InitHeroInformation();
+        UpdateHp(_currHp);
     }
 
     void InitHeroInformation()
@@ -39,10 +47,7 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
 
     public void DoGameFlowAction()
     {
-        // eGameState.HeroAttack 일때
         Attack();
-        Debug.Log("공격이 끝났습니다");
-
         GameManager._instance._gameFlow++;
     }
 
@@ -51,7 +56,35 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
         foreach (GameObject pos in _heroPos)
         {
             HeroBase hero = pos.transform.GetChild(0).GetComponent<HeroBase>();
-            hero.Attack(_enemyGroup);
+            hero.Attack(_enemyGroup, _enemyGroup._currLevel - 1);
         }
+    }
+
+    // 몬스터 측에서 영웅파티에 데미지를 주기위한 전용 함수
+    public void DecreaseHp(float amount)
+    {
+        _currHp -= amount;
+        if (_currHp <= 0.0f)
+        {
+            _currHp = 0.0f;
+        }
+        UpdateHp(_currHp);
+    }
+
+    // 물약 아이템을 사용했을 때 회복하기 위한 함수
+    public void IncreaseHp(float amount)
+    {
+        _currHp += amount;
+        if (_currHp >= _totalHp)
+        {
+            _currHp = _totalHp;
+        }
+        UpdateHp(_currHp);
+    }
+
+    void UpdateHp(float amount)
+    {
+        _hpBarFill.fillAmount = amount / _totalHp;
+        _hpTxt.text = $"{amount} / {_totalHp}";
     }
 }

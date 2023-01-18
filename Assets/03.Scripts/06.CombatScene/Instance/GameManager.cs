@@ -103,7 +103,6 @@ public class GameManager : MonoBehaviour, IGameFlow
 
     public void DoGameFlowAction()
     {
-        // eGameState.LoadDamage ¿œ∂ß
         _gameFlow = eGameFlow.InProgress;
         StartCoroutine(ManagePlayerCombo());
     }

@@ -19,7 +19,6 @@ public class CombatSceneMgr : MonoBehaviour, IGameFlow
 
     public void DoGameFlowAction()
     {
-        // eGameState.EnemyTurn 일때
         DoEnemyAction();
     }
 
@@ -27,15 +26,15 @@ public class CombatSceneMgr : MonoBehaviour, IGameFlow
     {
         GameManager._instance._gameFlow = eGameFlow.InProgress;
 
-        // 스테이지별 몬스터 그룹
         GameObject currLevelMonsterFormation = _monsterFormationByStage[_currLevel - 1];
         for (int i = 0; i < currLevelMonsterFormation.transform.childCount; i++)
         {
             Transform monsterPos = currLevelMonsterFormation.transform.GetChild(i); // 스테이지별 몬스터 그룹속 몬스터의 위치
             EnemyBase monster = monsterPos.transform.GetChild(0).GetComponent<EnemyBase>(); // 그 하위에있는 몬스터들
 
+            // 안 죽은 몬스터들 상대로 일 시킴
             if (monster._state != EnemyBase.eState.Die)
-                monster.DoMonsterAction(_heroGroup); 
+                monster.DoMonsterAction(_heroGroup);
         }
         GameManager._instance._gameFlow = eGameFlow.EnemyTurn;
         GameManager._instance._gameFlow++;
