@@ -111,8 +111,6 @@ public class BlockGenerator : MonoBehaviour, IGameFlow
             normalBlock.GetComponent<BlockBase>().RemoveFromMemoryList();
 
             Instantiate(specialItemBlock, normalBlock.transform.position, Quaternion.identity, parentColum);
-            specialItemBlock.GetComponent<BlockBase>().AddToMemoryList();
-
             Destroy(normalBlock);
             GameManager._instance._playerComboCount = 0;
         }

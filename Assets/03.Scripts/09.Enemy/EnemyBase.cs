@@ -14,18 +14,18 @@ public abstract class EnemyBase : MonoBehaviour
 
     [Header("=== Stat ===")]
     [SerializeField] protected float _atkPower;
-    [SerializeField] protected float _hp;
+    public float _maxHp;
     [HideInInspector] public float _currHp;
     [SerializeField] protected int _maxAttackWaitTurn;
     public int _currAttackWaitTurn;
     public eState _state;
 
-    public Image _img;
+    [HideInInspector] public EnemyUI _ui;
 
     private void Start()
     {
-        _img = GetComponent<Image>();
         _state = eState.Waiting;
+        _ui = this.GetComponent<EnemyUI>();
     }
 
     public virtual void DoMonsterAction(GameObject heroGroup)
@@ -33,8 +33,14 @@ public abstract class EnemyBase : MonoBehaviour
         
     }
 
+    // 영웅쪽에서 몬스터에게 데미지입히기 전용 함수
+    public virtual void DecreaseMonsterHP(float amount)
+    {
+        
+    }
+
     public virtual void DieMonster()
     {
-        _state = eState.Die;
+        
     }
 }

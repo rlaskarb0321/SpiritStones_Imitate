@@ -7,7 +7,8 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
     [Header("=== Hero ===")]
     public GameObject[] _heroPos;
     [SerializeField] public List<HeroBase>[] _heroesTypeCountArr = new List<HeroBase>[4];
-    [HideInInspector] public float _totalHp;
+    public float _currHp;
+    public float _totalHp;
 
     [Header("=== Target ===")]
     public GameObject _enemyGroup;
@@ -27,6 +28,8 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
         {
             HeroBase heroType = pos.transform.GetChild(0).GetComponent<HeroBase>();
             _totalHp += heroType._hp;
+            _currHp = _totalHp;
+
             for (int i = 0; i < heroType._job.Length; i++)
             {
                 _heroesTypeCountArr[(int)heroType._job[i]].Add(heroType);
