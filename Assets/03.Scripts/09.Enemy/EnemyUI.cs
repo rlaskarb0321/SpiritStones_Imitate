@@ -14,10 +14,10 @@ public class EnemyUI : MonoBehaviour
     public Image _hpBar;
     public Text _hpTxt;
 
-    private void Start()
+    public void SetInitValue(EnemyBase enemyBase)
     {
-        _enemyBase = this.GetComponent<EnemyBase>();
-        UpdateAttackWaitTxt(_enemyBase._currAttackWaitTurn, Color.black);
+        _enemyBase = enemyBase;
+        UpdateAttackWaitTxt(_enemyBase._maxAttackWaitTurn, Color.black);
     }
 
     public void UpdateAttackWaitTxt(int value, Color? color = null)

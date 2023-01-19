@@ -32,17 +32,26 @@ public abstract class HeroBase : MonoBehaviour
         _txt.UpdateText(_loadedDamage);
     }
 
-    public virtual void Attack(CombatSceneMgr enemyFormation, int RoundNumOfMonster)
+    public virtual void Attack(CombatSceneMgr enemyFormation, int targetRound)
     {
-        GameObject targetForm = enemyFormation._monsterFormationByStage[RoundNumOfMonster];
+        // 라운드마다 몬스터의 진형
+        GameObject targetForm = enemyFormation._monsterFormationByStage[targetRound];
         for (int i = 0; i < targetForm.transform.childCount; i++)
         {
             Transform pos = targetForm.transform.GetChild(i);
             EnemyBase enemy = pos.transform.GetChild(0).GetComponent<EnemyBase>();
 
-            enemy.DecreaseMonsterHP(_loadedDamage);
+            if (enemy._state != EnemyBase.eState.Die)
+            {
+                enemy.DecreaseMonsterHP(_loadedDamage);
+            }
+            else
+            {
+                continue;
+            }
         }
 
+        _loadedDamage = 0.0f;
         _txt.UpdateText(0);
     }
 

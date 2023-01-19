@@ -26,37 +26,18 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
         UpdateHp(_currHp);
     }
 
-    void InitHeroInformation()
-    {
-        for (int i = 0; i < this.transform.childCount; i++)
-            _heroesTypeCountArr[i] = new List<HeroBase>();
-
-        // 아군파티의 직업종류를 Count
-        foreach (GameObject pos in _heroPos)
-        {
-            HeroBase heroType = pos.transform.GetChild(0).GetComponent<HeroBase>();
-            _totalHp += heroType._hp;
-            _currHp = _totalHp;
-
-            for (int i = 0; i < heroType._job.Length; i++)
-            {
-                _heroesTypeCountArr[(int)heroType._job[i]].Add(heroType);
-            }
-        }
-    }
-
     public void DoGameFlowAction()
     {
+        GameManager._instance._gameFlow = eGameFlow.InProgress;
         Attack();
-        GameManager._instance._gameFlow++;
-    }
 
-    void Attack()
-    {
-        foreach (GameObject pos in _heroPos)
+        if (_enemyGroup.IsStageClear())
         {
-            HeroBase hero = pos.transform.GetChild(0).GetComponent<HeroBase>();
-            hero.Attack(_enemyGroup, _enemyGroup._currLevel - 1);
+            GameManager._instance._gameFlow = eGameFlow.Idle;
+        }
+        else
+        {
+            GameManager._instance._gameFlow = eGameFlow.EnemyTurn; 
         }
     }
 
@@ -80,6 +61,34 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
             _currHp = _totalHp;
         }
         UpdateHp(_currHp);
+    }
+
+    void InitHeroInformation()
+    {
+        for (int i = 0; i < this.transform.childCount; i++)
+            _heroesTypeCountArr[i] = new List<HeroBase>();
+
+        // 아군파티의 직업종류를 Count
+        foreach (GameObject pos in _heroPos)
+        {
+            HeroBase heroType = pos.transform.GetChild(0).GetComponent<HeroBase>();
+            _totalHp += heroType._hp;
+            _currHp = _totalHp;
+
+            for (int i = 0; i < heroType._job.Length; i++)
+            {
+                _heroesTypeCountArr[(int)heroType._job[i]].Add(heroType);
+            }
+        }
+    }
+
+    void Attack()
+    {
+        foreach (GameObject pos in _heroPos)
+        {
+            HeroBase hero = pos.transform.GetChild(0).GetComponent<HeroBase>();
+            hero.Attack(_enemyGroup, _enemyGroup._currLevel - 1);
+        }
     }
 
     void UpdateHp(float amount)

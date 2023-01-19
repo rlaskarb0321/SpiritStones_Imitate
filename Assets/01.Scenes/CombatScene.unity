@@ -2308,7 +2308,7 @@ PrefabInstance:
       objectReference: {fileID: 436219522}
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _maxHp
-      value: 210
+      value: 220
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _atkPower
@@ -2769,6 +2769,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2647248715636548733, guid: 58487d08936a2f540b7929e491dcf87c, type: 3}
+      propertyPath: _monsterCount.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2647248715636548733, guid: 58487d08936a2f540b7929e491dcf87c, type: 3}
+      propertyPath: _monsterCount.Array.data[0]
+      value: 
+      objectReference: {fileID: 521841736}
     - target: {fileID: 3567054449422882692, guid: 58487d08936a2f540b7929e491dcf87c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2858,6 +2866,11 @@ PrefabInstance:
 --- !u!1 &521841735 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1813040532731060613, guid: 58487d08936a2f540b7929e491dcf87c, type: 3}
+  m_PrefabInstance: {fileID: 521841734}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &521841736 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5996780599918968413, guid: 58487d08936a2f540b7929e491dcf87c, type: 3}
   m_PrefabInstance: {fileID: 521841734}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &531677786
@@ -7110,11 +7123,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6646651217182111475, guid: a83f561978d49794298785ba6f93de13, type: 3}
+      propertyPath: _monsterCount.Array.data[0]
+      value: 
+      objectReference: {fileID: 1215482463}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a83f561978d49794298785ba6f93de13, type: 3}
 --- !u!1 &1215482462 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 620807982098095665, guid: a83f561978d49794298785ba6f93de13, type: 3}
+  m_PrefabInstance: {fileID: 1215482461}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1215482463 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3868052412408010162, guid: a83f561978d49794298785ba6f93de13, type: 3}
   m_PrefabInstance: {fileID: 1215482461}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1229087813
@@ -10704,6 +10726,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7987593930469639752}
     m_Modifications:
+    - target: {fileID: -2814649950743779747, guid: 0015452de51e8b743a76515668c6471d, type: 3}
+      propertyPath: _monsterCount.Array.data[0]
+      value: 
+      objectReference: {fileID: 1931640756}
+    - target: {fileID: -2814649950743779747, guid: 0015452de51e8b743a76515668c6471d, type: 3}
+      propertyPath: _monsterCount.Array.data[1]
+      value: 
+      objectReference: {fileID: 1931640755}
     - target: {fileID: 217696245490904596, guid: 0015452de51e8b743a76515668c6471d, type: 3}
       propertyPath: m_Name
       value: 2 Monster Form
@@ -10801,6 +10831,16 @@ PrefabInstance:
 --- !u!1 &1931640754 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 217696245490904596, guid: 0015452de51e8b743a76515668c6471d, type: 3}
+  m_PrefabInstance: {fileID: 1931640753}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1931640755 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6982850846197151694, guid: 0015452de51e8b743a76515668c6471d, type: 3}
+  m_PrefabInstance: {fileID: 1931640753}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1931640756 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8737691736293093610, guid: 0015452de51e8b743a76515668c6471d, type: 3}
   m_PrefabInstance: {fileID: 1931640753}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1955495186
@@ -11417,7 +11457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 749540581929925291, guid: f890c95525ba7a141985fe47f3e5d69f, type: 3}
       propertyPath: _atkPower
-      value: 3
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1620043047754074270, guid: f890c95525ba7a141985fe47f3e5d69f, type: 3}
       propertyPath: m_Color.b
@@ -11885,6 +11925,10 @@ PrefabInstance:
       propertyPath: _stageBackGroundImage
       value: 
       objectReference: {fileID: 1215415319}
+    - target: {fileID: 7987593931869138248, guid: b824a4ce5f59024419846e5ec7329e42, type: 3}
+      propertyPath: _isStageClear.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7987593931869138248, guid: b824a4ce5f59024419846e5ec7329e42, type: 3}
       propertyPath: _obstacleBlockPercentage
       value: 10

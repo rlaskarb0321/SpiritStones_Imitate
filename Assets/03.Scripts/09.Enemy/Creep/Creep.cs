@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Creep : EnemyBase // Creep이 잡몹이라는 뜻인거 같아서 이름지음
 {
     public override void DoMonsterAction(GameObject heroGroup)
     {
-        --_currAttackWaitTurn;
+        base.DoMonsterAction(heroGroup);
 
+        --_currAttackWaitTurn;
         if (_currAttackWaitTurn == 0)
         {
             HeroTeamMgr heroTeam = heroGroup.GetComponent<HeroTeamMgr>();
@@ -29,8 +31,12 @@ public class Creep : EnemyBase // Creep이 잡몹이라는 뜻인거 같아서 이름지음
 
     public override void DecreaseMonsterHP(float amount)
     {
-        _currHp -= amount;
+        base.DecreaseMonsterHP(amount);
 
+        if (amount == 0)
+            return;
+
+        _currHp -= amount;
         if (_currHp <= 0.0f)
         {
             _currHp = 0.0f;
@@ -43,6 +49,11 @@ public class Creep : EnemyBase // Creep이 잡몹이라는 뜻인거 같아서 이름지음
 
     public override void DieMonster()
     {
+        base.DieMonster();
+
         _state = eState.Die;
+        MonsterFormation monsterFormMgr = transform.parent.parent.GetComponent<MonsterFormation>();
+        monsterFormMgr.UpdateDieCount();
+        gameObject.SetActive(false);
     }
 }

@@ -16,6 +16,7 @@ public enum eGameFlow
     GenerateSpecialItemBlock,
     HeroAttack,
     EnemyTurn,
+    StageClear,
     BackToIdle,
     InProgress, // 무한호출을 방지하기위해 선언한 변수
 }
@@ -87,6 +88,10 @@ public class GameManager : MonoBehaviour, IGameFlow
                     break;
                 case eGameFlow.HeroAttack:
                     gameFlowSub = _heroTeamMgrObj.GetComponent<HeroTeamMgr>();
+                    gameFlowSub.DoGameFlowAction();
+                    break;
+                case eGameFlow.StageClear:
+                    gameFlowSub = _combatSceneMgrObj.GetComponent<CombatSceneMgr>();
                     gameFlowSub.DoGameFlowAction();
                     break;
                 case eGameFlow.EnemyTurn:

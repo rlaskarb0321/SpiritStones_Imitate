@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4588754348641819036}
   - component: {fileID: 4588754348641819026}
   - component: {fileID: 4588754348641819027}
-  - component: {fileID: -4240042740653620819}
   - component: {fileID: -6043732844571975106}
+  - component: {fileID: -4240042740653620819}
   m_Layer: 5
   m_Name: Boss Base
   m_TagString: Untagged
@@ -80,6 +80,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &-6043732844571975106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4588754348641819037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7170ef5d5fefe6e4d92307a140e03f04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _img: {fileID: 0}
+  _waitCountTxt: {fileID: 4588754348769616243}
+  _hpBar: {fileID: 7339597846323952795}
+  _hpTxt: {fileID: 6788999122155481828}
 --- !u!114 &-4240042740653620819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,22 +115,6 @@ MonoBehaviour:
   _currAttackWaitTurn: 0
   _state: 0
   _ui: {fileID: 0}
---- !u!114 &-6043732844571975106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4588754348641819037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7170ef5d5fefe6e4d92307a140e03f04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _img: {fileID: 0}
-  _waitCountTxt: {fileID: 4588754348769616243}
-  _hpBar: {fileID: 7339597846323952795}
-  _hpTxt: {fileID: 6788999122155481828}
 --- !u!1 &4588754348769616253
 GameObject:
   m_ObjectHideFlags: 0

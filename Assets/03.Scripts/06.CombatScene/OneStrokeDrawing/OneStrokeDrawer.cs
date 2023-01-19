@@ -33,9 +33,6 @@ public class OneStrokeDrawer : MonoBehaviour
 
     private void Update()
     {
-        //if (GameManager._instance._gameFlowQueue.Peek() != eGameFlow.Idle)
-        //    return;
-
         if (GameManager._instance._gameFlow != eGameFlow.Idle)
             return;
 
