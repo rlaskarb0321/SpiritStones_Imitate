@@ -7,8 +7,6 @@ public class Creep : EnemyBase // Creep이 잡몹이라는 뜻인거 같아서 이름지음
 {
     public override void DoMonsterAction(GameObject heroGroup)
     {
-        base.DoMonsterAction(heroGroup);
-
         --_currAttackWaitTurn;
         if (_currAttackWaitTurn == 0)
         {
@@ -29,10 +27,8 @@ public class Creep : EnemyBase // Creep이 잡몹이라는 뜻인거 같아서 이름지음
         _ui.UpdateAttackWaitTxt(_currAttackWaitTurn);
     }
 
-    public override void DecreaseMonsterHP(float amount)
+    public override void DecreaseMonsterHP(float amount, HeroBase hero)
     {
-        base.DecreaseMonsterHP(amount);
-
         if (amount == 0)
             return;
 
@@ -41,7 +37,9 @@ public class Creep : EnemyBase // Creep이 잡몹이라는 뜻인거 같아서 이름지음
         {
             _currHp = 0.0f;
             _ui.UpdateHp(_currHp);
-            DieMonster();
+
+            if (_state != eState.Die)
+                DieMonster(); 
             return;
         }
         _ui.UpdateHp(_currHp);
@@ -49,8 +47,6 @@ public class Creep : EnemyBase // Creep이 잡몹이라는 뜻인거 같아서 이름지음
 
     public override void DieMonster()
     {
-        base.DieMonster();
-
         _state = eState.Die;
         MonsterFormation monsterFormMgr = transform.parent.parent.GetComponent<MonsterFormation>();
         monsterFormMgr.UpdateDieCount();

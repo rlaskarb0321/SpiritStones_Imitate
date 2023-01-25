@@ -57,40 +57,40 @@ public class BottomUIManager : MonoBehaviour
     {
         // 현재씬이 MyCard씬이 아니라면 MyCard로 이동해주고, MyCard라면 Main으로 이동한다
         // 하단UI에 내 카드버튼을 누르기 전 현재의 씬이름을 저장후 누르면 스택에 넣어줌
-        string currSceneName = MiddleSceneTree._middleUITreeInstance._currSceneName;
-        if (currSceneName != SceneName.MyCard.ToString())
-        {
-            MiddleSceneTree._middleUITreeInstance._sceneStack.Push(currSceneName);
+        //string currSceneName = MiddleSceneTree._middleUITreeInstance._currSceneName;
+        //if (currSceneName != SceneName.MyCard.ToString())
+        //{
+        //    MiddleSceneTree._middleUITreeInstance._sceneStack.Push(currSceneName);
 
-            // MiddleUIGroup들 중에서 누르기 전 씬을찾아 꺼주고, MyCard 게임Obj를 켜줌
-            GameObject.Find("MiddleUIGroup").transform.Find(currSceneName).gameObject.SetActive(false);
-            MiddleSceneTree._middleUITreeInstance._myCard.SetActive(true); 
-        }
-        else
-        {
-            GameObject.Find("MiddleUIGroup").transform.Find(SceneName.Main.ToString()).gameObject.SetActive(true);
-            GameObject.Find(currSceneName).SetActive(false);
-        }
+        //    // MiddleUIGroup들 중에서 누르기 전 씬을찾아 꺼주고, MyCard 게임Obj를 켜줌
+        //    GameObject.Find("MiddleUIGroup").transform.Find(currSceneName).gameObject.SetActive(false);
+        //    MiddleSceneTree._middleUITreeInstance._myCard.SetActive(true); 
+        //}
+        //else
+        //{
+        //    GameObject.Find("MiddleUIGroup").transform.Find(SceneName.Main.ToString()).gameObject.SetActive(true);
+        //    GameObject.Find(currSceneName).SetActive(false);
+        //}
     }
 
     void OnClickSummonBtn()
     {
         // 현재씬이 Summon씬이 아니라면 Summon으로 이동해주고, Summon이라면 Main으로 이동한다
         // 하단UI에 내 카드버튼을 누르기전의 씬이름을 저장후 누르면 스택에 넣어줌
-        string currSceneName = MiddleSceneTree._middleUITreeInstance._currSceneName;
-        if (currSceneName != SceneName.Summon.ToString())
-        {
-            MiddleSceneTree._middleUITreeInstance._sceneStack.Push(currSceneName);
+        //string currSceneName = MiddleSceneTree._middleUITreeInstance._currSceneName;
+        //if (currSceneName != SceneName.Summon.ToString())
+        //{
+        //    MiddleSceneTree._middleUITreeInstance._sceneStack.Push(currSceneName);
 
-            // MiddleUIGroup들 중에서 누르기 전 씬을찾아 꺼주고, Summon 게임Obj를 켜줌
-            GameObject.Find("MiddleUIGroup").transform.Find(currSceneName).gameObject.SetActive(false);
-            MiddleSceneTree._middleUITreeInstance._summon.SetActive(true); // Summon으로 이동
-        }
-        else
-        {
-            GameObject.Find("MiddleUIGroup").transform.Find(SceneName.Main.ToString()).gameObject.SetActive(true);
-            GameObject.Find(currSceneName).SetActive(false);
-        }
+        //    // MiddleUIGroup들 중에서 누르기 전 씬을찾아 꺼주고, Summon 게임Obj를 켜줌
+        //    GameObject.Find("MiddleUIGroup").transform.Find(currSceneName).gameObject.SetActive(false);
+        //    MiddleSceneTree._middleUITreeInstance._summon.SetActive(true); // Summon으로 이동
+        //}
+        //else
+        //{
+        //    GameObject.Find("MiddleUIGroup").transform.Find(SceneName.Main.ToString()).gameObject.SetActive(true);
+        //    GameObject.Find(currSceneName).SetActive(false);
+        //}
     }
 
     void OnClickSocialBtn()

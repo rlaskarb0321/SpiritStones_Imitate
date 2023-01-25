@@ -19,6 +19,14 @@ public class SectionOneManager : MonoBehaviour
 
     void Start()
     {
-        
+        if (_stage1_EntranceBtn != null)
+        {
+            _stage1_EntranceBtn.onClick.AddListener(OnClickStageOneEntranceBtn);
+        }
+    }
+
+    void OnClickStageOneEntranceBtn()
+    {
+        LoadingSceneManager.LoadScene("CombatScene");
     }
 }

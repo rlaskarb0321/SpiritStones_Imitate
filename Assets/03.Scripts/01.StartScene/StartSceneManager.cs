@@ -11,8 +11,8 @@ public class StartSceneManager : MonoBehaviour
 
     void Awake()
     {
-        // 게임을 처음 시작할 때 프레임을 45로 고정시킴
-        Application.targetFrameRate = 45;
+        // 게임을 처음 시작할 때 프레임을 60으로 고정시킴
+        Application.targetFrameRate = 60;
         QualitySettings.vSyncCount = 0;
     }
 

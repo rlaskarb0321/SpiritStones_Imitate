@@ -18,8 +18,6 @@ public class MonsterFormation : MonoBehaviour
 
         if (_dieCount == _monsterCount.Count)
         {
-            Debug.Log("Stage Clear");
-
             CombatSceneMgr combatMgr = transform.parent.GetComponent<CombatSceneMgr>();
             combatMgr.GoToNextStage();
         }

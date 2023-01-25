@@ -42,8 +42,4 @@ public class MiddleSceneTree : MonoBehaviour
         }
         _sceneStack = new Stack<string>();
     }
-
-    void Update()
-    {
-    }
 }

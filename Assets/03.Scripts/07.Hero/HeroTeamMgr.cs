@@ -88,6 +88,9 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
         {
             HeroBase hero = pos.transform.GetChild(0).GetComponent<HeroBase>();
             hero.Attack(_enemyGroup, _enemyGroup._currLevel - 1);
+
+            hero._loadedDamage = 0.0f;
+            hero._txt.UpdateText(hero._loadedDamage);
         }
     }
 

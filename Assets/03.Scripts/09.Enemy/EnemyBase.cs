@@ -21,13 +21,6 @@ public abstract class EnemyBase : MonoBehaviour
 
     [HideInInspector] public EnemyUI _ui;
 
-    [Header("=== initValue ===")]
-    private float _initAtkPower;
-    private float _initMaxHp;
-    private float _initCurrHp;
-    private int _initMaxAttackWaitTurn;
-    private int _initCurrAttackWaitTurn;
-
     private void OnEnable()
     {
         _state = eState.Alive;
@@ -37,31 +30,18 @@ public abstract class EnemyBase : MonoBehaviour
         _ui = this.GetComponent<EnemyUI>();
         _ui.SetInitValue(this);
         _ui.UpdateHp(_currHp);
-        // StartCoroutine(StopAllAction());
     }
 
     public virtual void DoMonsterAction(GameObject heroGroup)
     {
-        if (_state == eState.Die)
-            return;
     }
 
     // 영웅쪽에서 몬스터에게 데미지입히기 전용 함수
-    public virtual void DecreaseMonsterHP(float amount)
+    public virtual void DecreaseMonsterHP(float amount, HeroBase hero)
     {
-        if (_state == eState.Die)
-            return;
     }
 
     public virtual void DieMonster()
     {
-        if (_state == eState.Die)
-            return;
-    }
-
-    IEnumerator StopAllAction()
-    {
-        yield return new WaitUntil(() => _state == eState.Die);
-        yield break;
     }
 }

@@ -22,11 +22,6 @@ public class LoadingSceneManager : MonoBehaviour
         _jorkText.text = _numOfJork[randomIdx];
     }
 
-    void Update()
-    {
-        
-    }
-
     public static void LoadScene(string sceneName)
     {
         _nextScene = sceneName;

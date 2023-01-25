@@ -52,7 +52,6 @@ public class CombatSceneMgr : MonoBehaviour, IGameFlow
     {
         if (GameManager._instance._gameFlow != eGameFlow.StageClear)
         {
-            Debug.Log("클리어 하지 않음");
             GameManager._instance._gameFlow = eGameFlow.EnemyTurn;
             return false;
         }
@@ -64,7 +63,6 @@ public class CombatSceneMgr : MonoBehaviour, IGameFlow
             _currLevel++;
             _monsterFormationByStage[_currLevel - 1].SetActive(true);
 
-            Debug.Log("클리어 했다구여");
             return true;
         }
     }

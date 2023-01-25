@@ -67,10 +67,10 @@ public class MainSceneManager : MonoBehaviour
 
     void OnMyCardBtnClick()
     {
-        MiddleSceneTree._middleUITreeInstance._sceneStack.Push(this.gameObject.name);
+        //MiddleSceneTree._middleUITreeInstance._sceneStack.Push(this.gameObject.name);
 
-        MiddleSceneTree._middleUITreeInstance._myCard.SetActive(true);
-        MiddleSceneTree._middleUITreeInstance._main.SetActive(false);
+        //MiddleSceneTree._middleUITreeInstance._myCard.SetActive(true);
+        //MiddleSceneTree._middleUITreeInstance._main.SetActive(false);
     }
 
     // ÆË¾÷Ã¢ °ü·Ã
