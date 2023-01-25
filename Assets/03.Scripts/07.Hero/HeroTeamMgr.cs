@@ -16,6 +16,7 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
     public Text _hpTxt;
 
     [Header("=== Target ===")]
+    public Image _focusTarget;
     public GameObject _enemyGroupObj;
     private CombatSceneMgr _enemyGroup;
 

@@ -34,9 +34,9 @@ public abstract class HeroBase : MonoBehaviour
 
     public virtual void Attack(CombatSceneMgr enemyFormation, int targetRound)
     {
-        // 라운드마다 몬스터의 진형
+        // 라운드마다 몬스터의 진형을 선택 => 영웅이 적 진형을 인식함
         GameObject targetForm = enemyFormation._monsterFormationByStage[targetRound];
-        int targetMonster = 0;
+        int targetMonster = 0; // 타겟이 될 몬스터의 진형 인덱스 : 만일 점사공격이 활성화되면 해당 인덱스로 지정
         for (int i = 0; i < targetForm.transform.childCount; i++)
         {
             if (targetMonster >= targetForm.transform.childCount)
@@ -51,9 +51,7 @@ public abstract class HeroBase : MonoBehaviour
             }
 
             enemy.DecreaseMonsterHP(_loadedDamage, this);
-            // _loadedDamage = 0.0f;
         }
-        // _txt.UpdateText(0);
     }
 
     #endregion CombatMethod

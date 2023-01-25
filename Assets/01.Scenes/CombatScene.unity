@@ -327,6 +327,22 @@ PrefabInstance:
       propertyPath: _currAttackWaitTurn
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 964622274912532986, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1215482464}
+    - target: {fileID: 964622274912532986, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: UpdateFocusTargetInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 964622274912532986, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MonsterFormation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 964622274912532986, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819036, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -414,6 +430,10 @@ PrefabInstance:
     - target: {fileID: 4588754348641819037, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
       propertyPath: m_Name
       value: Middle Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 6586610988137449713, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
@@ -510,7 +530,7 @@ GameObject:
   - component: {fileID: 41505986}
   - component: {fileID: 41505985}
   m_Layer: 5
-  m_Name: TeamPosition_2
+  m_Name: Pos_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1671,6 +1691,7 @@ MonoBehaviour:
   _totalHp: 0
   _hpBarFill: {fileID: 1809157790}
   _hpTxt: {fileID: 2029873683}
+  _focusTarget: {fileID: 0}
   _enemyGroupObj: {fileID: 924848123}
 --- !u!1 &280291695
 GameObject:
@@ -2344,7 +2365,7 @@ PrefabInstance:
       objectReference: {fileID: 436219522}
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _maxHp
-      value: 250
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _atkPower
@@ -2445,6 +2466,22 @@ PrefabInstance:
     - target: {fileID: 4588754348641819037, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: m_Name
       value: Goblin  Veteran Archer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1931640757}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: UpdateFocusTargetInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MonsterFormation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
@@ -2682,7 +2719,15 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2647248715636548733, guid: 58487d08936a2f540b7929e491dcf87c, type: 3}
+      propertyPath: _isFocusTargetOn.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2647248715636548733, guid: 58487d08936a2f540b7929e491dcf87c, type: 3}
       propertyPath: _monsterCount.Array.data[0]
+      value: 
+      objectReference: {fileID: 521841736}
+    - target: {fileID: 2647248715636548733, guid: 58487d08936a2f540b7929e491dcf87c, type: 3}
+      propertyPath: _monsterCount.Array.data[1]
       value: 
       objectReference: {fileID: 521841736}
     - target: {fileID: 3567054449422882692, guid: 58487d08936a2f540b7929e491dcf87c, type: 3}
@@ -2781,6 +2826,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5996780599918968413, guid: 58487d08936a2f540b7929e491dcf87c, type: 3}
   m_PrefabInstance: {fileID: 521841734}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &521841737 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2647248715636548733, guid: 58487d08936a2f540b7929e491dcf87c, type: 3}
+  m_PrefabInstance: {fileID: 521841734}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521841735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dc3a05b2fa09b440b5db78bf1f3e870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &531677786
 GameObject:
   m_ObjectHideFlags: 0
@@ -3758,7 +3814,7 @@ GameObject:
   - component: {fileID: 724160836}
   - component: {fileID: 724160835}
   m_Layer: 5
-  m_Name: TeamPosition_3
+  m_Name: Pos_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4672,6 +4728,62 @@ PrefabInstance:
     - target: {fileID: 4588754348641819037, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: m_Name
       value: Goblin Archer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165269390283766092, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 521841737}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 521841737}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateFocusTargetInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: UpdateFocusTargetInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MonsterFormation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MonsterFormation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 521841736}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
@@ -6012,6 +6124,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6646651217182111475, guid: a83f561978d49794298785ba6f93de13, type: 3}
+      propertyPath: _isFocusTargetOn.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6646651217182111475, guid: a83f561978d49794298785ba6f93de13, type: 3}
       propertyPath: _monsterCount.Array.data[0]
       value: 
       objectReference: {fileID: 1215482463}
@@ -6027,6 +6143,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3868052412408010162, guid: a83f561978d49794298785ba6f93de13, type: 3}
   m_PrefabInstance: {fileID: 1215482461}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1215482464 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6646651217182111475, guid: a83f561978d49794298785ba6f93de13, type: 3}
+  m_PrefabInstance: {fileID: 1215482461}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215482462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dc3a05b2fa09b440b5db78bf1f3e870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1248568967
 GameObject:
   m_ObjectHideFlags: 0
@@ -7532,7 +7659,7 @@ GameObject:
   - component: {fileID: 1507677696}
   - component: {fileID: 1507677695}
   m_Layer: 5
-  m_Name: TeamPosition_1
+  m_Name: Pos_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8643,11 +8770,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _maxHp
-      value: 420
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _currHp
-      value: 420
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _atkPower
@@ -8748,6 +8875,22 @@ PrefabInstance:
     - target: {fileID: 4588754348641819037, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: m_Name
       value: Goblin Warrior
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1931640757}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: UpdateFocusTargetInfo
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MonsterFormation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
@@ -9244,7 +9387,7 @@ GameObject:
   - component: {fileID: 1821797906}
   - component: {fileID: 1821797905}
   m_Layer: 5
-  m_Name: TeamPosition_0
+  m_Name: Pos_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9402,6 +9545,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -2814649950743779747, guid: 0015452de51e8b743a76515668c6471d, type: 3}
+      propertyPath: _isFocusTargetOn.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -2814649950743779747, guid: 0015452de51e8b743a76515668c6471d, type: 3}
       propertyPath: _monsterCount.Array.data[0]
       value: 
       objectReference: {fileID: 1931640756}
@@ -9518,6 +9665,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8737691736293093610, guid: 0015452de51e8b743a76515668c6471d, type: 3}
   m_PrefabInstance: {fileID: 1931640753}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1931640757 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -2814649950743779747, guid: 0015452de51e8b743a76515668c6471d, type: 3}
+  m_PrefabInstance: {fileID: 1931640753}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931640754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dc3a05b2fa09b440b5db78bf1f3e870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1955495186
 GameObject:
   m_ObjectHideFlags: 0

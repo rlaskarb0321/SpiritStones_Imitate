@@ -8,6 +8,7 @@ public class EnemyUI : MonoBehaviour
     private EnemyBase _enemyBase;
 
     public Image _img;
+    public GameObject _focusTarget;
     public Text _waitCountTxt;
 
     [Header("=== Hp ===")]
@@ -31,5 +32,38 @@ public class EnemyUI : MonoBehaviour
     {
         _hpTxt.text = $"{value} / {_enemyBase._maxHp}";
         _hpBar.fillAmount = value / _enemyBase._maxHp;
+    }
+
+    public void CtrlFocusTargetActive()
+    {
+        if (GameManager._instance._gameFlow != eGameFlow.Idle)
+            return;
+
+        if (_focusTarget.gameObject.activeSelf)
+        {
+            _focusTarget.SetActive(false);
+            return;
+        }
+        else
+        {
+            _focusTarget.SetActive(true);
+            return;
+        }
+    }
+
+    public void ActiveFocusTarget()
+    {
+        if (GameManager._instance._gameFlow != eGameFlow.Idle)
+            return;
+
+        _focusTarget.SetActive(true);
+    }
+
+    public void DisableFocusTarget()
+    {
+        if (GameManager._instance._gameFlow != eGameFlow.Idle)
+            return;
+
+        _focusTarget.SetActive(false);
     }
 }
