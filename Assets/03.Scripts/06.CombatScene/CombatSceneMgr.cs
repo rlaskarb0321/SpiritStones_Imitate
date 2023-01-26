@@ -46,6 +46,12 @@ public class CombatSceneMgr : MonoBehaviour, IGameFlow
     public void GoToNextStage()
     {
         GameManager._instance._gameFlow = eGameFlow.StageClear;
+
+        for (int i = 0; i < _heroGroup.transform.childCount; i++)
+        {
+            HeroBase hero = _heroGroup.transform.GetChild(i).GetChild(0).GetComponent<HeroBase>();
+            hero.LoseLoadedDmg();
+        }
     }
 
     public bool IsStageClear()

@@ -29,21 +29,13 @@ public class MonsterFormation : MonoBehaviour
         for (int i = 0; i < _monsterCount.Count; i++)
         {
             EnemyUI enemyUI = _monsterCount[i].transform.GetChild(0).GetComponent<EnemyUI>();
-
             if (System.Object.ReferenceEquals(monster, _monsterCount[i]))
-            {
                 enemyUI.CtrlFocusTargetActive();
-                _isFocusTargetOn[i] = enemyUI._focusTarget.activeSelf;
-                continue;
-            }
             else
-            {
                 if (enemyUI._focusTarget.activeSelf)
-                {
                     enemyUI.DisableFocusTarget();
-                    _isFocusTargetOn[i] = enemyUI._focusTarget.activeSelf;
-                }
-            }
+
+            _isFocusTargetOn[i] = enemyUI._focusTarget.activeSelf;
         }
     }
 }

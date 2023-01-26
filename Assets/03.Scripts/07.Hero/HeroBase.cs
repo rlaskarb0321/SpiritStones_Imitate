@@ -32,27 +32,41 @@ public abstract class HeroBase : MonoBehaviour
         _txt.UpdateText(_loadedDamage);
     }
 
-    public virtual void Attack(CombatSceneMgr enemyFormation, int targetRound)
+    public virtual void Attack(CombatSceneMgr combatSceneMgr, int targetRound)
     {
         // 라운드마다 몬스터의 진형을 선택 => 영웅이 적 진형을 인식함
-        GameObject targetForm = enemyFormation._monsterFormationByStage[targetRound];
-        int targetMonster = 0; // 타겟이 될 몬스터의 진형 인덱스 : 만일 점사공격이 활성화되면 해당 인덱스로 지정
-        for (int i = 0; i < targetForm.transform.childCount; i++)
+        MonsterFormation targetForm =
+            combatSceneMgr._monsterFormationByStage[targetRound].GetComponent<MonsterFormation>();
+
+        bool isFocusSet = false;
+        for (int targetMonster = 0; targetMonster < targetForm._monsterCount.Count; targetMonster++)
         {
-            if (targetMonster >= targetForm.transform.childCount)
+            if (_loadedDamage == 0.0f)
                 break;
 
-            Transform pos = targetForm.transform.GetChild(targetMonster);
-            EnemyBase enemy = pos.transform.GetChild(0).GetComponent<EnemyBase>();
-            if (enemy._state == EnemyBase.eState.Die)
+            if (!isFocusSet)
             {
-                targetMonster++;
-                continue;
+                for (int i = 0; i < targetForm._isFocusTargetOn.Length; i++)
+                    if (targetForm._isFocusTargetOn[i])
+                        targetMonster = i;
+
+                isFocusSet = true;
             }
 
+            GameObject pos = targetForm._monsterCount[targetMonster];
+            EnemyBase enemy = pos.transform.GetChild(0).GetComponent<EnemyBase>();
+            if (enemy._state == EnemyBase.eState.Die)
+                continue;
+
             enemy.DecreaseMonsterHP(_loadedDamage, this);
+            LoseLoadedDmg();
         }
     }
 
+    public void LoseLoadedDmg()
+    {
+        _loadedDamage = 0.0f;
+        _txt.UpdateText(_loadedDamage);
+    }
     #endregion CombatMethod
 }

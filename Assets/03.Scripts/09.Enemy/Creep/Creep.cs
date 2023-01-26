@@ -47,9 +47,14 @@ public class Creep : EnemyBase // Creep이 잡몹이라는 뜻인거 같아서 이름지음
 
     public override void DieMonster()
     {
+        if (_ui._focusTarget.activeSelf)
+            _ui._focusTarget.SetActive(false); 
+
         _state = eState.Die;
         MonsterFormation monsterFormMgr = transform.parent.parent.GetComponent<MonsterFormation>();
         monsterFormMgr.UpdateDieCount();
+        monsterFormMgr.UpdateFocusTargetInfo(this.gameObject);
+
         gameObject.SetActive(false);
     }
 }

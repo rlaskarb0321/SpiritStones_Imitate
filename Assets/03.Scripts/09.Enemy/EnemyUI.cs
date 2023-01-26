@@ -34,6 +34,7 @@ public class EnemyUI : MonoBehaviour
         _hpBar.fillAmount = value / _enemyBase._maxHp;
     }
 
+    #region FocusTarget UI
     public void CtrlFocusTargetActive()
     {
         if (GameManager._instance._gameFlow != eGameFlow.Idle)
@@ -66,4 +67,5 @@ public class EnemyUI : MonoBehaviour
 
         _focusTarget.SetActive(false);
     }
+    #endregion FocusTarget UI
 }

@@ -328,16 +328,40 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 964622274912532986, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 964622274912532986, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1215482464}
+    - target: {fileID: 964622274912532986, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1215482464}
+    - target: {fileID: 964622274912532986, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateFocusTargetInfo
+      objectReference: {fileID: 0}
     - target: {fileID: 964622274912532986, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: UpdateFocusTargetInfo
       objectReference: {fileID: 0}
     - target: {fileID: 964622274912532986, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MonsterFormation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 964622274912532986, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: MonsterFormation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 964622274912532986, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1215482463}
+    - target: {fileID: 964622274912532986, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 964622274912532986, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1691,7 +1715,6 @@ MonoBehaviour:
   _totalHp: 0
   _hpBarFill: {fileID: 1809157790}
   _hpTxt: {fileID: 2029873683}
-  _focusTarget: {fileID: 0}
   _enemyGroupObj: {fileID: 924848123}
 --- !u!1 &280291695
 GameObject:
@@ -2468,16 +2491,40 @@ PrefabInstance:
       value: Goblin  Veteran Archer
       objectReference: {fileID: 0}
     - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1931640757}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1931640757}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateFocusTargetInfo
+      objectReference: {fileID: 0}
     - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: UpdateFocusTargetInfo
       objectReference: {fileID: 0}
     - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MonsterFormation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: MonsterFormation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1931640756}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -4627,7 +4674,7 @@ PrefabInstance:
       objectReference: {fileID: 963922782}
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _maxHp
-      value: 210
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _atkPower
@@ -8877,16 +8924,40 @@ PrefabInstance:
       value: Goblin Warrior
       objectReference: {fileID: 0}
     - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1931640757}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1931640757}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateFocusTargetInfo
+      objectReference: {fileID: 0}
     - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: UpdateFocusTargetInfo
       objectReference: {fileID: 0}
     - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MonsterFormation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: MonsterFormation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1931640755}
+    - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8188856933449221524, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
