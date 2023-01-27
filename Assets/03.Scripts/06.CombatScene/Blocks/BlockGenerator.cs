@@ -15,7 +15,6 @@ public class BlockGenerator : MonoBehaviour, IGameFlow
     private void Start()
     {
         _combatMgr = _combatMgrObj.GetComponent<CombatSceneMgr>();
-        
     }
 
     /*
@@ -79,6 +78,10 @@ public class BlockGenerator : MonoBehaviour, IGameFlow
                 break;
 
             case eBlockType.Obstacle:
+                randomValue =
+                    Random.Range(0, _obstacleBlockPrefabsArr.Length);
+                GameObject obstacleBlock = Instantiate
+                    (_obstacleBlockPrefabsArr[(int)randomValue], spawnPos, Quaternion.identity, parent) as GameObject;
                 break;
         }
     }

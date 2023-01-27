@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour, IGameFlow
     public int _dockedCount;
     public List<GameObject> _blockMgrList; // 블럭들을 쉽게 관리하기 위한 메모리 리스트
     public List<BlockBase> _breakList; // 블럭들 파괴 전용 리스트
+    public List<GameObject> _obstacleBlockList; // 방해물 블럭 전용 리스트
 
     [Header("=== Game ===")]
     [SerializeField] private float _delayTime;
@@ -60,6 +61,8 @@ public class GameManager : MonoBehaviour, IGameFlow
         _initDelayTimeValue = _delayTime;
         _playerComboCount = 0;
 
+        _obstacleBlockList = new List<GameObject>();
+        _obstacleBlockList.Capacity = 35;
         _blockMgrList = new List<GameObject>();
         _blockMgrList.Capacity = 35;
         
@@ -99,6 +102,11 @@ public class GameManager : MonoBehaviour, IGameFlow
                     gameFlowSub.DoGameFlowAction();
                     break;
                 case eGameFlow.BackToIdle:
+                    for (int i = 0; i < _obstacleBlockList.Count; i++)
+                    {
+                        ObstacleBlock obstacleBlock = _obstacleBlockList[i].GetComponent<ObstacleBlock>();
+                        obstacleBlock.DoHarmfulAction();
+                    }
                     _gameFlow = eGameFlow.Idle;
                     break;
             }

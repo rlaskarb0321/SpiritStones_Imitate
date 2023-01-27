@@ -33,3 +33,8 @@ public enum eSpecialBlockType
     DualSword_Warrior,
     None,
 }
+
+public enum eObstacleBlockType
+{
+    Skull,
+}

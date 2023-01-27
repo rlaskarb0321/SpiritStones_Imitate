@@ -79,6 +79,10 @@ public class OneStrokeDrawer : MonoBehaviour
                         }
                     }
                     break;
+
+                case "ObstacleBlock":
+                    _breakBlock.PushToDrawnBlockList(GameManager._instance._breakList, blockBase);
+                    break;
             }
         }
 

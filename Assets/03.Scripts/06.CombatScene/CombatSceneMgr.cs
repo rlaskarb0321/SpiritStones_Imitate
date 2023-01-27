@@ -66,8 +66,10 @@ public class CombatSceneMgr : MonoBehaviour, IGameFlow
             _isStageClear[_currLevel - 1] = true;
 
             _monsterFormationByStage[_currLevel - 1].SetActive(false);
+
+            // 여기에 보스가 죽으면 해야 할 일을 작성
             _currLevel++;
-            _monsterFormationByStage[_currLevel - 1].SetActive(true);
+            _monsterFormationByStage[_currLevel - 1].SetActive(true); 
 
             return true;
         }

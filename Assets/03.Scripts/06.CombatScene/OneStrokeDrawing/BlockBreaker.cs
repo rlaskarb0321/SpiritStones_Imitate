@@ -67,9 +67,6 @@ public class BlockBreaker : IGameFlow
 
         if (list.Count >= 3)
         {
-            //if (GameManager._instance._gameFlowQueue.Peek() == eGameFlow.Idle)
-            //    GameManager._instance._gameFlowQueue.Dequeue();
-
             DoGameFlowAction();
 
             for (int i = list.Count - 1; i >= 0; i--)

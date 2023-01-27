@@ -10,8 +10,14 @@ public abstract class BlockBase : MonoBehaviour
     public virtual eNormalBlockType NormalType { get; set; }
     public virtual eSpecialBlockType SpecialType { get; set; }
     public virtual bool IsDocked { get; set; }
+    
+    private void FixedUpdate()
+    {
+        MoveBlock(this.gameObject);
+    }
 
     public virtual void DoAction() { }
+    
     public virtual void AddToMemoryList()
     {
         GameManager._instance._blockMgrList.Add(this.gameObject);
@@ -28,11 +34,6 @@ public abstract class BlockBase : MonoBehaviour
             return;
 
         block.transform.Translate(Vector2.down * MovSpeed * Time.deltaTime);
-    }
-
-    private void FixedUpdate()
-    {
-        MoveBlock(this.gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
