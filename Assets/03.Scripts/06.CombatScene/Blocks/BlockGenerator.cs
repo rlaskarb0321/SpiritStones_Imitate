@@ -10,48 +10,24 @@ public class BlockGenerator : MonoBehaviour, IGameFlow
     public GameObject[] _normalBlockPrefabsArr;
     public GameObject[] _normalItemBlockPrefabsArr;
     public GameObject[] _specialItemBlockPrefabsArr;
-    public GameObject[] _obstacleBlockPrefabsArr;
 
     private void Start()
     {
         _combatMgr = _combatMgrObj.GetComponent<CombatSceneMgr>();
     }
 
-    /*
-     * 보스라운드라면 obstacleBlock도 생성된다.
-     */
     eBlockType DetermineBlockType()
     {
         eBlockType blockType;
         int randomVal = Random.Range(0, 100);
 
-        // 현재가 보스라운드인지 아닌지 확인
-        if (_combatMgr._currLevel == _combatMgr._maxLevelValue)
+        if (randomVal <= _combatMgr._itemBlockPercentage)
         {
-            if (randomVal <= _combatMgr._obstacleBlockPercentage)
-            {
-                blockType = eBlockType.Obstacle;
-            }
-            else if (randomVal <= _combatMgr._itemBlockPercentage)
-            {
-                blockType = eBlockType.Item;
-            }
-            else
-            {
-                blockType = eBlockType.Normal;
-            }
+            blockType = eBlockType.Item;
         }
         else
         {
-            if (randomVal <=
-                (_combatMgr._itemBlockPercentage - _combatMgr._obstacleBlockPercentage))
-            {
-                blockType = eBlockType.Item;
-            }
-            else
-            {
-                blockType = eBlockType.Normal;
-            }
+            blockType = eBlockType.Normal;
         }
 
         return blockType;
@@ -75,13 +51,6 @@ public class BlockGenerator : MonoBehaviour, IGameFlow
                     Random.Range(0, _normalItemBlockPrefabsArr.Length);
                 GameObject itemBlock = Instantiate
                     (_normalItemBlockPrefabsArr[(int)randomValue], spawnPos, Quaternion.identity, parent) as GameObject;
-                break;
-
-            case eBlockType.Obstacle:
-                randomValue =
-                    Random.Range(0, _obstacleBlockPrefabsArr.Length);
-                GameObject obstacleBlock = Instantiate
-                    (_obstacleBlockPrefabsArr[(int)randomValue], spawnPos, Quaternion.identity, parent) as GameObject;
                 break;
         }
     }

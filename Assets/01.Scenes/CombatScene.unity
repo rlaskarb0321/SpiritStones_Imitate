@@ -417,11 +417,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
       propertyPath: _patternSetting.Array.data[0].patternPercentage
-      value: 5
+      value: 4.7
       objectReference: {fileID: 0}
     - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
       propertyPath: _patternSetting.Array.data[1].patternPercentage
-      value: 1.5
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
       propertyPath: _patternSetting.Array.data[2].patternPercentage
@@ -6721,7 +6721,6 @@ MonoBehaviour:
   - {fileID: 1010617152862570291, guid: de23cb99d94c8e64abcbc195d57acbf4, type: 3}
   - {fileID: 1010617152862570291, guid: 1b42c76bb1fb3aa4c9d58b71e40b31a7, type: 3}
   - {fileID: 1010617152862570291, guid: fb721f92394d785499bf43a265f0e012, type: 3}
-  _obstacleBlockPrefabsArr: []
 --- !u!1 &1318099791
 GameObject:
   m_ObjectHideFlags: 0
