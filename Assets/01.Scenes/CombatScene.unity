@@ -320,12 +320,112 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: -4240042740653620819, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: _normalPattern
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -4240042740653620819, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: _interruptPattern
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4240042740653620819, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
       propertyPath: _maxAttackWaitTurn
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -4240042740653620819, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: _patternByBossType
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: -4240042740653620819, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
       propertyPath: _currAttackWaitTurn
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: _pattern.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: _bossPattern.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: _bossPattern.Array.data[0]
+      value: Normal Pattern
+      objectReference: {fileID: 0}
+    - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: _bossPattern.Array.data[1]
+      value: Type By Pattern
+      objectReference: {fileID: 0}
+    - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: _bossPattern.Array.data[2]
+      value: ObstacleBlock Pattern
+      objectReference: {fileID: 0}
+    - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: _patternSetting.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: _bossPatternPercentage.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: _pattern.Array.data[0].patternName
+      value: NormalPattern
+      objectReference: {fileID: 0}
+    - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: _pattern.Array.data[1].patternName
+      value: TypeByPattern
+      objectReference: {fileID: 0}
+    - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: _pattern.Array.data[2].patternName
+      value: ObstacleBlockPattern
+      objectReference: {fileID: 0}
+    - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: _bossPatternPercentage.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: _bossPatternPercentage.Array.data[1]
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: _bossPatternPercentage.Array.data[2]
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: _pattern.Array.data[0].patternPercentage
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: _pattern.Array.data[1].patternPercentage
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: _pattern.Array.data[2].patternPercentage
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: _patternSetting.Array.data[0].patternName
+      value: Normal Pattern
+      objectReference: {fileID: 0}
+    - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: _patternSetting.Array.data[1].patternName
+      value: ObstacleBlock Pattern
+      objectReference: {fileID: 0}
+    - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: _patternSetting.Array.data[2].patternName
+      value: Type By Pattern
+      objectReference: {fileID: 0}
+    - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: _patternSetting.Array.data[0].patternPercentage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: _patternSetting.Array.data[1].patternPercentage
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: _patternSetting.Array.data[2].patternPercentage
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 964622274912532986, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -459,8 +559,26 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2511238539836116485, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+--- !u!1 &17743752 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4588754348641819037, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+  m_PrefabInstance: {fileID: 17743751}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &17743753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17743752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 693ef2598e0c79c4abdd8c41112e05aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &25943417
 GameObject:
   m_ObjectHideFlags: 0

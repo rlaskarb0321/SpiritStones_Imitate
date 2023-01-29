@@ -4,39 +4,34 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class Boss : EnemyBase, IBossType
+public class Boss : EnemyBase
 {
-    public enum eBossType { Aggressive, Defensive, }
-    public eBossType _eBossType;
-    public IBossType _bossType;
-
-    [Header("=== Weight Random Boss AttackPattern ===")]
-    public int _normalPattern;
-    public int _patternByBossType;
-    public int _interruptPattern;
+    [HideInInspector] public AggressiveBossPattern _bossPattern;
+    public BossWeightedRandomPattern _weightRandomPattern;
 
     private void Start()
     {
-        switch (_eBossType)
-        {
-            case eBossType.Aggressive:
-                _bossType = this.GetComponent<AggressiveBoss>();
-                break;
-            case eBossType.Defensive:
-                _bossType = this.GetComponent<DefensiveBoss>();
-                break;
-        }
-
-        if (_bossType == null)
-        {
-            Debug.Log("null");
-        }
+        _bossPattern = GetComponent<AggressiveBossPattern>();
+        _weightRandomPattern = GetComponent<BossWeightedRandomPattern>();
+        _weightRandomPattern.SetWeightData();
     }
 
     public override void DoMonsterAction(GameObject heroGroup)
     {
-        // 가중치 랜덤을 활용해서 보스의 공격패턴을 다양하게 해보자
-        // 보스타입이 공격적인지 방어적인지에 따라 다른패턴
+        // 가중치랜덤값에의해 보스의 공격방식을 결정
+        string attackType = _weightRandomPattern.ReturnRandomPattern();
+        switch (attackType)
+        {
+            case "Normal Pattern":
+                Debug.Log("Normal");
+                break;
+            case "ObstacleBlock Pattern":
+                Debug.Log("Obstacle");
+                break;
+            case "Type By Pattern":
+                Debug.Log("Type");
+                break;
+        }
     }
 
     public override void DecreaseMonsterHP(float amount, HeroBase hero)
