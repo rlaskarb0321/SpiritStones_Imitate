@@ -8,6 +8,7 @@ public class Boss : EnemyBase
 {
     [HideInInspector] public AggressiveBossPattern _aggressiveBoss;
     public BossWeightedRandomPattern _weightRandomPattern;
+    public GameObject[] _obstacleBlockList;
 
     private void Start()
     {
@@ -37,7 +38,7 @@ public class Boss : EnemyBase
                 case "Normal Pattern":
                     Debug.Log("Normal");
 
-                    heroTeam.DecreaseHp(_atkPower);
+                    AttackNormally(heroTeam);
                     _currAttackWaitTurn = _maxAttackWaitTurn;
                     _ui.UpdateAttackWaitTxt(_currAttackWaitTurn);
                     break;
@@ -45,6 +46,7 @@ public class Boss : EnemyBase
                 case "ObstacleBlock Pattern":
                     Debug.Log("Obstacle");
 
+                    GenerateObstacleBlock(2);
                     _currAttackWaitTurn = _maxAttackWaitTurn;
                     _ui.UpdateAttackWaitTxt(_currAttackWaitTurn);
                     break;
@@ -52,7 +54,7 @@ public class Boss : EnemyBase
                 case "Type By Pattern":
                     Debug.Log("Type");
 
-                    _aggressiveBoss.TestAttack();
+                    _aggressiveBoss.ChooseAggressiveAttack(heroTeam, this);
                     _currAttackWaitTurn = _maxAttackWaitTurn;
                     _ui.UpdateAttackWaitTxt(_currAttackWaitTurn);
                     break;
@@ -64,16 +66,61 @@ public class Boss : EnemyBase
 
     public override void DecreaseMonsterHP(float amount, HeroBase hero)
     {
+        if (amount == 0)
+            return;
 
+        _currHp -= amount;
+        if (_currHp <= 0.0f)
+        {
+            _currHp = 0.0f;
+            _ui.UpdateHp(_currHp);
+
+            if (_state != eState.Die)
+                DieMonster();
+            return;
+        }
+        _ui.UpdateHp(_currHp);
     }
 
     public override void DieMonster()
     {
+        if (_ui._focusTarget.activeSelf)
+            _ui._focusTarget.SetActive(false);
 
+        _state = eState.Die;
+        MonsterFormation monsterFormMgr = transform.parent.parent.GetComponent<MonsterFormation>();
+        monsterFormMgr.UpdateDieCount();
+        monsterFormMgr.UpdateFocusTargetInfo(this.gameObject);
+
+        gameObject.SetActive(false);
     }
 
-    public void NormalBossAttack()
+    void AttackNormally(HeroTeamMgr heroTeam)
     {
+        heroTeam.DecreaseHp(_atkPower);
+    }
 
+    void GenerateObstacleBlock(int generateCount)
+    {
+        int randObstacleBlock = Random.Range(0, _obstacleBlockList.Length);
+        GameObject obstacleBlockPrefab = _obstacleBlockList[randObstacleBlock];
+        
+        for (int i = 0; i < generateCount; i++)
+        {
+            randObstacleBlock = Random.Range(0, GameManager._instance._blockMgrList.Capacity);
+            while (GameManager._instance._blockMgrList[randObstacleBlock].tag == "ObstacleBlock")
+                randObstacleBlock = Random.Range(0, GameManager._instance._blockMgrList.Capacity);
+
+            GameObject preyBlock = GameManager._instance._blockMgrList[randObstacleBlock];
+            Transform preyBlockParentTr = preyBlock.transform.parent;
+
+            preyBlock.SetActive(false);
+            preyBlock.GetComponent<BlockBase>().RemoveFromMemoryList();
+
+
+            Instantiate(obstacleBlockPrefab, preyBlock.transform.position, Quaternion.identity, preyBlockParentTr);
+                
+            Destroy(preyBlock);
+        }
     }
 }

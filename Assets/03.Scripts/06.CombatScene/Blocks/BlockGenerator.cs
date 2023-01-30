@@ -10,6 +10,7 @@ public class BlockGenerator : MonoBehaviour, IGameFlow
     public GameObject[] _normalBlockPrefabsArr;
     public GameObject[] _normalItemBlockPrefabsArr;
     public GameObject[] _specialItemBlockPrefabsArr;
+    public GameObject[] _obstacleBlockPrefabsArr;
 
     private void Start()
     {

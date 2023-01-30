@@ -33,6 +33,12 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
 
         if (_enemyGroup.IsStageClear())
         {
+            if (_enemyGroup._isBossStageClear)
+            {
+                GameManager._instance._gameFlow = eGameFlow.BossStageClear;
+                return;
+            }
+
             GameManager._instance._gameFlow = eGameFlow.Idle;
         }
         else

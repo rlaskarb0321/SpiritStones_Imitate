@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public interface IGameFlow
 {
@@ -19,6 +20,7 @@ public enum eGameFlow
     StageClear,
     BackToIdle,
     InProgress, // 무한호출을 방지하기위해 선언한 변수
+    BossStageClear,
 }
 
 public class GameManager : MonoBehaviour, IGameFlow
@@ -37,6 +39,7 @@ public class GameManager : MonoBehaviour, IGameFlow
     private float _initDelayTimeValue;
     public eGameFlow _gameFlow;
     private WaitForSeconds _ws;
+    public Image _resultUI;
 
     [Header("=== Composition ===")]
     public GameObject _blockGeneratorObj;
@@ -48,7 +51,6 @@ public class GameManager : MonoBehaviour, IGameFlow
         if (_instance == null)
         {
             _instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -108,6 +110,9 @@ public class GameManager : MonoBehaviour, IGameFlow
                         obstacleBlock.DoHarmfulAction();
                     }
                     _gameFlow = eGameFlow.Idle;
+                    break;
+                case eGameFlow.BossStageClear:
+                    _resultUI.gameObject.SetActive(true);
                     break;
             }
             yield return null;

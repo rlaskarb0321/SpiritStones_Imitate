@@ -223,7 +223,8 @@ MonoBehaviour:
   _isDocked: 0
   _obstacleType: 0
   _explodeCountTxt: {fileID: 1960835292894128713}
-  _explodeCount: 3
+  _explodeEffectTime: 5.5
+  _explodeCount: 4
   _dieCount: 5
   _damagePercentage: 0.15
   _heroTeamMgrObj: {fileID: 0}

@@ -12,7 +12,7 @@ public abstract class EnemyBase : MonoBehaviour
     }
 
     [Header("=== Stat ===")]
-    [SerializeField] protected float _atkPower;
+    public float _atkPower;
     public float _maxHp;
     public float _currHp;
     [SerializeField] public int _maxAttackWaitTurn;

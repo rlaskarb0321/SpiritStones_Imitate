@@ -7,9 +7,11 @@ public class SkullBlock : ObstacleBlock
 {
     [Header("=== SkullBlock ===")]
     public Text _explodeCountTxt;
+    public float _explodeEffectTime;
     public int _explodeCount;
     public int _dieCount;
     public float _damagePercentage;
+    private bool _isEgnited;
 
     [Header("=== Target ===")]
     public GameObject _heroTeamMgrObj;
@@ -20,6 +22,7 @@ public class SkullBlock : ObstacleBlock
         base.AddToMemoryList();
         base.AddToHarmfulBlockList();
 
+        _heroTeamMgrObj = GameObject.Find("TeamPositionGroup");
         _explodeCountTxt.text = _explodeCount.ToString();
         _heroTeamMgr = _heroTeamMgrObj.GetComponent<HeroTeamMgr>();
     }
@@ -32,10 +35,17 @@ public class SkullBlock : ObstacleBlock
             return;
         }
         _explodeCountTxt.text = _explodeCount.ToString();
+        _isEgnited = true;
     }
 
     public override void DoHarmfulAction()
     {
+        if (_isEgnited)
+        {
+            _isEgnited = false;
+            return;
+        }
+
         _explodeCount--;
         _explodeCountTxt.text = _explodeCount.ToString();
 
@@ -46,15 +56,17 @@ public class SkullBlock : ObstacleBlock
         else if(_explodeCount == 0)
         {
             _explodeCountTxt.text = _explodeCount.ToString();
-            StartCoroutine(Explode());
+            Explode();
         }
     }
 
-    IEnumerator Explode()
+    void Explode()
     {
         // ¾Ç¸¶½º·´°Ô ¿ô´Â ¸ñ¼Ò¸® 2.0ÃÊ°£ Àç»ýÈÄ Æã
-
-        yield return new WaitForSeconds(2.0f);
+        while (_explodeEffectTime >= 0.0f)
+        {
+            _explodeEffectTime -= Time.deltaTime; 
+        }
 
         float damage = _heroTeamMgr._totalHp * _damagePercentage;
         _heroTeamMgr.DecreaseHp(damage);

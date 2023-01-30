@@ -10,6 +10,7 @@ public class CombatSceneMgr : MonoBehaviour, IGameFlow
     public int _currLevel;
     public float _itemBlockPercentage;
     public Image _stageBackGroundImage;
+    public bool _isBossStageClear;
 
     [Tooltip("아래의 두 Collection의 크기는 Max Level Value와 맞춰야 함")]
     public List<GameObject> _monsterFormationByStage; // 인덱스값에 맞춰 몬스터들 그룹을 넣어주자
@@ -63,14 +64,20 @@ public class CombatSceneMgr : MonoBehaviour, IGameFlow
         else
         {
             _isStageClear[_currLevel - 1] = true;
-
             _monsterFormationByStage[_currLevel - 1].SetActive(false);
 
             // 여기에 보스가 죽으면 해야 할 일을 작성
             _currLevel++;
-            _monsterFormationByStage[_currLevel - 1].SetActive(true); 
-
+            if (_currLevel <= _monsterFormationByStage.Count)
+            {
+                _monsterFormationByStage[_currLevel - 1].SetActive(true); 
+            }
+            else
+            {
+                _isBossStageClear = true;
+            }
             return true;
         }
     }
+
 }

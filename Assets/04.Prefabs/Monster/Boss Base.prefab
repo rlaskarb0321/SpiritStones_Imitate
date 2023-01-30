@@ -251,8 +251,10 @@ MonoBehaviour:
   _currAttackWaitTurn: 0
   _state: 0
   _ui: {fileID: 0}
-  _bossPattern: {fileID: 0}
+  _aggressiveBoss: {fileID: 0}
   _weightRandomPattern: {fileID: 0}
+  _obstacleBlockList:
+  - {fileID: 1960835292894128727, guid: 789a13049a22953448c44ff5821576cd, type: 3}
 --- !u!114 &787255147063583878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,6 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02122d1982fe3134b9e25272268936d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _patternSetting: []
 --- !u!1 &4588754348769616253
 GameObject:
   m_ObjectHideFlags: 0
