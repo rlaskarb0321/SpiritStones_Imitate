@@ -141,7 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movSpeed: 1.2
   _isDocked: 0
-  _specialType: 3
+  _specialType: 7
   _ignitedImg: {fileID: 21300000, guid: afed6a1d7a8270e4aad64cbdba715295, type: 3}
   _isIn_YequalX_Zone: 0
   _sliceEffect: {fileID: 7398387423075112122, guid: 52cc712fcf6c0a94cb9f1a959ca4f5c4, type: 3}

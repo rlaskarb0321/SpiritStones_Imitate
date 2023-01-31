@@ -439,7 +439,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -4240042740653620819, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
       propertyPath: _maxHp
-      value: 200
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: -4240042740653620819, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
       propertyPath: _atkPower
@@ -559,15 +559,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
       propertyPath: _patternSetting.Array.data[0].patternPercentage
-      value: 5.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
-      propertyPath: _patternSetting.Array.data[1].patternPercentage
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: _patternSetting.Array.data[1].patternPercentage
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
       propertyPath: _patternSetting.Array.data[2].patternPercentage
-      value: 3.5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 964622274912532986, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -3142,7 +3142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1813040532731060613, guid: 58487d08936a2f540b7929e491dcf87c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2647248715636548733, guid: 58487d08936a2f540b7929e491dcf87c, type: 3}
       propertyPath: _monsterCount.Array.size
@@ -6551,7 +6551,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 620807982098095665, guid: a83f561978d49794298785ba6f93de13, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2320482247707011120, guid: a83f561978d49794298785ba6f93de13, type: 3}
       propertyPath: m_Pivot.x
@@ -11057,7 +11057,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7987593931869138248, guid: b824a4ce5f59024419846e5ec7329e42, type: 3}
       propertyPath: _currLevel
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7987593931869138248, guid: b824a4ce5f59024419846e5ec7329e42, type: 3}
       propertyPath: _heroGroup
@@ -11069,7 +11069,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7987593931869138248, guid: b824a4ce5f59024419846e5ec7329e42, type: 3}
       propertyPath: _itemBlockPercentage
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7987593931869138248, guid: b824a4ce5f59024419846e5ec7329e42, type: 3}
       propertyPath: _stageBackGroundImage
@@ -11085,11 +11085,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7987593931869138248, guid: b824a4ce5f59024419846e5ec7329e42, type: 3}
       propertyPath: _isStageClear.Array.data[0]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7987593931869138248, guid: b824a4ce5f59024419846e5ec7329e42, type: 3}
       propertyPath: _isStageClear.Array.data[1]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7987593931869138248, guid: b824a4ce5f59024419846e5ec7329e42, type: 3}
       propertyPath: _monsterFormationByStage.Array.size

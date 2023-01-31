@@ -46,7 +46,7 @@ public class Boss : EnemyBase
                 case "ObstacleBlock Pattern":
                     Debug.Log("Obstacle");
 
-                    GenerateObstacleBlock(2);
+                    GenerateObstacleBlock(15);
                     _currAttackWaitTurn = _maxAttackWaitTurn;
                     _ui.UpdateAttackWaitTxt(_currAttackWaitTurn);
                     break;
@@ -111,16 +111,10 @@ public class Boss : EnemyBase
             while (GameManager._instance._blockMgrList[randObstacleBlock].tag == "ObstacleBlock")
                 randObstacleBlock = Random.Range(0, GameManager._instance._blockMgrList.Capacity);
 
-            GameObject preyBlock = GameManager._instance._blockMgrList[randObstacleBlock];
+            BlockBase preyBlock = GameManager._instance._blockMgrList[randObstacleBlock].GetComponent<BlockBase>();
             Transform preyBlockParentTr = preyBlock.transform.parent;
 
-            preyBlock.SetActive(false);
-            preyBlock.GetComponent<BlockBase>().RemoveFromMemoryList();
-
-
-            Instantiate(obstacleBlockPrefab, preyBlock.transform.position, Quaternion.identity, preyBlockParentTr);
-                
-            Destroy(preyBlock);
+            preyBlock.ConvertBlockType(obstacleBlockPrefab.name, obstacleBlockPrefab.GetComponent<Image>().sprite);
         }
     }
 }

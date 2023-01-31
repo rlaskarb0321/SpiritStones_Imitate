@@ -19,6 +19,9 @@ public class SkullBlock : ObstacleBlock
 
     void Start()
     {
+        Reset();
+        Debug.Log(this.GetComponent<Image>().sprite);
+
         base.AddToMemoryList();
         base.AddToHarmfulBlockList();
 
@@ -81,5 +84,18 @@ public class SkullBlock : ObstacleBlock
         base.RemoveFromMemoryList();
         base.RemoveFromHarmfulBlockList();
         Destroy(gameObject);
+    }
+
+    private void Reset()
+    {
+        _movSpeed = 1.2f;
+        _isDocked = true;
+        _obstacleType = eObstacleBlockType.Skull;
+
+        _explodeCountTxt = transform.GetChild(0).GetComponent<Text>();
+        _explodeEffectTime = 5.5f;
+        _explodeCount = 4;
+        _dieCount = 4;
+        _damagePercentage = 0.15f;
     }
 }

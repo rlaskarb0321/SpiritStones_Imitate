@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class BlockBase : MonoBehaviour
 {
@@ -34,6 +35,19 @@ public abstract class BlockBase : MonoBehaviour
             return;
 
         block.transform.Translate(Vector2.down * MovSpeed * Time.deltaTime);
+    }
+
+    public void ConvertBlockType(string keyWord, Sprite image)
+    {
+        switch (keyWord)
+        {
+            case "SkullBlock_Obstacle":
+                gameObject.AddComponent<SkullBlock>();
+                break;
+        }
+
+        var component = gameObject.GetComponent<BlockBase>();
+        Destroy(component);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
