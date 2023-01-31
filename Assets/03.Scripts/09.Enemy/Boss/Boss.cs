@@ -46,7 +46,7 @@ public class Boss : EnemyBase
                 case "ObstacleBlock Pattern":
                     Debug.Log("Obstacle");
 
-                    GenerateObstacleBlock(15);
+                    GenerateObstacleBlock(2);
                     _currAttackWaitTurn = _maxAttackWaitTurn;
                     _ui.UpdateAttackWaitTxt(_currAttackWaitTurn);
                     break;
@@ -107,11 +107,11 @@ public class Boss : EnemyBase
         
         for (int i = 0; i < generateCount; i++)
         {
-            randObstacleBlock = Random.Range(0, GameManager._instance._blockMgrList.Capacity);
-            while (GameManager._instance._blockMgrList[randObstacleBlock].tag == "ObstacleBlock")
-                randObstacleBlock = Random.Range(0, GameManager._instance._blockMgrList.Capacity);
+            int preyBlockIdx = Random.Range(0, GameManager._instance._blockMgrList.Capacity);
+            while (GameManager._instance._blockMgrList[preyBlockIdx].tag == "ObstacleBlock")
+                preyBlockIdx = Random.Range(0, GameManager._instance._blockMgrList.Capacity);
 
-            BlockBase preyBlock = GameManager._instance._blockMgrList[randObstacleBlock].GetComponent<BlockBase>();
+            BlockBase preyBlock = GameManager._instance._blockMgrList[preyBlockIdx].GetComponent<BlockBase>();
             Transform preyBlockParentTr = preyBlock.transform.parent;
 
             preyBlock.ConvertBlockType(obstacleBlockPrefab.name, obstacleBlockPrefab.GetComponent<Image>().sprite);

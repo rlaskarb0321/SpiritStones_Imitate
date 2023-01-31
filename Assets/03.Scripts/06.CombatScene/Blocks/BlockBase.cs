@@ -7,11 +7,11 @@ public abstract class BlockBase : MonoBehaviour
 {
     [SerializeField] protected float _movSpeed;
     [SerializeField] protected bool _isDocked;
-    public virtual float MovSpeed { get; set; }
     public virtual eNormalBlockType NormalType { get; set; }
     public virtual eSpecialBlockType SpecialType { get; set; }
-    public virtual bool IsDocked { get; set; }
-    
+    public virtual float MovSpeed { get { return _movSpeed; } set { _movSpeed = value; } }
+    public virtual bool IsDocked { get { return _isDocked; } set { _isDocked = value; } }
+
     private void FixedUpdate()
     {
         MoveBlock(this.gameObject);
@@ -39,14 +39,26 @@ public abstract class BlockBase : MonoBehaviour
 
     public void ConvertBlockType(string keyWord, Sprite image)
     {
+        var component = gameObject.GetComponent<BlockBase>();
+        component.RemoveFromMemoryList();
         switch (keyWord)
         {
             case "SkullBlock_Obstacle":
+                // Image관련 작업
+                Image skullImg = GetComponent<Image>();
+                Color color;
+                skullImg.sprite = image;
+                ColorUtility.TryParseHtmlString("#ADADAD", out color);
+                skullImg.color = color;
+
+                // 그 외
+                gameObject.tag = "ObstacleBlock";
+                gameObject.name = "SkullBlock_Obstacle (Clone)";
+
+
                 gameObject.AddComponent<SkullBlock>();
                 break;
         }
-
-        var component = gameObject.GetComponent<BlockBase>();
         Destroy(component);
     }
 
