@@ -6,9 +6,11 @@ using UnityEngine.UI;
 
 public class Boss : EnemyBase
 {
+    [Header("=== Attack Pattern ===")]
+    public GameObject[] _obstacleBlockList;
+    public int _obstacleBlockGenerateCount;
     [HideInInspector] public AggressiveBossPattern _aggressiveBoss;
     public BossWeightedRandomPattern _weightRandomPattern;
-    public GameObject[] _obstacleBlockList;
 
     private void Start()
     {
@@ -36,24 +38,18 @@ public class Boss : EnemyBase
             switch (attackType)
             {
                 case "Normal Pattern":
-                    Debug.Log("Normal");
-
                     AttackNormally(heroTeam);
                     _currAttackWaitTurn = _maxAttackWaitTurn;
                     _ui.UpdateAttackWaitTxt(_currAttackWaitTurn);
                     break;
 
                 case "ObstacleBlock Pattern":
-                    Debug.Log("Obstacle");
-
-                    GenerateObstacleBlock(2);
+                    GenerateObstacleBlock(_obstacleBlockGenerateCount);
                     _currAttackWaitTurn = _maxAttackWaitTurn;
                     _ui.UpdateAttackWaitTxt(_currAttackWaitTurn);
                     break;
 
                 case "Type By Pattern":
-                    Debug.Log("Type");
-
                     _aggressiveBoss.ChooseAggressiveAttack(heroTeam, this);
                     _currAttackWaitTurn = _maxAttackWaitTurn;
                     _ui.UpdateAttackWaitTxt(_currAttackWaitTurn);

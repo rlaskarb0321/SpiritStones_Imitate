@@ -474,6 +474,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4240042740653620819, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: _obstacleBlockGenerateCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4240042740653620819, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
       propertyPath: _obstacleBlockList.Array.size
       value: 1
       objectReference: {fileID: 0}
