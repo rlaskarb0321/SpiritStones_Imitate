@@ -104,8 +104,8 @@ public class Boss : EnemyBase
         for (int i = 0; i < generateCount; i++)
         {
             int preyBlockIdx = Random.Range(0, GameManager._instance._blockMgrList.Capacity);
-            while (GameManager._instance._blockMgrList[preyBlockIdx].tag == "ObstacleBlock")
-                preyBlockIdx = Random.Range(0, GameManager._instance._blockMgrList.Capacity);
+            //while (GameManager._instance._blockMgrList[preyBlockIdx].tag == "ObstacleBlock")
+            //    preyBlockIdx = Random.Range(0, GameManager._instance._blockMgrList.Capacity);
 
             BlockBase preyBlock = GameManager._instance._blockMgrList[preyBlockIdx].GetComponent<BlockBase>();
             Transform preyBlockParentTr = preyBlock.transform.parent;

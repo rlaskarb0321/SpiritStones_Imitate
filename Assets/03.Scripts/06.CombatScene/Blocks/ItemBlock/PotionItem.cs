@@ -15,11 +15,14 @@ public class PotionItem : ItemBlock
     private WaitForSeconds _ws;
     public GameObject _heroTeamObj;
     private HeroTeamMgr _heroTeam;
+    private AudioSource _audio;
+    public AudioClip _audioClip;
 
     private void Start()
     {
         base.AddToMemoryList();
         _thisImg = GetComponent<Image>();
+        _audio = GetComponent<AudioSource>();
         SpecialType = eSpecialBlockType.Potion_Magician;
         _ws = new WaitForSeconds(0.5f);
 
@@ -48,14 +51,16 @@ public class PotionItem : ItemBlock
         yield return new WaitUntil(() => GameManager._instance._dockedCount == 63);
         yield return _ws;
 
-        switch (gameObject.name)
+        switch (_specialType)
         {
-            case "PotionItem":
+            case eSpecialBlockType.Potion_Magician:
                 _heroTeam.IncreaseHp(_heroTeam._totalHp * 0.2f);
+                _audio.PlayOneShot(_audioClip, 1.0f);
                 break;
 
-            case "ElixirItem":
+            case eSpecialBlockType.Elixir_Magician:
                 _heroTeam.IncreaseHp(_heroTeam._totalHp * 0.45f);
+                _audio.PlayOneShot(_audioClip, 1.0f);
                 break;
         }
 

@@ -17,6 +17,8 @@ public class SwordItem : ItemBlock
     public GameObject _sliceEffect;
     private WaitForSeconds _ws;
     private BlockBreaker _blockBreaker;
+    public AudioSource _audio;
+    public AudioClip[] _audioClip;
 
     private void Start()
     {
@@ -25,6 +27,7 @@ public class SwordItem : ItemBlock
         SpecialType = eSpecialBlockType.Sword_Warrior;
         _ws = new WaitForSeconds(0.5f);
         _blockBreaker = new BlockBreaker();
+        _audio = GetComponent<AudioSource>();
     }
 
     public override void DoAction()
@@ -57,6 +60,8 @@ public class SwordItem : ItemBlock
                 sliceEffect = Instantiate(_sliceEffect, transform.position, 
                     Quaternion.Euler(0, 0, (-1 + (2 * i)) * 27.425f), parent.transform);
             }
+
+            _audio.PlayOneShot(_audioClip[1], 1.0f);
         }
         else
         {
@@ -71,6 +76,7 @@ public class SwordItem : ItemBlock
                     = Instantiate(_sliceEffect, transform.position, Quaternion.Euler(0, 0, -27.425f), parent.transform);
             }
 
+            _audio.PlayOneShot(_audioClip[0], 1.0f);
         }
 
         yield return new WaitUntil(() => sliceEffect.activeSelf == false);
