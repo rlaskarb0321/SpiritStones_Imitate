@@ -439,7 +439,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -4240042740653620819, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
       propertyPath: _maxHp
-      value: 2000
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: -4240042740653620819, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
       propertyPath: _atkPower
@@ -6636,7 +6636,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 0.01
+  m_PixelsPerUnitMultiplier: 0.52
 --- !u!222 &1215415320
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8848,7 +8848,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvasRayCaster: {fileID: 1623081768}
   _blockChain: {fileID: 0}
-  _lowAlpha: 0.05
+  _lowAlpha: 0.1
   _normalList: []
   _itemList: []
   _normalCount: 0
