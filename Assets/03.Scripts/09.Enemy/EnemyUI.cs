@@ -7,9 +7,11 @@ public class EnemyUI : MonoBehaviour
 {
     private EnemyBase _enemyBase;
 
+    [Header("=== UI ===")]
     public Image _img;
     public GameObject _focusTarget;
     public Text _waitCountTxt;
+    public GameObject[] _hitEffect;
 
     [Header("=== Hp ===")]
     public Image _hpBar;

@@ -5,6 +5,13 @@ using UnityEngine.UI;
 
 public abstract class HeroBase : MonoBehaviour
 {
+    public enum eState
+    {
+        Idle,
+        Attack,
+        EndAttack,
+    }
+
     [Header("=== Stat ===")]
     [SerializeField] protected string _rank;
     [SerializeField] protected float _atkPower;
@@ -20,9 +27,15 @@ public abstract class HeroBase : MonoBehaviour
     public GameObject _txtObj;
     [HideInInspector] public HeroDmgText _txt;
 
+    [HideInInspector]public Animator _animator;
+    protected int _hashAttack = Animator.StringToHash("isAttack");
+    public eState _heroState;
+
     private void Start()
     {
+        _heroState = eState.Idle;
         _txt = _txtObj.GetComponent<HeroDmgText>();
+        _animator = GetComponent<Animator>();
     }
 
     #region CombatMethod
@@ -34,9 +47,39 @@ public abstract class HeroBase : MonoBehaviour
 
     public virtual void Attack(CombatSceneMgr combatSceneMgr, int targetRound)
     {
-        // 라운드마다 몬스터의 진형을 선택 => 영웅이 적 진형을 인식함
+        if (_loadedDamage == 0)
+        {
+            return;
+        }
+
+        _animator.SetBool(_hashAttack, true);
+        StartCoroutine(AttackEnemy(combatSceneMgr, targetRound));
+    }
+
+    public virtual void SetAttackTiming()
+    {
+        _heroState = eState.Attack;
+    }
+
+    public virtual void GoToIdle()
+    {
+        _animator.SetBool(_hashAttack, false);
+        _heroState = eState.EndAttack;
+    }
+
+    public void LoseLoadedDmg()
+    {
+        _loadedDamage = 0.0f;
+        _txt.UpdateText(_loadedDamage);
+    }
+    #endregion CombatMethod
+
+    IEnumerator AttackEnemy(CombatSceneMgr combatScene, int targetRound)
+    {
+        yield return new WaitUntil(() => _heroState == eState.Attack);
+
         MonsterFormation targetForm =
-            combatSceneMgr._monsterFormationByStage[targetRound].GetComponent<MonsterFormation>();
+            combatScene._monsterFormationByStage[targetRound].GetComponent<MonsterFormation>();
 
         bool isFocusSet = false;
         for (int targetMonster = 0; targetMonster < targetForm._monsterCount.Count; targetMonster++)
@@ -61,12 +104,6 @@ public abstract class HeroBase : MonoBehaviour
             enemy.DecreaseMonsterHP(_loadedDamage, this);
             LoseLoadedDmg();
         }
+        yield return null;
     }
-
-    public void LoseLoadedDmg()
-    {
-        _loadedDamage = 0.0f;
-        _txt.UpdateText(_loadedDamage);
-    }
-    #endregion CombatMethod
 }

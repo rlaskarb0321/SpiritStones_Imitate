@@ -256,6 +256,7 @@ GameObject:
   - component: {fileID: 6946218630913306457}
   - component: {fileID: 4851970072380230213}
   - component: {fileID: 1429198063403898214}
+  - component: {fileID: 6100426709174060935}
   - component: {fileID: 5599076772446951082}
   m_Layer: 5
   m_Name: Warrior_Thief
@@ -325,6 +326,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &6100426709174060935
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7314048227816086653}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d726f30bbe055fb4aa5d910f2e2091a6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &5599076772446951082
 MonoBehaviour:
   m_ObjectHideFlags: 0

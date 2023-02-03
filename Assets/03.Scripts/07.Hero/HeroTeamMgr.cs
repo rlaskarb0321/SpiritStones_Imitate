@@ -29,22 +29,22 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
     public void DoGameFlowAction()
     {
         GameManager._instance._gameFlow = eGameFlow.InProgress;
-        Attack();
+        StartCoroutine(Attack());
 
-        if (_enemyGroup.IsStageClear())
-        {
-            if (_enemyGroup._isBossStageClear)
-            {
-                GameManager._instance._gameFlow = eGameFlow.BossStageClear;
-                return;
-            }
+        //if (_enemyGroup.IsStageClear())
+        //{
+        //    if (_enemyGroup._isBossStageClear)
+        //    {
+        //        GameManager._instance._gameFlow = eGameFlow.BossStageClear;
+        //        return;
+        //    }
 
-            GameManager._instance._gameFlow = eGameFlow.Idle;
-        }
-        else
-        {
-            GameManager._instance._gameFlow = eGameFlow.EnemyTurn; 
-        }
+        //    GameManager._instance._gameFlow = eGameFlow.Idle;
+        //}
+        //else
+        //{
+        //    GameManager._instance._gameFlow = eGameFlow.EnemyTurn;
+        //}
     }
 
     // 몬스터 측에서 영웅파티에 데미지를 주기위한 전용 함수
@@ -88,12 +88,44 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
         }
     }
 
-    void Attack()
+    IEnumerator Attack()
     {
-        foreach (GameObject pos in _heroPos)
+        //foreach (GameObject pos in _heroPos)
+        //{
+        //    HeroBase hero = pos.transform.GetChild(0).GetComponent<HeroBase>();
+        //    hero.Attack(_enemyGroup, _enemyGroup._currLevel - 1);
+        //}
+
+        int animEndCount = 0;
+        int index = 0;
+        while (animEndCount < _heroPos.Length)
         {
-            HeroBase hero = pos.transform.GetChild(0).GetComponent<HeroBase>();
+            HeroBase hero = _heroPos[index].transform.GetChild(0).GetComponent<HeroBase>();
             hero.Attack(_enemyGroup, _enemyGroup._currLevel - 1);
+
+            yield return new WaitUntil(() => 
+                hero._heroState == HeroBase.eState.EndAttack || hero._heroState == HeroBase.eState.Idle);
+
+            yield return new WaitForSeconds(0.75f);
+            animEndCount++;
+            index++;
+            hero._heroState = HeroBase.eState.Idle;
+        }
+
+        yield return new WaitUntil(() => animEndCount == _heroPos.Length);
+        if (_enemyGroup.IsStageClear())
+        {
+            if (_enemyGroup._isBossStageClear)
+            {
+                GameManager._instance._gameFlow = eGameFlow.BossStageClear;
+                yield break;
+            }
+
+            GameManager._instance._gameFlow = eGameFlow.Idle;
+        }
+        else
+        {
+            GameManager._instance._gameFlow = eGameFlow.EnemyTurn;
         }
     }
 
