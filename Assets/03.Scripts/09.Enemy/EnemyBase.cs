@@ -8,6 +8,8 @@ public abstract class EnemyBase : MonoBehaviour
     public enum eState
     {
         Alive,
+        Attack,
+        EndTurn,
         Die,
     }
 
@@ -44,4 +46,5 @@ public abstract class EnemyBase : MonoBehaviour
     public virtual void DieMonster()
     {
     }
+
 }

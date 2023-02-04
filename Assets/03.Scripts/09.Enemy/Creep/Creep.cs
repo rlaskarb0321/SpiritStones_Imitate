@@ -10,21 +10,21 @@ public class Creep : EnemyBase // Creep이 잡몹이라는 뜻인거 같아서 이름지음
         --_currAttackWaitTurn;
         if (_currAttackWaitTurn == 0)
         {
+            _state = eState.Attack;
             HeroTeamMgr heroTeam = heroGroup.GetComponent<HeroTeamMgr>();
-            heroTeam.DecreaseHp(_atkPower);
-
-            _currAttackWaitTurn = _maxAttackWaitTurn;
-            _ui.UpdateAttackWaitTxt(_currAttackWaitTurn);
-            return;
+            StartCoroutine(AttackToHero(heroTeam, heroTeam.GetComponent<RectTransform>(), this.GetComponent<RectTransform>()));
         }
 
         if (_currAttackWaitTurn == 1)
         {
             _ui.UpdateAttackWaitTxt(_currAttackWaitTurn, Color.red);
-            return;
+        }
+        else
+        {
+            _ui.UpdateAttackWaitTxt(_currAttackWaitTurn);
         }
 
-        _ui.UpdateAttackWaitTxt(_currAttackWaitTurn);
+        _state = eState.EndTurn;
     }
 
     public override void DecreaseMonsterHP(float amount, HeroBase hero)
@@ -56,5 +56,28 @@ public class Creep : EnemyBase // Creep이 잡몹이라는 뜻인거 같아서 이름지음
         monsterFormMgr.UpdateFocusTargetInfo(this.gameObject);
 
         gameObject.SetActive(false);
+    }
+
+    IEnumerator AttackToHero(HeroTeamMgr heroTeam, RectTransform targetPos, RectTransform myPos)
+    {
+        RectTransform initPos = myPos;
+        RectTransform rect = this.GetComponent<RectTransform>();
+        while (Vector2.Distance(targetPos.anchoredPosition, myPos.anchoredPosition) > 0.1f)
+        {
+            rect.anchoredPosition = Vector2.MoveTowards(targetPos.anchoredPosition, myPos.anchoredPosition, 0.001f);
+            yield return null;
+        }
+
+        heroTeam.DecreaseHp(_atkPower);
+
+        //while (Vector2.Distance(initPos, myPos) > 0.1f)
+        //{
+        //    transform.position = Vector2.MoveTowards(myPos, initPos, 0.3f);
+        //    yield return null;
+        //}
+
+        yield return new WaitForSeconds(0.15f);
+        _currAttackWaitTurn = _maxAttackWaitTurn;
+        _ui.UpdateAttackWaitTxt(_currAttackWaitTurn);
     }
 }

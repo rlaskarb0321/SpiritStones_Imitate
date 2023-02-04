@@ -34,6 +34,7 @@ public class Boss : EnemyBase
             // 가중치랜덤값에의해 보스의 공격방식을 결정
             string attackType = _weightRandomPattern.ReturnRandomPattern();
             HeroTeamMgr heroTeam = heroGroup.GetComponent<HeroTeamMgr>();
+            _state = eState.Attack;
 
             switch (attackType)
             {
@@ -57,6 +58,7 @@ public class Boss : EnemyBase
             } 
         }
 
+        _state = eState.EndTurn;
         _ui.UpdateAttackWaitTxt(_currAttackWaitTurn);
     }
 

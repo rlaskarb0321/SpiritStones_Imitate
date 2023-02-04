@@ -21,14 +21,42 @@ public class CombatSceneMgr : MonoBehaviour, IGameFlow
 
     public void DoGameFlowAction()
     {
+        float deltaTime = 115.0f;
+        if (GameManager._instance._gameFlow == eGameFlow.StageClear)
+        {
+            GameManager._instance._gameFlow = eGameFlow.InProgress;
+            while (deltaTime >= 0.0f)
+            {
+                Debug.Log(deltaTime);
+                deltaTime -= Time.deltaTime;
+            }
+
+            _isStageClear[_currLevel - 1] = true;
+            _monsterFormationByStage[_currLevel - 1].SetActive(false);
+
+            // 여기에 보스가 죽으면 해야 할 일을 작성
+            _currLevel++;
+            if (_currLevel <= _monsterFormationByStage.Count)
+            {
+                _monsterFormationByStage[_currLevel - 1].SetActive(true);
+            }
+            else
+            {
+                _isBossStageClear = true;
+            }
+
+            GameManager._instance._gameFlow = eGameFlow.Idle;
+            deltaTime = 15.0f;
+            return;
+        }
+
+        Debug.Log("여기는 나오면 안됨");
         DoEnemyAction();
     }
 
     void DoEnemyAction()
     {
-        if (IsStageClear())
-            return;
-
+        GameManager._instance._gameFlow = eGameFlow.InProgress;
         GameObject currLevelMonsterFormation = _monsterFormationByStage[_currLevel - 1];
         for (int i = 0; i < currLevelMonsterFormation.transform.childCount; i++)
         {
@@ -40,7 +68,16 @@ public class CombatSceneMgr : MonoBehaviour, IGameFlow
                 monster.DoMonsterAction(_heroGroup);
         }
 
+        StartCoroutine(CheckAttackEnd(currLevelMonsterFormation));
+    }
+
+    IEnumerator CheckAttackEnd(GameObject currMonsterForm)
+    {
+        MonsterFormation monsterFormation = currMonsterForm.GetComponent<MonsterFormation>();
+        yield return new WaitUntil(() => monsterFormation._endTurnMonsterCount == monsterFormation._monsterCount.Count);
+
         GameManager._instance._gameFlow = eGameFlow.BackToIdle;
+        monsterFormation._endTurnMonsterCount = 0;
     }
 
     public void GoToNextStage()
@@ -53,31 +90,4 @@ public class CombatSceneMgr : MonoBehaviour, IGameFlow
             hero.LoseLoadedDmg();
         }
     }
-
-    public bool IsStageClear()
-    {
-        if (GameManager._instance._gameFlow != eGameFlow.StageClear)
-        {
-            GameManager._instance._gameFlow = eGameFlow.EnemyTurn;
-            return false;
-        }
-        else
-        {
-            _isStageClear[_currLevel - 1] = true;
-            _monsterFormationByStage[_currLevel - 1].SetActive(false);
-
-            // 여기에 보스가 죽으면 해야 할 일을 작성
-            _currLevel++;
-            if (_currLevel <= _monsterFormationByStage.Count)
-            {
-                _monsterFormationByStage[_currLevel - 1].SetActive(true); 
-            }
-            else
-            {
-                _isBossStageClear = true;
-            }
-            return true;
-        }
-    }
-
 }

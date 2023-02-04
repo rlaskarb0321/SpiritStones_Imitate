@@ -30,21 +30,6 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
     {
         GameManager._instance._gameFlow = eGameFlow.InProgress;
         StartCoroutine(Attack());
-
-        //if (_enemyGroup.IsStageClear())
-        //{
-        //    if (_enemyGroup._isBossStageClear)
-        //    {
-        //        GameManager._instance._gameFlow = eGameFlow.BossStageClear;
-        //        return;
-        //    }
-
-        //    GameManager._instance._gameFlow = eGameFlow.Idle;
-        //}
-        //else
-        //{
-        //    GameManager._instance._gameFlow = eGameFlow.EnemyTurn;
-        //}
     }
 
     // 몬스터 측에서 영웅파티에 데미지를 주기위한 전용 함수
@@ -90,12 +75,6 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
 
     IEnumerator Attack()
     {
-        //foreach (GameObject pos in _heroPos)
-        //{
-        //    HeroBase hero = pos.transform.GetChild(0).GetComponent<HeroBase>();
-        //    hero.Attack(_enemyGroup, _enemyGroup._currLevel - 1);
-        //}
-
         int animEndCount = 0;
         int index = 0;
         while (animEndCount < _heroPos.Length)
@@ -106,14 +85,15 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
             yield return new WaitUntil(() => 
                 hero._heroState == HeroBase.eState.EndAttack || hero._heroState == HeroBase.eState.Idle);
 
-            yield return new WaitForSeconds(0.75f);
+            yield return new WaitForSeconds(0.35f);
             animEndCount++;
             index++;
             hero._heroState = HeroBase.eState.Idle;
         }
 
         yield return new WaitUntil(() => animEndCount == _heroPos.Length);
-        if (_enemyGroup.IsStageClear())
+
+        if (GameManager._instance._gameFlow == eGameFlow.StageClear)
         {
             if (_enemyGroup._isBossStageClear)
             {
