@@ -62,19 +62,18 @@ public class Creep : EnemyBase // Creep이 잡몹이라는 뜻인거 같아서 이름지음
     {
         RectTransform initPos = myPos;
         RectTransform rect = this.GetComponent<RectTransform>();
-        while (Vector2.Distance(targetPos.anchoredPosition, myPos.anchoredPosition) > 0.1f)
+        while (Vector2.Distance(targetPos.position, myPos.position) > 0.1f)
         {
-            rect.anchoredPosition = Vector2.MoveTowards(targetPos.anchoredPosition, myPos.anchoredPosition, 0.001f);
+            rect.position = Vector2.MoveTowards(targetPos.position, myPos.position, 0.01f);
             yield return null;
         }
 
         heroTeam.DecreaseHp(_atkPower);
-
-        //while (Vector2.Distance(initPos, myPos) > 0.1f)
-        //{
-        //    transform.position = Vector2.MoveTowards(myPos, initPos, 0.3f);
-        //    yield return null;
-        //}
+        while (Vector2.Distance(initPos.position, myPos.position) > 0.1f)
+        {
+            rect.position = Vector2.MoveTowards(initPos.position, myPos.position, 0.03f);
+            yield return null;
+        }
 
         yield return new WaitForSeconds(0.15f);
         _currAttackWaitTurn = _maxAttackWaitTurn;
