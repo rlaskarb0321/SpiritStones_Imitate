@@ -19,8 +19,8 @@ public enum eGameFlow
     EnemyTurn,
     StageClear,
     BackToIdle,
-    InProgress, // 무한호출을 방지하기위해 선언한 변수
     BossStageClear,
+    InProgress, // 무한호출을 방지하기위해 선언한 변수
 }
 
 public class GameManager : MonoBehaviour, IGameFlow
@@ -75,12 +75,17 @@ public class GameManager : MonoBehaviour, IGameFlow
         StartCoroutine(InGameMainFlow());
     }
 
+    void Update()
+    {
+        InGameMainFlow();
+    }
+
     IEnumerator InGameMainFlow()
     {
         IGameFlow gameFlowSub;
 
         // 보스가 죽지 않아서 스테이지 진행중일때 까지 실행
-        while (true)
+        while (_gameFlow != eGameFlow.BossStageClear)
         {
             switch (_gameFlow)
             {
@@ -96,10 +101,12 @@ public class GameManager : MonoBehaviour, IGameFlow
                     gameFlowSub.DoGameFlowAction();
                     break;
                 case eGameFlow.StageClear:
-                    gameFlowSub = _combatSceneMgrObj.GetComponent<CombatSceneMgr>();
+                    // 이곳에 combatScene에 DoGameFlow를 호출하는 대신 StageMgr 같은 obj에 DoGameFlowAction을 할 예쩡
+                    gameFlowSub = _combatSceneMgrObj.GetComponent<StageMgr>();
                     gameFlowSub.DoGameFlowAction();
                     break;
                 case eGameFlow.EnemyTurn:
+                    yield return _ws;
                     gameFlowSub = _combatSceneMgrObj.GetComponent<CombatSceneMgr>();
                     gameFlowSub.DoGameFlowAction();
                     break;
@@ -115,6 +122,7 @@ public class GameManager : MonoBehaviour, IGameFlow
                     _resultUI.gameObject.SetActive(true);
                     break;
             }
+
             yield return null;
         }
     }

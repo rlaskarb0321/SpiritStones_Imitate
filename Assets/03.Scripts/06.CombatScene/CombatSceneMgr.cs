@@ -21,37 +21,29 @@ public class CombatSceneMgr : MonoBehaviour, IGameFlow
 
     public void DoGameFlowAction()
     {
-        float deltaTime = 115.0f;
-        if (GameManager._instance._gameFlow == eGameFlow.StageClear)
-        {
-            GameManager._instance._gameFlow = eGameFlow.InProgress;
-            while (deltaTime >= 0.0f)
-            {
-                Debug.Log(deltaTime);
-                deltaTime -= Time.deltaTime;
-            }
-
-            _isStageClear[_currLevel - 1] = true;
-            _monsterFormationByStage[_currLevel - 1].SetActive(false);
-
-            // 여기에 보스가 죽으면 해야 할 일을 작성
-            _currLevel++;
-            if (_currLevel <= _monsterFormationByStage.Count)
-            {
-                _monsterFormationByStage[_currLevel - 1].SetActive(true);
-            }
-            else
-            {
-                _isBossStageClear = true;
-            }
-
-            GameManager._instance._gameFlow = eGameFlow.Idle;
-            deltaTime = 15.0f;
-            return;
-        }
-
-        Debug.Log("여기는 나오면 안됨");
         DoEnemyAction();
+        //Debug.Log(GameManager._instance._gameFlow);
+        //if (GameManager._instance._gameFlow == eGameFlow.StageClear)
+        //{
+        //    GameManager._instance._gameFlow = eGameFlow.InProgress;
+
+        //    _isStageClear[_currLevel - 1] = true;
+        //    _monsterFormationByStage[_currLevel - 1].SetActive(false);
+
+        //    // 여기에 보스가 죽으면 해야 할 일을 작성
+        //    _currLevel++;
+        //    if (_currLevel <= _monsterFormationByStage.Count)
+        //    {
+        //        _monsterFormationByStage[_currLevel - 1].SetActive(true);
+        //    }
+        //    else
+        //    {
+        //        _isBossStageClear = true;
+        //    }
+
+        //    GameManager._instance._gameFlow = eGameFlow.Idle;
+        //    return;
+        //}
     }
 
     void DoEnemyAction()
@@ -82,12 +74,6 @@ public class CombatSceneMgr : MonoBehaviour, IGameFlow
 
     public void GoToNextStage()
     {
-        GameManager._instance._gameFlow = eGameFlow.StageClear;
 
-        for (int i = 0; i < _heroGroup.transform.childCount; i++)
-        {
-            HeroBase hero = _heroGroup.transform.GetChild(i).GetChild(0).GetComponent<HeroBase>();
-            hero.LoseLoadedDmg();
-        }
     }
 }

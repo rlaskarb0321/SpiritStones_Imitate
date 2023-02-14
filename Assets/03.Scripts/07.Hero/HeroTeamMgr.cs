@@ -18,6 +18,7 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
     [Header("=== Target ===")]
     public GameObject _enemyGroupObj;
     private CombatSceneMgr _enemyGroup;
+    private MonsterFormation _monsterForm;
 
     private void Awake()
     {
@@ -29,6 +30,8 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
     public void DoGameFlowAction()
     {
         GameManager._instance._gameFlow = eGameFlow.InProgress;
+        _monsterForm = _enemyGroup._monsterFormationByStage[_enemyGroup._currLevel - 1].GetComponent<MonsterFormation>();
+
         StartCoroutine(Attack());
     }
 
@@ -52,6 +55,14 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
             _currHp = _totalHp;
         }
         UpdateHp(_currHp);
+    }
+
+    public void LooseHeroDmg()
+    {
+        for (int i = 0; i < _heroPos.Length; i++)
+        {
+            _heroPos[i].transform.GetChild(0).GetComponent<HeroBase>().LoseLoadedDmg();
+        }
     }
 
     void InitHeroInformation()
@@ -91,22 +102,12 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
             hero._heroState = HeroBase.eState.Idle;
         }
 
+        // 공격 애니메이션이 다 끝남
         yield return new WaitUntil(() => animEndCount == _heroPos.Length);
-
         if (GameManager._instance._gameFlow == eGameFlow.StageClear)
-        {
-            if (_enemyGroup._isBossStageClear)
-            {
-                GameManager._instance._gameFlow = eGameFlow.BossStageClear;
-                yield break;
-            }
+            yield break;
 
-            GameManager._instance._gameFlow = eGameFlow.Idle;
-        }
-        else
-        {
-            GameManager._instance._gameFlow = eGameFlow.EnemyTurn;
-        }
+        GameManager._instance._gameFlow = eGameFlow.EnemyTurn;
     }
 
     void UpdateHp(float amount)

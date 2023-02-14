@@ -7,14 +7,12 @@ public class MonsterFormation : MonoBehaviour
     public int _dieCount;
     public List<GameObject> _monsterCount;
     public bool[] _isFocusTargetOn;
-    private WaitForSeconds _ws;
     public int _endTurnMonsterCount;
 
     private void OnEnable()
     {
         _dieCount = 0;
         _endTurnMonsterCount = 0;
-        _ws = new WaitForSeconds(0.15f);
         EnemyBase[] monsters = new EnemyBase[_monsterCount.Count];
         for (int i = 0; i < monsters.Length; i++)
         {
@@ -27,12 +25,6 @@ public class MonsterFormation : MonoBehaviour
     public void UpdateDieCount()
     {
         _dieCount++;
-
-        if (_dieCount == _monsterCount.Count)
-        {
-            CombatSceneMgr combatMgr = transform.parent.GetComponent<CombatSceneMgr>();
-            combatMgr.GoToNextStage();
-        }
     }
 
     public void UpdateFocusTargetInfo(GameObject monster)
@@ -52,8 +44,14 @@ public class MonsterFormation : MonoBehaviour
 
     IEnumerator CheckMonsterTurn(EnemyBase[] monsters)
     {
-        while (true)
+        while (gameObject.activeSelf)
         {
+            if (_dieCount == _monsterCount.Count)
+            {
+                GameManager._instance._gameFlow = eGameFlow.StageClear;
+                yield break;
+            }
+
             for (int i = 0; i < monsters.Length; i++)
             {
                 switch (monsters[i]._state)
@@ -69,7 +67,7 @@ public class MonsterFormation : MonoBehaviour
                 }
             }
 
-            yield return _ws;
+            yield return null;
         }
     }
 }
