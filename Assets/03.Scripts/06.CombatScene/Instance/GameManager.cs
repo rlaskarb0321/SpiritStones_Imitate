@@ -18,6 +18,7 @@ public enum eGameFlow
     HeroAttack,
     EnemyTurn,
     StageClear,
+    InStageClear,
     BackToIdle,
     BossStageClear,
     InProgress, // 무한호출을 방지하기위해 선언한 변수
