@@ -5,51 +5,52 @@ using UnityEngine.UI;
 
 public class CombatSceneMgr : MonoBehaviour, IGameFlow
 {
-    [Header("=== Stage ===")]
-    public int _maxLevelValue;
-    public int _currLevel;
-    public float _itemBlockPercentage;
-    public Image _stageBackGroundImage;
-    public bool _isBossStageClear;
-
     [Tooltip("아래의 두 Collection의 크기는 Max Level Value와 맞춰야 함")]
     public List<GameObject> _monsterFormationByStage; // 인덱스값에 맞춰 몬스터들 그룹을 넣어주자
-    public List<bool> _isStageClear;
+    [HideInInspector]public StageMgr _stageMgr;
 
     [Header("=== target ===")]
     public GameObject _heroGroup;
 
+    private void Awake()
+    {
+        _stageMgr = GetComponent<StageMgr>();
+    }
+
     public void DoGameFlowAction()
     {
         DoEnemyAction();
-        //Debug.Log(GameManager._instance._gameFlow);
-        //if (GameManager._instance._gameFlow == eGameFlow.StageClear)
-        //{
-        //    GameManager._instance._gameFlow = eGameFlow.InProgress;
+        #region 23/02/15 스테이지 이동코드를 StageMgr로 이동
+        /*
+        if (GameManager._instance._gameFlow == eGameFlow.StageClear)
+        {
+            GameManager._instance._gameFlow = eGameFlow.InProgress;
 
-        //    _isStageClear[_currLevel - 1] = true;
-        //    _monsterFormationByStage[_currLevel - 1].SetActive(false);
+            _isStageClear[_currLevel - 1] = true;
+            _monsterFormationByStage[_currLevel - 1].SetActive(false);
 
-        //    // 여기에 보스가 죽으면 해야 할 일을 작성
-        //    _currLevel++;
-        //    if (_currLevel <= _monsterFormationByStage.Count)
-        //    {
-        //        _monsterFormationByStage[_currLevel - 1].SetActive(true);
-        //    }
-        //    else
-        //    {
-        //        _isBossStageClear = true;
-        //    }
+            // 여기에 보스가 죽으면 해야 할 일을 작성
+            _currLevel++;
+            if (_currLevel <= _monsterFormationByStage.Count)
+            {
+                _monsterFormationByStage[_currLevel - 1].SetActive(true);
+            }
+            else
+            {
+                _isBossStageClear = true;
+            }
 
-        //    GameManager._instance._gameFlow = eGameFlow.Idle;
-        //    return;
-        //}
+            GameManager._instance._gameFlow = eGameFlow.Idle;
+            return;
+        }
+        */
+        #endregion
     }
 
     void DoEnemyAction()
     {
         GameManager._instance._gameFlow = eGameFlow.InProgress;
-        GameObject currLevelMonsterFormation = _monsterFormationByStage[_currLevel - 1];
+        GameObject currLevelMonsterFormation = _monsterFormationByStage[_stageMgr._currLevel - 1];
         for (int i = 0; i < currLevelMonsterFormation.transform.childCount; i++)
         {
             Transform monsterPos = currLevelMonsterFormation.transform.GetChild(i); // 스테이지별 몬스터 그룹속 몬스터의 위치
@@ -74,6 +75,17 @@ public class CombatSceneMgr : MonoBehaviour, IGameFlow
 
     public void GoToNextStage()
     {
+        _stageMgr._isStageClear[_stageMgr._currLevel - 1] = true;
+        _monsterFormationByStage[_stageMgr._currLevel - 1].SetActive(false);
+        _stageMgr._currLevel++;
 
+        if (_stageMgr._currLevel <= _monsterFormationByStage.Count)
+        {
+            _monsterFormationByStage[_stageMgr._currLevel - 1].SetActive(true);
+        }
+        else
+        {
+            _stageMgr._isBossStageClear = true;
+        }
     }
 }

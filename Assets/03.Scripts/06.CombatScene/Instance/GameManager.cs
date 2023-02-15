@@ -12,14 +12,14 @@ public interface IGameFlow
 // 게임의 흐름을 담당
 public enum eGameFlow
 {
-    Idle,
-    LoadDamage,
-    GenerateSpecialItemBlock,
+    Idle, // 대기 상태
+    LoadDamage, // 데미지를 쌓고있는 상태
+    GenerateSpecialItemBlock, // 스페셜블럭생산단계
     HeroAttack,
     EnemyTurn,
     StageClear,
     InStageClear,
-    BackToIdle,
+    BackToIdle, // 대기상태로 돌아가기 전 체크
     BossStageClear,
     InProgress, // 무한호출을 방지하기위해 선언한 변수
 }
@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour, IGameFlow
     public int _playerComboCount;
     private float _initDelayTimeValue;
     public eGameFlow _gameFlow;
-    private WaitForSeconds _ws;
     public Image _resultUI;
 
     [Header("=== Composition ===")]
@@ -71,19 +70,19 @@ public class GameManager : MonoBehaviour, IGameFlow
         
         _breakList = new List<BlockBase>();
         _breakList.Capacity = 35;
-        _ws = new WaitForSeconds(1.3f);
 
         StartCoroutine(InGameMainFlow());
     }
 
-    void Update()
-    {
-        InGameMainFlow();
-    }
-
     IEnumerator InGameMainFlow()
     {
-        IGameFlow gameFlowSub;
+        #region 23/02/15 GetComponent 최소화
+        //IGameFlow gameFlowSub;
+        #endregion
+        BlockGenerator blockGenerator = _blockGeneratorObj.GetComponent<BlockGenerator>();
+        HeroTeamMgr heroTeam = _heroTeamMgrObj.GetComponent<HeroTeamMgr>();
+        StageMgr stageMgr = _combatSceneMgrObj.GetComponent<StageMgr>();
+        CombatSceneMgr combatScene = _combatSceneMgrObj.GetComponent<CombatSceneMgr>();
 
         // 보스가 죽지 않아서 스테이지 진행중일때 까지 실행
         while (_gameFlow != eGameFlow.BossStageClear)
@@ -91,25 +90,35 @@ public class GameManager : MonoBehaviour, IGameFlow
             switch (_gameFlow)
             {
                 case eGameFlow.LoadDamage:
-                    DoGameFlowAction();
+                    this.DoGameFlowAction();
                     break;
                 case eGameFlow.GenerateSpecialItemBlock:
-                    gameFlowSub = _blockGeneratorObj.GetComponent<BlockGenerator>();
-                    gameFlowSub.DoGameFlowAction();
+                    blockGenerator.DoGameFlowAction();
+                    #region 23/02/15 GetComponent 최소화
+                    //gameFlowSub = _blockGeneratorObj.GetComponent<BlockGenerator>();
+                    //gameFlowSub.DoGameFlowAction();
+                    #endregion
                     break;
                 case eGameFlow.HeroAttack:
-                    gameFlowSub = _heroTeamMgrObj.GetComponent<HeroTeamMgr>();
-                    gameFlowSub.DoGameFlowAction();
+                    heroTeam.DoGameFlowAction();
+                    #region 23/02/15 GetComponent 최소화
+                    //gameFlowSub = _heroTeamMgrObj.GetComponent<HeroTeamMgr>();
+                    //gameFlowSub.DoGameFlowAction();
+                    #endregion
                     break;
                 case eGameFlow.StageClear:
-                    // 이곳에 combatScene에 DoGameFlow를 호출하는 대신 StageMgr 같은 obj에 DoGameFlowAction을 할 예쩡
-                    gameFlowSub = _combatSceneMgrObj.GetComponent<StageMgr>();
-                    gameFlowSub.DoGameFlowAction();
+                    stageMgr.DoGameFlowAction();
+                    #region 23/02/15 GetComponent 최소화
+                    //gameFlowSub = _combatSceneMgrObj.GetComponent<StageMgr>();
+                    //gameFlowSub.DoGameFlowAction();
+                    #endregion
                     break;
                 case eGameFlow.EnemyTurn:
-                    yield return _ws;
-                    gameFlowSub = _combatSceneMgrObj.GetComponent<CombatSceneMgr>();
-                    gameFlowSub.DoGameFlowAction();
+                    combatScene.DoGameFlowAction();
+                    #region 23/02/15 GetComponent 최소화
+                    //gameFlowSub = _combatSceneMgrObj.GetComponent<CombatSceneMgr>();
+                    //gameFlowSub.DoGameFlowAction();
+                    #endregion
                     break;
                 case eGameFlow.BackToIdle:
                     for (int i = 0; i < _obstacleBlockList.Count; i++)

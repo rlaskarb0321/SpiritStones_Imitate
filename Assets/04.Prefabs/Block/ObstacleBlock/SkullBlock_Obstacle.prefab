@@ -220,11 +220,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010ff7c3092bbf84c819f7c2a92489cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movSpeed: 1.2
+  _movSpeed: 1.5
   _isDocked: 0
   _obstacleType: 0
   _explodeCountTxt: {fileID: 1960835292894128713}
-  _txtPos: {fileID: 7303223212806324985}
   _explodeEffectTime: 5.5
   _explodeCount: 4
   _dieCount: 5

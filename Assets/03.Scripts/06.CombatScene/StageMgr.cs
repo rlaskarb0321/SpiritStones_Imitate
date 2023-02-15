@@ -5,8 +5,16 @@ using UnityEngine.UI;
 
 public class StageMgr : MonoBehaviour, IGameFlow
 {
+    [Header("=== Stage ===")]
+    public int _maxLevelValue;
+    public int _currLevel;
+    public float _itemBlockPercentage;
+    public bool _isBossStageClear;
+    public List<bool> _isStageClear;
+
+    [Header("=== UI ===")]
     public Image _stageBackGroundImg;
-    public Image _moveStagePanel;
+    public Image _fadeInOutPanel;
     public Text _stageAlarmTxt;
     private CombatSceneMgr _combatMgr;
 
@@ -27,7 +35,7 @@ public class StageMgr : MonoBehaviour, IGameFlow
 
     IEnumerator DoStageClearAction()
     {
-        _stageAlarmTxt.text = $"STAGE 1\n{_combatMgr._currLevel} / {_combatMgr._maxLevelValue}";
+        _stageAlarmTxt.text = $"STAGE 1\n{_currLevel} / {_maxLevelValue}";
         HeroTeamMgr heroTeamMgr = _combatMgr._heroGroup.GetComponent<HeroTeamMgr>();
         heroTeamMgr.LooseHeroDmg();
 
@@ -35,6 +43,9 @@ public class StageMgr : MonoBehaviour, IGameFlow
         {
             // ui들은 나중에 새로운 스크립트로 분리
             // 패널로 Fade in&out 효과를 주고 스테이지 이동때 필요한 작업을 함
+            yield return new WaitForSeconds(2.5f);
+            _combatMgr.GoToNextStage();
+            GameManager._instance._gameFlow = eGameFlow.Idle;
 
             /* 패널
              * 패널은 평상시엔 activeSelf = false이고, InStageClear일때 true로 놓음, 아이템블럭과 유사한 방식으로 애님재생

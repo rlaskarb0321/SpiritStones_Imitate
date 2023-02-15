@@ -38,7 +38,6 @@ public abstract class HeroBase : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    #region CombatMethod
     public virtual void DevelopLoadedDamage()
     {
         _loadedDamage += _atkPower;
@@ -72,7 +71,6 @@ public abstract class HeroBase : MonoBehaviour
         _loadedDamage = 0.0f;
         _txt.UpdateText(_loadedDamage);
     }
-    #endregion CombatMethod
 
     IEnumerator AttackEnemy(CombatSceneMgr combatScene, int targetRound)
     {

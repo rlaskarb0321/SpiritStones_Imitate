@@ -11506,6 +11506,14 @@ PrefabInstance:
       value: -346
       objectReference: {fileID: 0}
     - target: {fileID: 7144553102981401392, guid: b824a4ce5f59024419846e5ec7329e42, type: 3}
+      propertyPath: _currLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144553102981401392, guid: b824a4ce5f59024419846e5ec7329e42, type: 3}
+      propertyPath: _maxLevelValue
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144553102981401392, guid: b824a4ce5f59024419846e5ec7329e42, type: 3}
       propertyPath: _stageAlarmTxt
       value: 
       objectReference: {fileID: 1792496984}
@@ -11513,6 +11521,14 @@ PrefabInstance:
       propertyPath: _stageBackGroundImg
       value: 
       objectReference: {fileID: 640431942}
+    - target: {fileID: 7144553102981401392, guid: b824a4ce5f59024419846e5ec7329e42, type: 3}
+      propertyPath: _itemBlockPercentage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144553102981401392, guid: b824a4ce5f59024419846e5ec7329e42, type: 3}
+      propertyPath: _isStageClear.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7987593931869138248, guid: b824a4ce5f59024419846e5ec7329e42, type: 3}
       propertyPath: _currLevel
       value: 1

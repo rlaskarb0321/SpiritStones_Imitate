@@ -22,7 +22,7 @@ public class BlockGenerator : MonoBehaviour, IGameFlow
         eBlockType blockType;
         int randomVal = Random.Range(0, 100);
 
-        if (randomVal <= _combatMgr._itemBlockPercentage)
+        if (randomVal <= _combatMgr._stageMgr._itemBlockPercentage)
         {
             blockType = eBlockType.Item;
         }
@@ -83,6 +83,6 @@ public class BlockGenerator : MonoBehaviour, IGameFlow
         }
 
         GameManager._instance._playerComboCount = 0;
-        GameManager._instance._gameFlow++;
+        GameManager._instance._gameFlow = eGameFlow.HeroAttack;
     }
 }

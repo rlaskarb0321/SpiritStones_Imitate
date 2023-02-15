@@ -27,10 +27,21 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
         UpdateHp(_currHp);
     }
 
+    private void Update()
+    {
+        //if (GameManager._instance._gameFlow == eGameFlow.StageClear ||
+        //        GameManager._instance._gameFlow == eGameFlow.InStageClear)
+        //{
+        //    Debug.Log(GameManager._instance._gameFlow);
+        //    StopCoroutine(Attack());
+        //}
+    }
+
     public void DoGameFlowAction()
     {
         GameManager._instance._gameFlow = eGameFlow.InProgress;
-        _monsterForm = _enemyGroup._monsterFormationByStage[_enemyGroup._currLevel - 1].GetComponent<MonsterFormation>();
+        _monsterForm = _enemyGroup._monsterFormationByStage[_enemyGroup._stageMgr._currLevel - 1]
+            .GetComponent<MonsterFormation>();
 
         StartCoroutine(Attack());
     }
@@ -84,28 +95,33 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
         }
     }
 
-    IEnumerator Attack()
+    public IEnumerator Attack()
     {
         int animEndCount = 0;
         int index = 0;
         while (animEndCount < _heroPos.Length)
         {
             HeroBase hero = _heroPos[index].transform.GetChild(0).GetComponent<HeroBase>();
-            hero.Attack(_enemyGroup, _enemyGroup._currLevel - 1);
+            hero.Attack(_enemyGroup, _enemyGroup._stageMgr._currLevel - 1);
 
             yield return new WaitUntil(() => 
                 hero._heroState == HeroBase.eState.EndAttack || hero._heroState == HeroBase.eState.Idle);
 
+            // 영웅들 공격 사이사이 텀
             yield return new WaitForSeconds(0.35f);
             animEndCount++;
             index++;
             hero._heroState = HeroBase.eState.Idle;
         }
 
+        // 몬스터가 전부 죽었는지 여부 검사할 텀
+        yield return new WaitForSeconds(1.5f);
+        if (GameManager._instance._gameFlow == eGameFlow.InStageClear)
+            yield break;
+
         // 공격 애니메이션이 다 끝남
         yield return new WaitUntil(() => animEndCount == _heroPos.Length);
-        if (GameManager._instance._gameFlow == eGameFlow.StageClear)
-            yield break;
+        yield return new WaitForSeconds(0.5f);
 
         GameManager._instance._gameFlow = eGameFlow.EnemyTurn;
     }
