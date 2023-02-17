@@ -32,6 +32,7 @@ public abstract class EnemyBase : MonoBehaviour
         _ui = this.GetComponent<EnemyUI>();
         _ui.SetInitValue(this);
         _ui.UpdateHp(_currHp);
+        _ui.UpdateAttackWaitTxt(_currAttackWaitTurn);
     }
 
     public virtual void DoMonsterAction(GameObject heroGroup)

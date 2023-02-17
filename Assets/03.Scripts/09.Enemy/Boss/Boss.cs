@@ -22,13 +22,6 @@ public class Boss : EnemyBase
     public override void DoMonsterAction(GameObject heroGroup)
     {
         --_currAttackWaitTurn;
-
-        if (_currAttackWaitTurn == 1)
-        {
-            _ui.UpdateAttackWaitTxt(_currAttackWaitTurn, Color.red);
-            return;
-        }
-
         if (_currAttackWaitTurn == 0)
         {
             // 가중치랜덤값에의해 보스의 공격방식을 결정
@@ -40,26 +33,32 @@ public class Boss : EnemyBase
             {
                 case "Normal Pattern":
                     AttackNormally(heroTeam);
+
                     _currAttackWaitTurn = _maxAttackWaitTurn;
                     _ui.UpdateAttackWaitTxt(_currAttackWaitTurn);
-                    break;
+                    _state = eState.EndTurn;
+                    return;
 
                 case "ObstacleBlock Pattern":
                     GenerateObstacleBlock(_obstacleBlockGenerateCount);
+
                     _currAttackWaitTurn = _maxAttackWaitTurn;
                     _ui.UpdateAttackWaitTxt(_currAttackWaitTurn);
-                    break;
+                    _state = eState.EndTurn;
+                    return;
 
                 case "Type By Pattern":
                     _aggressiveBoss.ChooseAggressiveAttack(heroTeam, this);
+
                     _currAttackWaitTurn = _maxAttackWaitTurn;
                     _ui.UpdateAttackWaitTxt(_currAttackWaitTurn);
-                    break;
+                    _state = eState.EndTurn;
+                    return;
             } 
         }
 
-        _state = eState.EndTurn;
         _ui.UpdateAttackWaitTxt(_currAttackWaitTurn);
+        _state = eState.EndTurn;
     }
 
     public override void DecreaseMonsterHP(float amount, HeroBase hero)

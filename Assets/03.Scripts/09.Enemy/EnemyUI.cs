@@ -20,14 +20,29 @@ public class EnemyUI : MonoBehaviour
     public void SetInitValue(EnemyBase enemyBase)
     {
         _enemyBase = enemyBase;
-        UpdateAttackWaitTxt(_enemyBase._maxAttackWaitTurn, Color.black);
+        UpdateAttackWaitTxt(_enemyBase._maxAttackWaitTurn);
     }
 
-    public void UpdateAttackWaitTxt(int value, Color? color = null)
+    public void UpdateAttackWaitTxt(int value)
     {
-        Color useColor = color.HasValue ? color.Value : Color.black;
-        _waitCountTxt.text = value.ToString();
-        _waitCountTxt.color = useColor;
+        #region 23/02/17 적 공격턴ui 수정
+        //Color useColor = color.HasValue ? color.Value : Color.black;
+        //_waitCountTxt.text = value.ToString();
+        //_waitCountTxt.color = useColor;
+        #endregion
+
+        if (value == 1)
+        {
+            Color color = Color.red;
+            _waitCountTxt.text = value.ToString();
+            _waitCountTxt.color = color;
+        }
+        else
+        {
+            Color color = Color.black;
+            _waitCountTxt.text = value.ToString();
+            _waitCountTxt.color = color;
+        }
     }
 
     public void UpdateHp(float value)
