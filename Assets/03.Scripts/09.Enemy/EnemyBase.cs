@@ -20,6 +20,7 @@ public abstract class EnemyBase : MonoBehaviour
     [SerializeField] public int _maxAttackWaitTurn;
     public int _currAttackWaitTurn;
     public eState _state;
+    public float _movSpeed;
 
     [HideInInspector] public EnemyUI _ui;
 

@@ -563,11 +563,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
       propertyPath: _patternSetting.Array.data[0].patternPercentage
-      value: 5.5
+      value: 5.6
       objectReference: {fileID: 0}
     - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
       propertyPath: _patternSetting.Array.data[1].patternPercentage
-      value: 0.5
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 787255147063583878, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
       propertyPath: _patternSetting.Array.data[2].patternPercentage
@@ -11625,6 +11625,14 @@ PrefabInstance:
     - target: {fileID: 7144553102981401392, guid: b824a4ce5f59024419846e5ec7329e42, type: 3}
       propertyPath: _isStageClear.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144553102981401392, guid: b824a4ce5f59024419846e5ec7329e42, type: 3}
+      propertyPath: _isStageClear.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7144553102981401392, guid: b824a4ce5f59024419846e5ec7329e42, type: 3}
+      propertyPath: _isStageClear.Array.data[1]
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7987593931869138248, guid: b824a4ce5f59024419846e5ec7329e42, type: 3}
       propertyPath: _currLevel
