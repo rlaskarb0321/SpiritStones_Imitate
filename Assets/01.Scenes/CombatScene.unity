@@ -2872,7 +2872,7 @@ MonoBehaviour:
   _blockMgrList: []
   _breakList: []
   _obstacleBlockList: []
-  _delayTime: 0.4
+  _delayTime: 0.8
   _playerComboCount: 0
   _gameFlow: 0
   _resultUI: {fileID: 1577991261}
@@ -5611,11 +5611,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _maxHp
-      value: 250
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _atkPower
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: _movSpeed
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _maxAttackWaitTurn

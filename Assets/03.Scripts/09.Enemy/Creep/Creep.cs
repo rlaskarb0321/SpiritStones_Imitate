@@ -20,7 +20,12 @@ public class Creep : EnemyBase
 
         --_currAttackWaitTurn;
         if (_currAttackWaitTurn == 0)
+        {
             _state = eState.Attack;
+            return;
+        }
+
+        _state = eState.EndTurn;
     }
 
     IEnumerator EnemyRoutine(GameObject heroGroup)
