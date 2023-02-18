@@ -121,7 +121,6 @@ public class GameManager : MonoBehaviour, IGameFlow
                     #endregion
                     break;
                 case eGameFlow.BackToIdle:
-                    Debug.Log(_gameFlow);
                     for (int i = 0; i < _obstacleBlockList.Count; i++)
                     {
                         ObstacleBlock obstacleBlock = _obstacleBlockList[i].GetComponent<ObstacleBlock>();

@@ -5,14 +5,6 @@ using UnityEngine.UI;
 
 public class Creep : EnemyBase
 {
-    private WaitForSeconds _ws;
-    private bool _isActive;
-
-    private void Start()
-    {
-        _ws = new WaitForSeconds(0.3f);
-    }
-
     public override void DoMonsterAction(GameObject heroGroup)
     {
         if (!_isActive)
@@ -28,7 +20,7 @@ public class Creep : EnemyBase
         _state = eState.EndTurn;
     }
 
-    IEnumerator EnemyRoutine(GameObject heroGroup)
+    public override IEnumerator EnemyRoutine(GameObject heroGroup)
     {
         _isActive = true;
         HeroTeamMgr heroTeam = heroGroup.GetComponent<HeroTeamMgr>();
@@ -51,6 +43,7 @@ public class Creep : EnemyBase
 
     public override void DecreaseMonsterHP(float amount, HeroBase hero)
     {
+        amount = Mathf.Floor(amount);
         if (amount == 0)
             return;
 

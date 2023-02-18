@@ -30,6 +30,8 @@ public class EnemyUI : MonoBehaviour
         //_waitCountTxt.text = value.ToString();
         //_waitCountTxt.color = useColor;
         #endregion
+        if (value == 0)
+            return;
 
         if (value == 1)
         {

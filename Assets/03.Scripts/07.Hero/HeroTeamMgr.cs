@@ -8,12 +8,14 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
     [Header("=== Hero ===")]
     public GameObject[] _heroPos;
     [SerializeField] public List<HeroBase>[] _heroesTypeCountArr = new List<HeroBase>[4];
+    public GameObject _hitDmgTxt;
 
     [Header("=== Hp ===")]
     public float _currHp;
     public float _totalHp;
     public Image _hpBarFill;
     public Text _hpTxt;
+    private BoxCollider2D _dmgTxtSpawnRectRange;
 
     [Header("=== Target ===")]
     public GameObject _enemyGroupObj;
@@ -23,18 +25,9 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
     private void Awake()
     {
         _enemyGroup = _enemyGroupObj.GetComponent<CombatSceneMgr>();
+        _dmgTxtSpawnRectRange = GetComponent<BoxCollider2D>();
         InitHeroInformation();
         UpdateHp(_currHp);
-    }
-
-    private void Update()
-    {
-        //if (GameManager._instance._gameFlow == eGameFlow.StageClear ||
-        //        GameManager._instance._gameFlow == eGameFlow.InStageClear)
-        //{
-        //    Debug.Log(GameManager._instance._gameFlow);
-        //    StopCoroutine(Attack());
-        //}
     }
 
     public void DoGameFlowAction()
@@ -49,7 +42,14 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
     // 몬스터 측에서 영웅파티에 데미지를 주기위한 전용 함수
     public void DecreaseHp(float amount)
     {
+        amount = Mathf.Floor(amount);
         _currHp -= amount;
+
+        GameObject txt =
+            Instantiate(_hitDmgTxt, ReturnRandomPos(), Quaternion.identity, this.transform) 
+            as GameObject;
+        txt.GetComponent<Text>().text = $"- {amount}";
+
         if (_currHp <= 0.0f)
         {
             _currHp = 0.0f;
@@ -60,7 +60,7 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
     // 물약 아이템을 사용했을 때 회복하기 위한 함수
     public void IncreaseHp(float amount)
     {
-        _currHp += amount;
+        _currHp += Mathf.Floor(amount);
         if (_currHp >= _totalHp)
         {
             _currHp = _totalHp;
@@ -130,5 +130,17 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
     {
         _hpBarFill.fillAmount = amount / _totalHp;
         _hpTxt.text = $"{amount} / {_totalHp}";
+    }
+
+    Vector3 ReturnRandomPos()
+    {
+        float rangeX = _dmgTxtSpawnRectRange.bounds.size.x;
+        float rangeY = _dmgTxtSpawnRectRange.bounds.size.y;
+
+        rangeX = Random.Range((rangeX / 2) * -1, rangeX / 2);
+        rangeY = Random.Range((rangeY / 2) * -1, rangeY / 2);
+        Vector3 randomPos = new Vector3(rangeX, rangeY, 0.0f);
+
+        return randomPos;
     }
 }

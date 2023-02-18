@@ -13,6 +13,7 @@ public class AggressiveBossPattern : MonoBehaviour
 
     void AttackTwice(EnemyBase enemy, HeroTeamMgr heroTeam)
     {
+        
         float newDmg = enemy._atkPower * 0.75f;
         for (int i = 0; i < 2; i++)
         {

@@ -233,12 +233,15 @@ MonoBehaviour:
   _maxAttackWaitTurn: 0
   _currAttackWaitTurn: 0
   _state: 0
+  _movSpeed: 4
+  _isActive: 0
   _ui: {fileID: 0}
   _obstacleBlockList:
   - {fileID: 1960835292894128727, guid: 789a13049a22953448c44ff5821576cd, type: 3}
   _obstacleBlockGenerateCount: 0
   _aggressiveBoss: {fileID: 0}
   _weightRandomPattern: {fileID: 0}
+  _stepBackDelaySpeed: 2
 --- !u!114 &-6043732844571975106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,6 +257,7 @@ MonoBehaviour:
   _img: {fileID: 0}
   _focusTarget: {fileID: 9199786500902666330}
   _waitCountTxt: {fileID: 4588754348769616243}
+  _hitEffect: []
   _hpBar: {fileID: 7339597846323952795}
   _hpTxt: {fileID: 6788999122155481828}
 --- !u!114 &787255147063583878

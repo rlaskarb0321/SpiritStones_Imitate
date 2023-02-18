@@ -11,6 +11,7 @@ public abstract class EnemyBase : MonoBehaviour
         Attack,
         EndTurn,
         Die,
+        Acting,
     }
 
     [Header("=== Stat ===")]
@@ -21,6 +22,8 @@ public abstract class EnemyBase : MonoBehaviour
     public int _currAttackWaitTurn;
     public eState _state;
     public float _movSpeed;
+    [HideInInspector] public bool _isActive;
+    [HideInInspector] public WaitForSeconds _ws;
 
     [HideInInspector] public EnemyUI _ui;
 
@@ -34,6 +37,7 @@ public abstract class EnemyBase : MonoBehaviour
         _ui.SetInitValue(this);
         _ui.UpdateHp(_currHp);
         _ui.UpdateAttackWaitTxt(_currAttackWaitTurn);
+        _ws = new WaitForSeconds(0.1f);
     }
 
     public virtual void DoMonsterAction(GameObject heroGroup)
@@ -49,4 +53,8 @@ public abstract class EnemyBase : MonoBehaviour
     {
     }
 
+    public virtual IEnumerator EnemyRoutine(GameObject heroGroup)
+    {
+        yield return null;
+    }
 }
