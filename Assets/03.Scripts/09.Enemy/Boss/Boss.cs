@@ -102,7 +102,6 @@ public class Boss : EnemyBase
                             _state = eState.EndTurn;
                             break;
                         case "Type By Pattern":
-                            Debug.Log("타입별 공격 개시");
                             yield return StartCoroutine(ActTypeAttackMotion(heroTeam));
                             _currAttackWaitTurn = _maxAttackWaitTurn;
                             break;
@@ -116,8 +115,7 @@ public class Boss : EnemyBase
 
     public override void DecreaseMonsterHP(float amount, HeroBase hero)
     {
-        if (amount == 0)
-            return;
+        base.DecreaseMonsterHP(amount, hero);
 
         _currHp -= amount;
         if (_currHp <= 0.0f)
@@ -195,7 +193,6 @@ public class Boss : EnemyBase
         Vector3 myPos = transform.position; // 내 위치
         Vector3 dist = targetPos - myPos; // 내 위치에서 아군 Hero들의 위치까지의 방향을 나타내는 벡터
         Vector3 dir = dist.normalized; // 내위치~아군hero들의 위치를 갖는 방향벡터
-        Debug.Log("벡터 계산 완료");
 
         int frameCount = 15;
         while (frameCount >= 0)
@@ -204,10 +201,8 @@ public class Boss : EnemyBase
             frameCount--;
             yield return null;
         }
-        Debug.Log("접근 완료");
 
         _aggressiveBoss.ChooseAggressiveAttack(target, this);
-        Debug.Log("공격 두번 완료");
 
         int frameCount2 = 10;
         while (frameCount2 >= 0)
@@ -216,11 +211,8 @@ public class Boss : EnemyBase
             frameCount2--;
             yield return null;
         }
-        Debug.Log("물러나기 완료");
 
         transform.localPosition = Vector3.zero;
         _state = eState.EndTurn;
-        Debug.Log("턴 종료완료");
-
     }
 }

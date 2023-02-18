@@ -32,6 +32,7 @@ public class Creep : EnemyBase
                     _ui.UpdateAttackWaitTxt(_currAttackWaitTurn);
                     break;
                 case eState.Attack:
+                    _state = eState.Acting;
                     yield return StartCoroutine(Attack(heroTeam));
                     _currAttackWaitTurn = _maxAttackWaitTurn;
                     break;
@@ -43,9 +44,7 @@ public class Creep : EnemyBase
 
     public override void DecreaseMonsterHP(float amount, HeroBase hero)
     {
-        amount = Mathf.Floor(amount);
-        if (amount == 0)
-            return;
+        base.DecreaseMonsterHP(amount, hero);
 
         _currHp -= amount;
         if (_currHp <= 0.0f)

@@ -19,4 +19,9 @@ public class DmgTxt : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void SetColor(Color color)
+    {
+        _txt.color = color;
+    }
 }
