@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1435939312080358146}
   - component: {fileID: -7538282650695341520}
   - component: {fileID: -5262164457089550735}
+  - component: {fileID: -360993167869771546}
   m_Layer: 6
   m_Name: DualSwordItem
   m_TagString: ItemBlock
@@ -139,7 +140,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -238,6 +239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movSpeed: 1.5
   _isDocked: 0
+  _blockSound: {fileID: 0}
   _specialType: 7
   _ignitedImg: {fileID: 21300000, guid: afed6a1d7a8270e4aad64cbdba715295, type: 3}
   _isIn_YequalX_Zone: 0
@@ -246,6 +248,20 @@ MonoBehaviour:
   _audioClip:
   - {fileID: 8300000, guid: 2b8c207613cd58b4889b0cc6bf739f2c, type: 3}
   - {fileID: 8300000, guid: 2e3cfd8a4cd1afe40b6ddda869151d13, type: 3}
+--- !u!114 &-360993167869771546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010617152862570291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6f02f53ccd13f843ae8cb0f2a68208c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pickSound: {fileID: 0}
+  _audioVolume: 0.8
 --- !u!1 &5379029417693182532
 GameObject:
   m_ObjectHideFlags: 0

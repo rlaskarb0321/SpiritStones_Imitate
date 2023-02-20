@@ -10,7 +10,7 @@ public class BombExplosion : MonoBehaviour
 
     private void Start()
     {
-        _blockBreaker = new BlockBreaker();
+        _blockBreaker = GameObject.Find("Canvas").GetComponent<BlockBreaker>();
         StartCoroutine(StartExplosionAnim());
     }
 

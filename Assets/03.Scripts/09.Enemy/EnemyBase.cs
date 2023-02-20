@@ -25,10 +25,8 @@ public abstract class EnemyBase : MonoBehaviour
     [HideInInspector] public bool _isActive;
     [HideInInspector] public WaitForSeconds _ws;
 
-    [HideInInspector] public EnemyUI _ui;
-    public GameObject _hitDmgTxt;
-    private DmgTxt _dmgTxt;
-    private BoxCollider2D _dmgTxtSpawnRectRange;
+    [Header("=== Composition ===")]
+    [HideInInspector] public EnemyUI _enemyUI;
 
     private void OnEnable()
     {
@@ -36,12 +34,10 @@ public abstract class EnemyBase : MonoBehaviour
         _currHp = _maxHp;
         _currAttackWaitTurn = _maxAttackWaitTurn;
 
-        _dmgTxtSpawnRectRange = GetComponent<BoxCollider2D>();
-        _dmgTxt = _hitDmgTxt.GetComponent<DmgTxt>();
-        _ui = this.GetComponent<EnemyUI>();
-        _ui.SetInitValue(this);
-        _ui.UpdateHp(_currHp);
-        _ui.UpdateAttackWaitTxt(_currAttackWaitTurn);
+        _enemyUI = this.GetComponent<EnemyUI>();
+        _enemyUI.SetInitValue(this);
+        _enemyUI.UpdateHp(_currHp);
+        _enemyUI.UpdateAttackWaitTxt(_currAttackWaitTurn);
         _ws = new WaitForSeconds(0.1f);
     }
 
@@ -56,7 +52,7 @@ public abstract class EnemyBase : MonoBehaviour
         if (amount == 0)
             return;
 
-        GameObject txt = Instantiate(_hitDmgTxt, ReturnRandomPos(), Quaternion.identity,
+        GameObject txt = Instantiate(_enemyUI._hitDmgTxt, _enemyUI.ReturnRandomPos(), Quaternion.identity,
             GameObject.Find("Canvas").transform) as GameObject;
         //_dmgTxt.SetColor(SetColor(hero._job[0]));
         txt.GetComponent<Text>().text = $"- {amount}";
@@ -69,36 +65,5 @@ public abstract class EnemyBase : MonoBehaviour
     public virtual IEnumerator EnemyRoutine(GameObject heroGroup)
     {
         yield return null;
-    }
-
-    Vector3 ReturnRandomPos()
-    {
-        float rangeX = _dmgTxtSpawnRectRange.bounds.size.x;
-        float rangeY = _dmgTxtSpawnRectRange.bounds.size.y;
-
-        rangeX = Random.Range((rangeX / 2) * -1, rangeX / 2);
-        rangeY = Random.Range((rangeY / 2) * -1, rangeY / 2);
-        Vector3 randomPos = new Vector3(rangeX, rangeY, 0.0f);
-
-        return randomPos;
-    }
-
-    Color SetColor(eNormalBlockType job)
-    {
-        switch (job)
-        {
-            case eNormalBlockType.Warrior:
-                return Color.red;
-            case eNormalBlockType.Archer:
-                return Color.green;
-            case eNormalBlockType.Thief:
-                return Color.yellow;
-            case eNormalBlockType.Magician:
-                return Color.blue;
-            case eNormalBlockType.None:
-                return Color.white;
-            default:
-                return Color.white;
-        }
     }
 }

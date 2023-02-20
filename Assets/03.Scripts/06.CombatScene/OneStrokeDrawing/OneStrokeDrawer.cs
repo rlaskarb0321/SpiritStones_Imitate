@@ -18,13 +18,13 @@ public class OneStrokeDrawer : MonoBehaviour
     [SerializeField] private int _normalCount; // 노말블럭을 몇 종류 선택할 수 있는 기회
     [SerializeField] private int _itemCount; // 아이템블럭을 몇 종류 선택할 수 있는 기회
 
-    private void Start()
+    private void Awake()
     {
         _ctrlBlockAlpha = new BlockAlphaController();
-        _breakBlock = new BlockBreaker();
         _normalList = new List<string>();
         _itemList = new List<string>();
 
+        _breakBlock = GetComponent<BlockBreaker>();
         _canvasRayCaster = GetComponent<CanvasRayCaster>();
         _blockChain = GetComponent<BlockChain>();
 

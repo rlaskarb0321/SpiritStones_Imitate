@@ -12,35 +12,30 @@ public abstract class HeroBase : MonoBehaviour
         EndAttack,
     }
 
-    [Header("=== Stat ===")]
-    [SerializeField] protected string _rank;
-    [SerializeField] protected float _atkPower;
-
-    [SerializeField] public float _hp;
-
-    [SerializeField] protected float _maxMp;
-    [HideInInspector] public float _currMp;
-    [SerializeField] public eNormalBlockType[] _job;
-
     [Header("=== Combat ===")]
     public float _loadedDamage;
     public GameObject _txtObj;
     [HideInInspector] public HeroDmgText _txt;
-
     [HideInInspector]public Animator _animator;
     protected int _hashAttack = Animator.StringToHash("isAttack");
     public eState _heroState;
 
-    private void Start()
+    [Header("=== Composition ===")]
+    [HideInInspector] public HeroStat _stat;
+    [HideInInspector] public HeroSound _sound;
+
+    private void Awake()
     {
         _heroState = eState.Idle;
+        _stat = GetComponent<HeroStat>();
+        _sound = GetComponent<HeroSound>();
         _txt = _txtObj.GetComponent<HeroDmgText>();
         _animator = GetComponent<Animator>();
     }
 
     public virtual void DevelopLoadedDamage()
     {
-        _loadedDamage += _atkPower;
+        _loadedDamage += _stat._atkPower;
         _txt.UpdateText(_loadedDamage);
     }
 
@@ -52,14 +47,17 @@ public abstract class HeroBase : MonoBehaviour
         }
 
         _animator.SetBool(_hashAttack, true);
+        _sound.PlayAttackSound(_stat._job[0]);
         StartCoroutine(AttackEnemy(combatSceneMgr, targetRound));
     }
 
+    // 애니메이션 델리게이트
     public virtual void SetAttackTiming()
     {
         _heroState = eState.Attack;
     }
 
+    // 애니메이션 델리게이트
     public virtual void GoToIdle()
     {
         _animator.SetBool(_hashAttack, false);
@@ -79,7 +77,7 @@ public abstract class HeroBase : MonoBehaviour
         MonsterFormation targetForm =
             combatScene._monsterFormationByStage[targetRound].GetComponent<MonsterFormation>();
 
-        bool isFocusSet = false;
+        bool isFocusSet = false; // 몬스터 우선 공격기능
         for (int targetMonster = 0; targetMonster < targetForm._monsterCount.Count; targetMonster++)
         {
             if (_loadedDamage == 0.0f)

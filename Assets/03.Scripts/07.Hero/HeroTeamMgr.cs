@@ -84,13 +84,13 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
         // 아군파티의 직업종류를 Count
         foreach (GameObject pos in _heroPos)
         {
-            HeroBase heroType = pos.transform.GetChild(0).GetComponent<HeroBase>();
-            _totalHp += heroType._hp;
+            HeroBase hero = pos.transform.GetChild(0).GetComponent<HeroBase>();
+            _totalHp += hero._stat._hp;
             _currHp = _totalHp;
 
-            for (int i = 0; i < heroType._job.Length; i++)
+            for (int i = 0; i < hero._stat._job.Length; i++)
             {
-                _heroesTypeCountArr[(int)heroType._job[i]].Add(heroType);
+                _heroesTypeCountArr[(int)hero._stat._job[i]].Add(hero);
             }
         }
     }

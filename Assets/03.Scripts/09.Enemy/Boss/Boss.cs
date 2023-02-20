@@ -84,7 +84,7 @@ public class Boss : EnemyBase
             switch (_state)
             {
                 case eState.Alive:
-                    _ui.UpdateAttackWaitTxt(_currAttackWaitTurn);
+                    _enemyUI.UpdateAttackWaitTxt(_currAttackWaitTurn);
                     break;
 
                 case eState.Attack:
@@ -121,19 +121,19 @@ public class Boss : EnemyBase
         if (_currHp <= 0.0f)
         {
             _currHp = 0.0f;
-            _ui.UpdateHp(_currHp);
+            _enemyUI.UpdateHp(_currHp);
 
             if (_state != eState.Die)
                 DieMonster();
             return;
         }
-        _ui.UpdateHp(_currHp);
+        _enemyUI.UpdateHp(_currHp);
     }
 
     public override void DieMonster()
     {
-        if (_ui._focusTarget.activeSelf)
-            _ui._focusTarget.SetActive(false);
+        if (_enemyUI._focusTarget.activeSelf)
+            _enemyUI._focusTarget.SetActive(false);
 
         _state = eState.Die;
         MonsterFormation monsterFormMgr = transform.parent.parent.GetComponent<MonsterFormation>();

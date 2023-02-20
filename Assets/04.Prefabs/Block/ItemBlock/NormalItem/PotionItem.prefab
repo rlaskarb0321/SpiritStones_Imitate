@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -7570922663192425990}
   - component: {fileID: -8406964229789440171}
   - component: {fileID: -3247274221057578127}
+  - component: {fileID: -1242714571835142315}
   m_Layer: 6
   m_Name: PotionItem
   m_TagString: ItemBlock
@@ -138,7 +139,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -237,7 +238,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movSpeed: 1.5
   _isDocked: 0
+  _blockSound: {fileID: 0}
   _specialType: 2
   _ignitedImg: {fileID: 21300000, guid: 4dac4fa80e7ae7e40b3ef049f9f417c0, type: 3}
   _heroTeamObj: {fileID: 0}
   _audioClip: {fileID: 8300000, guid: cfce0cea076109f478783201b2a9f57f, type: 3}
+--- !u!114 &-1242714571835142315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010617152862570291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6f02f53ccd13f843ae8cb0f2a68208c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pickSound: {fileID: 0}
+  _audioVolume: 0.8

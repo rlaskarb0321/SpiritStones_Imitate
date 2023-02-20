@@ -12,6 +12,14 @@ public abstract class BlockBase : MonoBehaviour
     public virtual float MovSpeed { get { return _movSpeed; } set { _movSpeed = value; } }
     public virtual bool IsDocked { get { return _isDocked; } set { _isDocked = value; } }
 
+    [Header("=== Composition ===")]
+    [HideInInspector] public BlockSound _blockSound;
+
+    private void Awake()
+    {
+        _blockSound = GetComponent<BlockSound>();
+    }
+
     private void FixedUpdate()
     {
         MoveBlock(this.gameObject);
@@ -54,8 +62,6 @@ public abstract class BlockBase : MonoBehaviour
                 // ±× ¿Ü
                 gameObject.tag = "ObstacleBlock";
                 gameObject.name = "SkullBlock_Obstacle (Clone)";
-
-
                 gameObject.AddComponent<SkullBlock>();
                 break;
         }

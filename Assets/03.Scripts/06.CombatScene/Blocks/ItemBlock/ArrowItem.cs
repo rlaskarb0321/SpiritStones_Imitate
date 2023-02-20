@@ -22,7 +22,7 @@ public class ArrowItem : ItemBlock
         base.AddToMemoryList();
         _thisImg = GetComponent<Image>();
         SpecialType = eSpecialBlockType.Arrow_Archer;
-        _blockBreaker = new BlockBreaker();
+        _blockBreaker = GameObject.Find("Canvas").GetComponent<BlockBreaker>();
         _ws = new WaitForSeconds(0.5f);
     }
 

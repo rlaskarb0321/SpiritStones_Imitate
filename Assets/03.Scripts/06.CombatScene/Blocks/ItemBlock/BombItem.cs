@@ -18,7 +18,7 @@ public class BombItem : ItemBlock
         _thisImg = GetComponent<Image>();
         SpecialType = eSpecialBlockType.Bomb_Thief;
         _ws = new WaitForSeconds(0.5f);
-        _blockBreaker = new BlockBreaker();
+        _blockBreaker = GameObject.Find("Canvas").GetComponent<BlockBreaker>();
     }
 
     public override void DoAction()

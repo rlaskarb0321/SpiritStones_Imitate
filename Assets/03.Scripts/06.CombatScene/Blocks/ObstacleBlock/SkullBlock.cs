@@ -17,7 +17,7 @@ public class SkullBlock : ObstacleBlock
     public GameObject _heroTeamMgrObj;
     private HeroTeamMgr _heroTeamMgr;
 
-    void Start()
+    void Awake()
     {
         Reset();
         base.AddToMemoryList();

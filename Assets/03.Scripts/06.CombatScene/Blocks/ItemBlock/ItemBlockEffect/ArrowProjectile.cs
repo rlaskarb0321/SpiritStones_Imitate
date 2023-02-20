@@ -9,7 +9,12 @@ public class ArrowProjectile : MonoBehaviour
     public float _lifeTime;
     private Vector3 _targetPos;
     private BlockBase _targetBlock;
-    private BlockBreaker _blockBreaker = new BlockBreaker();
+    private BlockBreaker _blockBreaker;
+
+    private void Awake()
+    {
+        _blockBreaker = GameObject.Find("Canvas").GetComponent<BlockBreaker>();
+    }
 
     public void GetTarget(BlockBase targetBlock)
     {

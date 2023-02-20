@@ -12,6 +12,9 @@ public class EnemyUI : MonoBehaviour
     public GameObject _focusTarget;
     public Text _waitCountTxt;
     public GameObject[] _hitEffect;
+    public GameObject _hitDmgTxt;
+    private DmgTxt _dmgTxt;
+    [HideInInspector] public BoxCollider2D _dmgTxtSpawnRectRange;
 
     [Header("=== Hp ===")]
     public Image _hpBar;
@@ -19,6 +22,8 @@ public class EnemyUI : MonoBehaviour
 
     public void SetInitValue(EnemyBase enemyBase)
     {
+        _dmgTxtSpawnRectRange = GetComponent<BoxCollider2D>();
+        _dmgTxt = _hitDmgTxt.GetComponent<DmgTxt>();
         _enemyBase = enemyBase;
         UpdateAttackWaitTxt(_enemyBase._maxAttackWaitTurn);
     }
@@ -51,6 +56,37 @@ public class EnemyUI : MonoBehaviour
     {
         _hpTxt.text = $"{value} / {_enemyBase._maxHp}";
         _hpBar.fillAmount = value / _enemyBase._maxHp;
+    }
+
+    public Vector3 ReturnRandomPos()
+    {
+        float rangeX = _dmgTxtSpawnRectRange.bounds.size.x;
+        float rangeY = _dmgTxtSpawnRectRange.bounds.size.y;
+
+        rangeX = Random.Range((rangeX / 2) * -1, rangeX / 2);
+        rangeY = Random.Range((rangeY / 2) * -1, rangeY / 2);
+        Vector3 randomPos = new Vector3(rangeX, rangeY, 0.0f);
+
+        return randomPos;
+    }
+
+    Color SetColor(eNormalBlockType job)
+    {
+        switch (job)
+        {
+            case eNormalBlockType.Warrior:
+                return Color.red;
+            case eNormalBlockType.Archer:
+                return Color.green;
+            case eNormalBlockType.Thief:
+                return Color.yellow;
+            case eNormalBlockType.Magician:
+                return Color.blue;
+            case eNormalBlockType.None:
+                return Color.white;
+            default:
+                return Color.white;
+        }
     }
 
     #region FocusTarget UI

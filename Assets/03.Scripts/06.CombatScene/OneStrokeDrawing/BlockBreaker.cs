@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlockBreaker : IGameFlow
+public class BlockBreaker : MonoBehaviour, IGameFlow
 {
+    private BlockBreakSound _blockBreakSound;
     bool _isSelectable = true;
+
+    private void Awake()
+    {
+        _blockBreakSound = GetComponent<BlockBreakSound>();
+    }
 
     public void PushToDrawnBlockList(List<BlockBase> list, BlockBase block)
     {
@@ -51,6 +57,7 @@ public class BlockBreaker : IGameFlow
 
         // Debug.Log("모든 조건 통과했으니 넣을 수 있음");
         list.Add(block);
+        block._blockSound.PlayBlockPickUpSound();
     }
 
     public void PushItemActionBlock(List<BlockBase> list, BlockBase block)
@@ -67,12 +74,8 @@ public class BlockBreaker : IGameFlow
 
         if (list.Count >= 3)
         {
-            /* 이곳에 블록이 깨질때 사운드를 재생시켜야한다. 
-             * 그러려면 이 스크립트에 MonoBehavior를 상속받게하고 Canvas에 부착시킨다음
-             * Canvas에 AudioSource 컴포넌트를 추가하고 재생시키게 하자
-             */
-
             DoGameFlowAction();
+            _blockBreakSound.PlayBreakSound();
 
             for (int i = list.Count - 1; i >= 0; i--)
             {
