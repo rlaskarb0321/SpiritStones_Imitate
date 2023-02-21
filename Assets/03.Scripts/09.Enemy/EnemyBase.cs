@@ -52,6 +52,7 @@ public abstract class EnemyBase : MonoBehaviour
         if (amount == 0)
             return;
 
+        Debug.Log(_enemyUI.ReturnRandomPos());
         GameObject txt = Instantiate(_enemyUI._hitDmgTxt, _enemyUI.ReturnRandomPos(), Quaternion.identity,
             GameObject.Find("Canvas").transform) as GameObject;
         //_dmgTxt.SetColor(SetColor(hero._job[0]));

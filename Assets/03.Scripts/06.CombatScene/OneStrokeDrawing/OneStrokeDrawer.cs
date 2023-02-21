@@ -8,7 +8,7 @@ public class OneStrokeDrawer : MonoBehaviour
     // Composition
     private BlockAlphaController _ctrlBlockAlpha;
     private BlockBreaker _breakBlock;
-    [SerializeField] private CanvasRayCaster _canvasRayCaster;
+    private CanvasRayCaster _canvasRayCaster;
     [SerializeField] private BlockChain _blockChain;
 
     // Field

@@ -254,9 +254,9 @@ MonoBehaviour:
   _maxAttackWaitTurn: 0
   _currAttackWaitTurn: 0
   _state: 0
-  _movSpeed: 4
+  _movSpeed: 5
   _isActive: 0
-  _ui: {fileID: 0}
+  _enemyUI: {fileID: 0}
   _obstacleBlockList:
   - {fileID: 1960835292894128727, guid: 789a13049a22953448c44ff5821576cd, type: 3}
   _obstacleBlockGenerateCount: 0

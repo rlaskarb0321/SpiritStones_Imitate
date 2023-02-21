@@ -19,6 +19,8 @@ public class StageMgr : MonoBehaviour, IGameFlow
     {
         _ui = GetComponent<CombatUI>();
         _combatMgr = GetComponent<CombatSceneMgr>();
+
+        _ui.SetRountTxt(_currLevel, _maxLevelValue);
     }
 
     public void DoGameFlowAction()

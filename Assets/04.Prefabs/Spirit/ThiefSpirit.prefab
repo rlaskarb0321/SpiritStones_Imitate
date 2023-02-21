@@ -200,5 +200,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waitSeconds: 1.2
   _isIdleState: 0
-  _idleMovSpeed: 3.1
-  _deltaSpeedValue: 2.8
+  _idleMovSpeed: 4.1
+  _deltaSpeedValue: 3.6

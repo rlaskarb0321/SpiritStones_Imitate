@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3547f88e920769542b1cb923854c4339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movSpeed: 1.5
+  _movSpeed: 1.8
   _isDocked: 0
   _blockSound: {fileID: 0}
   _specialType: 5

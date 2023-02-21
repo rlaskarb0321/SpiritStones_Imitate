@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class CombatUI : MonoBehaviour
 {
     public Image _stageBackGroundImg;
+    public Text _stageAlarm;
+    
+    [Header("=== Fade In&Out ===")]
     public Image _fadeInOutPanel;
     public Text _stageAlarmTxt;
-
     public float _fadeValue;
     public float _delayValue;
     public WaitForSeconds _ws;
@@ -54,9 +56,15 @@ public class CombatUI : MonoBehaviour
             _stageAlarmTxt.gameObject.SetActive(true);
 
         if (currRound == maxRound)
+        {
             _stageAlarmTxt.text = $"STAGE 1\n LAST ROUND";
+            _stageAlarm.text = $"stage {currRound}/{maxRound}";
+        }
         else
+        {
             _stageAlarmTxt.text = $"STAGE 1\n {currRound}/{maxRound}";
+            _stageAlarm.text = $"stage {currRound}/{maxRound}";
+        }
     }
 
     public IEnumerator ShowTxtFade()

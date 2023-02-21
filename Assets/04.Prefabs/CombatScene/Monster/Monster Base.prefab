@@ -329,9 +329,9 @@ MonoBehaviour:
   _maxAttackWaitTurn: 0
   _currAttackWaitTurn: 0
   _state: 0
-  _movSpeed: 3
+  _movSpeed: 4
   _isActive: 0
-  _ui: {fileID: 0}
+  _enemyUI: {fileID: 0}
 --- !u!61 &4492943955941744977
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -53,7 +53,7 @@ public class Spirit : MonoBehaviour
         while (true)
         {
             if (absorptionMovSpeed <= _startMovSpeed)
-                absorptionMovSpeed += (_deltaSpeedValue * 1.65f) * Time.deltaTime;
+                absorptionMovSpeed += (_deltaSpeedValue * 3.15f) * Time.deltaTime;
 
             if (Vector2.Distance(this.transform.position, target.transform.position) <= 0.1f)
             {

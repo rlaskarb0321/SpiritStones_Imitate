@@ -48,7 +48,9 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
         GameObject txt =
             Instantiate(_hitDmgTxt, ReturnRandomPos(), Quaternion.identity, this.transform) 
             as GameObject;
-        txt.GetComponent<Text>().text = $"- {amount}";
+        Text useTxt = txt.GetComponent<Text>();
+        useTxt.text = $"- {amount}";
+        useTxt.fontSize = 100;
 
         if (_currHp <= 0.0f)
         {
@@ -134,13 +136,15 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
 
     Vector3 ReturnRandomPos()
     {
-        float rangeX = _dmgTxtSpawnRectRange.bounds.size.x;
-        float rangeY = _dmgTxtSpawnRectRange.bounds.size.y;
+        Vector3 originalPos
+            = new Vector3(transform.position.x, _dmgTxtSpawnRectRange.offset.y, 0.0f);
+        float rangeX = this._dmgTxtSpawnRectRange.bounds.size.x;
+        float rangeY = this._dmgTxtSpawnRectRange.bounds.size.y;
 
         rangeX = Random.Range((rangeX / 2) * -1, rangeX / 2);
         rangeY = Random.Range((rangeY / 2) * -1, rangeY / 2);
         Vector3 randomPos = new Vector3(rangeX, rangeY, 0.0f);
 
-        return randomPos;
+        return randomPos + originalPos;
     }
 }
