@@ -35,14 +35,6 @@ public class BlockAlphaController
                     blockImgs[j].color = colors;
                 }
             }
-
-            //Image blockImage = list[i].GetComponent<Image>();
-            //Color color = blockImage.color;
-            //if (color.a != 1)
-            //{
-            //    color.a = 1;
-            //    blockImage.color = color;
-            //}
         }
     }
 }
