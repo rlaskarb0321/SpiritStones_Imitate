@@ -729,6 +729,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 147
       objectReference: {fileID: 0}
+    - target: {fileID: 5364403055765662110, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6586610988137449713, guid: dff480a5f144c934e899b9f5043e4891, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -5720,7 +5724,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _maxAttackWaitTurn
-      value: 1
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _currAttackWaitTurn

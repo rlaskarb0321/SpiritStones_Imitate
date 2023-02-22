@@ -13,8 +13,7 @@ public class EnemyUI : MonoBehaviour
     public Text _waitCountTxt;
     public GameObject[] _hitEffect;
     public GameObject _hitDmgTxt;
-    private DmgTxt _dmgTxt;
-    [HideInInspector] public BoxCollider2D _dmgTxtSpawnRectRange;
+    public GameObject _dmgSpawnPos;
 
     [Header("=== Hp ===")]
     public Image _hpBar;
@@ -22,8 +21,6 @@ public class EnemyUI : MonoBehaviour
 
     public void SetInitValue(EnemyBase enemyBase)
     {
-        _dmgTxtSpawnRectRange = GetComponent<BoxCollider2D>();
-        _dmgTxt = _hitDmgTxt.GetComponent<DmgTxt>();
         _enemyBase = enemyBase;
         UpdateAttackWaitTxt(_enemyBase._maxAttackWaitTurn);
     }
@@ -56,20 +53,6 @@ public class EnemyUI : MonoBehaviour
     {
         _hpTxt.text = $"{value} / {_enemyBase._maxHp}";
         _hpBar.fillAmount = value / _enemyBase._maxHp;
-    }
-
-    public Vector3 ReturnRandomPos()
-    {
-        Vector3 originalPos
-            = new Vector3(transform.position.x, _dmgTxtSpawnRectRange.offset.y, 0.0f);
-        float rangeX = this._dmgTxtSpawnRectRange.bounds.size.x;
-        float rangeY = this._dmgTxtSpawnRectRange.bounds.size.y;
-
-        rangeX = Random.Range((rangeX / 2) * -1, rangeX / 2);
-        rangeY = Random.Range((rangeY / 2) * -1, rangeY / 2);
-        Vector3 randomPos = new Vector3(rangeX, rangeY, 0.0f);
-
-        return randomPos + originalPos;
     }
 
     Color SetColor(eNormalBlockType job)

@@ -58,7 +58,7 @@ public class BlockGenerator : MonoBehaviour, IGameFlow
 
     public void DoGameFlowAction()
     {
-        if (GameManager._instance._playerComboCount >= 3)
+        if (GameManager._instance._playerComboCount >= 1)
         {
             int randomValue;
 

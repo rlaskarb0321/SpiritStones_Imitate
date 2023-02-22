@@ -7,7 +7,7 @@ public abstract class ItemBlock : BlockBase
 {
     public eSpecialBlockType _specialType;
     [SerializeField] protected Sprite _ignitedImg;
-    protected Image _thisImg;
+    protected Image _childImg;
     protected bool _isIgnited;
 
     protected abstract void ChangeImage();

@@ -15,7 +15,7 @@ public class BombItem : ItemBlock
     private void Start()
     {
         base.AddToMemoryList();
-        _thisImg = GetComponent<Image>();
+        _childImg = transform.GetChild(0).GetComponent<Image>();
         SpecialType = eSpecialBlockType.Bomb_Thief;
         _ws = new WaitForSeconds(0.5f);
         _blockBreaker = GameObject.Find("Canvas").GetComponent<BlockBreaker>();
@@ -33,7 +33,7 @@ public class BombItem : ItemBlock
 
     protected override void ChangeImage()
     {
-        _thisImg.sprite = _ignitedImg;
+        _childImg.sprite = _ignitedImg;
     }
 
     protected override IEnumerator ItemAction()

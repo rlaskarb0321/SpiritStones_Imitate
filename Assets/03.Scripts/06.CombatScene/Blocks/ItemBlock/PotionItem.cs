@@ -21,7 +21,7 @@ public class PotionItem : ItemBlock
     private void Start()
     {
         base.AddToMemoryList();
-        _thisImg = GetComponent<Image>();
+        _childImg = transform.GetChild(0).GetComponent<Image>();
         _audio = GetComponent<AudioSource>();
         SpecialType = eSpecialBlockType.Potion_Magician;
         _ws = new WaitForSeconds(0.5f);
@@ -42,7 +42,7 @@ public class PotionItem : ItemBlock
 
     protected override void ChangeImage()
     {
-        _thisImg.sprite = _ignitedImg;
+        _childImg.sprite = _ignitedImg;
     }
 
     protected override IEnumerator ItemAction()

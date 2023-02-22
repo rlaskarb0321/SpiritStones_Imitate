@@ -52,10 +52,10 @@ public abstract class EnemyBase : MonoBehaviour
         if (amount == 0)
             return;
 
-        Debug.Log(_enemyUI.ReturnRandomPos());
-        GameObject txt = Instantiate(_enemyUI._hitDmgTxt, _enemyUI.ReturnRandomPos(), Quaternion.identity,
-            GameObject.Find("Canvas").transform) as GameObject;
-        //_dmgTxt.SetColor(SetColor(hero._job[0]));
+        GameObject txt = Instantiate(_enemyUI._hitDmgTxt, _enemyUI._dmgSpawnPos.transform.position,
+            Quaternion.identity, _enemyUI._dmgSpawnPos.transform) as GameObject;
+
+        //_hitDmgTxt.GetComponent<DmgTxt>().SetColor(SetColor(hero._job[0]));
         txt.GetComponent<Text>().text = $"- {amount}";
     }
 
