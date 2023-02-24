@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour, IGameFlow
     public GameObject _blockGeneratorObj;
     public GameObject _heroTeamMgrObj;
     public GameObject _combatSceneMgrObj;
+    public GameObject _hpBarObj;
 
     private void Awake()
     {
@@ -81,8 +82,10 @@ public class GameManager : MonoBehaviour, IGameFlow
         #endregion
         BlockGenerator blockGenerator = _blockGeneratorObj.GetComponent<BlockGenerator>();
         HeroTeamMgr heroTeam = _heroTeamMgrObj.GetComponent<HeroTeamMgr>();
+        HeroTeamUI heroTeamUI = _heroTeamMgrObj.GetComponent<HeroTeamUI>();
         StageMgr stageMgr = _combatSceneMgrObj.GetComponent<StageMgr>();
         CombatSceneMgr combatScene = _combatSceneMgrObj.GetComponent<CombatSceneMgr>();
+        HpBarEffect hpBarEffect = _hpBarObj.GetComponent<HpBarEffect>();
 
         // 보스가 죽지 않아서 스테이지 진행중일때 까지 실행
         while (_gameFlow != eGameFlow.BossStageClear)
@@ -126,10 +129,8 @@ public class GameManager : MonoBehaviour, IGameFlow
                         ObstacleBlock obstacleBlock = _obstacleBlockList[i].GetComponent<ObstacleBlock>();
                         obstacleBlock.DoHarmfulAction();
                     }
+                    StartCoroutine(hpBarEffect.MatchRedHpFill(heroTeamUI._currHp, heroTeamUI._totalHp, 0.08f));
                     _gameFlow = eGameFlow.Idle;
-                    break;
-                case eGameFlow.BossStageClear:
-                    _resultUI.gameObject.SetActive(true);
                     break;
             }
 

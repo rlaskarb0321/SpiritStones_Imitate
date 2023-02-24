@@ -69,8 +69,8 @@ public class SkullBlock : ObstacleBlock
             _explodeEffectTime -= Time.deltaTime; 
         }
 
-        float damage = _heroTeamMgr._totalHp * _damagePercentage;
-        _heroTeamMgr.DecreaseHp(damage);
+        float damage = _heroTeamMgr._heroTeamUI._totalHp * _damagePercentage;
+        _heroTeamMgr.GetComponent<HeroTeamUI>().DecreaseHp(damage);
 
         base.RemoveFromMemoryList();
         base.RemoveFromHarmfulBlockList();

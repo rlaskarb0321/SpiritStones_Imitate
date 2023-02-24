@@ -15,6 +15,8 @@ public class CombatUI : MonoBehaviour
     public float _delayValue;
     public WaitForSeconds _ws;
 
+    public Image _resultUI;
+
     private void Start()
     {
         _ws = new WaitForSeconds(_delayValue);

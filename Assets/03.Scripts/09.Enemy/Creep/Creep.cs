@@ -46,6 +46,7 @@ public class Creep : EnemyBase
     {
         base.DecreaseMonsterHP(amount, hero);
 
+        _enemyUI.SpawnHitEffect();
         _currHp -= amount;
         if (_currHp <= 0.0f)
         {
@@ -111,9 +112,9 @@ public class Creep : EnemyBase
             transform.position += dir * _movSpeed * Time.deltaTime;
             yield return null;
         }
-
-        target.DecreaseHp(_atkPower);
-        yield return new WaitForSeconds(1.5f);
+        
+        target.GetComponent<HeroTeamUI>().DecreaseHp(_atkPower);
+        yield return new WaitForSeconds(1.3f);
 
         while (Mathf.Abs((transform.position - transform.parent.position).magnitude) >= 0.1f)
         {

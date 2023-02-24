@@ -8,9 +8,9 @@ public class Boss : EnemyBase
 {
     [Header("=== Attack Pattern ===")]
     public GameObject[] _obstacleBlockList;
-    public int _obstacleBlockGenerateCount;
+    public int _blockGenerateCount;
     [HideInInspector] public AggressiveBossPattern _aggressiveBoss;
-    public BossWeightedRandomPattern _weightRandomPattern;
+    private BossWeightedRandomPattern _weightRandomPattern;
     public float _stepBackDelaySpeed;
 
     private void Start()
@@ -97,7 +97,7 @@ public class Boss : EnemyBase
                             break;
 
                         case "ObstacleBlock Pattern":
-                            GenerateObstacleBlock(_obstacleBlockGenerateCount);
+                            GenerateObstacleBlock(_blockGenerateCount);
                             _currAttackWaitTurn = _maxAttackWaitTurn;
                             _state = eState.EndTurn;
                             break;
@@ -174,17 +174,17 @@ public class Boss : EnemyBase
             yield return null;
         }
 
-        target.DecreaseHp(_atkPower);
-        _state = eState.EndTurn;
+        target.GetComponent<HeroTeamUI>().DecreaseHp(_atkPower);
         yield return new WaitForSeconds(1.5f);
 
-        while (Mathf.Abs((transform.position - transform.parent.position).magnitude) >= 0.1f)
+        while (Mathf.Abs((transform.position - transform.parent.position).magnitude) >= 0.03f)
         {
             transform.position += -dir * (_movSpeed - _stepBackDelaySpeed) * Time.deltaTime;
             yield return null;
         }
 
         transform.localPosition = Vector3.zero;
+        _state = eState.EndTurn;
     }
 
     IEnumerator ActTypeAttackMotion(HeroTeamMgr target)

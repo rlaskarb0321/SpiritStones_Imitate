@@ -54,12 +54,12 @@ public class PotionItem : ItemBlock
         switch (_specialType)
         {
             case eSpecialBlockType.Potion_Magician:
-                _heroTeam.IncreaseHp(_heroTeam._totalHp * 0.2f);
+                _heroTeam.GetComponent<HeroTeamUI>().IncreaseHp(_heroTeam._heroTeamUI._totalHp * 0.2f);
                 _audio.PlayOneShot(_audioClip, 1.0f);
                 break;
 
             case eSpecialBlockType.Elixir_Magician:
-                _heroTeam.IncreaseHp(_heroTeam._totalHp * 0.45f);
+                _heroTeam.GetComponent<HeroTeamUI>().IncreaseHp(_heroTeam._heroTeamUI._totalHp * 0.45f);
                 _audio.PlayOneShot(_audioClip, 1.0f);
                 break;
         }

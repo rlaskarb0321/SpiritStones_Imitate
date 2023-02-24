@@ -38,6 +38,13 @@ public class StageMgr : MonoBehaviour, IGameFlow
         {
             yield return StartCoroutine(_ui.StartFadeOut());
             _combatMgr.GoToNextStage();
+            if (_isBossStageClear)
+            {
+                GameManager._instance._gameFlow = eGameFlow.BossStageClear;
+                _ui._resultUI.gameObject.SetActive(true);
+                break;
+            }
+
             _ui.SetRountTxt(_currLevel, _maxLevelValue);
             StartCoroutine(_ui.ShowTxtFade());
 

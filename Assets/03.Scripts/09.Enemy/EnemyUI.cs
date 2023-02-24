@@ -25,6 +25,11 @@ public class EnemyUI : MonoBehaviour
         UpdateAttackWaitTxt(_enemyBase._maxAttackWaitTurn);
     }
 
+    public void SpawnHitEffect()
+    {
+        GameObject effect = Instantiate(_hitEffect[0], this.transform.position, Quaternion.identity, this.transform);
+    }
+
     public void UpdateAttackWaitTxt(int value)
     {
         #region 23/02/17 적 공격턴ui 수정
