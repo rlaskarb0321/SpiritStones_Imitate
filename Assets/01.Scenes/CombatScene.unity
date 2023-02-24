@@ -2615,7 +2615,6 @@ MonoBehaviour:
   _currHp: 0
   _totalHp: 0
   _hpBar: {fileID: 1803511851}
-  _redHpFill: {fileID: 1809157790}
   _mainHpFill: {fileID: 2049521109}
   _hpTxt: {fileID: 2029873683}
   _hitDmgTxt: {fileID: 614719482247930458, guid: 2c6ef04ae640c4f4bbb989c7db34d96f, type: 3}
@@ -3625,19 +3624,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _maxHp
-      value: 10
+      value: 1200
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _atkPower
-      value: 45
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _maxAttackWaitTurn
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _currAttackWaitTurn
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819027, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: m_Sprite
@@ -4118,7 +4117,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1813040532731060613, guid: 58487d08936a2f540b7929e491dcf87c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2647248715636548733, guid: 58487d08936a2f540b7929e491dcf87c, type: 3}
       propertyPath: _monsterCount.Array.size
@@ -12638,13 +12637,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 362618380}
     m_Modifications:
+    - target: {fileID: -6043732844571975106, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: _hitEffect.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4558456027190596269, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _maxHp
-      value: 10
+      value: 1200
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _currHp
@@ -12652,15 +12655,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _atkPower
-      value: 15
+      value: 280
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
+      propertyPath: _movSpeed
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _maxAttackWaitTurn
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _currAttackWaitTurn
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819027, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: m_Sprite
@@ -12740,7 +12747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819036, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819036, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -13276,7 +13283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.26415092, g: 0.24022782, b: 0.24022782, a: 1}
+  m_Color: {r: 0.13333334, g: 0.08627451, b: 0.12156863, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -13313,6 +13320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c32051755aedf134ba8759d9b93ccbb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _redHpFill: {fileID: 1809157790}
 --- !u!1 &1804671661
 GameObject:
   m_ObjectHideFlags: 0
@@ -13402,7 +13410,7 @@ GameObject:
   - component: {fileID: 1809157791}
   - component: {fileID: 1809157790}
   m_Layer: 5
-  m_Name: Hp Fill Red
+  m_Name: Red Hp Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13441,7 +13449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.04695626, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -13881,7 +13889,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 217696245490904596, guid: 0015452de51e8b743a76515668c6471d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2951769388154644002, guid: 0015452de51e8b743a76515668c6471d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 39
+      objectReference: {fileID: 0}
+    - target: {fileID: 2951769388154644002, guid: 0015452de51e8b743a76515668c6471d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 78
       objectReference: {fileID: 0}
     - target: {fileID: 3147143443682809877, guid: 0015452de51e8b743a76515668c6471d, type: 3}
       propertyPath: m_Pivot.x
@@ -14315,7 +14331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -14472,7 +14488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9339623, g: 0.76801234, b: 0.12687784, a: 1}
+  m_Color: {r: 0.45490196, g: 1, b: 0, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -15003,7 +15019,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7144553102981401392, guid: b824a4ce5f59024419846e5ec7329e42, type: 3}
       propertyPath: _currLevel
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7144553102981401392, guid: b824a4ce5f59024419846e5ec7329e42, type: 3}
       propertyPath: _maxLevelValue
@@ -15027,7 +15043,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7144553102981401392, guid: b824a4ce5f59024419846e5ec7329e42, type: 3}
       propertyPath: _isStageClear.Array.data[0]
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7144553102981401392, guid: b824a4ce5f59024419846e5ec7329e42, type: 3}
       propertyPath: _isStageClear.Array.data[1]

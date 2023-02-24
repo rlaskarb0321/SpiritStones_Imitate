@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour, IGameFlow
                         ObstacleBlock obstacleBlock = _obstacleBlockList[i].GetComponent<ObstacleBlock>();
                         obstacleBlock.DoHarmfulAction();
                     }
-                    StartCoroutine(hpBarEffect.MatchRedHpFill(heroTeamUI._currHp, heroTeamUI._totalHp, 0.08f));
+                    StartCoroutine(hpBarEffect.MatchRedHpFill(heroTeamUI._currHp, heroTeamUI._totalHp, 0.295f));
                     _gameFlow = eGameFlow.Idle;
                     break;
             }

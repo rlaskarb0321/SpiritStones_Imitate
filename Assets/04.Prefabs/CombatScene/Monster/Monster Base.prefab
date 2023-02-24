@@ -342,7 +342,8 @@ MonoBehaviour:
   _img: {fileID: 0}
   _focusTarget: {fileID: 7165269390283766092}
   _waitCountTxt: {fileID: 4588754348769616243}
-  _hitEffect: []
+  _hitEffect:
+  - {fileID: 4794043405585894037, guid: 37138c0c33167b04fa1fb90b7f5a794f, type: 3}
   _hitDmgTxt: {fileID: 614719482247930458, guid: 65256950723a2b843b056c38266ae578, type: 3}
   _dmgSpawnPos: {fileID: 4219473147816650723}
   _hpBar: {fileID: 7339597846323952795}

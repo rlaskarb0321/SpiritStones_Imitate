@@ -118,6 +118,7 @@ public class Creep : EnemyBase
 
         while (Mathf.Abs((transform.position - transform.parent.position).magnitude) >= 0.1f)
         {
+            Debug.DrawLine(transform.position, transform.parent.position, Color.red);
             transform.position += -dir * _movSpeed * Time.deltaTime;
             yield return null;
         }

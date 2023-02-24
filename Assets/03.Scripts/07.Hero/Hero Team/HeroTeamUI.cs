@@ -11,7 +11,6 @@ public class HeroTeamUI : MonoBehaviour
 
     [Header("=== Hp Bar ===")]
     public GameObject _hpBar;
-    public Image _redHpFill;
     public Image _mainHpFill;
     public Text _hpTxt;
     private HpBarEffect _hpBarEffect;
@@ -73,5 +72,27 @@ public class HeroTeamUI : MonoBehaviour
     {
         _mainHpFill.fillAmount = _currHp / _totalHp;
         _hpTxt.text = $"{_currHp} / {_totalHp}";
+
+        if (0.7f < _mainHpFill.fillAmount) 
+        {
+            Color color;
+            ColorUtility.TryParseHtmlString("#74FF00", out color);
+            _mainHpFill.color = color;
+            Debug.Log("안전");
+        }
+        else if (0.3f < _mainHpFill.fillAmount)
+        {
+            Color color;
+            ColorUtility.TryParseHtmlString("#FFF900", out color);
+            _mainHpFill.color = color;
+            Debug.Log("경고");
+        }
+        else
+        {
+            Color color;
+            ColorUtility.TryParseHtmlString("#FF6F25", out color);
+            _mainHpFill.color = color;
+            Debug.Log("위험");
+        }
     }
 }

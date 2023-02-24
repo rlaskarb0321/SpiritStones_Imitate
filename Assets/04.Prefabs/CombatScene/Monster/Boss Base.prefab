@@ -231,7 +231,8 @@ MonoBehaviour:
   _img: {fileID: 0}
   _focusTarget: {fileID: 9199786500902666330}
   _waitCountTxt: {fileID: 4588754348769616243}
-  _hitEffect: []
+  _hitEffect:
+  - {fileID: 6192724089161036641, guid: e17d9a3f04750764c8c0a7a0461e4c3b, type: 3}
   _hitDmgTxt: {fileID: 614719482247930458, guid: 65256950723a2b843b056c38266ae578, type: 3}
   _dmgSpawnPos: {fileID: 6979694609943456648}
   _hpBar: {fileID: 7339597846323952795}
@@ -259,9 +260,8 @@ MonoBehaviour:
   _enemyUI: {fileID: 0}
   _obstacleBlockList:
   - {fileID: 1960835292894128727, guid: 789a13049a22953448c44ff5821576cd, type: 3}
-  _obstacleBlockGenerateCount: 0
+  _blockGenerateCount: 0
   _aggressiveBoss: {fileID: 0}
-  _weightRandomPattern: {fileID: 0}
   _stepBackDelaySpeed: 2
 --- !u!114 &787255147063583878
 MonoBehaviour:
