@@ -22,23 +22,6 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
         InitHeroInformation();
     }
 
-    public void DoGameFlowAction()
-    {
-        GameManager._instance._gameFlow = eGameFlow.InProgress;
-        _monsterForm = _enemyGroup._monsterFormationByStage[_enemyGroup._stageMgr._currLevel - 1]
-            .GetComponent<MonsterFormation>();
-
-        StartCoroutine(Attack());
-    }
-
-    public void LooseHeroDmg()
-    {
-        for (int i = 0; i < _heroPos.Length; i++)
-        {
-            _heroPos[i].transform.GetChild(0).GetComponent<HeroBase>().LoseLoadedDmg();
-        }
-    }
-
     void InitHeroInformation()
     {
         for (int i = 0; i < this.transform.childCount; i++)
@@ -55,6 +38,23 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
             {
                 _heroesTypeCountArr[(int)hero._stat._job[i]].Add(hero);
             }
+        }
+    }
+
+    public void DoGameFlowAction()
+    {
+        GameManager._instance._gameFlow = eGameFlow.InProgress;
+        _monsterForm = _enemyGroup._monsterFormationByStage[_enemyGroup._stageMgr._currLevel - 1]
+            .GetComponent<MonsterFormation>();
+
+        StartCoroutine(Attack());
+    }
+
+    public void LooseHeroDmg()
+    {
+        for (int i = 0; i < _heroPos.Length; i++)
+        {
+            _heroPos[i].transform.GetChild(0).GetComponent<HeroBase>().LoseLoadedDmg();
         }
     }
 
@@ -87,5 +87,14 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
         yield return new WaitForSeconds(0.5f);
 
         GameManager._instance._gameFlow = eGameFlow.EnemyTurn;
+    }
+
+    public void SetHeroHurt()
+    {
+        for (int i = 0; i < _heroPos.Length; i++)
+        {
+            HeroBase hero = _heroPos[i].transform.GetChild(0).GetComponent<HeroBase>();
+            hero._animator.SetBool(hero._hashHitted, true);
+        }
     }
 }

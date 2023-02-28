@@ -16,9 +16,12 @@ public abstract class HeroBase : MonoBehaviour
     public float _loadedDamage;
     public GameObject _txtObj;
     [HideInInspector] public HeroDmgText _txt;
+    public eState _heroState;
+
+    [Header("=== Anim ===")]
     [HideInInspector]public Animator _animator;
     protected int _hashAttack = Animator.StringToHash("isAttack");
-    public eState _heroState;
+    [HideInInspector] public int _hashHitted = Animator.StringToHash("isHitted");
 
     [Header("=== Composition ===")]
     [HideInInspector] public HeroStat _stat;
@@ -47,7 +50,6 @@ public abstract class HeroBase : MonoBehaviour
         }
 
         _animator.SetBool(_hashAttack, true);
-        _sound.PlayAttackSound(_stat._job[0]);
         StartCoroutine(AttackEnemy(combatSceneMgr, targetRound));
     }
 
@@ -55,6 +57,7 @@ public abstract class HeroBase : MonoBehaviour
     public virtual void SetAttackTiming()
     {
         _heroState = eState.Attack;
+        _sound.PlayAttackSound(_stat._job[0]);
     }
 
     // 애니메이션 델리게이트
@@ -62,6 +65,11 @@ public abstract class HeroBase : MonoBehaviour
     {
         _animator.SetBool(_hashAttack, false);
         _heroState = eState.EndAttack;
+    }
+
+    public virtual void SetHurtFalse()
+    {
+        _animator.SetBool(_hashHitted, false);
     }
 
     public void LoseLoadedDmg()

@@ -19,15 +19,15 @@ public class HeroTeamUI : MonoBehaviour
     public GameObject _hitDmgTxt;
     public GameObject _hitEffect;
 
+    private HeroTeamShake _shake;
+    private HeroTeamMgr _heroTeamMgr;
+
     private void Awake()
     {
+        _shake = GetComponent<HeroTeamShake>();
+        _heroTeamMgr = GetComponent<HeroTeamMgr>();
         _hpBarEffect = _hpBar.GetComponent<HpBarEffect>();
         UpdateMainHp();
-    }
-
-    public void SpawnHitEffect()
-    {
-        GameObject effect = Instantiate(_hitEffect, this.transform.position, Quaternion.identity, this.transform);
     }
 
     // 몬스터측에서 영웅에게 데미지를 주기 위한함수
@@ -42,6 +42,9 @@ public class HeroTeamUI : MonoBehaviour
             _currHp = 0.0f;
         }
         UpdateMainHp();
+        Instantiate(_hitEffect, this.transform.position, Quaternion.identity, this.transform);
+        StartCoroutine(_shake.ShakeTeam());
+        _heroTeamMgr.SetHeroHurt();
     }
 
     // 물약등으로 영웅들의 HP를 회복시키는 함수
@@ -54,6 +57,7 @@ public class HeroTeamUI : MonoBehaviour
         {
             _currHp = _totalHp;
         }
+
         UpdateMainHp();
         _hpBarEffect.FillRedHPFill(_currHp / _totalHp);
     }
@@ -78,21 +82,18 @@ public class HeroTeamUI : MonoBehaviour
             Color color;
             ColorUtility.TryParseHtmlString("#74FF00", out color);
             _mainHpFill.color = color;
-            Debug.Log("안전");
         }
         else if (0.3f < _mainHpFill.fillAmount)
         {
             Color color;
             ColorUtility.TryParseHtmlString("#FFF900", out color);
             _mainHpFill.color = color;
-            Debug.Log("경고");
         }
         else
         {
             Color color;
             ColorUtility.TryParseHtmlString("#FF6F25", out color);
             _mainHpFill.color = color;
-            Debug.Log("위험");
         }
     }
 }
