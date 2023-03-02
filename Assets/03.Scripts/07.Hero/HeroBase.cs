@@ -22,6 +22,7 @@ public abstract class HeroBase : MonoBehaviour
     [HideInInspector]public Animator _animator;
     protected int _hashAttack = Animator.StringToHash("isAttack");
     [HideInInspector] public int _hashHitted = Animator.StringToHash("isHitted");
+    [HideInInspector] public int _hashDead = Animator.StringToHash("isDead");
 
     [Header("=== Composition ===")]
     [HideInInspector] public HeroStat _stat;

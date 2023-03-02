@@ -97,4 +97,22 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
             hero._animator.SetBool(hero._hashHitted, true);
         }
     }
+
+    public void SetHeroDead()
+    {
+        for (int i = 0; i < _heroPos.Length; i++)
+        {
+            HeroBase hero = _heroPos[i].transform.GetChild(0).GetComponent<HeroBase>();
+            hero._animator.SetBool(hero._hashDead, true);
+        }
+    }
+
+    public void SetHeroRevive()
+    {
+        for (int i = 0; i < _heroPos.Length; i++)
+        {
+            HeroBase hero = _heroPos[i].transform.GetChild(0).GetComponent<HeroBase>();
+            hero._animator.SetBool(hero._hashDead, false);
+        }
+    }
 }

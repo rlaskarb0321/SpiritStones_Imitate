@@ -37,19 +37,29 @@ public class HeroTeamUI : MonoBehaviour
         _currHp -= amount;
 
         SpawnDmgTxt(amount);
+        Instantiate(_hitEffect, this.transform.position, Quaternion.identity, this.transform);
+
         if (_currHp <= 0.0f)
         {
             _currHp = 0.0f;
+            UpdateMainHp();
+            GameManager._instance._gameOverMgr._heroLifeState = eHeroLife.Dead;
+            _heroTeamMgr.SetHeroDead();
+            return;
         }
         UpdateMainHp();
-        Instantiate(_hitEffect, this.transform.position, Quaternion.identity, this.transform);
         StartCoroutine(_shake.ShakeTeam());
         _heroTeamMgr.SetHeroHurt();
     }
 
     // 물약등으로 영웅들의 HP를 회복시키는 함수
-    public void IncreaseHp(float amount)
+    public void IncreaseHp(float amount, bool isRevive = false)
     {
+        if (isRevive)
+        {
+            _heroTeamMgr.SetHeroRevive();
+        }
+
         amount = Mathf.Floor(amount);
         _currHp += amount;
 

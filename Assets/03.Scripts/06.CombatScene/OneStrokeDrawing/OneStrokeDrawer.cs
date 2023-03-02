@@ -6,12 +6,14 @@ using UnityEngine;
 public class OneStrokeDrawer : MonoBehaviour
 {
     // Composition
-    private BlockAlphaController _ctrlBlockAlpha;
+    #region 23/03/02 블럭 알파값 조절항목
+    //private BlockAlphaController _ctrlBlockAlpha;
+    #endregion
     private BlockBreaker _breakBlock;
     private CanvasRayCaster _canvasRayCaster;
 
     // Field
-    [SerializeField] private float _lowAlpha;
+    // [SerializeField] private float _lowAlpha;
     [SerializeField] private List<string> _normalList;
     [SerializeField] private List<string> _itemList;
     [SerializeField] private int _normalCount; // 노말블럭을 몇 종류 선택할 수 있는 기회
@@ -19,7 +21,9 @@ public class OneStrokeDrawer : MonoBehaviour
 
     private void Awake()
     {
-        _ctrlBlockAlpha = new BlockAlphaController();
+        #region 23/03/02 블럭 알파값 조절항목
+        //_ctrlBlockAlpha = new BlockAlphaController();
+        #endregion
         _normalList = new List<string>();
         _itemList = new List<string>();
 
@@ -31,6 +35,10 @@ public class OneStrokeDrawer : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager._instance._gameOverMgr._heroLifeState == eHeroLife.Dead ||
+            GameManager._instance._gameOverMgr._heroLifeState == eHeroLife.DeadSceneProgress)
+            return;
+
         if (GameManager._instance._gameFlow != eGameFlow.Idle)
             return;
 
@@ -52,7 +60,9 @@ public class OneStrokeDrawer : MonoBehaviour
                     if (_normalCount > 0)
                     {
                         RemoveNormalTypeAtList(blockBase, _normalList);
-                        CheckNormalBlockToDarken(); // 블럭들을 모두 보유하고있는 배열에서 어둡게해야하는 블럭들 체크후 어둡게 함
+                        #region 23/03/02 블럭 알파값 조절항목
+                        // CheckNormalBlockToDarken(); // 블럭들을 모두 보유하고있는 배열에서 어둡게해야하는 블럭들 체크후 어둡게 함
+                        #endregion
                     }
                     else
                     {
@@ -67,7 +77,9 @@ public class OneStrokeDrawer : MonoBehaviour
                     if (_itemCount > 0)
                     {
                         RemoveItemTypeAtList(blockBase, _itemList);
-                        CheckItemBlockToDarken();
+                        #region 23/03/02 블럭 알파값 조절항목
+                        // CheckItemBlockToDarken();
+                        #endregion
                     }
                     else
                     {
@@ -87,7 +99,9 @@ public class OneStrokeDrawer : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             InitBlockList(_normalList, _itemList);
-            _ctrlBlockAlpha.BrightenBlockAlphaValue(GameManager._instance._blockMgrList);
+            #region 23/03/02 블럭 알파값 조절항목
+            // _ctrlBlockAlpha.BrightenBlockAlphaValue(GameManager._instance._blockMgrList);
+            #endregion
             _breakBlock.BreakBlock(GameManager._instance._breakList);
         }
     }
@@ -162,43 +176,44 @@ public class OneStrokeDrawer : MonoBehaviour
         }
     }
 
-    void CheckNormalBlockToDarken()
-    {
-        for (int i = 0; i < GameManager._instance._blockMgrList.Capacity; i++)
-        {
-            GameObject blockMember = GameManager._instance._blockMgrList[i];
-            if (blockMember == null)
-                continue;
+    #region 23/03/02 블럭 알파값 조절항목
+    //void CheckNormalBlockToDarken()
+    //{
+    //    for (int i = 0; i < GameManager._instance._blockMgrList.Capacity; i++)
+    //    {
+    //        GameObject blockMember = GameManager._instance._blockMgrList[i];
+    //        if (blockMember == null)
+    //            continue;
 
-            NormalBlock member = blockMember.GetComponent<NormalBlock>();
-            if (member == null)
-                continue;
+    //        NormalBlock member = blockMember.GetComponent<NormalBlock>();
+    //        if (member == null)
+    //            continue;
 
-            if (_normalList.Contains(member.NormalType.ToString()))
-            {
-                _ctrlBlockAlpha.DarkenBlockAlphaValue(member, _lowAlpha);
-            }
-        }
-    }
+    //        if (_normalList.Contains(member.NormalType.ToString()))
+    //        {
+    //            _ctrlBlockAlpha.DarkenBlockAlphaValue(member, _lowAlpha);
+    //        }
+    //    }
+    //}
 
-    void CheckItemBlockToDarken()
-    {
-        for (int i = 0; i < GameManager._instance._blockMgrList.Capacity; i++)
-        {
-            GameObject blockMember = GameManager._instance._blockMgrList[i];
-            if (blockMember == null)
-                continue;
+    //void CheckItemBlockToDarken()
+    //{
+    //    for (int i = 0; i < GameManager._instance._blockMgrList.Capacity; i++)
+    //    {
+    //        GameObject blockMember = GameManager._instance._blockMgrList[i];
+    //        if (blockMember == null)
+    //            continue;
 
-            ItemBlock member = blockMember.GetComponent<ItemBlock>();
-            if (member == null)
-                continue;
+    //        ItemBlock member = blockMember.GetComponent<ItemBlock>();
+    //        if (member == null)
+    //            continue;
 
-            if (_itemList.Contains(member.SpecialType.ToString()))
-            {
-                _ctrlBlockAlpha.DarkenBlockAlphaValue(member, _lowAlpha);
-            }
-        }
-    }
-
+    //        if (_itemList.Contains(member.SpecialType.ToString()))
+    //        {
+    //            _ctrlBlockAlpha.DarkenBlockAlphaValue(member, _lowAlpha);
+    //        }
+    //    }
+    //}
+    #endregion
     #endregion Method
 }

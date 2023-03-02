@@ -85,4 +85,36 @@ public abstract class BlockBase : MonoBehaviour
             GameManager._instance._dockedCount--;
         }
     }
+
+    public void RestoreBlockSoul()
+    {
+        Image[] imges = this.GetComponentsInChildren<Image>();
+        for (int i = 0; i < imges.Length; i++)
+        {
+            Color color = imges[i].color;
+            color.a = 1;
+            imges[i].color = color;
+        }
+    }
+
+    public IEnumerator ExtractBlockSoul()
+    {
+        Image[] imges = this.GetComponentsInChildren<Image>();
+        for (int i = 0; i < imges.Length; i++)
+        {
+            StartCoroutine(AshenBlockImg(imges[i], 0.006f));
+            yield return null;
+        }
+    }
+
+    IEnumerator AshenBlockImg(Image sourceImg, float fadeValue)
+    {
+        Color color = sourceImg.color;
+        while (sourceImg.color.a > 0.05f)
+        {
+            color.a -= fadeValue;
+            sourceImg.color = color;
+            yield return null;
+        }
+    }
 }
