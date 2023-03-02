@@ -9,7 +9,6 @@ public class OneStrokeDrawer : MonoBehaviour
     private BlockAlphaController _ctrlBlockAlpha;
     private BlockBreaker _breakBlock;
     private CanvasRayCaster _canvasRayCaster;
-    [SerializeField] private BlockChain _blockChain;
 
     // Field
     [SerializeField] private float _lowAlpha;
@@ -26,7 +25,6 @@ public class OneStrokeDrawer : MonoBehaviour
 
         _breakBlock = GetComponent<BlockBreaker>();
         _canvasRayCaster = GetComponent<CanvasRayCaster>();
-        _blockChain = GetComponent<BlockChain>();
 
         InitBlockList(_normalList, _itemList);
     }
