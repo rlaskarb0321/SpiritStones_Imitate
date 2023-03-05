@@ -116,7 +116,9 @@ public class Boss : EnemyBase
     public override void DecreaseMonsterHP(float amount, HeroBase hero)
     {
         base.DecreaseMonsterHP(amount, hero);
+        StartCoroutine(_shakeEffect.ShakeTeam());
 
+        _enemyUI.SpawnHitEffect();
         _currHp -= amount;
         if (_currHp <= 0.0f)
         {
@@ -136,11 +138,17 @@ public class Boss : EnemyBase
             _enemyUI._focusTarget.SetActive(false);
 
         _state = eState.Die;
+        _enemyUI._img.raycastTarget = false;
         MonsterFormation monsterFormMgr = transform.parent.parent.GetComponent<MonsterFormation>();
         monsterFormMgr.UpdateDieCount();
         monsterFormMgr.UpdateFocusTargetInfo(this.gameObject);
 
-        gameObject.SetActive(false);
+        StartCoroutine(FadeEnemyImage(_fadeValue));
+    }
+
+    public override IEnumerator FadeEnemyImage(float fadeValue)
+    {
+        return base.FadeEnemyImage(fadeValue);
     }
 
     void GenerateObstacleBlock(int generateCount)

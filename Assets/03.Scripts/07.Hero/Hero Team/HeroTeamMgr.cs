@@ -107,6 +107,7 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
         }
     }
 
+    // 히어로들 부활시켜주는 애니메이션 재생
     public void SetHeroRevive()
     {
         for (int i = 0; i < _heroPos.Length; i++)

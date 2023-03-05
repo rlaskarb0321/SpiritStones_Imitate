@@ -22,11 +22,13 @@ public abstract class EnemyBase : MonoBehaviour
     public int _currAttackWaitTurn;
     public eState _state;
     public float _movSpeed;
+    public float _fadeValue;
     [HideInInspector] public bool _isActive;
     [HideInInspector] public WaitForSeconds _ws;
 
     [Header("=== Composition ===")]
     [HideInInspector] public EnemyUI _enemyUI;
+    [HideInInspector] public ShakeEffect _shakeEffect;
 
     private void OnEnable()
     {
@@ -34,6 +36,7 @@ public abstract class EnemyBase : MonoBehaviour
         _currHp = _maxHp;
         _currAttackWaitTurn = _maxAttackWaitTurn;
 
+        _shakeEffect = this.GetComponent<ShakeEffect>();
         _enemyUI = this.GetComponent<EnemyUI>();
         _enemyUI.SetInitValue(this);
         _enemyUI.UpdateHp(_currHp);
@@ -66,5 +69,18 @@ public abstract class EnemyBase : MonoBehaviour
     public virtual IEnumerator EnemyRoutine(GameObject heroGroup)
     {
         yield return null;
+    }
+
+    public virtual IEnumerator FadeEnemyImage(float fadeValue)
+    {
+        Color color = _enemyUI._img.color;
+        while (color.a > 0.1f)
+        {
+            color.a -= fadeValue;
+            _enemyUI._img.color = color;
+            yield return null;
+        }
+
+        gameObject.SetActive(false);
     }
 }

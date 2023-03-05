@@ -19,12 +19,12 @@ public class HeroTeamUI : MonoBehaviour
     public GameObject _hitDmgTxt;
     public GameObject _hitEffect;
 
-    private HeroTeamShake _shake;
+    private ShakeEffect _shake;
     private HeroTeamMgr _heroTeamMgr;
 
     private void Awake()
     {
-        _shake = GetComponent<HeroTeamShake>();
+        _shake = GetComponent<ShakeEffect>();
         _heroTeamMgr = GetComponent<HeroTeamMgr>();
         _hpBarEffect = _hpBar.GetComponent<HpBarEffect>();
         UpdateMainHp();
@@ -52,7 +52,7 @@ public class HeroTeamUI : MonoBehaviour
         _heroTeamMgr.SetHeroHurt();
     }
 
-    // 물약등으로 영웅들의 HP를 회복시키는 함수
+    // 물약등으로 영웅들의 HP를 회복시키는 함수, 부활할때도 쓰임
     public void IncreaseHp(float amount, bool isRevive = false)
     {
         if (isRevive)

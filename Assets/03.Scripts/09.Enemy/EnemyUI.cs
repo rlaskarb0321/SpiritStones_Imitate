@@ -8,7 +8,7 @@ public class EnemyUI : MonoBehaviour
     private EnemyBase _enemyBase;
 
     [Header("=== UI ===")]
-    public Image _img;
+    [HideInInspector] public Image _img;
     public GameObject _focusTarget;
     public Text _waitCountTxt;
     public GameObject[] _hitEffect;
@@ -22,6 +22,7 @@ public class EnemyUI : MonoBehaviour
     public void SetInitValue(EnemyBase enemyBase)
     {
         _enemyBase = enemyBase;
+        _img = GetComponent<Image>();
         UpdateAttackWaitTxt(_enemyBase._maxAttackWaitTurn);
     }
 

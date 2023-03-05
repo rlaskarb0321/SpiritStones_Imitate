@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeroTeamShake : MonoBehaviour
+public class ShakeEffect : MonoBehaviour
 {
     private RectTransform _rt;
     private Transform _tr;

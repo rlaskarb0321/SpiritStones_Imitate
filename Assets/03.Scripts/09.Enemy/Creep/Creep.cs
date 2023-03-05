@@ -45,6 +45,7 @@ public class Creep : EnemyBase
     public override void DecreaseMonsterHP(float amount, HeroBase hero)
     {
         base.DecreaseMonsterHP(amount, hero);
+        StartCoroutine(_shakeEffect.ShakeTeam());
 
         _enemyUI.SpawnHitEffect();
         _currHp -= amount;
@@ -66,11 +67,17 @@ public class Creep : EnemyBase
             _enemyUI._focusTarget.SetActive(false); 
 
         _state = eState.Die;
+        _enemyUI._img.raycastTarget = false;
         MonsterFormation monsterFormMgr = transform.parent.parent.GetComponent<MonsterFormation>();
         monsterFormMgr.UpdateDieCount();
         monsterFormMgr.UpdateFocusTargetInfo(this.gameObject);
 
-        gameObject.SetActive(false);
+        StartCoroutine(FadeEnemyImage(_fadeValue));
+    }
+
+    public override IEnumerator FadeEnemyImage(float fadeValue)
+    {
+        return base.FadeEnemyImage(fadeValue);
     }
 
     #region 23/02/17 잡몹의 공격기능 수정시작
