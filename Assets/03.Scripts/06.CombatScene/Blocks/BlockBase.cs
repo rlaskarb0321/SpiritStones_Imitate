@@ -7,6 +7,7 @@ public abstract class BlockBase : MonoBehaviour
 {
     [SerializeField] protected float _movSpeed;
     [SerializeField] protected bool _isDocked;
+    public GameObject _highlightedParticleObj;
     public virtual eNormalBlockType NormalType { get; set; }
     public virtual eSpecialBlockType SpecialType { get; set; }
     public virtual float MovSpeed { get { return _movSpeed; } set { _movSpeed = value; } }

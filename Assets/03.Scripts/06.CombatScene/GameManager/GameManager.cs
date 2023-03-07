@@ -149,7 +149,7 @@ public class GameManager : MonoBehaviour, IGameFlow
                         ObstacleBlock obstacleBlock = _obstacleBlockList[i].GetComponent<ObstacleBlock>();
                         obstacleBlock.DoHarmfulAction();
                     }
-                    StartCoroutine(hpBarEffect.MatchRedHpFill(heroTeamUI._currHp, heroTeamUI._totalHp, 0.295f));
+                    StartCoroutine(hpBarEffect.MatchRedHpFill(heroTeamUI._currHp, heroTeamUI._totalHp, 0.355f));
                     _gameFlow = eGameFlow.Idle;
                     break;
             }
@@ -162,7 +162,6 @@ public class GameManager : MonoBehaviour, IGameFlow
             //        break;
             //}
             #endregion
-
             yield return null;
         }
     }

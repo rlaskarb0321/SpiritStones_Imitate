@@ -5,10 +5,13 @@ using UnityEngine;
 public class BlockChain : MonoBehaviour
 {
     private LineRenderer _lr;
+    private Color _initMatColor;
+    public Material _lineRendererMat;
 
     private void Awake()
     {
         _lr = GetComponent<LineRenderer>();
+        _initMatColor = _lineRendererMat.color;
     }
 
     private void Update()
@@ -29,7 +32,33 @@ public class BlockChain : MonoBehaviour
             if (GameManager._instance._breakList.Count == 0)
                 return;
 
-            
+            // 라인렌더러 Mat 색깔조정하기
+            BlockBase block = GameManager._instance._breakList[0].GetComponent<BlockBase>();
+            Color color;
+            switch (block.NormalType)
+            {
+                case eNormalBlockType.Warrior:
+                    ColorUtility.TryParseHtmlString("#FF9494", out color);
+                    color.a = _initMatColor.a;
+                    _lineRendererMat.color = color;
+                    break;
+                case eNormalBlockType.Archer:
+                    ColorUtility.TryParseHtmlString("#2AFD2A", out color);
+                    color.a = _initMatColor.a;
+                    _lineRendererMat.color = color;
+                    break;
+                case eNormalBlockType.Thief:
+                    ColorUtility.TryParseHtmlString("#F5FF00", out color);
+                    color.a = _initMatColor.a;
+                    _lineRendererMat.color = color;
+                    break;
+                case eNormalBlockType.Magician:
+                    ColorUtility.TryParseHtmlString("#1ED6FF", out color);
+                    color.a = _initMatColor.a;
+                    _lineRendererMat.color = color;
+                    break;
+            }
+
             _lr.positionCount = GameManager._instance._breakList.Count;
             int index = GameManager._instance._breakList.Count - 1;
             _lr.SetPosition(index, GameManager._instance._breakList[index].transform.position);
@@ -38,6 +67,7 @@ public class BlockChain : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             _lr.positionCount = 0; 
+            _lineRendererMat.color = _initMatColor;
         }
     }
 }

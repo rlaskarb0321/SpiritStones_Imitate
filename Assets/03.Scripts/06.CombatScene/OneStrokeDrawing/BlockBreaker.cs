@@ -28,6 +28,8 @@ public class BlockBreaker : MonoBehaviour, IGameFlow
             if (list[list.Count - 1] != block && list.Contains(block))
             {
                 // Debug.Log("한붓그리기 Undo하는 중");
+                BlockBase undoBlock = list[list.Count - 1];
+                undoBlock._highlightedParticleObj.SetActive(false);
                 list.RemoveAt(list.Count - 1);
                 return;
             }
@@ -57,6 +59,7 @@ public class BlockBreaker : MonoBehaviour, IGameFlow
 
         // Debug.Log("모든 조건 통과했으니 넣을 수 있음");
         list.Add(block);
+        block._highlightedParticleObj.SetActive(true);
         block._blockSound.PlayBlockPickUpSound();
     }
 
@@ -80,6 +83,7 @@ public class BlockBreaker : MonoBehaviour, IGameFlow
             for (int i = list.Count - 1; i >= 0; i--)
             {
                 BlockBase block = list[i];
+                block._highlightedParticleObj.SetActive(false);
                 block.DoAction();
                 list.RemoveAt(i); 
             }
@@ -89,6 +93,7 @@ public class BlockBreaker : MonoBehaviour, IGameFlow
             while (list.Count > 0)
             {
                 BlockBase block = list[list.Count - 1];
+                block._highlightedParticleObj.SetActive(false);
                 list.RemoveAt(list.Count - 1);
             }
         }

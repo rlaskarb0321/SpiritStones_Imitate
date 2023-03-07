@@ -106,4 +106,13 @@ public class HeroTeamUI : MonoBehaviour
             _mainHpFill.color = color;
         }
     }
+
+    IEnumerator UpdateHpFillAnim()
+    {
+        while (true)
+        {
+
+            yield return null;
+        }
+    }
 }

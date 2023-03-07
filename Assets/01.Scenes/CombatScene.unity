@@ -4834,7 +4834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _maxHp
-      value: 230
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _atkPower
@@ -7878,7 +7878,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1960835292894128726, guid: 789a13049a22953448c44ff5821576cd, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1960835292894128726, guid: 789a13049a22953448c44ff5821576cd, type: 3}
       propertyPath: m_AnchorMax.x
@@ -9527,7 +9527,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _maxHp
-      value: 1300
+      value: 65535
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _atkPower
@@ -9539,7 +9539,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _maxAttackWaitTurn
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4588754348641819025, guid: 8143d61b42f49b847a5a63daca7c4838, type: 3}
       propertyPath: _currAttackWaitTurn
@@ -16424,6 +16424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f381ba1c27a9af241941b300b0649a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lineRendererMat: {fileID: 2100000, guid: 9609e451210ba784ab900ad4c0b4ce7e, type: 2}
 --- !u!120 &1712729514
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -16473,8 +16474,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.0038375854
-        value: 0.15454674
+        time: 0.008094788
+        value: 0.11330986
         inSlope: 0
         outSlope: 0
         tangentMode: 0
