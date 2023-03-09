@@ -240,6 +240,9 @@ MonoBehaviour:
   _movSpeed: 1.8
   _isDocked: 0
   _highlightedParticleObj: {fileID: 1354573631610423959}
+  _blockSprite:
+  - {fileID: 21300000, guid: f29d709fa311d214b92752b256dd0e1f, type: 3}
+  - {fileID: 21300000, guid: 1eb12fd8e9d37bc419e199919d1b3346, type: 3}
   _blockSound: {fileID: 0}
   _normalType: 0
   _spiritPrefabs: {fileID: 8865526457991201743, guid: fcf19b1256bfde94a981d79c8ad35dbe, type: 3}

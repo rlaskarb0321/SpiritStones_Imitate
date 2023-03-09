@@ -14,6 +14,8 @@ public class EnemyUI : MonoBehaviour
     public GameObject[] _hitEffect;
     public GameObject _hitDmgTxt;
     public GameObject _dmgSpawnPos;
+    [HideInInspector] public AudioSource _audioSource;
+    public AudioClip _hitAudioClip;
 
     [Header("=== Hp ===")]
     public Image _hpBar;
@@ -24,6 +26,7 @@ public class EnemyUI : MonoBehaviour
         _enemyBase = enemyBase;
         _img = GetComponent<Image>();
         UpdateAttackWaitTxt(_enemyBase._maxAttackWaitTurn);
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public void SpawnHitEffect()

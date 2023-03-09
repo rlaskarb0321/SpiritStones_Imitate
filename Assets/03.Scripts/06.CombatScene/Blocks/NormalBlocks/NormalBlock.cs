@@ -1,9 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
+public enum eBlockSelectedState
+{
+    UnSelected,
+    Selected,
+}
 
 public class NormalBlock : BlockBase
 {
+
     [SerializeField] private eNormalBlockType _normalType;
     public GameObject _spiritPrefabs;
 

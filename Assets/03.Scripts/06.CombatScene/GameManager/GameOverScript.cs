@@ -13,10 +13,17 @@ public enum eHeroLife
 public class GameOverScript : MonoBehaviour
 {
     public eHeroLife _heroLifeState;
+    public Image _deathBlack;
     public Image[] _soulessBlocks;
     public Image _gameOverPanel;
     public float _reviveHpPercentage;
     WaitUntil _wu;
+
+    [Header("=== Ressurrect ===")]
+    public GameObject _resurrectParticleObj;
+    private RessurectParticle _ressurectParticle;
+    private AudioSource _audioSource;
+    public AudioClip _ressurectSound;
 
     public Button _retryBtn;
     public Button _exitBtn;
@@ -28,6 +35,8 @@ public class GameOverScript : MonoBehaviour
             _soulessBlocks[i] = _soulessBlocks[i].GetComponent<Image>();
         }
 
+        _audioSource = GetComponent<AudioSource>();
+        _ressurectParticle = _resurrectParticleObj.GetComponent<RessurectParticle>();
         _wu = new WaitUntil(() => _heroLifeState == eHeroLife.Dead);
         StartCoroutine(CheckGameOver());
     }
@@ -49,6 +58,7 @@ public class GameOverScript : MonoBehaviour
         {
             _soulessBlocks[i].enabled = true;
         }
+        _deathBlack.enabled = true;
 
         /* 게임오버시 블럭들에게 SendMessage함수를 이용해 알파값을 서서히 줄이는 함수를 호출
          * SendMessage를 쓴 이유
@@ -78,10 +88,14 @@ public class GameOverScript : MonoBehaviour
     public void OnClickReviveBtn()
     {
         _gameOverPanel.gameObject.SetActive(false);
+        _deathBlack.enabled = false;
 
-        HeroTeamUI heroTeam = GameManager._instance._heroTeamMgrObj.GetComponent<HeroTeamUI>();
-        float amount = heroTeam._totalHp * _reviveHpPercentage;
-        heroTeam.IncreaseHp(amount, true);
+        HeroTeamUI heroTeamUI = GameManager._instance._heroTeamMgrObj.GetComponent<HeroTeamUI>();
+
+        _ressurectParticle.SetRevive();
+        _audioSource.PlayOneShot(_ressurectSound);
+        float amount = heroTeamUI._totalHp * _reviveHpPercentage;
+        heroTeamUI.IncreaseHp(amount, true);
         _heroLifeState = eHeroLife.Alive;
 
         for (int i = 0; i < _soulessBlocks.Length; i++)
@@ -89,6 +103,7 @@ public class GameOverScript : MonoBehaviour
             _soulessBlocks[i].enabled = false;
         }
 
+        // 블럭들 되살리기
         for (int i = 0; i < GameManager._instance._blockMgrList.Count; i++)
         {
             GameObject blockBase = GameManager._instance._blockMgrList[i];

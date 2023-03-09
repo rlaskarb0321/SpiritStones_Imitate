@@ -121,6 +121,7 @@ public class Creep : EnemyBase
         }
         
         target.GetComponent<HeroTeamUI>().DecreaseHp(_atkPower);
+        _enemyUI._audioSource.PlayOneShot(_enemyUI._hitAudioClip);
         yield return new WaitForSeconds(1.3f);
 
         while (Mathf.Abs((transform.position - transform.parent.position).magnitude) >= 0.1f)

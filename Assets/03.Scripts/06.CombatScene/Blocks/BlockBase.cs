@@ -8,6 +8,9 @@ public abstract class BlockBase : MonoBehaviour
     [SerializeField] protected float _movSpeed;
     [SerializeField] protected bool _isDocked;
     public GameObject _highlightedParticleObj;
+    public Sprite[] _blockSprite;
+    private Image _thisImg;
+
     public virtual eNormalBlockType NormalType { get; set; }
     public virtual eSpecialBlockType SpecialType { get; set; }
     public virtual float MovSpeed { get { return _movSpeed; } set { _movSpeed = value; } }
@@ -19,6 +22,7 @@ public abstract class BlockBase : MonoBehaviour
     private void Awake()
     {
         _blockSound = GetComponent<BlockSound>();
+        _thisImg = GetComponent<Image>();
     }
 
     private void FixedUpdate()
@@ -87,6 +91,7 @@ public abstract class BlockBase : MonoBehaviour
         }
     }
 
+    // GameOverScript::OnClickReviveBtn 에서 참조중
     public void RestoreBlockSoul()
     {
         Image[] imges = this.GetComponentsInChildren<Image>();
@@ -98,6 +103,7 @@ public abstract class BlockBase : MonoBehaviour
         }
     }
 
+    // GameOverScript::DoGameOverAction 에서 참조중
     public IEnumerator ExtractBlockSoul()
     {
         Image[] imges = this.GetComponentsInChildren<Image>();
@@ -116,6 +122,24 @@ public abstract class BlockBase : MonoBehaviour
             color.a -= fadeValue;
             sourceImg.color = color;
             yield return null;
+        }
+    }
+
+    public void SetBlockHighLight(string blockTag, bool isSelected)
+    {
+        // 하이라이트 파티클을 켜주고, 노말블럭의 경우 이미지도 밝은이미지로 바꿔주고
+        _highlightedParticleObj.SetActive(isSelected);
+
+        if (blockTag != "NormalBlock")
+            return;
+
+        if (isSelected)
+        {
+            _thisImg.sprite = _blockSprite[(int)eBlockSelectedState.Selected];
+        }
+        else
+        {
+            _thisImg.sprite = _blockSprite[(int)eBlockSelectedState.UnSelected];
         }
     }
 }

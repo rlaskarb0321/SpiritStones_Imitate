@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BlockBreaker : MonoBehaviour, IGameFlow
 {
@@ -29,7 +30,7 @@ public class BlockBreaker : MonoBehaviour, IGameFlow
             {
                 // Debug.Log("한붓그리기 Undo하는 중");
                 BlockBase undoBlock = list[list.Count - 1];
-                undoBlock._highlightedParticleObj.SetActive(false);
+                undoBlock.SetBlockHighLight(undoBlock.tag, false);
                 list.RemoveAt(list.Count - 1);
                 return;
             }
@@ -59,10 +60,11 @@ public class BlockBreaker : MonoBehaviour, IGameFlow
 
         // Debug.Log("모든 조건 통과했으니 넣을 수 있음");
         list.Add(block);
-        block._highlightedParticleObj.SetActive(true);
+        block.SetBlockHighLight(block.tag, true);
         block._blockSound.PlayBlockPickUpSound();
     }
 
+    // 아이템 효과에 적중한 블럭들을 넣는 메서드
     public void PushItemActionBlock(List<BlockBase> list, BlockBase block)
     {
         if (list.Contains(block))
@@ -83,7 +85,7 @@ public class BlockBreaker : MonoBehaviour, IGameFlow
             for (int i = list.Count - 1; i >= 0; i--)
             {
                 BlockBase block = list[i];
-                block._highlightedParticleObj.SetActive(false);
+                block.SetBlockHighLight(block.tag, false);
                 block.DoAction();
                 list.RemoveAt(i); 
             }
@@ -93,7 +95,7 @@ public class BlockBreaker : MonoBehaviour, IGameFlow
             while (list.Count > 0)
             {
                 BlockBase block = list[list.Count - 1];
-                block._highlightedParticleObj.SetActive(false);
+                block.SetBlockHighLight(block.tag, false);
                 list.RemoveAt(list.Count - 1);
             }
         }

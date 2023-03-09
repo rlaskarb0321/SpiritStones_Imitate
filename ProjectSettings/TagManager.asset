@@ -9,6 +9,7 @@ TagManager:
   - NormalBlock
   - TouchObstacle
   - ObstacleBlock
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -48,4 +49,7 @@ TagManager:
     locked: 0
   - name: Particle
     uniqueID: 1852697099
+    locked: 0
+  - name: Ressurect
+    uniqueID: 638124851
     locked: 0
