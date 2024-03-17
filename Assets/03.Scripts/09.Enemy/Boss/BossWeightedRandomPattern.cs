@@ -21,7 +21,7 @@ public class BossWeightedRandomPattern : MonoBehaviour
         SortCandidateAscending(_patternSetting);
     }
 
-    // 가중치 랜덤으로 지정된 결과를 반환
+    // 가중치 랜덤으로 지정된 최종 결과를 반환
     public string ReturnRandomPattern()
     {
         float accWeight = 0.0f;
