@@ -9,6 +9,7 @@ public class BossWeightedRandomPattern : MonoBehaviour
     [SerializeField] private Pattern[] _patternSetting;
     private float _randomPicker;
 
+    // 가중치 랜덤 계산하기
     public void SetWeightData()
     {
         float totalWeight = CalcTotalWeight(_patternSetting);
@@ -20,6 +21,7 @@ public class BossWeightedRandomPattern : MonoBehaviour
         SortCandidateAscending(_patternSetting);
     }
 
+    // 가중치 랜덤으로 지정된 결과를 반환
     public string ReturnRandomPattern()
     {
         float accWeight = 0.0f;
@@ -37,6 +39,7 @@ public class BossWeightedRandomPattern : MonoBehaviour
         return _patternSetting[_patternSetting.Length - 1].patternName;
     }
 
+    // 가중치 랜덤 요소들의 총 무게를 계산
     private float CalcTotalWeight(Pattern[] candidates)
     {
         float result = 0.0f;
@@ -48,11 +51,13 @@ public class BossWeightedRandomPattern : MonoBehaviour
         return result;
     }
 
+    // 가중치 요소들의 총 무게속 자신의 비율을 반환
     private float CalcWeighPercentage(float value, float total)
     {
         return value / total;
     }
 
+    // 가중치 랜덤의 요소들을 가중치를 기준으로 오름차순 정렬
     private void SortCandidateAscending(Pattern[] candidates)
     {
         float tempFloat = 0.0f;
