@@ -37,7 +37,7 @@ public class BossWeightedRandomPattern : MonoBehaviour
         return _patternSetting[_patternSetting.Length - 1].patternName;
     }
 
-    float CalcTotalWeight(Pattern[] candidates)
+    private float CalcTotalWeight(Pattern[] candidates)
     {
         float result = 0.0f;
         for (int i = 0; i < candidates.Length; i++)
@@ -48,12 +48,12 @@ public class BossWeightedRandomPattern : MonoBehaviour
         return result;
     }
 
-    float CalcWeighPercentage(float value, float total)
+    private float CalcWeighPercentage(float value, float total)
     {
         return value / total;
     }
 
-    void SortCandidateAscending(Pattern[] candidates)
+    private void SortCandidateAscending(Pattern[] candidates)
     {
         float tempFloat = 0.0f;
         string tempStr = "";
