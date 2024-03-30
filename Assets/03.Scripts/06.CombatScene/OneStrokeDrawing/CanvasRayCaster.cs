@@ -41,4 +41,18 @@ public class CanvasRayCaster : MonoBehaviour
             return null;
         }
     }
+
+    public GameObject ReturnRayResult_Refact()
+    {
+        _rrList.Clear();
+        _pointerEventData.position = Input.mousePosition;
+        _graphicRaycaster.Raycast(_pointerEventData, _rrList);
+
+        if (_rrList.Count < 1 || !_rrList[0].isValid)
+            return null;
+
+        GameObject topObj = _rrList[0].gameObject;
+        _rrList.Clear();
+        return topObj;
+    }
 }

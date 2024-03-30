@@ -4,28 +4,28 @@ using UnityEngine;
 
 public class Colum : MonoBehaviour
 {
-    [SerializeField] private BlockGenerator _blockGenerator;
     [SerializeField] private GameObject _spawnPos;
+    [SerializeField] private BlockGenerator_Refact _blockGeneratorRefact;
 
-    void Start()
+    private void Start()
     {
         StartCoroutine(GenerateBlock());
     }
 
     IEnumerator GenerateBlock()
     {
-        yield return new WaitUntil(() => this.transform.childCount < 5 &&
-        GameManager._instance._dockedCount != 63);
-        yield return new WaitForSeconds(0.3f);
-
-        int needBlockCount = 5 - this.transform.childCount;
-        for (int i = 0; i < needBlockCount; i++)
+        while (true)
         {
-            Vector2 spawnPos = _spawnPos.transform.GetChild(5 - (i + 1)).position;
-            _blockGenerator.GenerateBlock(spawnPos, this.transform);
-        }
+            yield return new WaitUntil(() => this.transform.childCount < 5);
 
-        StartCoroutine(GenerateBlock());
+            int needBlockCount = 5 - this.transform.childCount;
+            for (int i = 0; i < needBlockCount; i++)
+            {
+                Vector2 spawnPos = _spawnPos.transform.GetChild(5 - (i + 1)).position;
+                _blockGeneratorRefact.GenerateBlock(spawnPos, this.transform);
+                yield return null;
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
