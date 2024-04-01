@@ -42,11 +42,13 @@ public class OneStrokeDrawer_Refact : GameFlowState
 
     private Queue<IBreakableBlock> _breakableBlockQueue;
     private CanvasRayCaster _canvasRayCaster;
+    private BlockDestructionChecker _destroyBlockQueue;
 
     private void Awake()
     {
         _breakableBlockQueue = new Queue<IBreakableBlock>();
         _canvasRayCaster = GetComponent<CanvasRayCaster>();
+        _destroyBlockQueue = new BlockDestructionChecker();
     }
 
     private void Update()
@@ -56,7 +58,7 @@ public class OneStrokeDrawer_Refact : GameFlowState
 
         if (Input.GetMouseButton(0))
         {
-
+            EnqueueBlocksForDestroy();
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -71,5 +73,14 @@ public class OneStrokeDrawer_Refact : GameFlowState
 
         yield return null;
         GameFlowMgr_Refact._instance.ChangeGameFlow(_nextGameFlow);
+    }
+
+    private void EnqueueBlocksForDestroy()
+    {
+        GameObject rayResult = _canvasRayCaster.ReturnRayResult_Refact();
+        if (rayResult == null)
+            return;
+        if (rayResult.GetComponent<IBreakableBlock>() == null)
+            return;
     }
 }
