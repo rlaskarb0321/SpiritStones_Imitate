@@ -13,6 +13,11 @@ public class BlockBreaker : MonoBehaviour, IGameFlow
         _blockBreakSound = GetComponent<BlockBreakSound>();
     }
 
+    private void Start()
+    {
+        
+    }
+
     public void PushToDrawnBlockList(List<BlockBase> list, BlockBase block)
     {
         if (!_isSelectable)

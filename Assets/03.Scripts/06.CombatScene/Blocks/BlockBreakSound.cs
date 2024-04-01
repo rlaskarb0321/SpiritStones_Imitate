@@ -7,6 +7,11 @@ public class BlockBreakSound : MonoBehaviour
     AudioSource _audioSource;
     public AudioClip[] _blockBreakSound;
 
+    private void Start()
+    {
+        
+    }
+
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();

@@ -29,11 +29,15 @@ public class BlockBase_Refact : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("BlockBorder"))
             _isDocked = true;
+
+        GameFlowMgr_Refact._instance.DockedCount++;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("BlockBorder"))
             _isDocked = false;
+
+        GameFlowMgr_Refact._instance.DockedCount++;
     }
 }
