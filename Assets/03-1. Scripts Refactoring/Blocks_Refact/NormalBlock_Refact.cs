@@ -7,7 +7,6 @@ public class NormalBlock_Refact : BlockBase_Refact
 {
     [SerializeField] private GameObject _spirit;
     [SerializeField] private Sprite[] _selectionImg;
-    [SerializeField] private GameObject _selectionParticle;
 
     private Image _thisImg;
 

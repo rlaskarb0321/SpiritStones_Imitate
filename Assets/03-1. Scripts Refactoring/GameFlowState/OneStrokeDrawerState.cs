@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OneStrokeDrawer_Refact : GameFlowState
+public class OneStrokeDrawerState : GameFlowState
 {
     private Stack<BlockBase_Refact> _breakableBlockStack;
     private CanvasRayCaster _canvasRayCaster;
@@ -16,27 +16,6 @@ public class OneStrokeDrawer_Refact : GameFlowState
         _blockDestructionChecker = new BlockDestructionChecker();
         _damageLoadState = _nextGameFlow.GetComponent<DamageLoadState>();
     }
-
-    #region Update문 Coroutine으로 수정
-    //private void Update()
-    //{
-    //    if (GameFlowMgr_Refact._instance.GameFlow != eGameFlow_Refact.OneStrokeDraw)
-    //        return;
-
-    //    if (Input.GetMouseButton(0))
-    //    {
-    //        EnqueueBlocksForDestroy();
-    //    }
-
-    //    if (Input.GetMouseButtonUp(0))
-    //    {
-    //        // 다음 차례자에게 넘기기
-    //        _damageLoadState.SetDestroyQueue(_breakableBlockQueue);
-    //        _blockDestructionChecker.ResetCondition();
-    //        GameFlowMgr_Refact._instance.ChangeGameFlow(_nextGameFlow);
-    //    }
-    //}
-    #endregion
 
     public override IEnumerator Handle()
     {
@@ -64,7 +43,7 @@ public class OneStrokeDrawer_Refact : GameFlowState
     /// </summary>
     private void PushBlocksForDestroy()
     {
-        GameObject rayResult = _canvasRayCaster.ReturnRayResult_Refact();
+        GameObject rayResult = _canvasRayCaster.ReturnRayResult();
         if (rayResult == null)
             return;
 

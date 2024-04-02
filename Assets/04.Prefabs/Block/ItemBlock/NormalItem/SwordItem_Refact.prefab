@@ -17,8 +17,9 @@ GameObject:
   - component: {fileID: -2867264501529841748}
   - component: {fileID: -5038631542353315917}
   - component: {fileID: 820233654041104142}
+  - component: {fileID: 8770235654634898466}
   m_Layer: 6
-  m_Name: SwordItem
+  m_Name: SwordItem_Refact
   m_TagString: ItemBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -234,7 +235,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1010617152862570291}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f0af31683e1db2478e5aa34e81530b8, type: 3}
   m_Name: 
@@ -279,6 +280,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 1
+--- !u!114 &8770235654634898466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010617152862570291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de4796349226b2342951942423672053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movSpeed: 2.5
+  _eBlockType: 0
+  _isDocked: 0
+  _selectionParticle: {fileID: 6617327292289522604}
 --- !u!1 &7671332424155830894
 GameObject:
   m_ObjectHideFlags: 0

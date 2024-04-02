@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public enum BlockSelectionImg
 {
@@ -14,6 +13,7 @@ public abstract class BlockBase_Refact : MonoBehaviour
     [SerializeField] protected float _movSpeed;
     [SerializeField] private BlockHeroType_Refact _eBlockType;
     [SerializeField] private bool _isDocked;
+    [SerializeField] protected GameObject _selectionParticle;
 
     public BlockHeroType_Refact BlockType { get { return _eBlockType; } }
 

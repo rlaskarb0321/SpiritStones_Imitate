@@ -18,31 +18,7 @@ public class CanvasRayCaster : MonoBehaviour
         _rrList = new List<RaycastResult>();
     }
 
-    // 캔버스에 레이캐스트를 쏴 _rrList에 저장
-    public void CanvasRaycast()
-    {
-        _rrList.Clear();
-
-        _pointerEventData.position = Input.mousePosition;
-        _graphicRaycaster.Raycast(_pointerEventData, _rrList);
-    }
-
-    // _rrList에 저장된 맨 첫번째 요소를 반환
     public GameObject ReturnRayResult()
-    {
-        if (_rrList.Count >= 1 && _rrList[0].isValid)
-        {
-            GameObject topObj = _rrList[0].gameObject;
-            _rrList.Clear();
-            return topObj;
-        }
-        else
-        {
-            return null;
-        }
-    }
-
-    public GameObject ReturnRayResult_Refact()
     {
         _rrList.Clear();
         _pointerEventData.position = Input.mousePosition;
