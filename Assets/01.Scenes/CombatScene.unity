@@ -1156,7 +1156,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -63.00003, y: 643}
+  m_AnchoredPosition: {x: -63.00003, y: 750}
   m_SizeDelta: {x: 100, y: 561.649}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &53928338
@@ -1177,7 +1177,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: -16
   m_ChildAlignment: 0
-  m_Spacing: 37.59
+  m_Spacing: 50
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -2767,7 +2767,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 166.99997, y: 643}
+  m_AnchoredPosition: {x: 166.99997, y: 750}
   m_SizeDelta: {x: 100, y: 561.649}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &254471728
@@ -2788,7 +2788,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: -16
   m_ChildAlignment: 0
-  m_Spacing: 37.59
+  m_Spacing: 50
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -3142,7 +3142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 739e2f0cca315e64596085c5e8548f08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nextGameFlow: {fileID: 0}
+  _nextGameFlow: {fileID: 1623081772}
+  _gameFlowDelay: 0.5
 --- !u!1 &280291695
 GameObject:
   m_ObjectHideFlags: 0
@@ -3159,7 +3160,7 @@ GameObject:
   - component: {fileID: 280291701}
   m_Layer: 5
   m_Name: Colum4
-  m_TagString: Untagged
+  m_TagString: Colum_4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6297,7 +6298,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 396.99997, y: 643}
+  m_AnchoredPosition: {x: 396.99997, y: 750}
   m_SizeDelta: {x: 100, y: 561.649}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &532299284
@@ -6318,7 +6319,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: -16
   m_ChildAlignment: 0
-  m_Spacing: 37.59
+  m_Spacing: 50
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -7489,7 +7490,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 51.99997, y: 606}
+  m_AnchoredPosition: {x: 51.99997, y: 713}
   m_SizeDelta: {x: 100, y: 561.649}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &680193240
@@ -7510,7 +7511,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: -16
   m_ChildAlignment: 0
-  m_Spacing: 37.59
+  m_Spacing: 50
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -7802,7 +7803,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -293.00003, y: 643}
+  m_AnchoredPosition: {x: -293.00003, y: 750}
   m_SizeDelta: {x: 100, y: 561.649}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &702213689
@@ -7823,7 +7824,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: -16
   m_ChildAlignment: 0
-  m_Spacing: 37.59
+  m_Spacing: 50
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -8757,7 +8758,7 @@ GameObject:
   - component: {fileID: 787887126}
   m_Layer: 5
   m_Name: Colum3
-  m_TagString: Untagged
+  m_TagString: Colum_3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10368,7 +10369,7 @@ GameObject:
   - component: {fileID: 986400465}
   m_Layer: 5
   m_Name: Colum2
-  m_TagString: Untagged
+  m_TagString: Colum_2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11004,7 +11005,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 281.99997, y: 606}
+  m_AnchoredPosition: {x: 281.99997, y: 713}
   m_SizeDelta: {x: 100, y: 561.649}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1066680750
@@ -11025,7 +11026,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: -16
   m_ChildAlignment: 0
-  m_Spacing: 37.59
+  m_Spacing: 50
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -13173,10 +13174,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _combatMgrObj: {fileID: 924848123}
   _normalBlockPrefabsArr:
-  - {fileID: 1010617152862570291, guid: f9f8df5346be68b44aff3385ec282bf5, type: 3}
-  - {fileID: 1010617152862570291, guid: 03fa70d2183cf8c478b9c374b88bc091, type: 3}
-  - {fileID: 1010617152862570291, guid: 5536b494da99503419f2a5c9b333fdd7, type: 3}
-  - {fileID: 1010617152862570291, guid: 393fb97fd30f5b841bd9e2656d729bc2, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _normalItemBlockPrefabsArr:
   - {fileID: 1010617152862570291, guid: c0596459db903c342923c4abd495b5ae, type: 3}
   - {fileID: 1010617152862570291, guid: ac4656bae2bc20e44b3530b49252a8fd, type: 3}
@@ -13764,7 +13765,7 @@ GameObject:
   - component: {fileID: 1345290112}
   m_Layer: 5
   m_Name: Colum5
-  m_TagString: Untagged
+  m_TagString: Colum_5
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14931,7 +14932,7 @@ GameObject:
   - component: {fileID: 1468103088}
   m_Layer: 5
   m_Name: Colum0
-  m_TagString: Untagged
+  m_TagString: Colum_0
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15100,7 +15101,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -178.00003, y: 606}
+  m_AnchoredPosition: {x: -178.00003, y: 713}
   m_SizeDelta: {x: 100, y: 561.649}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1476333991
@@ -15121,7 +15122,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: -16
   m_ChildAlignment: 0
-  m_Spacing: 37.59
+  m_Spacing: 50
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -15306,7 +15307,7 @@ GameObject:
   - component: {fileID: 1524600703}
   m_Layer: 5
   m_Name: Colum1
-  m_TagString: Untagged
+  m_TagString: Colum_1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15451,7 +15452,7 @@ GameObject:
   - component: {fileID: 1559180132}
   m_Layer: 5
   m_Name: Colum6
-  m_TagString: Untagged
+  m_TagString: Colum_6
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -10,6 +10,13 @@ TagManager:
   - TouchObstacle
   - ObstacleBlock
   - FxTemporaire
+  - Colum_0
+  - Colum_1
+  - Colum_2
+  - Colum_3
+  - Colum_4
+  - Colum_5
+  - Colum_6
   layers:
   - Default
   - TransparentFX

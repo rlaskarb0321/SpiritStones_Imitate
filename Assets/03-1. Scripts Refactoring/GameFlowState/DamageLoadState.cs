@@ -36,7 +36,7 @@ public class DamageLoadState : GameFlowState
         // 3개 이상일 경우, 블록을 파괴시킴
         else
         {
-            GameFlowMgr_Refact._instance.GameFlow++;
+            GameFlowMgr_Refact._instance.GameFlow = eGameFlow_Refact.OneStrokeDraw;
             while (_destroyStack.Count != 0)
             {
                 _destroyStack.Pop().DoBreakAction();
@@ -45,6 +45,8 @@ public class DamageLoadState : GameFlowState
 
             yield return _waitDocked;
             yield return _delayWait;
+
+            // 다음 게임흐름으로 진행
             GameFlowMgr_Refact._instance.ChangeGameFlow(_nextGameFlow);
         }
     }

@@ -41,7 +41,7 @@ public class OneStrokeDrawer_Refact : GameFlowState
     public override IEnumerator Handle()
     {
         // OneStrokeDraw 턴일때, 한붓그리기 블럭 입력 & 해제 처리하기
-        GameFlowMgr_Refact._instance.GameFlow++;
+        GameFlowMgr_Refact._instance.GameFlow = eGameFlow_Refact.OneStrokeDraw;
         while (GameFlowMgr_Refact._instance.GameFlow == eGameFlow_Refact.OneStrokeDraw)
         {
             if (Input.GetMouseButton(0))

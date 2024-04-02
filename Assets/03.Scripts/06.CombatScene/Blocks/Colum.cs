@@ -12,7 +12,7 @@ public class Colum : MonoBehaviour
         StartCoroutine(GenerateBlock());
     }
 
-    IEnumerator GenerateBlock()
+    private IEnumerator GenerateBlock()
     {
         while (true)
         {
@@ -23,7 +23,8 @@ public class Colum : MonoBehaviour
             {
                 Vector2 spawnPos = _spawnPos.transform.GetChild(5 - (i + 1)).position;
                 _blockGeneratorRefact.GenerateBlock(spawnPos, this.transform);
-                yield return null;
+
+                yield return new WaitForSeconds(0.35f);
             }
         }
     }

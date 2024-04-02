@@ -7,6 +7,6 @@ public class FinishCycleState : GameFlowState
     public override IEnumerator Handle()
     {
         yield return null;
-        GameFlowMgr_Refact._instance.ChangeGameFlow(_nextGameFlow);
+        // GameFlowMgr_Refact._instance.ChangeGameFlow(_nextGameFlow);
     }
 }

@@ -13,7 +13,7 @@ public abstract class BlockBase_Refact : MonoBehaviour
 {
     [SerializeField] protected float _movSpeed;
     [SerializeField] private BlockHeroType_Refact _eBlockType;
-    private bool _isDocked;
+    [SerializeField] private bool _isDocked;
 
     public BlockHeroType_Refact BlockType { get { return _eBlockType; } }
 

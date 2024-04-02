@@ -251,8 +251,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2c6a5cd66cae644bb3e388d227b7259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movSpeed: 1.8
+  _movSpeed: 2.5
   _eBlockType: 2
+  _isDocked: 0
   _spirit: {fileID: 0}
   _selectionImg:
   - {fileID: 21300000, guid: 1bc101adc55838247ae8fe20712ccf41, type: 3}
