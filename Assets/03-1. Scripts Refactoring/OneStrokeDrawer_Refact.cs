@@ -40,15 +40,15 @@ public class OneStrokeDrawer_Refact : GameFlowState
     //    }
     //}
 
-    private Queue<IBreakableBlock> _breakableBlockQueue;
+    private Queue<BlockBase_Refact> _breakableBlockQueue;
     private CanvasRayCaster _canvasRayCaster;
-    private BlockDestructionChecker _destroyBlockQueue;
+    private BlockDestructionChecker _blockDestructionChecker;
 
     private void Awake()
     {
-        _breakableBlockQueue = new Queue<IBreakableBlock>();
+        _breakableBlockQueue = new Queue<BlockBase_Refact>();
         _canvasRayCaster = GetComponent<CanvasRayCaster>();
-        _destroyBlockQueue = new BlockDestructionChecker();
+        _blockDestructionChecker = new BlockDestructionChecker();
     }
 
     private void Update()
@@ -65,13 +65,15 @@ public class OneStrokeDrawer_Refact : GameFlowState
         {
 
         }
+
+        print(_breakableBlockQueue.Count);
     }
 
     public override IEnumerator Handle()
     {
         GameFlowMgr_Refact._instance.GameFlow++;
 
-        yield return null;
+        yield return new WaitForSeconds(100.0f);
         GameFlowMgr_Refact._instance.ChangeGameFlow(_nextGameFlow);
     }
 
@@ -80,7 +82,14 @@ public class OneStrokeDrawer_Refact : GameFlowState
         GameObject rayResult = _canvasRayCaster.ReturnRayResult_Refact();
         if (rayResult == null)
             return;
-        if (rayResult.GetComponent<IBreakableBlock>() == null)
+
+        BlockBase_Refact block = rayResult.GetComponent<BlockBase_Refact>();
+        if (block == null)
             return;
+
+        bool isDestructible = _blockDestructionChecker.IsDestructibleBlock(block.tag, block.BlockType);
+        bool isInsertable = _blockDestructionChecker.IsInsertableBlock(block, _breakableBlockQueue);
+        if (isDestructible && isInsertable)
+            _breakableBlockQueue.Enqueue(block);
     }
 }

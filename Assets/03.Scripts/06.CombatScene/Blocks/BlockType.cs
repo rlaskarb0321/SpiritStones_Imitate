@@ -47,30 +47,31 @@ public enum eBlockType_Refact
     Count,
 }
 
-public enum eNormalBlockType_Refact
+public enum eBlockHeroType_Refact
 {
     Warrior,
     Archer,
     Thief,
     Magician,
     Count,
+    None,
 }
 
-public enum eItemBlockType_Refact
-{
-    // 일반 아이템
-    Arrow_Archer,
-    Bomb_Thief,
-    Potion_Magician,
-    Sword_Warrior,
-    NormalItemCount,
-    // 강한 아이템
-    DoubleArrow_Archer,
-    Dynamite_Thief,
-    Elixir_Magician,
-    DualSword_Warrior,
-    SpecialItemCount,
-}
+//public enum eItemBlockType_Refact
+//{
+//    // 일반 아이템
+//    Arrow_Archer,
+//    Bomb_Thief,
+//    Potion_Magician,
+//    Sword_Warrior,
+//    NormalItemCount,
+//    // 강한 아이템
+//    DoubleArrow_Archer,
+//    Dynamite_Thief,
+//    Elixir_Magician,
+//    DualSword_Warrior,
+//    SpecialItemCount,
+//}
 
 public enum eObstacleBlockType_Refact
 {

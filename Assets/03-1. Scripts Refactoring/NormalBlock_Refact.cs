@@ -2,14 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NormalBlock_Refact : BlockBase_Refact, IBreakableBlock
+public class NormalBlock_Refact : BlockBase_Refact
 {
     [SerializeField] private GameObject _spirit;
-    [SerializeField] private eNormalBlockType_Refact _eNormalBlockType;
-
-    public eNormalBlockType_Refact NormalBlockType { get { return _eNormalBlockType; } }
-
-    public void DoBlockBreak()
+    
+    public override void DoBreakAction()
     {
         GenerateSpirit();
         Destroy(gameObject);

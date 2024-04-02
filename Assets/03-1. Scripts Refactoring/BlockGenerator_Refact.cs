@@ -10,7 +10,7 @@ public class BlockGenerator_Refact : MonoBehaviour
 
     public void GenerateBlock(Vector2 pos, Transform parent)
     {
-        int randomValue = Random.Range(0, (int)eItemBlockType_Refact.NormalItemCount);
+        int randomValue = Random.Range(0, (int)eBlockHeroType_Refact.Count);
         Instantiate(_normalBlockPrefabArr[randomValue], pos, Quaternion.identity, parent);
     }
 }

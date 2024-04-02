@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BlockBase_Refact : MonoBehaviour
+public abstract class BlockBase_Refact : MonoBehaviour
 {
     [SerializeField] protected GameObject _highlightParticle;
     [SerializeField] protected float _movSpeed;
-    [SerializeField] private eBlockType_Refact _blockType;
+    [SerializeField] private eBlockHeroType_Refact _eBlockType;
     private bool _isDocked;
 
-    public eBlockType_Refact BlockType { get { return _blockType; } }
+    public eBlockHeroType_Refact BlockType { get { return _eBlockType; } }
 
-    private void FixedUpdate()
+    public abstract void DoBreakAction();
+
+    protected virtual void FixedUpdate()
     {
         if (_isDocked)
             return;
@@ -20,12 +22,12 @@ public class BlockBase_Refact : MonoBehaviour
         MoveBlock(Vector2.down);
     }
 
-    public void MoveBlock(Vector2 dir)
+    protected virtual void MoveBlock(Vector2 dir)
     {
         transform.Translate(dir * _movSpeed * Time.fixedDeltaTime);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("BlockBorder"))
             _isDocked = true;
@@ -33,7 +35,7 @@ public class BlockBase_Refact : MonoBehaviour
         GameFlowMgr_Refact._instance.DockedCount++;
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    protected virtual void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("BlockBorder"))
             _isDocked = false;
