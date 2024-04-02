@@ -34,6 +34,10 @@ public class GameFlowMgr_Refact : MonoBehaviour
         StartCoroutine(CheckBlockReady());
     }
 
+    /// <summary>
+    /// 게임이 처음 시작한 후, 블럭이 모두 자리잡을때까지 기다리고 다음 차례를 넘긴다.
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator CheckBlockReady()
     {
         yield return new WaitUntil(() => _dockedCount == 63);
@@ -42,8 +46,13 @@ public class GameFlowMgr_Refact : MonoBehaviour
         ChangeGameFlow(_firstGameFlow);
     }
 
+    /// <summary>
+    /// 이 메서드를 호출하는 객체는 매개변수로 다음 게임 흐름 객체를 넘겨주어 그 객체가 일을 할 수 있게 해준다.
+    /// </summary>
+    /// <param name="flow">다음 차례 객체를 넣어주자</param>
     public void ChangeGameFlow(GameFlowState flow)
     {
+        print(flow.gameObject.name + " Turn!");
         StartCoroutine(flow.Handle());
     }
 }

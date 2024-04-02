@@ -4,51 +4,17 @@ using UnityEngine;
 
 public class OneStrokeDrawer_Refact : GameFlowState
 {
-    //[SerializeField]
-    //private GameObject _nextGameFlowObj;
-
-    //// private IGameFlowState _nextGameFlow;
-    //private CanvasRayCaster _canvasRayCaster;
-    //private Queue<IBreakableBlock> _breakeBlockQueue;
-
-    //private void Awake()
-    //{
-    //    _canvasRayCaster = GetComponent<CanvasRayCaster>();
-    //    _breakeBlockQueue = new Queue<IBreakableBlock>();
-    //    //if (_nextGameFlowObj != null)
-    //    //    _nextGameFlow = _nextGameFlowObj.GetComponent<IGameFlowState>();
-    //}
-
-    //private void Update()
-    //{
-    //    if (Input.GetMouseButton(0))
-    //    {
-    //        GameObject rayResult = _canvasRayCaster.ReturnRayResult_Refact();
-    //        if (rayResult == null)
-    //            return;
-
-    //        IBreakableBlock breakableBlock = rayResult.GetComponent<IBreakableBlock>();
-    //        if (breakableBlock == null)
-    //            return;
-
-    //        breakableBlock.DoBlockBreak();
-    //    }
-
-    //    if (Input.GetMouseButtonUp(0))
-    //    {
-
-    //    }
-    //}
-
     private Queue<BlockBase_Refact> _breakableBlockQueue;
     private CanvasRayCaster _canvasRayCaster;
     private BlockDestructionChecker _blockDestructionChecker;
+    private DamageLoadState _damageLoadState;
 
     private void Awake()
     {
         _breakableBlockQueue = new Queue<BlockBase_Refact>();
         _canvasRayCaster = GetComponent<CanvasRayCaster>();
         _blockDestructionChecker = new BlockDestructionChecker();
+        _damageLoadState = _nextGameFlow.GetComponent<DamageLoadState>();
     }
 
     private void Update()
@@ -63,20 +29,23 @@ public class OneStrokeDrawer_Refact : GameFlowState
 
         if (Input.GetMouseButtonUp(0))
         {
-
+            // 다음 차례자에게 넘기기
+            _damageLoadState.SetDestroyQueue(_breakableBlockQueue);
+            _blockDestructionChecker.ResetCondition();
+            GameFlowMgr_Refact._instance.ChangeGameFlow(_nextGameFlow);
         }
-
-        print(_breakableBlockQueue.Count);
     }
 
     public override IEnumerator Handle()
     {
+        // 내 차례일때 내 할일 하기
         GameFlowMgr_Refact._instance.GameFlow++;
-
-        yield return new WaitForSeconds(100.0f);
-        GameFlowMgr_Refact._instance.ChangeGameFlow(_nextGameFlow);
+        yield return null;
     }
 
+    /// <summary>
+    /// 파괴용 큐에 넣을 수 있는 블럭들을 넣어준다.
+    /// </summary>
     private void EnqueueBlocksForDestroy()
     {
         GameObject rayResult = _canvasRayCaster.ReturnRayResult_Refact();

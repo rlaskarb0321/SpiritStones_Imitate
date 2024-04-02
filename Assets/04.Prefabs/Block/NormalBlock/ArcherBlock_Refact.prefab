@@ -275,9 +275,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _highlightParticle: {fileID: 0}
   _movSpeed: 1.8
-  _blockType: 0
+  _eBlockType: 1
   _spirit: {fileID: 0}
-  _eNormalBlockType: 0
 --- !u!1001 &8331164421226887579
 PrefabInstance:
   m_ObjectHideFlags: 0

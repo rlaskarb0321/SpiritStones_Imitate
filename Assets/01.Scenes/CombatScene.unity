@@ -3046,8 +3046,9 @@ GameObject:
   - component: {fileID: 278555260}
   - component: {fileID: 278555261}
   - component: {fileID: 278555262}
+  - component: {fileID: 278555263}
   m_Layer: 5
-  m_Name: TeamPositionGroup
+  m_Name: Hero Team Group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3129,6 +3130,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _duration: 0.13
   _magnitudePos: 7
+--- !u!114 &278555263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278555258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 739e2f0cca315e64596085c5e8548f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nextGameFlow: {fileID: 0}
 --- !u!1 &280291695
 GameObject:
   m_ObjectHideFlags: 0
@@ -16107,8 +16121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c56983a62b678b24996457c3106e86a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameFlowMgr: {fileID: 0}
-  _nextGameFlow: {fileID: 0}
+  _nextGameFlow: {fileID: 278555263}
 --- !u!114 &1623081773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16124,6 +16137,7 @@ MonoBehaviour:
   _firstGameFlow: {fileID: 1623081772}
   _gameFlow: 0
   _gameStartDelay: 3
+  _dockedCount: 0
 --- !u!1 &1630025583
 GameObject:
   m_ObjectHideFlags: 0
