@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: -4608904765057348650}
   - component: {fileID: 2948214687256278002}
   - component: {fileID: -2132307035789852278}
-  - component: {fileID: 4272081555421608199}
   - component: {fileID: 1645398866934674020}
   - component: {fileID: -7033448313100288598}
   m_Layer: 6
@@ -226,27 +225,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &4272081555421608199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010617152862570291}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 064b84d212ef47b489e61ab50ba53083, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _movSpeed: 1.8
-  _isDocked: 0
-  _highlightedParticleObj: {fileID: 1354573631610423959}
-  _blockSprite:
-  - {fileID: 21300000, guid: f29d709fa311d214b92752b256dd0e1f, type: 3}
-  - {fileID: 21300000, guid: 1eb12fd8e9d37bc419e199919d1b3346, type: 3}
-  _blockSound: {fileID: 0}
-  _normalType: 0
-  _spiritPrefabs: {fileID: 8865526457991201743, guid: fcf19b1256bfde94a981d79c8ad35dbe, type: 3}
 --- !u!114 &1645398866934674020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,11 +251,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2c6a5cd66cae644bb3e388d227b7259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _highlightParticle: {fileID: 0}
   _movSpeed: 1.8
-  _blockType: 0
+  _eBlockType: 0
   _spirit: {fileID: 0}
-  _eNormalBlockType: 0
+  _selectionImg:
+  - {fileID: 21300000, guid: f29d709fa311d214b92752b256dd0e1f, type: 3}
+  - {fileID: 21300000, guid: 1eb12fd8e9d37bc419e199919d1b3346, type: 3}
+  _selectionParticle: {fileID: 1354573631610423959}
 --- !u!1001 &6863736541455773866
 PrefabInstance:
   m_ObjectHideFlags: 0

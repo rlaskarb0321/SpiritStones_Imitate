@@ -47,7 +47,7 @@ public enum eBlockType_Refact
     Count,
 }
 
-public enum eBlockHeroType_Refact
+public enum BlockHeroType_Refact
 {
     Warrior,
     Archer,

@@ -16136,7 +16136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _firstGameFlow: {fileID: 1623081772}
   _gameFlow: 0
-  _gameStartDelay: 3
+  _gameStartDelay: 0.6
   _dockedCount: 0
 --- !u!1 &1630025583
 GameObject:

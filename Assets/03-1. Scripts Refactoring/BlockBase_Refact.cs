@@ -3,16 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum BlockSelectionImg
+{
+    UnSelect,
+    Select,
+}
+
 public abstract class BlockBase_Refact : MonoBehaviour
 {
-    [SerializeField] protected GameObject _highlightParticle;
     [SerializeField] protected float _movSpeed;
-    [SerializeField] private eBlockHeroType_Refact _eBlockType;
+    [SerializeField] private BlockHeroType_Refact _eBlockType;
     private bool _isDocked;
 
-    public eBlockHeroType_Refact BlockType { get { return _eBlockType; } }
+    public BlockHeroType_Refact BlockType { get { return _eBlockType; } }
 
     public abstract void DoBreakAction();
+
+    public abstract void ActivateBlockSeletionUI(bool turnOn);
 
     protected virtual void FixedUpdate()
     {

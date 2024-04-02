@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class BlockDestructionChecker
 {
-    private eBlockHeroType_Refact _selectNormalBlock;
-    private eBlockHeroType_Refact _selectItemBlock;
+    private BlockHeroType_Refact _selectNormalBlock;
+    private BlockHeroType_Refact _selectItemBlock;
     private int _normalBlockSelectionChance;
     private int _itemBlockSelectionChance;
 
     public BlockDestructionChecker()
     {
-        _selectNormalBlock = eBlockHeroType_Refact.None;
-        _selectItemBlock = eBlockHeroType_Refact.None;
+        _selectNormalBlock = BlockHeroType_Refact.None;
+        _selectItemBlock = BlockHeroType_Refact.None;
         _normalBlockSelectionChance = 1;
         _itemBlockSelectionChance = 1;
     }
@@ -20,7 +20,7 @@ public class BlockDestructionChecker
     /// <summary>
     /// 선택 기회가 1이상이고, 매개변수로 넘어온 (아이템/노말)블럭이 처음 선택한 블럭과 같은 히어로 종류인지 판단후 선택
     /// </summary>
-    public bool IsDestructibleBlock(string blockTag, eBlockHeroType_Refact blockType)
+    public bool IsDestructibleBlock(string blockTag, BlockHeroType_Refact blockType)
     {
         switch (blockTag)
         {
@@ -57,10 +57,10 @@ public class BlockDestructionChecker
     /// <summary>
     /// 선택한 블럭이 큐에 완전 동일한 블럭이 있는지, 최근 선택한 블럭과 거리가 먼지를 판단후 Enqueue
     /// </summary>
-    public bool IsInsertableBlock(BlockBase_Refact block, Queue<BlockBase_Refact> queue)
+    public bool IsInsertableBlock(BlockBase_Refact block, Stack<BlockBase_Refact> stack)
     {
         // 완전 동일한 블럭 체크
-        if (queue.Count != 0 && queue.Peek().Equals(block))
+        if (stack.Count != 0 && stack.Peek() == block)
             return false;
         // 거리 체크
 
@@ -69,8 +69,8 @@ public class BlockDestructionChecker
 
     public void ResetCondition()
     {
-        _selectNormalBlock = eBlockHeroType_Refact.None;
-        _selectItemBlock = eBlockHeroType_Refact.None;
+        _selectNormalBlock = BlockHeroType_Refact.None;
+        _selectItemBlock = BlockHeroType_Refact.None;
         _normalBlockSelectionChance = 1;
         _itemBlockSelectionChance = 1;
     }
