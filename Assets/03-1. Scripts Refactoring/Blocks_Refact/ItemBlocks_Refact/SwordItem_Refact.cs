@@ -54,7 +54,7 @@ public class SwordItem_Refact : ItemBlock_Refact, IBlockDestroyerItem
         _isInUpwardRightSliceZone = false;
     }
 
-    public void FillDestroyStack(Stack<BlockBase_Refact> stack)
+    public IEnumerator FillDestroyStack(Stack<BlockBase_Refact> stack)
     {
         Transform effectParent = GameObject.Find("Effect Group").transform;
 
@@ -74,6 +74,9 @@ public class SwordItem_Refact : ItemBlock_Refact, IBlockDestroyerItem
             Instantiate(_swordSlice, transform.position, Quaternion.Euler(0, 0, -27.425f), effectParent);
         }
 
+        print("wait until " + _swordSlice.IsTriggerEnd);
+        yield return new WaitUntil(() => _swordSlice.IsTriggerEnd == true); // 이걸 어떻게 처리해야한다..
+        print("Get triggered Stack");
         Stack<BlockBase_Refact> triggeredStack = _swordSlice.GetTriggerBlockStack();
         while (triggeredStack.Count != 0)
         {

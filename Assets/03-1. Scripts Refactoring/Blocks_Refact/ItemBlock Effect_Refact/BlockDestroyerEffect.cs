@@ -6,6 +6,9 @@ public class BlockDestroyerEffect : MonoBehaviour
 {
     // 아이템 블록의 파괴 효과에 적중된 블록들을 저장하는 스택
     private Stack<BlockBase_Refact> _triggeredBlockStack;
+    private bool _isTriggerEnd;
+
+    public bool IsTriggerEnd { get { return _isTriggerEnd; } }
 
     private void Awake()
     {
@@ -17,7 +20,6 @@ public class BlockDestroyerEffect : MonoBehaviour
     /// </summary>
     public void DestroySelf()
     {
-        Destroy(gameObject);
     }
 
     public Stack<BlockBase_Refact> GetTriggerBlockStack()
@@ -28,23 +30,16 @@ public class BlockDestroyerEffect : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer != LayerMask.NameToLayer("BlockBorder"))
-        {
-            print(LayerMask.LayerToName(collision.gameObject.layer));
             return;
-        }
 
         BlockBase_Refact triggeredBlock = collision.GetComponent<BlockBase_Refact>();
         if (triggeredBlock == null)
-        {
-            print("triggeredBlock is null");
             return;
-        }
         if (_triggeredBlockStack.Count != 0 && _triggeredBlockStack.Contains(triggeredBlock))
-        {
-            print(_triggeredBlockStack.Count + " Contain? " + _triggeredBlockStack.Contains(triggeredBlock));
             return;
-        }
 
+        print("Push Slice Trigger Block");
         _triggeredBlockStack.Push(triggeredBlock);
+        _isTriggerEnd = true;
     }
 }

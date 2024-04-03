@@ -65,21 +65,17 @@ public class DamageLoadState : GameFlowState
                 switch (popBlock.DestroyType)
                 {
                     case ItemDestroyType.Destory:
-                        popBlock.GetComponent<IBlockDestroyerItem>().FillDestroyStack(_destroyStack);
+                        yield return StartCoroutine(popBlock.GetComponent<IBlockDestroyerItem>().FillDestroyStack(_destroyStack));
+                        print(_destroyStack.Count);
                         break;
 
                     case ItemDestroyType.None:
                         break;
                 }
-
-                yield return null;
             }
 
             // 블록들 제자리 찾을때까지 대기
-            yield return _waitDocked;
-            yield return _delayWait;
-            print(_destroyStack.GetHashCode());
-            print("_destroyStack Count : " + _destroyStack.Count);
+            // yield return _waitDocked;
         }
 
         GameFlowMgr_Refact._instance.ChangeGameFlow(_nextGameFlow);
