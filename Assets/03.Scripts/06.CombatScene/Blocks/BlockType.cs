@@ -39,7 +39,7 @@ public enum eObstacleBlockType
     Skull,
 }
 
-public enum eBlockType_Refact
+public enum BlockType_Refact
 {
     Normal,
     Item,

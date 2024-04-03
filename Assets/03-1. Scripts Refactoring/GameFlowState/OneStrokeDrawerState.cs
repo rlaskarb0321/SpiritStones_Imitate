@@ -51,7 +51,7 @@ public class OneStrokeDrawerState : GameFlowState
         if (block == null)
             return;
 
-        bool isDestructible = _blockDestructionChecker.IsDestructibleBlock(block.tag, block.BlockType);
+        bool isDestructible = _blockDestructionChecker.IsDestructibleBlock(block.tag, block.BlockHeroType);
         bool isInsertable = _blockDestructionChecker.IsInsertableBlock(block, _breakableBlockStack);
 
         // 한붓그리기 취소 동작

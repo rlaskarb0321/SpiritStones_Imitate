@@ -12,11 +12,13 @@ public abstract class BlockBase_Refact : MonoBehaviour
 {
     [Header("=== 블록 기반값 ===")]
     [SerializeField] protected float _movSpeed;
-    [SerializeField] private BlockHeroType_Refact _eBlockType;
+    [SerializeField] private BlockHeroType_Refact _eBlockHeroType;
+    [SerializeField] private BlockType_Refact _eBlockType;
     [SerializeField] private bool _isDocked;
     [SerializeField] protected GameObject _selectionParticle;
 
-    public BlockHeroType_Refact BlockType { get { return _eBlockType; } }
+    public BlockHeroType_Refact BlockHeroType { get { return _eBlockHeroType; } }
+    public BlockType_Refact BlockType { get { return _eBlockType; } }
 
     public abstract void DoBreakAction();
 
@@ -48,6 +50,6 @@ public abstract class BlockBase_Refact : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("BlockBorder"))
             _isDocked = false;
 
-        GameFlowMgr_Refact._instance.DockedCount++;
+        GameFlowMgr_Refact._instance.DockedCount--;
     }
 }
