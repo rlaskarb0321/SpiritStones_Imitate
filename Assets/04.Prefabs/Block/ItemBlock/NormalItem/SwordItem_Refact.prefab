@@ -14,9 +14,8 @@ GameObject:
   - component: {fileID: -4013065658479836364}
   - component: {fileID: 7332130134013092892}
   - component: {fileID: -7308492486635820983}
-  - component: {fileID: -2867264501529841748}
-  - component: {fileID: -5038631542353315917}
   - component: {fileID: 820233654041104142}
+  - component: {fileID: -5038631542353315917}
   - component: {fileID: 8770235654634898466}
   m_Layer: 6
   m_Name: SwordItem_Refact
@@ -228,31 +227,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-2867264501529841748
+--- !u!114 &820233654041104142
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1010617152862570291}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f0af31683e1db2478e5aa34e81530b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movSpeed: 1.8
-  _isDocked: 0
-  _highlightedParticleObj: {fileID: 6617327292289522604}
-  _blockSprite: []
-  _blockSound: {fileID: 0}
-  _specialType: 3
-  _ignitedImg: {fileID: 21300000, guid: afed6a1d7a8270e4aad64cbdba715295, type: 3}
-  _isIn_YequalX_Zone: 0
-  _sliceEffect: {fileID: 7398387423075112122, guid: 52cc712fcf6c0a94cb9f1a959ca4f5c4, type: 3}
-  _audio: {fileID: 0}
-  _audioClip:
-  - {fileID: 8300000, guid: 2b8c207613cd58b4889b0cc6bf739f2c, type: 3}
-  - {fileID: 8300000, guid: 2e3cfd8a4cd1afe40b6ddda869151d13, type: 3}
+  m_ShowMaskGraphic: 1
 --- !u!114 &-5038631542353315917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,19 +254,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pickSound: {fileID: 8300000, guid: cad11a4481c77fe4aabeb5563cb0bd6c, type: 3}
   _audioVolume: 0.8
---- !u!114 &820233654041104142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010617152862570291}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShowMaskGraphic: 1
 --- !u!114 &8770235654634898466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,6 +270,9 @@ MonoBehaviour:
   _eBlockType: 0
   _isDocked: 0
   _selectionParticle: {fileID: 6617327292289522604}
+  _ignitedImg: {fileID: 21300000, guid: afed6a1d7a8270e4aad64cbdba715295, type: 3}
+  _isIgnited: 0
+  _swordSlice: {fileID: 7398387423075112122, guid: 52cc712fcf6c0a94cb9f1a959ca4f5c4, type: 3}
 --- !u!1 &7671332424155830894
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,7 +285,7 @@ GameObject:
   - component: {fileID: 8610445678555495378}
   - component: {fileID: 6615574119631750267}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Mask Img
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

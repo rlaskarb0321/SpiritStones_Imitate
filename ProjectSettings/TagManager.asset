@@ -17,6 +17,7 @@ TagManager:
   - Colum_4
   - Colum_5
   - Colum_6
+  - Change Slice Dir
   layers:
   - Default
   - TransparentFX
