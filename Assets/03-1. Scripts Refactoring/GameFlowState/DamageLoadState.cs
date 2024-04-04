@@ -5,6 +5,8 @@ using UnityEngine;
 public class DamageLoadState : GameFlowState
 {
     [SerializeField] private float _gameFlowDelay;
+    [SerializeField] private ComboManage _comboManage;
+
     private Stack<BlockBase_Refact> _destroyStack;
     private WaitUntil _waitDocked;
     private WaitForSeconds _delayWait;
@@ -52,10 +54,10 @@ public class DamageLoadState : GameFlowState
         // 3개 이상일 경우
         Stack<ItemBlock_Refact> itemBlockStack = new Stack<ItemBlock_Refact>();
         GameFlowMgr_Refact._instance.GameFlow = eGameFlow_Refact.DamageLoad;
-        int comboCount = 0;
+        _comboManage.ComboCount = 0;
         while (_destroyStack.Count != 0)
         {
-            bool isContainItemBlock = false;
+            bool hasItemBlock = false;
             int stackCount = _destroyStack.Count;
 
             // 스택에 들어온 블록들(노말 블록, 아이템 블록, 기타 등등) 파괴작업
@@ -64,13 +66,13 @@ public class DamageLoadState : GameFlowState
                 BlockBase_Refact block = _destroyStack.Pop();
                 ItemBlock_Refact itemBlock = null;
 
-                // 아이템 블록이 있는경우 점화시킨 뒤, 따로 스택에 추가
+                // 아이템 블록이 있는경우
                 if (block.BlockType == BlockType_Refact.Item)
                     itemBlock = block.GetComponent<ItemBlock_Refact>();
                 if (itemBlock != null && !itemBlock.IsIgnited)
                 {
                     itemBlockStack.Push(itemBlock);
-                    isContainItemBlock = true;
+                    hasItemBlock = true;
                 }
 
                 block.DoBreakAction();
@@ -89,11 +91,6 @@ public class DamageLoadState : GameFlowState
                 {
                     case ItemDestroyType.Destory:
                         IBlockDestroyerItem destroyerBlock = popBlock.GetComponent<IBlockDestroyerItem>();
-
-                        // 여기서 yield return을 쓰면 한번에 넣은 아이템들이 하나하나 터짐
-                        //yield return StartCoroutine(destroyerBlock.FillDestroyStack(_destroyStack));
-
-                        // 이 주석을 해제하면 한번에 넣은 아이템들이 한꺼번에 터짐
                         StartCoroutine(destroyerBlock.FillDestroyStack(_destroyStack, this));
                         break;
 
@@ -105,14 +102,15 @@ public class DamageLoadState : GameFlowState
                 yield return null;
             }
 
-            if (isContainItemBlock)
+            if (hasItemBlock)
             {
                 // 여기서 아이템 블록들 모두 효과가 끝날때까지 기다려줘야한다.
                 yield return new WaitUntil(() => _itemCount == 0);
-                comboCount++;
+                _comboManage.ComboCount += 1;
             }
         }
 
         GameFlowMgr_Refact._instance.ChangeGameFlow(_nextGameFlow);
+        _comboManage.ComboCount = 0;
     }
 }
