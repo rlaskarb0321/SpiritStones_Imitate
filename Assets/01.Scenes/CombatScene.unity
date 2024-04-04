@@ -13155,15 +13155,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528da7a6626e8b14b8a2f3d473b73623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemBlockSpawnPercentage: 10
+  _itemBlockSpawnPercentage: 20
   _normalBlockPrefabArr:
   - {fileID: 1010617152862570291, guid: 548aacea32a41b1408453f2215e1dba2, type: 3}
   - {fileID: 1010617152862570291, guid: 9056ea225edac7946814138a9f84b7d8, type: 3}
   - {fileID: 1010617152862570291, guid: 0510db549ea3b354386f219dad81e2e3, type: 3}
   - {fileID: 1010617152862570291, guid: 09136916bc527c6479703bfc5d43150d, type: 3}
   _itemBlockPrefabArr:
-  - {fileID: 1010617152862570291, guid: a28c34d696b279a4ca48a2f8c86a61cf, type: 3}
-  - {fileID: 1010617152862570291, guid: a28c34d696b279a4ca48a2f8c86a61cf, type: 3}
+  - {fileID: 1010617152862570291, guid: 7ab7df4db9cddb446966548ae392330d, type: 3}
+  - {fileID: 1010617152862570291, guid: 7ab7df4db9cddb446966548ae392330d, type: 3}
   - {fileID: 1010617152862570291, guid: a28c34d696b279a4ca48a2f8c86a61cf, type: 3}
   - {fileID: 1010617152862570291, guid: a28c34d696b279a4ca48a2f8c86a61cf, type: 3}
 --- !u!1 &1318099791

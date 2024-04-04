@@ -37,11 +37,13 @@ public class DamageLoadState : GameFlowState
         // 3개 이상일 경우
         Stack<ItemBlock_Refact> itemBlockStack = new Stack<ItemBlock_Refact>();
         GameFlowMgr_Refact._instance.GameFlow = eGameFlow_Refact.DamageLoad;
+        int comboCount = 0;
         while (_destroyStack.Count != 0)
         {
+            bool isContainItemBlock = false;
             int stackCount = _destroyStack.Count;
 
-            // 스택에 들어온 블록들 파괴작업
+            // 스택에 들어온 블록들(노말 블록, 아이템 블록, 기타 등등) 파괴작업
             for (int i = 0; i < stackCount; i++)
             {
                 BlockBase_Refact block = _destroyStack.Pop();
@@ -51,7 +53,10 @@ public class DamageLoadState : GameFlowState
                 if (block.BlockType == BlockType_Refact.Item)
                     itemBlock = block.GetComponent<ItemBlock_Refact>();
                 if (itemBlock != null && !itemBlock.IsIgnited)
+                {
                     itemBlockStack.Push(itemBlock);
+                    isContainItemBlock = true;
+                }
 
                 block.DoBreakAction();
             }
@@ -60,19 +65,36 @@ public class DamageLoadState : GameFlowState
             yield return _waitDocked;
             yield return _delayWait;
 
-            // 점화된 아이템 블록을 활성화
+            // 스택속에 있던 아이템 블럭들 처리, 점화된 아이템 블록을 활성화
             while (itemBlockStack.Count != 0)
             {
                 ItemBlock_Refact popBlock = itemBlockStack.Pop();
                 switch (popBlock.DestroyType)
                 {
                     case ItemDestroyType.Destory:
-                        yield return StartCoroutine(popBlock.GetComponent<IBlockDestroyerItem>().FillDestroyStack(_destroyStack));
+                        IBlockDestroyerItem destroyerBlock = popBlock.GetComponent<IBlockDestroyerItem>();
+
+                        // 여기서 yield return을 쓰면 한번에 넣은 아이템들이 하나하나 터짐
+                        yield return StartCoroutine(destroyerBlock.FillDestroyStack(_destroyStack));
+
+                        // 이 주석을 해제하면 한번에 넣은 아이템들이 한꺼번에 터짐
+                        // StartCoroutine(destroyerBlock.FillDestroyStack(_destroyStack));
                         break;
 
                     case ItemDestroyType.None:
+                        IBlockNoneDestroyerItem noneDestroyerBlock = popBlock.GetComponent<IBlockNoneDestroyerItem>();
                         break;
                 }
+
+                yield return null;
+            }
+
+            if (isContainItemBlock)
+            {
+                // 여기서 아이템 블록들 모두 효과가 끝날때까지 기다려줘야한다.
+                // yield return new WaitUntil(() => ...);
+                comboCount++;
+                print(comboCount);
             }
         }
 
