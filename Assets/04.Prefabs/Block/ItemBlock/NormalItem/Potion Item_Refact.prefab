@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -1242714571835142315}
   - component: {fileID: 5904674340564015427}
   m_Layer: 6
-  m_Name: PotionItem_Refact
+  m_Name: Potion Item_Refact
   m_TagString: ItemBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

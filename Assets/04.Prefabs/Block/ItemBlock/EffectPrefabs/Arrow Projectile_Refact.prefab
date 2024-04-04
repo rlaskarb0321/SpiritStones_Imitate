@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 2675273204888409553}
   - component: {fileID: 8946933912833184680}
   - component: {fileID: 108574051502089850}
-  - component: {fileID: 3396457598579868498}
   - component: {fileID: -7268950832581606455}
-  - component: {fileID: 3708596248919890676}
+  - component: {fileID: 4361236434342067766}
   m_Layer: 5
-  m_Name: Arrow_Projectile
+  m_Name: Arrow Projectile_Refact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 45, y: 120}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &8946933912833184680
 CanvasRenderer:
@@ -79,32 +78,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!61 &3396457598579868498
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 651161023373198283}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 20, y: 20}
-  m_EdgeRadius: 0
 --- !u!82 &-7268950832581606455
 AudioSource:
   m_ObjectHideFlags: 0
@@ -201,7 +174,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3708596248919890676
+--- !u!114 &4361236434342067766
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -210,9 +183,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 651161023373198283}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b43a296f1eb2694d8cb3630d1a2d0f3, type: 3}
+  m_Script: {fileID: 11500000, guid: c7971b095aef2dc4fb88ad3e340ba581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fire: 0
-  _fireSpeed: 6.6
-  _lifeTime: 0.53
+  _launchSpeed: 0.015
+  _target: {fileID: 0}

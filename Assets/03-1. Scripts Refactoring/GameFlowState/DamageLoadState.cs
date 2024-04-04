@@ -8,6 +8,21 @@ public class DamageLoadState : GameFlowState
     private Stack<BlockBase_Refact> _destroyStack;
     private WaitUntil _waitDocked;
     private WaitForSeconds _delayWait;
+    private int _itemCount;
+
+    public int ItemCount 
+    { 
+        get { return _itemCount; }
+        set 
+        {
+            if (Mathf.Abs(value - _itemCount) > 1)
+                return;
+            if (value < 0)
+                return;
+
+            _itemCount = value;
+        }
+    }
 
     private void Awake()
     {
@@ -66,6 +81,7 @@ public class DamageLoadState : GameFlowState
             yield return _delayWait;
 
             // 스택속에 있던 아이템 블럭들 처리, 점화된 아이템 블록을 활성화
+            _itemCount = itemBlockStack.Count;
             while (itemBlockStack.Count != 0)
             {
                 ItemBlock_Refact popBlock = itemBlockStack.Pop();
@@ -75,10 +91,10 @@ public class DamageLoadState : GameFlowState
                         IBlockDestroyerItem destroyerBlock = popBlock.GetComponent<IBlockDestroyerItem>();
 
                         // 여기서 yield return을 쓰면 한번에 넣은 아이템들이 하나하나 터짐
-                        yield return StartCoroutine(destroyerBlock.FillDestroyStack(_destroyStack));
+                        //yield return StartCoroutine(destroyerBlock.FillDestroyStack(_destroyStack));
 
                         // 이 주석을 해제하면 한번에 넣은 아이템들이 한꺼번에 터짐
-                        // StartCoroutine(destroyerBlock.FillDestroyStack(_destroyStack));
+                        StartCoroutine(destroyerBlock.FillDestroyStack(_destroyStack, this));
                         break;
 
                     case ItemDestroyType.None:
@@ -92,9 +108,8 @@ public class DamageLoadState : GameFlowState
             if (isContainItemBlock)
             {
                 // 여기서 아이템 블록들 모두 효과가 끝날때까지 기다려줘야한다.
-                // yield return new WaitUntil(() => ...);
+                yield return new WaitUntil(() => _itemCount == 0);
                 comboCount++;
-                print(comboCount);
             }
         }
 

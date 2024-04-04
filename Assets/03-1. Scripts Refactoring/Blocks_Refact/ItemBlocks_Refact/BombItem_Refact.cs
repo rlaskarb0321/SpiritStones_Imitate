@@ -26,7 +26,7 @@ public class BombItem_Refact : ItemBlock_Refact, IBlockDestroyerItem
         Destroy(gameObject);
     }
 
-    public IEnumerator FillDestroyStack(Stack<BlockBase_Refact> stack)
+    public IEnumerator FillDestroyStack(Stack<BlockBase_Refact> stack, DamageLoadState damageLoader)
     {
         Transform effectParent = GameObject.Find("Effect Group").transform;
         BlockDestroyerEffect effect = null;
@@ -37,6 +37,7 @@ public class BombItem_Refact : ItemBlock_Refact, IBlockDestroyerItem
 
         yield return new WaitUntil(() => effect.IsTriggerEnd == true);
         TradeStack(effect, stack);
+        damageLoader.ItemCount--;
         yield return new WaitForSeconds(_delay);
     }
 

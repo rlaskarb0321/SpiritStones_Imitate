@@ -57,7 +57,7 @@ public class SwordItem_Refact : ItemBlock_Refact, IBlockDestroyerItem
         _isInUpwardRightSliceZone = false;
     }
 
-    public IEnumerator FillDestroyStack(Stack<BlockBase_Refact> stack)
+    public IEnumerator FillDestroyStack(Stack<BlockBase_Refact> stack, DamageLoadState damageLoader)
     {
         Transform effectParent = GameObject.Find("Effect Group").transform;
         switch (_isSpecialItem)
@@ -90,6 +90,7 @@ public class SwordItem_Refact : ItemBlock_Refact, IBlockDestroyerItem
                 break;
         }
 
+        damageLoader.ItemCount--;
         yield return new WaitForSeconds(_delay);
     }
 

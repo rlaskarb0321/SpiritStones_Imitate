@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 5089414911088577290}
   - component: {fileID: 3213481382501157386}
   m_Layer: 6
-  m_Name: ArrowItem_Refact
+  m_Name: Bow tem_Refact
   m_TagString: ItemBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -297,8 +297,8 @@ MonoBehaviour:
   _ignitedImg: {fileID: 21300000, guid: 703c256038838914fb20891474973877, type: 3}
   _isIgnited: 0
   _isSpecialItem: 0
-  _delay: 0.1
-  _arrowPrefab: {fileID: 0}
+  _delay: 0.5
+  _arrowPrefab: {fileID: 651161023373198283, guid: 6514427bd9ba2524a897b59b67cb9f93, type: 3}
   _arrowCount: 5
   _specialItemArrowCount: 11
 --- !u!1 &2662168893081442840
