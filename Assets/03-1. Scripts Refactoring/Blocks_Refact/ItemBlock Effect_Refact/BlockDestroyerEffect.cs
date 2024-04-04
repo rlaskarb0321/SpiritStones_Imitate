@@ -20,6 +20,8 @@ public class BlockDestroyerEffect : MonoBehaviour
     /// </summary>
     public void DestroySelf()
     {
+        _isTriggerEnd = true;
+        Destroy(gameObject);
     }
 
     public Stack<BlockBase_Refact> GetTriggerBlockStack()
@@ -40,6 +42,5 @@ public class BlockDestroyerEffect : MonoBehaviour
 
         print("Push Slice Trigger Block");
         _triggeredBlockStack.Push(triggeredBlock);
-        _isTriggerEnd = true;
     }
 }
