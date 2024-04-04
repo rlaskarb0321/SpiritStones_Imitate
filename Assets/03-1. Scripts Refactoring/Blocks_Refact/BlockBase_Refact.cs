@@ -20,8 +20,15 @@ public abstract class BlockBase_Refact : MonoBehaviour
     public BlockHeroType_Refact BlockHeroType { get { return _eBlockHeroType; } }
     public BlockType_Refact BlockType { get { return _eBlockType; } }
 
+    /// <summary>
+    /// 해당 블록을 한붓 그리기에 넣었을 때 관련 동작 메서드
+    /// </summary>
     public abstract void DoBreakAction();
 
+    /// <summary>
+    /// 해당 블록을 선택했을때 이펙트 관련 메서드
+    /// </summary>
+    /// <param name="turnOn"></param>
     public abstract void ActivateBlockSeletionUI(bool turnOn);
 
     protected virtual void FixedUpdate()

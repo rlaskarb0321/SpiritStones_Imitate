@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: -7859730401943170383}
   - component: {fileID: 6495661427811505205}
   - component: {fileID: -7515141573230701893}
-  - component: {fileID: 7720763021093325882}
-  - component: {fileID: 5543309278404256287}
   - component: {fileID: 8185819410223885601}
+  - component: {fileID: 5543309278404256287}
+  - component: {fileID: -224735932322777113}
   m_Layer: 6
   m_Name: BombItem_Refact
   m_TagString: ItemBlock
@@ -227,26 +227,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &7720763021093325882
+--- !u!114 &8185819410223885601
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1010617152862570291}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3547f88e920769542b1cb923854c4339, type: 3}
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movSpeed: 1.8
-  _isDocked: 0
-  _highlightedParticleObj: {fileID: 2345960918023610495}
-  _blockSprite: []
-  _blockSound: {fileID: 0}
-  _specialType: 1
-  _ignitedImg: {fileID: 21300000, guid: af5dee77bce369c46b9ddfc94d798278, type: 3}
-  _explosionEffect: {fileID: 8241872991355337054, guid: 798225f2b8bc0944aadd224aebb30322, type: 3}
+  m_ShowMaskGraphic: 1
 --- !u!114 &5543309278404256287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,7 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pickSound: {fileID: 8300000, guid: cad11a4481c77fe4aabeb5563cb0bd6c, type: 3}
   _audioVolume: 0.8
---- !u!114 &8185819410223885601
+--- !u!114 &-224735932322777113
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -270,10 +263,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1010617152862570291}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Script: {fileID: 11500000, guid: bb94ba682d01fdd49b4f8ad95eff7ab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ShowMaskGraphic: 1
+  _movSpeed: 2.5
+  _eBlockHeroType: 2
+  _eBlockType: 1
+  _isDocked: 0
+  _selectionParticle: {fileID: 2345960918023610495}
+  _eDestroyType: 0
+  _ignitedImg: {fileID: 21300000, guid: af5dee77bce369c46b9ddfc94d798278, type: 3}
+  _isIgnited: 0
+  _isSpecialItem: 0
+  _delay: 0.6
+  _normalExplosionEffect: {fileID: 8241872991355337054, guid: 798225f2b8bc0944aadd224aebb30322, type: 3}
+  _specialExplosionEffect: {fileID: 7463296119107724718, guid: 5281de09c00b5b647882bc23809c01dd, type: 3}
 --- !u!1 &3230958670231334558
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,6 +20,7 @@ public class BlockDestroyerEffect : MonoBehaviour
     /// </summary>
     public void DestroySelf()
     {
+        _isTriggerEnd = true;
         Destroy(gameObject);
     }
 
@@ -40,6 +41,5 @@ public class BlockDestroyerEffect : MonoBehaviour
             return;
 
         _triggeredBlockStack.Push(triggeredBlock);
-        _isTriggerEnd = true;
     }
 }

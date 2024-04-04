@@ -3206,7 +3206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nextGameFlow: {fileID: 1623081772}
-  _gameFlowDelay: 1.2
+  _gameFlowDelay: 0.9
 --- !u!1 &280291695
 GameObject:
   m_ObjectHideFlags: 0
@@ -13155,7 +13155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528da7a6626e8b14b8a2f3d473b73623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemBlockSpawnPercentage: 15
+  _itemBlockSpawnPercentage: 10
   _normalBlockPrefabArr:
   - {fileID: 1010617152862570291, guid: 548aacea32a41b1408453f2215e1dba2, type: 3}
   - {fileID: 1010617152862570291, guid: 9056ea225edac7946814138a9f84b7d8, type: 3}

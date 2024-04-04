@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7398387423075112125}
   - component: {fileID: -877101807725624233}
   m_Layer: 5
-  m_Name: Slice Effect_Refact
+  m_Name: Sword Slice Effect_Refact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
