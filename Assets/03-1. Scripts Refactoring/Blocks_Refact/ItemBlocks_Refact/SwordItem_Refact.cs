@@ -75,9 +75,7 @@ public class SwordItem_Refact : ItemBlock_Refact, IBlockDestroyerItem
             effect = Instantiate(_swordSliceEffect, transform.position, Quaternion.Euler(0, 0, -27.425f), effectParent).GetComponent<BlockDestroyerEffect>();
         }
 
-        print("wait until " + effect.IsTriggerEnd);
-        yield return new WaitUntil(() => effect.IsTriggerEnd == true); // 이걸 어떻게 처리해야한다..
-        print("Get triggered Stack");
+        yield return new WaitUntil(() => effect.IsTriggerEnd == true);
         Stack<BlockBase_Refact> triggeredStack = effect.GetTriggerBlockStack();
         while (triggeredStack.Count != 0)
         {
@@ -87,5 +85,7 @@ public class SwordItem_Refact : ItemBlock_Refact, IBlockDestroyerItem
                 stack.Push(block);
             }
         }
+
+        yield return new WaitForSeconds(_delay);
     }
 }

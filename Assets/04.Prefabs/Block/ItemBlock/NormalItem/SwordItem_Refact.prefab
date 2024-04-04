@@ -275,6 +275,7 @@ MonoBehaviour:
   _ignitedImg: {fileID: 21300000, guid: afed6a1d7a8270e4aad64cbdba715295, type: 3}
   _isIgnited: 0
   _isSpecialItem: 0
+  _delay: 0.8
   _swordSliceEffect: {fileID: 7398387423075112122, guid: 26231b1dc9d724647a192e35b835f2e4, type: 3}
   _isInUpwardRightSliceZone: 0
 --- !u!1 &7671332424155830894

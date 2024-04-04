@@ -24,7 +24,8 @@ public class Colum : MonoBehaviour
                 Vector2 spawnPos = _spawnPos.transform.GetChild(5 - (i + 1)).position;
                 _blockGeneratorRefact.GenerateBlock(spawnPos, this.transform);
 
-                yield return new WaitForSeconds(0.35f);
+                yield return null;
+                // yield return new WaitForSeconds(0.35f);
             }
         }
     }
