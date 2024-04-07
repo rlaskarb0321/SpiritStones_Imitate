@@ -3115,7 +3115,7 @@ GameObject:
   - component: {fileID: 278555264}
   - component: {fileID: 278555265}
   m_Layer: 5
-  m_Name: Hero Team Group
+  m_Name: Hero Group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3226,6 +3226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nextGameFlow: {fileID: 0}
+  _heroTeamMgr: {fileID: 0}
 --- !u!114 &278555265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3244,7 +3245,6 @@ MonoBehaviour:
   - {fileID: 718850836}
   - {fileID: 551128822}
   _teamHP: 0
-  _teamHeroType: 00000000000000000000000000000000
 --- !u!1 &280291695
 GameObject:
   m_ObjectHideFlags: 0
@@ -6640,6 +6640,7 @@ MonoBehaviour:
   _hp: 600
   _damage: 50
   _heroType: 02000000
+  _accumulatedDamage: 0
 --- !u!1 &567766563
 GameObject:
   m_ObjectHideFlags: 0
@@ -8318,6 +8319,7 @@ MonoBehaviour:
   _hp: 600
   _damage: 50
   _heroType: 0000000002000000
+  _accumulatedDamage: 0
 --- !u!1 &722147202
 GameObject:
   m_ObjectHideFlags: 0
@@ -9600,6 +9602,7 @@ MonoBehaviour:
   _hp: 600
   _damage: 50
   _heroType: 03000000
+  _accumulatedDamage: 0
 --- !u!1 &900971053
 GameObject:
   m_ObjectHideFlags: 0
@@ -11233,6 +11236,7 @@ MonoBehaviour:
   _hp: 600
   _damage: 50
   _heroType: 01000000
+  _accumulatedDamage: 0
 --- !u!1 &1140392642
 GameObject:
   m_ObjectHideFlags: 0
