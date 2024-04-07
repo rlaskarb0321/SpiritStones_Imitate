@@ -220,6 +220,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b7c73f80b3537540975e77f896625b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 6
-  _idleTime: 1
-  _lerpMoveValue: 0.105
+  _speed: 7
+  _idleTime: 0.705
+  _lerpMoveValue: 0.126

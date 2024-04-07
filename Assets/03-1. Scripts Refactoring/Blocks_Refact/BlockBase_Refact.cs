@@ -12,7 +12,7 @@ public abstract class BlockBase_Refact : MonoBehaviour
 {
     [Header("블록 기반값")]
     [SerializeField] protected float _movSpeed;
-    [SerializeField] private eBlockHeroType_Refact _eBlockHeroType;
+    [SerializeField] protected eBlockHeroType_Refact _eBlockHeroType;
     [SerializeField] private eBlockType_Refact _eBlockType;
     [SerializeField] private bool _isDocked;
     [SerializeField] protected GameObject _selectionParticle;
@@ -23,7 +23,7 @@ public abstract class BlockBase_Refact : MonoBehaviour
     /// <summary>
     /// 해당 블록을 한붓 그리기에 넣었을 때 관련 동작 메서드
     /// </summary>
-    public abstract void DoBreakAction();
+    public abstract void DoBreakAction(HeroTeamMgr_Refact heroTeam);
 
     /// <summary>
     /// 해당 블록을 선택했을때 이펙트 관련 메서드

@@ -16,7 +16,7 @@ public class SwordItem_Refact : ItemBlock_Refact, IBlockDestroyerItem
     }
 
     // 아이템 블록의 경우 사용하면 점화상태로 대기
-    public override void DoBreakAction()
+    public override void DoBreakAction(HeroTeamMgr_Refact heroTeam)
     {
         if (!_isIgnited)
         {

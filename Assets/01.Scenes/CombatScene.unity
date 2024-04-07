@@ -3212,6 +3212,7 @@ MonoBehaviour:
   _nextGameFlow: {fileID: 278555264}
   _gameFlowDelay: 0.9
   _comboManage: {fileID: 42716061}
+  _heroTeamMgr: {fileID: 278555265}
 --- !u!114 &278555264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3242,7 +3243,7 @@ MonoBehaviour:
   - {fileID: 894452798}
   - {fileID: 718850836}
   - {fileID: 551128822}
-  _totalHP: 0
+  _teamHP: 0
   _teamHeroType: 00000000000000000000000000000000
 --- !u!1 &280291695
 GameObject:

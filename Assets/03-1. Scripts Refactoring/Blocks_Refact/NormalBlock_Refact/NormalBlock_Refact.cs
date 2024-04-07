@@ -29,15 +29,19 @@ public class NormalBlock_Refact : BlockBase_Refact
         }
     }
 
-    public override void DoBreakAction()
+    public override void DoBreakAction(HeroTeamMgr_Refact heroTeam)
     {
-        GenerateSpirit();
+        GenerateSpirit(heroTeam.TeamHeroDict);
         Destroy(gameObject);
     }
 
-    private void GenerateSpirit()
+    private void GenerateSpirit(Dictionary<eBlockHeroType_Refact, List<HeroBase_Refact>> heroTeamDict)
     {
         Transform spiritGroup = GameObject.Find("Spirit Generator").transform;
-        Spirit_Refact spirit = Instantiate(_spirit, transform.position, Quaternion.identity, spiritGroup);
+        for (int i = 0; i < heroTeamDict[_eBlockHeroType].Count; i++)
+        {
+            Spirit_Refact spirit = Instantiate(_spirit, transform.position, Quaternion.identity, spiritGroup);
+            spirit.SetTarget(heroTeamDict[_eBlockHeroType][i]);
+        }
     }
 }

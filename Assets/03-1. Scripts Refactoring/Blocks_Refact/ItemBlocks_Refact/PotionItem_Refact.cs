@@ -14,7 +14,7 @@ public class PotionItem_Refact : ItemBlock_Refact, IBlockNoneDestroyerItem
         _selectionParticle.SetActive(turnOn);
     }
 
-    public override void DoBreakAction()
+    public override void DoBreakAction(HeroTeamMgr_Refact heroTeam)
     {
         if (!_isIgnited)
         {

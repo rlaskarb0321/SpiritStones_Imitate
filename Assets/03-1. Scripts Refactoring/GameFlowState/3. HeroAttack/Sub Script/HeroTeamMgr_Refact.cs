@@ -5,16 +5,17 @@ using UnityEngine;
 public class HeroTeamMgr_Refact : MonoBehaviour
 {
     [SerializeField] private HeroBase_Refact[] _heroesTeam;
-    [SerializeField] private float _totalHP;
-    [SerializeField] private int[] _teamHeroType; // 총 히어로 타입의 수를 저장
+    [SerializeField] private float _teamHP;
 
-    public float TotalHp { get { return _totalHP; } }
-    public int[] TeamHeroType { get { return _teamHeroType; } }
+    Dictionary<eBlockHeroType_Refact, List<HeroBase_Refact>> _teamHeroDict;
+
+    public Dictionary<eBlockHeroType_Refact, List<HeroBase_Refact>> TeamHeroDict { get { return _teamHeroDict; } }
+    public float TeamHP { get { return _teamHP; } }
 
     private void Awake()
     {
         InitTeamHP();
-        InitHeroType();
+        InitTeamHeroDict();
     }
 
     /// <summary>
@@ -24,22 +25,24 @@ public class HeroTeamMgr_Refact : MonoBehaviour
     {
         for (int i = 0; i < _heroesTeam.Length; i++)
         {
-            _totalHP += _heroesTeam[i].HP;
+            _teamHP += _heroesTeam[i].HP;
         }
     }
 
-    /// <summary>
-    /// 팀 영웅 타입 수 설정
-    /// </summary>
-    private void InitHeroType()
+    private void InitTeamHeroDict()
     {
+        _teamHeroDict = new Dictionary<eBlockHeroType_Refact, List<HeroBase_Refact>>();
         for (int i = 0; i < _heroesTeam.Length; i++)
         {
-            eBlockHeroType_Refact[] heroTypes = _heroesTeam[i].HeroTypes;
-            for (int j = 0; j < heroTypes.Length; j++)
+            eBlockHeroType_Refact[] keyHeroTypes = _heroesTeam[i].HeroTypes;
+            HeroBase_Refact valueHero = _heroesTeam[i];
+            for (int j = 0; j < keyHeroTypes.Length; j++)
             {
-                eBlockHeroType_Refact type = heroTypes[j];
-                _teamHeroType[(int)type]++;
+                eBlockHeroType_Refact key = keyHeroTypes[j];
+                if (!_teamHeroDict.ContainsKey(key))
+                    _teamHeroDict.Add(key, new List<HeroBase_Refact>());
+
+                _teamHeroDict[key].Add(valueHero);
             }
         }
     }

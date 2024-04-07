@@ -6,7 +6,8 @@ public class DamageLoadState : GameFlowState
 {
     [Header("게임 흐름 객체의 관리 항목")]
     [SerializeField] private float _gameFlowDelay;
-    [SerializeField] private ComboManage _comboManage; 
+    [SerializeField] private ComboManage _comboManage;
+    [SerializeField] private HeroTeamMgr_Refact _heroTeamMgr;
 
     private Stack<BlockBase_Refact> _destroyStack;
     private WaitUntil _waitDocked;
@@ -69,7 +70,7 @@ public class DamageLoadState : GameFlowState
                     hasItemBlock = true;
                 }
 
-                block.DoBreakAction();
+                block.DoBreakAction(_heroTeamMgr);
             }
 
             // 블록들 제자리 찾을때까지 대기

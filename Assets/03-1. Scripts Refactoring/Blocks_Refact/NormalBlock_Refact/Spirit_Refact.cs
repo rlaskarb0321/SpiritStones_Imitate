@@ -8,8 +8,10 @@ public class Spirit_Refact : MonoBehaviour
     [SerializeField] [Range(0.0f, 1.0f)] private float _idleTime;
     [SerializeField] [Range(0.0f, 0.3f)] private float _lerpMoveValue;
 
+    private HeroBase_Refact _target;
     private Rigidbody2D _rbody2D;
     private float _currIdleTime;
+    private Vector2 _randomDir;
 
     private void Awake()
     {
@@ -19,26 +21,36 @@ public class Spirit_Refact : MonoBehaviour
     private void Start()
     {
         _currIdleTime = _idleTime;
+        _randomDir = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 0.0f)).normalized;
     }
 
-    public IEnumerator SetTarget(GameObject target)
+    private void FixedUpdate()
     {
-        Vector2 randomDir = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 0.0f)).normalized;
-        while (_currIdleTime >= 0.0f)
+        if (_target == null)
+            return;
+
+        if (_currIdleTime > 0.0f)
         {
-            Vector2 explosionForce = randomDir * _speed * _currIdleTime;
+            Vector2 explosionForce = _randomDir * _speed * _currIdleTime;
 
             _rbody2D.MovePosition(_rbody2D.position + explosionForce * Time.deltaTime);
             _currIdleTime -= Time.deltaTime;
-            yield return new WaitForFixedUpdate();
         }
-
-        while (Vector2.Distance(transform.position, target.transform.position) >= 0.1f)
+        else
         {
-            Vector2 newPosition = Vector2.Lerp(_rbody2D.position, target.transform.position, _lerpMoveValue);
+            if (Vector2.Distance(transform.position, _target.transform.position) < 0.1f)
+            {
+                Destroy(gameObject);
+                return;
+            }
 
+            Vector2 newPosition = Vector2.Lerp(_rbody2D.position, _target.transform.position, _lerpMoveValue);
             _rbody2D.MovePosition(newPosition);
-            yield return new WaitForFixedUpdate();
         }
+    }
+
+    public void SetTarget(HeroBase_Refact target)
+    {
+        _target = target;
     }
 }
