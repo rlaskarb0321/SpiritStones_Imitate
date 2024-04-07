@@ -29,6 +29,9 @@ public class HeroTeamMgr_Refact : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 팀 영웅 직업 수, 영웅 데이터등을 설정
+    /// </summary>
     private void InitTeamHeroDict()
     {
         _teamHeroDict = new Dictionary<eBlockHeroType_Refact, List<HeroBase_Refact>>();
@@ -44,6 +47,14 @@ public class HeroTeamMgr_Refact : MonoBehaviour
 
                 _teamHeroDict[key].Add(valueHero);
             }
+        }
+    }
+
+    public void AttackEnemy(GameObject target)
+    {
+        for (int i = 0; i < _heroesTeam.Length; i++)
+        {
+            float heroAccumulatedDamage = _heroesTeam[i].AccumulatedDamage;
         }
     }
 }

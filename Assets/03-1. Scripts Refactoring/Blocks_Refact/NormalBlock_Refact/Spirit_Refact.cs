@@ -40,6 +40,8 @@ public class Spirit_Refact : MonoBehaviour
         {
             if (Vector2.Distance(transform.position, _target.transform.position) < 0.1f)
             {
+                // 영웅의 공격 데미지 축적시키기
+                _target.AccumulatedDamage += _target.Damage;
                 Destroy(gameObject);
                 return;
             }
