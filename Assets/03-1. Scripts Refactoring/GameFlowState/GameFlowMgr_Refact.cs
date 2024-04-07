@@ -6,9 +6,12 @@ public class GameFlowMgr_Refact : MonoBehaviour
 {
     public static GameFlowMgr_Refact _instance;
 
+    [Header("게임 흐름")]
     [SerializeField] private GameFlowState _firstGameFlow;
-    [SerializeField] private eGameFlow_Refact _gameFlow; // 게임 흐름 확인용 & 제어용 enum
+    [SerializeField] private eGameFlow_Refact _currGameFlow; // 게임 흐름 확인용 & 제어용 enum
     [SerializeField] private float _gameStartDelay;
+
+    [Header("게임 흐름 객체의 관리 항목")]
     [SerializeField] private int _dockedCount;
 
     public int DockedCount 
@@ -19,7 +22,7 @@ public class GameFlowMgr_Refact : MonoBehaviour
             _dockedCount = value;
         }
     }
-    public eGameFlow_Refact GameFlow { get { return _gameFlow; } set { _gameFlow = value; } }
+    public eGameFlow_Refact GameFlow { get { return _currGameFlow; } set { _currGameFlow = value; } }
 
     private void Awake()
     {

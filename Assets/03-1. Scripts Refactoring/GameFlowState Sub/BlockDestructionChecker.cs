@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class BlockDestructionChecker
 {
-    private BlockHeroType_Refact _selectNormalBlock;
-    private BlockHeroType_Refact _selectItemBlock;
+    private eBlockHeroType_Refact _selectNormalBlock;
+    private eBlockHeroType_Refact _selectItemBlock;
     private int _normalBlockSelectionChance;
     private int _itemBlockSelectionChance;
 
     public BlockDestructionChecker()
     {
-        _selectNormalBlock = BlockHeroType_Refact.None;
-        _selectItemBlock = BlockHeroType_Refact.None;
+        _selectNormalBlock = eBlockHeroType_Refact.None;
+        _selectItemBlock = eBlockHeroType_Refact.None;
         _normalBlockSelectionChance = 1;
         _itemBlockSelectionChance = 1;
     }
@@ -20,7 +20,7 @@ public class BlockDestructionChecker
     /// <summary>
     /// 선택 기회가 1이상이고, 매개변수로 넘어온 (아이템/노말)블럭이 처음 선택한 블럭과 같은 히어로 종류인지 판단
     /// </summary>
-    public bool IsDestructibleBlock(string blockTag, BlockHeroType_Refact blockType)
+    public bool IsDestructibleBlock(string blockTag, eBlockHeroType_Refact blockType)
     {
         switch (blockTag)
         {
@@ -78,8 +78,8 @@ public class BlockDestructionChecker
 
     public void ResetCondition()
     {
-        _selectNormalBlock = BlockHeroType_Refact.None;
-        _selectItemBlock = BlockHeroType_Refact.None;
+        _selectNormalBlock = eBlockHeroType_Refact.None;
+        _selectItemBlock = eBlockHeroType_Refact.None;
         _normalBlockSelectionChance = 1;
         _itemBlockSelectionChance = 1;
     }

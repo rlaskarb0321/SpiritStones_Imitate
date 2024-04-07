@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DamageLoadState : GameFlowState
 {
+    [Header("게임 흐름 객체의 관리 항목")]
     [SerializeField] private float _gameFlowDelay;
     [SerializeField] private ComboManage _comboManage;
 
@@ -39,25 +40,18 @@ public class DamageLoadState : GameFlowState
 
     public override IEnumerator Handle()
     {
-        // 스택에 블록이 3개 미만일 경우, 아무일도 일어나지않음
-        if (_destroyStack.Count < 3)
-        {
-            while (_destroyStack.Count != 0)
-            {
-                _destroyStack.Pop().ActivateBlockSeletionUI(false);
-                yield return null;
-            }
-
+        // 스택에 블록이 3개 미만일 경우
+        if (!CheckDestoryStackCount())
             yield break;
-        }
 
         // 3개 이상일 경우
         Stack<ItemBlock_Refact> itemBlockStack = new Stack<ItemBlock_Refact>();
         GameFlowMgr_Refact._instance.GameFlow = eGameFlow_Refact.DamageLoad;
         _comboManage.ComboCount = 0;
+
         while (_destroyStack.Count != 0)
         {
-            bool hasItemBlock = false;
+            bool hasItemBlock = false; // 스택에 아이템 블록이 포함되어있는지 판단
             int stackCount = _destroyStack.Count;
 
             // 스택에 들어온 블록들(노말 블록, 아이템 블록, 기타 등등) 파괴작업
@@ -67,7 +61,7 @@ public class DamageLoadState : GameFlowState
                 ItemBlock_Refact itemBlock = null;
 
                 // 아이템 블록이 있는경우
-                if (block.BlockType == BlockType_Refact.Item)
+                if (block.BlockType == eBlockType_Refact.Item)
                     itemBlock = block.GetComponent<ItemBlock_Refact>();
                 if (itemBlock != null && !itemBlock.IsIgnited)
                 {
@@ -112,5 +106,18 @@ public class DamageLoadState : GameFlowState
 
         GameFlowMgr_Refact._instance.ChangeGameFlow(_nextGameFlow);
         _comboManage.ComboCount = 0;
+    }
+
+    private bool CheckDestoryStackCount()
+    {
+        if (_destroyStack.Count < 3)
+        {
+            while (_destroyStack.Count != 0)
+            {
+                _destroyStack.Pop().ActivateBlockSeletionUI(false);
+            }
+            return false;
+        }
+        return true;
     }
 }

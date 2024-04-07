@@ -39,7 +39,7 @@ public enum eObstacleBlockType
     Skull,
 }
 
-public enum BlockType_Refact
+public enum eBlockType_Refact
 {
     Normal,
     Item,
@@ -47,7 +47,7 @@ public enum BlockType_Refact
     Count,
 }
 
-public enum BlockHeroType_Refact
+public enum eBlockHeroType_Refact
 {
     Warrior,
     Archer,

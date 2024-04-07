@@ -12,13 +12,13 @@ public abstract class BlockBase_Refact : MonoBehaviour
 {
     [Header("=== 블록 기반값 ===")]
     [SerializeField] protected float _movSpeed;
-    [SerializeField] private BlockHeroType_Refact _eBlockHeroType;
-    [SerializeField] private BlockType_Refact _eBlockType;
+    [SerializeField] private eBlockHeroType_Refact _eBlockHeroType;
+    [SerializeField] private eBlockType_Refact _eBlockType;
     [SerializeField] private bool _isDocked;
     [SerializeField] protected GameObject _selectionParticle;
 
-    public BlockHeroType_Refact BlockHeroType { get { return _eBlockHeroType; } }
-    public BlockType_Refact BlockType { get { return _eBlockType; } }
+    public eBlockHeroType_Refact BlockHeroType { get { return _eBlockHeroType; } }
+    public eBlockType_Refact BlockType { get { return _eBlockType; } }
 
     /// <summary>
     /// 해당 블록을 한붓 그리기에 넣었을 때 관련 동작 메서드

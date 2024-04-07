@@ -3112,6 +3112,8 @@ GameObject:
   - component: {fileID: 278555261}
   - component: {fileID: 278555262}
   - component: {fileID: 278555263}
+  - component: {fileID: 278555264}
+  - component: {fileID: 278555265}
   m_Layer: 5
   m_Name: Hero Team Group
   m_TagString: Untagged
@@ -3150,7 +3152,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 278555258}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5ace3e318f87994a8aa0b9ea9a84092, type: 3}
   m_Name: 
@@ -3210,6 +3212,38 @@ MonoBehaviour:
   _nextGameFlow: {fileID: 1623081772}
   _gameFlowDelay: 0.9
   _comboManage: {fileID: 42716061}
+--- !u!114 &278555264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278555258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b2f3ffcb1e0c7d4fb247e7d3c77bed2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nextGameFlow: {fileID: 0}
+--- !u!114 &278555265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278555258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 615135b58ee3c4f4680776a9e8921734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _heroesTeam:
+  - {fileID: 1121117466}
+  - {fileID: 894452798}
+  - {fileID: 718850836}
+  - {fileID: 551128822}
+  _totalHP: 0
+  _teamHeroType: 00000000000000000000000000000000
 --- !u!1 &280291695
 GameObject:
   m_ObjectHideFlags: 0
@@ -3530,7 +3564,7 @@ PrefabInstance:
     - target: {fileID: 2797091702767538787, guid: 0871322b4aeff47ef9da70b17d425321, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 61ffe4ec2ef0e43159cc1d10a1d7018d, type: 3}
+      objectReference: {fileID: 21300000, guid: 6d5b75821aa5244ddbc1a5813e8704eb, type: 3}
     - target: {fileID: 2797091702767538787, guid: 0871322b4aeff47ef9da70b17d425321, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -3538,6 +3572,10 @@ PrefabInstance:
     - target: {fileID: 2797091702903327289, guid: 0871322b4aeff47ef9da70b17d425321, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797091703168507631, guid: 0871322b4aeff47ef9da70b17d425321, type: 3}
+      propertyPath: m_Name
+      value: Archer
       objectReference: {fileID: 0}
     - target: {fileID: 2797091703197625741, guid: 0871322b4aeff47ef9da70b17d425321, type: 3}
       propertyPath: m_SpriteKey
@@ -3693,7 +3731,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5781421206404344560, guid: 0871322b4aeff47ef9da70b17d425321, type: 3}
       propertyPath: m_SpriteKey
-      value: -0.000000033213045
+      value: 3.9214835e+11
       objectReference: {fileID: 0}
     - target: {fileID: 7554932530266200863, guid: 0871322b4aeff47ef9da70b17d425321, type: 3}
       propertyPath: _attackSoundVolume
@@ -5049,6 +5087,10 @@ PrefabInstance:
     - target: {fileID: 2797091703168507630, guid: ae2809d7cf4e19b4aa6c935539053547, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797091703168507631, guid: ae2809d7cf4e19b4aa6c935539053547, type: 3}
+      propertyPath: m_Name
+      value: Warrior_Thief
       objectReference: {fileID: 0}
     - target: {fileID: 2797091703197625742, guid: ae2809d7cf4e19b4aa6c935539053547, type: 3}
       propertyPath: m_Sprite
@@ -6577,6 +6619,26 @@ RectTransform:
   m_AnchoredPosition: {x: 51.99997, y: -105.029}
   m_SizeDelta: {x: 100, y: 561.649}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &551128814 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2797091703168507631, guid: 48d69b44e326f324b8249d3c87c0cf46, type: 3}
+  m_PrefabInstance: {fileID: 2143279676}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &551128822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551128814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cadb1ec066e96094d81b30a39dcfacbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hp: 600
+  _damage: 50
+  _heroType: 02000000
 --- !u!1 &567766563
 GameObject:
   m_ObjectHideFlags: 0
@@ -8235,6 +8297,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 718351649}
   m_CullTransparentMesh: 1
+--- !u!1 &718850829 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2797091703168507631, guid: ae2809d7cf4e19b4aa6c935539053547, type: 3}
+  m_PrefabInstance: {fileID: 405344993}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &718850836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718850829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cadb1ec066e96094d81b30a39dcfacbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hp: 600
+  _damage: 50
+  _heroType: 0000000002000000
 --- !u!1 &722147202
 GameObject:
   m_ObjectHideFlags: 0
@@ -9497,6 +9579,26 @@ RectTransform:
   m_AnchoredPosition: {x: -293, y: -45.6546}
   m_SizeDelta: {x: 100, y: 561.649}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &894452791 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2797091703168507631, guid: bcba7bef2063a3a4fa62f103d5171eed, type: 3}
+  m_PrefabInstance: {fileID: 1829096339}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &894452798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894452791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cadb1ec066e96094d81b30a39dcfacbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hp: 600
+  _damage: 50
+  _heroType: 03000000
 --- !u!1 &900971053
 GameObject:
   m_ObjectHideFlags: 0
@@ -11110,6 +11212,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075969268}
   m_CullTransparentMesh: 1
+--- !u!1 &1121117458 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2797091703168507631, guid: 0871322b4aeff47ef9da70b17d425321, type: 3}
+  m_PrefabInstance: {fileID: 297647829}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1121117466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121117458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cadb1ec066e96094d81b30a39dcfacbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hp: 600
+  _damage: 50
+  _heroType: 01000000
 --- !u!1 &1140392642
 GameObject:
   m_ObjectHideFlags: 0
@@ -12094,7 +12216,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 921, y: 371}
+  m_AnchoredPosition: {x: 0, y: 371}
   m_SizeDelta: {x: 852, y: 1115.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1215415320
@@ -15821,7 +15943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _firstGameFlow: {fileID: 1623081772}
-  _gameFlow: 0
+  _currGameFlow: 0
   _gameStartDelay: 0.6
   _dockedCount: 0
 --- !u!114 &1623081774
@@ -18359,6 +18481,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2797091703168507631, guid: bcba7bef2063a3a4fa62f103d5171eed, type: 3}
+      propertyPath: m_Name
+      value: Magician
+      objectReference: {fileID: 0}
     - target: {fileID: 2797091703197625742, guid: bcba7bef2063a3a4fa62f103d5171eed, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -20420,6 +20546,10 @@ PrefabInstance:
     - target: {fileID: 2797091702767538787, guid: 48d69b44e326f324b8249d3c87c0cf46, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797091703168507631, guid: 48d69b44e326f324b8249d3c87c0cf46, type: 3}
+      propertyPath: m_Name
+      value: Thief
       objectReference: {fileID: 0}
     - target: {fileID: 2797091703355057064, guid: 48d69b44e326f324b8249d3c87c0cf46, type: 3}
       propertyPath: m_Sprite

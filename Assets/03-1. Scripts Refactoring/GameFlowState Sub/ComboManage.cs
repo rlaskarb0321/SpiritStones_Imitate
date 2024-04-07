@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class ComboManage : MonoBehaviour
 {
+    [Header("표시할 텍스트 내용과 콤보 숫자")]
     [SerializeField] private Text _txt;
     [SerializeField] private string _context;
-
     [SerializeField] private int _comboCount;
 
     public int ComboCount

@@ -10,7 +10,7 @@ public class BlockGenerator_Refact : MonoBehaviour
 
     public void GenerateBlock(Vector2 pos, Transform parent)
     {
-        int randomValue = Random.Range(0, (int)BlockHeroType_Refact.Count);
+        int randomValue = Random.Range(0, (int)eBlockHeroType_Refact.Count);
         if (Random.Range(0, 101) <= _itemBlockSpawnPercentage)
         {
             Instantiate(_itemBlockPrefabArr[randomValue], pos, Quaternion.identity, parent);

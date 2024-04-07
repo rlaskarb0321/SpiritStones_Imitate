@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class GameFlowState : MonoBehaviour
 {
+    [Header("∞‘¿” »Â∏ß")]
     [SerializeField] protected GameFlowState _nextGameFlow;
 
     /// <summary>

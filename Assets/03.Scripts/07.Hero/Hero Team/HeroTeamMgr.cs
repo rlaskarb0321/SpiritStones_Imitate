@@ -22,6 +22,11 @@ public class HeroTeamMgr : MonoBehaviour, IGameFlow
         InitHeroInformation();
     }
 
+
+    private void Start()
+    {
+        
+    }
     void InitHeroInformation()
     {
         for (int i = 0; i < this.transform.childCount; i++)
