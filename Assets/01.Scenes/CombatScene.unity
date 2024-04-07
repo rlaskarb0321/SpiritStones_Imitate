@@ -3209,7 +3209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 739e2f0cca315e64596085c5e8548f08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nextGameFlow: {fileID: 1623081772}
+  _nextGameFlow: {fileID: 278555264}
   _gameFlowDelay: 0.9
   _comboManage: {fileID: 42716061}
 --- !u!114 &278555264

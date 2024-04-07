@@ -256,7 +256,7 @@ MonoBehaviour:
   _eBlockType: 0
   _isDocked: 0
   _selectionParticle: {fileID: 4472831343936340902}
-  _spirit: {fileID: 0}
+  _spirit: {fileID: -4249352265041332160, guid: 0cc384ab130e90240a1f513592f80a41, type: 3}
   _selectionImg:
   - {fileID: 21300000, guid: 60d84420f033b1842bfcd4842ef7d0fe, type: 3}
   - {fileID: 21300000, guid: aaf62751a1d3d484ab1582c15bf01b55, type: 3}

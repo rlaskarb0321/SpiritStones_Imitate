@@ -10,7 +10,7 @@ public enum BlockSelectionImg
 
 public abstract class BlockBase_Refact : MonoBehaviour
 {
-    [Header("=== 블록 기반값 ===")]
+    [Header("블록 기반값")]
     [SerializeField] protected float _movSpeed;
     [SerializeField] private eBlockHeroType_Refact _eBlockHeroType;
     [SerializeField] private eBlockType_Refact _eBlockType;

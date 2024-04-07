@@ -252,13 +252,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movSpeed: 2.5
+  _eBlockHeroType: 0
   _eBlockType: 0
   _isDocked: 0
-  _spirit: {fileID: 0}
+  _selectionParticle: {fileID: 1354573631610423959}
+  _spirit: {fileID: -4249352265041332160, guid: 3a77891206d55de40a35b76e64d5d649, type: 3}
   _selectionImg:
   - {fileID: 21300000, guid: f29d709fa311d214b92752b256dd0e1f, type: 3}
   - {fileID: 21300000, guid: 1eb12fd8e9d37bc419e199919d1b3346, type: 3}
-  _selectionParticle: {fileID: 1354573631610423959}
 --- !u!1001 &6863736541455773866
 PrefabInstance:
   m_ObjectHideFlags: 0
