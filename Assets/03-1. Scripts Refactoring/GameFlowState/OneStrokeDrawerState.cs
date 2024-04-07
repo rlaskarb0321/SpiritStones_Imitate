@@ -8,6 +8,7 @@ public class OneStrokeDrawerState : GameFlowState
     private CanvasRayCaster _canvasRayCaster;
     private BlockDestructionChecker _blockDestructionChecker;
     private DamageLoadState _damageLoadState;
+    private BlockChain _blockChain;
 
     private void Awake()
     {
@@ -15,6 +16,7 @@ public class OneStrokeDrawerState : GameFlowState
         _canvasRayCaster = GetComponent<CanvasRayCaster>();
         _blockDestructionChecker = new BlockDestructionChecker();
         _damageLoadState = _nextGameFlow.GetComponent<DamageLoadState>();
+        _blockChain = GetComponent<BlockChain>();
     }
 
     public override IEnumerator Handle()
@@ -32,6 +34,7 @@ public class OneStrokeDrawerState : GameFlowState
                 _damageLoadState.SetDestroyQueue(_breakableBlockStack);
                 _blockDestructionChecker.ResetCondition();
                 GameFlowMgr_Refact._instance.ChangeGameFlow(_nextGameFlow);
+                _blockChain.InitBlockLine();
             }
 
             yield return null;
@@ -57,7 +60,10 @@ public class OneStrokeDrawerState : GameFlowState
         // 한붓그리기 취소 동작
         if (IsUndoingStroke(block, _breakableBlockStack))
         {
-            _breakableBlockStack.Pop().ActivateBlockSeletionUI(false);
+            BlockBase_Refact popBlock = _breakableBlockStack.Pop();
+            popBlock.ActivateBlockSeletionUI(false);
+
+            _blockChain.DrawBlockLine(block.gameObject.transform.position, _breakableBlockStack.Count);
             return;
         }
         // 넣을수있고 파괴가능한 블록을 스택에넣는다.
@@ -65,6 +71,7 @@ public class OneStrokeDrawerState : GameFlowState
         {
             block.ActivateBlockSeletionUI(true);
             _breakableBlockStack.Push(block);
+            _blockChain.DrawBlockLine(block.gameObject.transform.position, _breakableBlockStack.Count);
         }
     }
 
