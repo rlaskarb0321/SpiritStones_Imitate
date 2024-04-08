@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 882285795242647961}
   - component: {fileID: 4380400623228893527}
   - component: {fileID: 6996119467214106099}
+  - component: {fileID: 4129492433740424067}
   m_Layer: 5
   m_Name: Monster Dmg Txt
   m_TagString: Untagged
@@ -109,8 +110,20 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 614719482247930458}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68f5996ef0dde7046b3ad670f5a425d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4129492433740424067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614719482247930458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2166da53401792b44aef881501c4c4c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

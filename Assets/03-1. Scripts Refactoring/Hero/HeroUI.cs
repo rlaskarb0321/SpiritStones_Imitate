@@ -9,6 +9,12 @@ public class HeroUI : MonoBehaviour
 
     public void SetDamageText(float value)
     {
+        if (value == 0.0f)
+        {
+            _storedDamageTxt.text = "";
+            return;
+        }
+
         _storedDamageTxt.text = value.ToString();
     }
 }

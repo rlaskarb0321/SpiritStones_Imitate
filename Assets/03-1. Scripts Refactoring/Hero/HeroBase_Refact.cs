@@ -6,7 +6,7 @@ public class HeroBase_Refact : MonoBehaviour
 {
     [Header("영웅 기본 정보")]
     [SerializeField] private float _hp;
-    [SerializeField] private float _damage;
+    [SerializeField] private int _damage;
     [SerializeField] private eBlockHeroType_Refact[] _heroType;
     [SerializeField] private GameObject _attackEffect;
 
@@ -16,7 +16,7 @@ public class HeroBase_Refact : MonoBehaviour
 
     // NoneSerializeField
     private Animator _animator;
-    private bool _isAttacked;
+    private bool _isAttackReady;
 
     // Animator Params
     private readonly int _hashAttack = Animator.StringToHash("isAttack");
@@ -28,13 +28,14 @@ public class HeroBase_Refact : MonoBehaviour
 
     // Property
     public float HP { get { return _hp; } }
-    public float Damage { get { return _damage; } }
+    public int Damage { get { return _damage; } }
     public float AccumulatedDamage
     { 
         get { return _accumulatedDamage; } 
         set
         {
-            if (value < _accumulatedDamage)
+            // 데미지가 쌓인 상태에서 공격을 하지 않았는데 값을 낮추려한다면 return
+            if (_isAttackReady && value < _accumulatedDamage)
                 return;
 
             _accumulatedDamage = value;
@@ -52,16 +53,18 @@ public class HeroBase_Refact : MonoBehaviour
     public IEnumerator Attack(EnemyBase_Refact target)
     {
         _animator.SetTrigger(_hashAttack);
-        yield return new WaitUntil(() => _isAttacked);
+        yield return new WaitUntil(() => _isAttackReady);
 
         target.DecreaseHP(AccumulatedDamage);
         GenerateAttackEffect(target.transform);
+        _isAttackReady = false;
+        AccumulatedDamage = 0.0f;
     }
 
     /// <summary>
     /// 애니메이션 이벤트 메서드를 통해 공격 적중 이펙트의 등장 타이밍 설정
     /// </summary>
-    public void SetEffectTiming() => _isAttacked = true;
+    public void SetEffectTiming() => _isAttackReady = true;
 
     private void GenerateAttackEffect(Transform pos)
     {

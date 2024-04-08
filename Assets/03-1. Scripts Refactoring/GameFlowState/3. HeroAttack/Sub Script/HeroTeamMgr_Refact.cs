@@ -59,7 +59,7 @@ public class HeroTeamMgr_Refact : MonoBehaviour
         for (int i = 0; i < _heroesTeam.Length; i++)
         {
             float heroAccumulatedDamage = _heroesTeam[i].AccumulatedDamage;
-            if (heroAccumulatedDamage == 0)
+            if (heroAccumulatedDamage == 0.0f)
                 continue;
 
             StartCoroutine(_heroesTeam[i].Attack(target));
