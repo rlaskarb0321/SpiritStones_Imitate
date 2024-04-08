@@ -50,7 +50,11 @@ public class HeroTeamMgr_Refact : MonoBehaviour
         }
     }
 
-    public void AttackEnemy(GameObject target)
+    /// <summary>
+    /// 영웅들에게 목표를 공격하도록 명령내림
+    /// </summary>
+    /// <param name="target"></param>
+    public void AttackEnemy(EnemyBase_Refact target)
     {
         for (int i = 0; i < _heroesTeam.Length; i++)
         {

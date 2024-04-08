@@ -3663,14 +3663,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.41666666
-    functionName: SetAttackTiming
-    data: 
-    objectReferenceParameter: {fileID: 11500000, guid: c6de8e3038c05284cae093b2524176ab, type: 3}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 1
-    functionName: GoToIdle
+    functionName: SetEffectTiming
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: c6de8e3038c05284cae093b2524176ab, type: 3}
     floatParameter: 0

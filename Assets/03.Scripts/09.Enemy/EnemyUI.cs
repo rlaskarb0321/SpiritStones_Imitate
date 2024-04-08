@@ -21,6 +21,11 @@ public class EnemyUI : MonoBehaviour
     public Image _hpBar;
     public Text _hpTxt;
 
+    private void Start()
+    {
+        
+    }
+
     public void SetInitValue(EnemyBase enemyBase)
     {
         _enemyBase = enemyBase;

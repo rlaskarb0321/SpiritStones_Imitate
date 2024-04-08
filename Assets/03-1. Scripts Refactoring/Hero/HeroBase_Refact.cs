@@ -12,7 +12,9 @@ public class HeroBase_Refact : MonoBehaviour
 
     [Header("영웅 전투 관련 데이터")]
     [SerializeField] private float _accumulatedDamage;
+    [SerializeField] private HeroUI _heroUI;
 
+    // NoneSerializeField
     private Animator _animator;
     private bool _isAttacked;
 
@@ -24,6 +26,7 @@ public class HeroBase_Refact : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
+    // Property
     public float HP { get { return _hp; } }
     public float Damage { get { return _damage; } }
     public float AccumulatedDamage
@@ -35,15 +38,23 @@ public class HeroBase_Refact : MonoBehaviour
                 return;
 
             _accumulatedDamage = value;
+            _heroUI.SetDamageText(value);
         }
     }
     public eBlockHeroType_Refact[] HeroTypes { get { return _heroType; } }
 
-    public IEnumerator Attack(GameObject target)
+    // Method
+    /// <summary>
+    /// 영웅(자신)이 목표에게 공격
+    /// </summary>
+    /// <param name="target"></param>
+    /// <returns></returns>
+    public IEnumerator Attack(EnemyBase_Refact target)
     {
         _animator.SetTrigger(_hashAttack);
-
         yield return new WaitUntil(() => _isAttacked);
+
+        target.DecreaseHP(AccumulatedDamage);
         GenerateAttackEffect(target.transform);
     }
 
