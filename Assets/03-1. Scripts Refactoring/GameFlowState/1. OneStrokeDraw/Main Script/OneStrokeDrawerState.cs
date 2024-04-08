@@ -23,12 +23,13 @@ public class OneStrokeDrawerState : GameFlowState
 
     public override IEnumerator Handle()
     {
-        // OneStrokeDraw ÅÏÀÏ¶§, ÇÑº×±×¸®±â ºí·° ÀÔ·Â & ÇØÁ¦ Ã³¸®ÇÏ±â
+        // OneStrokeDraw í„´ì¼ë•Œ, í•œë¶“ê·¸ë¦¬ê¸° ë¸”ëŸ­ ì…ë ¥ & í•´ì œ ì²˜ë¦¬í•˜ê¸°
         GameFlowMgr_Refact._instance.GameFlow = eGameFlow_Refact.OneStrokeDraw;
         while (GameFlowMgr_Refact._instance.GameFlow == eGameFlow_Refact.OneStrokeDraw)
         {
             if (Input.GetMouseButton(0))
             {
+                // ì¡°ê±´ì—ë§ëŠ” ë¸”ëŸ­ë“¤ì„ ë„£ì–´ì¤Œ
                 PushBlocksForDestroy();
             }
             if (Input.GetMouseButtonUp(0))
@@ -44,7 +45,7 @@ public class OneStrokeDrawerState : GameFlowState
     }
 
     /// <summary>
-    /// ÆÄ±«¿ë Å¥¿¡ ³ÖÀ» ¼ö ÀÖ´Â ºí·°µéÀ» ³Ö¾îÁØ´Ù.
+    /// íŒŒê´´ìš© íì— ë„£ì„ ìˆ˜ ìˆëŠ” ë¸”ëŸ­ë“¤ì„ ë„£ì–´ì¤€ë‹¤.
     /// </summary>
     private void PushBlocksForDestroy()
     {
@@ -59,7 +60,7 @@ public class OneStrokeDrawerState : GameFlowState
         bool isDestructible = _blockDestructionChecker.IsDestructibleBlock(block.tag, block.BlockHeroType);
         bool isInsertable = _blockDestructionChecker.IsInsertableBlock(block, _breakableBlockStack);
 
-        // ÇÑº×±×¸®±â Ãë¼Ò µ¿ÀÛ
+        // í•œë¶“ê·¸ë¦¬ê¸° ì·¨ì†Œ ë™ì‘
         if (IsUndoingStroke(block, _breakableBlockStack))
         {
             BlockBase_Refact popBlock = _breakableBlockStack.Pop();
@@ -68,7 +69,7 @@ public class OneStrokeDrawerState : GameFlowState
             _blockChain.DrawBlockLine(block.gameObject.transform.position, _breakableBlockStack.Count);
             return;
         }
-        // ³ÖÀ»¼öÀÖ°í ÆÄ±«°¡´ÉÇÑ ºí·ÏÀ» ½ºÅÃ¿¡³Ö´Â´Ù.
+        // ë„£ì„ìˆ˜ìˆê³  íŒŒê´´ê°€ëŠ¥í•œ ë¸”ë¡ì„ ìŠ¤íƒì—ë„£ëŠ”ë‹¤.
         if (isDestructible && isInsertable)
         {
             block.ActivateBlockSeletionUI(true);
@@ -78,7 +79,7 @@ public class OneStrokeDrawerState : GameFlowState
     }
 
     /// <summary>
-    /// ÇÃ·¹ÀÌ¾î°¡ ÇÑº×±×¸®±â Ãë¼Ò µ¿ÀÛÀ» ÇÏ°íÀÖ´ÂÁö ÆÇ´Ü
+    /// í”Œë ˆì´ì–´ê°€ í•œë¶“ê·¸ë¦¬ê¸° ì·¨ì†Œ ë™ì‘ì„ í•˜ê³ ìˆëŠ”ì§€ íŒë‹¨
     /// </summary>
     private bool IsUndoingStroke(BlockBase_Refact block, Stack<BlockBase_Refact> stack)
     {
