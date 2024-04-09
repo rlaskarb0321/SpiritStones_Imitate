@@ -7,8 +7,13 @@ public class HeroTeamMgr_Refact : MonoBehaviour
     [SerializeField] private HeroBase_Refact[] _heroesTeam;
     [SerializeField] private float _teamHP;
 
-    Dictionary<eBlockHeroType_Refact, List<HeroBase_Refact>> _teamHeroDict;
+    // Composition
+    [SerializeField] private ShakeEffect _shakeEffect;
+    [SerializeField] private DamageEffect _hitDamagePrefab;
 
+    private Dictionary<eBlockHeroType_Refact, List<HeroBase_Refact>> _teamHeroDict;
+
+    // Property
     public Dictionary<eBlockHeroType_Refact, List<HeroBase_Refact>> TeamHeroDict { get { return _teamHeroDict; } }
     public float TeamHP { get { return _teamHP; } }
 

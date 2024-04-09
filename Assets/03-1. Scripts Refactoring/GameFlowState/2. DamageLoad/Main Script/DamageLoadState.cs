@@ -41,7 +41,7 @@ public class DamageLoadState : GameFlowState
 
     public override IEnumerator Handle()
     {
-        // 스택에 블록이 3개 미만일 경우
+        // 스택에 블록이 3개 미만일 경우 다음 흐름으로 넘어가지않음
         if (!CheckDestoryStackCount())
             yield break;
 
