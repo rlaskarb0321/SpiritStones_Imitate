@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 상태 패턴으로 턴제 시스템 구현
 public class OneStrokeDrawerState : GameFlowState
 {
     private Stack<BlockBase_Refact> _breakableBlockStack;
-    private CanvasRayCaster _canvasRayCaster;
-    private BlockDestructionChecker _blockDestructionChecker;
-    private BlockChain _blockChain;
+    private CanvasRayCaster _canvasRayCaster; // Composition - 1
+    private BlockDestructionChecker _blockDestructionChecker; // Composition - 2
+    private BlockChain _blockChain; // Composition - 3
 
     // NextGameFlow
     private DamageLoadState _damageLoadState;
